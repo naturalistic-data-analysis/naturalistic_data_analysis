@@ -28,16 +28,6 @@
   url: /intro
   not_numbered: true
 
-- url: /features/markdown/Contributing
-  not_numbered: true
-
-- title: GitHub repository
-  url: https://github.com/ljchang/naturalistic_data_analysis
-  external: true
-  not_numbered: true
-
-- divider: true
-
 - header: Course Overview
 
 - title: Organizers
@@ -47,6 +37,30 @@
 - title: Speakers
   url: /features/markdown/Speakers
   not_numbered: true
+
+- title: Introduction to Neuroimaging Data
+  url: /features/notebooks/5_Introduction_to_Neuroimaging_Data
+  not_numbered: false
+
+- title: Recommended Preprocessing Steps
+  url: /features/markdown/Preprocessing
+  not_numbered: false
+
+- title: Separating Signal from Noise with ICA
+  url: /features/notebooks/4_ICA
+  not_numbered: false
+
+- title: Connectivity
+  url: /features/notebooks/13_Connectivity
+  not_numbered: false
+
+- title: Multivariate Prediction
+  url: /features/notebooks/14_Multivariate_Prediction
+  not_numbered: false
+
+- title: Representational Similarity Analysis
+  url: /features/notebooks/15_RSA
+  not_numbered: false
 
 - divider: true
 - header: Computing Resources
@@ -73,30 +87,13 @@
 
 - divider: true
 
-- header: Topics
+- header: Contributing
 
-- title: Introduction to Neuroimaging Data
-  url: /features/notebooks/5_Introduction_to_Neuroimaging_Data
-  not_numbered: false
+- url: /features/markdown/Contributing
+  not_numbered: true
 
-- title: Recommended Preprocessing Steps
-  url: /features/markdown/Preprocessing
-  not_numbered: false
-
-- title: Separating Signal from Noise with ICA
-  url: /features/notebooks/4_ICA
-  not_numbered: false
-
-- title: Connectivity
-  url: /features/notebooks/13_Connectivity
-  not_numbered: false
-
-- title: Multivariate Prediction
-  url: /features/notebooks/14_Multivariate_Prediction
-  not_numbered: false
-
-- title: Representational Similarity Analysis
-  url: /features/notebooks/15_RSA
-  not_numbered: false
-
+- title: GitHub repository
+  url: https://github.com/ljchang/naturalistic_data_analysis
+  external: true
+  not_numbered: true
 
