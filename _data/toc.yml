@@ -28,8 +28,6 @@
   url: /intro
   not_numbered: true
 
-- header: Course Overview
-
 - title: Organizers
   url: /features/markdown/Organizers
   not_numbered: true
@@ -38,32 +36,36 @@
   url: /features/markdown/Speakers
   not_numbered: true
 
+- title: Download Localizer Data
+  url: /features/notebooks/Download_Localizer_Data
+  not_numbered: true
+
 - title: Introduction to Neuroimaging Data
   url: /features/notebooks/5_Introduction_to_Neuroimaging_Data
   not_numbered: false
 
 - title: Recommended Preprocessing Steps
   url: /features/markdown/Preprocessing
-  not_numbered: false
+  not_numbered: true
 
 - title: Separating Signal from Noise with ICA
   url: /features/notebooks/4_ICA
-  not_numbered: false
+  not_numbered: true
 
 - title: Connectivity
   url: /features/notebooks/13_Connectivity
-  not_numbered: false
+  not_numbered: true
 
 - title: Multivariate Prediction
   url: /features/notebooks/14_Multivariate_Prediction
-  not_numbered: false
+  not_numbered: true
 
 - title: Representational Similarity Analysis
   url: /features/notebooks/15_RSA
-  not_numbered: false
+  not_numbered: true
 
 - divider: true
-- header: Computing Resources
+- header: Background Resources
 
 - title: Introduction to Python
   url: /features/notebooks/1_Introduction_to_Programming
@@ -77,16 +79,11 @@
   url: /features/notebooks/3_Introduction_to_Plotting
   not_numbered: true
 
-- title: Download Localizer Data
-  url: /features/notebooks/Download_Localizer_Data
-  not_numbered: true
-
 - title: Glossary of Python Functions
   url: /features/notebooks/Glossary
   not_numbered: true
 
 - divider: true
-
 - header: Contributing
 
 - url: /features/markdown/Contributing
