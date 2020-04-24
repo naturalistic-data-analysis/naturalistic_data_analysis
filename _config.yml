@@ -23,8 +23,8 @@ description: >-
   This is a jupyter-book developed for a an OHBM educational course on
   Analyzing Naturalistic Data.
 
-baseurl: "" # the subpath of your site, e.g. /blog. If there is no subpath for your site, use an empty string ""
-url: https://ljchang.github.io/naturalistic_data_analysis # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: /naturalistic_data_analysis # the subpath of your site, e.g. /blog. If there is no subpath for your site, use an empty string ""
+url: https://ljchang.github.io # the base hostname & protocol for your site, e.g. http://example.com
 
 
 #######################################################################################
@@ -63,7 +63,7 @@ use_jupyterlab: false                     # If 'true', interact links will use J
 
 # Jupyterhub link settings
 use_jupyterhub_button: false              # If 'true', display a button that will direct users to a JupyterHub (that you provide)
-jupyterhub_url: ''                     # The URL for your JupyterHub. If no URL, use ""
+jupyterhub_url: ""                     # The URL for your JupyterHub. If no URL, use ""
 jupyterhub_interact_text: Interact             # The text that interact buttons will contain.
 
 # Binder link settings
@@ -71,7 +71,7 @@ use_binder_button: true                  # If 'true', add a binder button for in
 binderhub_url: https://mybinder.org                        # The URL for your BinderHub. If no URL, use ""
 binder_repo_base: https://github.com/ljchang/naturalistic_data_analysis # The site on which the textbook repository is hosted
 binder_repo_org: ljchang                      # The username or organization that owns this repository
-binder_repo_name: dartbrains                       # The name of the repository on the web
+binder_repo_name: naturalistic_data_analysis                       # The name of the repository on the web
 binder_repo_branch: master                     # The branch on which your textbook is hosted.
 binderhub_interact_text: Interact              # The text that interact buttons will contain.
 
@@ -100,7 +100,7 @@ scholar:
 
 # Navigate to https://analytics.google.com, add a new property for your jupyter book and copy the tracking id here.
 google_analytics:
-  mytrackingcode: UA-138270939-1
+  mytrackingcode: 
 
 #######################################################################################
 # Jupyter book settings you probably don't need to change
