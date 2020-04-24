@@ -79,6 +79,10 @@
   url: /features/notebooks/5_Introduction_to_Neuroimaging_Data
   not_numbered: false
 
+- title: Recommended Preprocessing Steps
+  url: /features/markdown/Preprocessing
+  not_numbered: false
+
 - title: Separating Signal from Noise with ICA
   url: /features/notebooks/4_ICA
   not_numbered: false
