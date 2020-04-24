@@ -16,15 +16,15 @@
 
 #######################################################################################
 # Jekyll site settings
-title: DartBrains
+title: Naturalistic Data Analysis
 author: Luke Chang
 email: luke.j.chang@dartmouth.edu
 description: >-
-  This is a jupyter-book developed for a Dartmouth undergraduate course on
-  Principles of fMRI Data Analysis (Psych60).
+  This is a jupyter-book developed for a an OHBM educational course on
+  Analyzing Naturalistic Data.
 
 baseurl: ""  # the subpath of your site, e.g. /blog. If there is no subpath for your site, use an empty string ""
-url: https://ljchang.github.io/    # the base hostname & protocol for your site, e.g. http://example.com
+url: https://ljchang.github.io/naturalistic_data_analysis/    # the base hostname & protocol for your site, e.g. http://example.com
 
 
 #######################################################################################
