@@ -5,6 +5,30 @@ Naturalistic stimuli, such as films or stories, are growing in popularity for hu
 - Introduce innovative methods for analyzing naturalistic data to gain insights beyond what is possible with resting-state or traditional task-based designs, including both the theory behind these methods and the details of how they are implemented.
 - Provide hands-on experience with cutting-edge tools for performing naturalistic data analysis via tutorials using Python-based jupyter notebooks.
 
+# Overview
+## Setup
+- instructions how to install software stack
+- instructions how to download data
+
+## Preprocessing Recommendations
+- Everyone could share their thoughts on issues specific to preprocessing naturalistic data.
+
+## Analyses
+- Intersubject Correlations (Luke/Anyone)
+- Intersubject RSA (Emily/Luke/Carolyn)
+- HMM (Chris/Jeremy/Luke)
+- Distance Correlation? (Linda/Luke)
+- Hyperalignment (Luke/Anyone?)
+- TimeCorr (Jeremy)
+
+## Visualization
+- Hypertools (jeremy)
+
+## Feature Extraction/Annotation
+- Pliers (Tal)
+- Quail (Jeremy)
+- NLP (Jeremy?)
+
 # License for this book
 All content is licensed under the [Creative Commons Attribution-ShareAlike 4.0 International](https://creativecommons.org/licenses/by-sa/4.0/)
 (CC BY-SA 4.0) license.
