@@ -23,8 +23,8 @@ description: >-
   This is a jupyter-book developed for a an OHBM educational course on
   Analyzing Naturalistic Data.
 
-baseurl: '' # the subpath of your site, e.g. /blog. If there is no subpath for your site, use an empty string ""
-url: https://ljchang.github.io/naturalistic_data_analysis/ # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "" # the subpath of your site, e.g. /blog. If there is no subpath for your site, use an empty string ""
+url: https://ljchang.github.io/naturalistic_data_analysis # the base hostname & protocol for your site, e.g. http://example.com
 
 
 #######################################################################################
