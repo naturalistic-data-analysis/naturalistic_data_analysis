@@ -1,0 +1,98 @@
+# This file contains the order and numbering for all sections in the book.
+#
+# It is a sample TOC file to help you get started. Fill it out with entries
+# for your own content.
+#
+# Each entry has the following schema:
+#
+# - title: mytitle   # Title of chapter or section
+#   url: /myurl  # URL of section relative to the /content/ folder.
+#   sections:  # Contains a list of more entries that make up the chapter's sections
+#   not_numbered: true  # if the section shouldn't have a number in the sidebar
+#     (e.g. Introduction or appendices)
+#   expand_sections: true  # if you'd like the sections of this chapter to always
+#     be expanded in the sidebar.
+#   external: true  # Whether the URL is an external link or points to content in the book
+#
+# Below are some special values that trigger specific behavior:
+# - search: true  # Will provide a link to a search page
+# - divider: true  # Will insert a divider in the sidebar
+# - header: My Header  # Will insert a header with no link in the sidebar
+#
+# See the links below for an example.
+
+# Top-level page
+# - search: true
+
+- title: Home
+  url: /intro
+  not_numbered: true
+
+- url: /features/markdown/Contributing
+  not_numbered: true
+
+- title: GitHub repository
+  url: https://github.com/ljchang/naturalistic_data_analysis
+  external: true
+  not_numbered: true
+
+- divider: true
+
+- header: Course Overview
+
+- title: Organizers
+  url: /features/markdown/Organizers
+  not_numbered: true
+
+- title: Speakers
+  url: /features/markdown/Speakers
+  not_numbered: true
+
+- divider: true
+- header: Computing Resources
+
+- title: Introduction to Python
+  url: /features/notebooks/1_Introduction_to_Programming
+  not_numbered: true
+
+- title: Introduction to Pandas
+  url: /features/notebooks/2_Introduction_to_Pandas
+  not_numbered: true
+
+- title: Introduction to Plotting
+  url: /features/notebooks/3_Introduction_to_Plotting
+  not_numbered: true
+
+- title: Download Localizer Data
+  url: /features/notebooks/Download_Localizer_Data
+  not_numbered: true
+
+- title: Glossary of Python Functions
+  url: /features/notebooks/Glossary
+  not_numbered: true
+
+- divider: true
+
+- header: Topics
+
+- title: Introduction to Neuroimaging Data
+  url: /features/notebooks/5_Introduction_to_Neuroimaging_Data
+  not_numbered: false
+
+- title: Separating Signal from Noise with ICA
+  url: /features/notebooks/4_ICA
+  not_numbered: false
+
+- title: Connectivity
+  url: /features/notebooks/13_Connectivity
+  not_numbered: false
+
+- title: Multivariate Prediction
+  url: /features/notebooks/14_Multivariate_Prediction
+  not_numbered: false
+
+- title: Representational Similarity Analysis
+  url: /features/notebooks/15_RSA
+  not_numbered: false
+
+
