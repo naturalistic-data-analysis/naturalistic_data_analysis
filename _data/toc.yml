@@ -36,13 +36,17 @@
   url: /features/markdown/Speakers
   not_numbered: true
 
+- title: Preprocessing Recommendation
+  url: /features/markdown/Preprocessing
+  not_numbered: true
+
 - title: Download Localizer Data
   url: /features/notebooks/Download_Localizer_Data
   not_numbered: true
 
 - title: Introduction to Neuroimaging Data
   url: /features/notebooks/5_Introduction_to_Neuroimaging_Data
-  not_numbered: false
+  not_numbered: true
 
 - title: Recommended Preprocessing Steps
   url: /features/markdown/Preprocessing
@@ -84,7 +88,7 @@
   not_numbered: true
 
 - divider: true
-- header: Contributing
+- header: Contributing Tutorial
 
 - url: /features/markdown/Contributing
   not_numbered: true

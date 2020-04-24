@@ -6,8 +6,7 @@ Naturalistic stimuli, such as films or stories, are growing in popularity for hu
 - Provide hands-on experience with cutting-edge tools for performing naturalistic data analysis via tutorials using Python-based jupyter notebooks.
 
 # License for this book
-All content 
-is licensed under the [Creative Commons Attribution-ShareAlike 4.0 International](https://creativecommons.org/licenses/by-sa/4.0/)
+All content is licensed under the [Creative Commons Attribution-ShareAlike 4.0 International](https://creativecommons.org/licenses/by-sa/4.0/)
 (CC BY-SA 4.0) license.
 
 # Acknowledgements 
