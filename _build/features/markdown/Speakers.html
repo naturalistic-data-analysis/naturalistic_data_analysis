@@ -9,7 +9,7 @@ prev_page:
 next_page:
   url: /features/markdown/Preprocessing.html
 suffix: .md
-search: div class person faculty university card id span org www geerligs l section site href website p speakers chris baldassano dpmlab columbia linda ru nl english donders institute brain cognition behavior juha lahnakoski users aalto fi jlahnako forschungszentrum jlich carolyn parkinson csnlab california los angeles won mok shim wshimlab com sungkyunkwan tal yarkoni talyarkoni texas austin yaara yeshurun socsci tau ac il mu yaarayeshurun tel aviv using cards hspeakers h container row data col s m hoverable image img src url images picture content title centera last center affiliation institution endfor
+search: div class person university card id faculty span speakers org www geerligs l section site href website p chris baldassano dpmlab columbia linda ru nl english donders institute brain cognition behavior juha lahnakoski users aalto fi jlahnako forschungszentrum jlich carolyn parkinson csnlab california los angeles won mok shim wshimlab com sungkyunkwan tal yarkoni talyarkoni texas austin yaara yeshurun socsci tau ac il mu yaarayeshurun tel aviv using cards hspeakers h container row data col s m hoverable image img src url images picture content title centera last center affiliation institution endfor
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -33,11 +33,11 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
   <h2>Speakers</h2>
   <!-- <div class="container" id="faculty"> -->
     <div class="row" id="faculty">
-      {% for person in site.data.faculty %}
+      {% for person in site.data.speakers %}
           <div class="col s12 m6 l4">
             <div class="card hoverable" id="faculty">
               <div class="card-image" id="faculty">
-                <a href="{{person.Website}}"><img src="{{site.url}}/images/Faculty/{{person.Picture}}"></a>
+                <a href="{{person.Website}}"><img src="{{site.url}}/images/speakers/{{person.Picture}}"></a>
               </div>
               <div class="card-content">
                 <span class="card-title center"><a href="{{person.Website}}">{{person.First}} <span>{{person.Last}}</span></a></span>

@@ -18,11 +18,11 @@
   <h2>Speakers</h2>
   <!-- <div class="container" id="faculty"> -->
     <div class="row" id="faculty">
-      {% for person in site.data.faculty %}
+      {% for person in site.data.speakers %}
           <div class="col s12 m6 l4">
             <div class="card hoverable" id="faculty">
               <div class="card-image" id="faculty">
-                <a href="{{person.Website}}"><img src="{{site.url}}/images/Faculty/{{person.Picture}}"></a>
+                <a href="{{person.Website}}"><img src="{{site.url}}/images/speakers/{{person.Picture}}"></a>
               </div>
               <div class="card-content">
                 <span class="card-title center"><a href="{{person.Website}}">{{person.First}} <span>{{person.Last}}</span></a></span>
