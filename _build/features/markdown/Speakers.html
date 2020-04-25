@@ -7,9 +7,9 @@ pagenum: 2
 prev_page:
   url: /features/markdown/Organizers.html
 next_page:
-  url: /features/notebooks/5_Introduction_to_Neuroimaging_Data.html
+  url: /features/markdown/Preprocessing.html
 suffix: .md
-search: university org www geerligs speakers chris baldassano dpmlab columbia linda ru nl english l donders institute brain cognition behavior juha lahnakoski users aalto fi jlahnako forschungszentrum jlich carolyn parkinson csnlab california los angeles won mok shim wshimlab com sungkyunkwan tal yarkoni talyarkoni texas austin yaara yeshurun socsci tau ac il mu yaarayeshurun tel aviv
+search: div class person faculty university card id span org www geerligs l section site href website p speakers chris baldassano dpmlab columbia linda ru nl english donders institute brain cognition behavior juha lahnakoski users aalto fi jlahnako forschungszentrum jlich carolyn parkinson csnlab california los angeles won mok shim wshimlab com sungkyunkwan tal yarkoni talyarkoni texas austin yaara yeshurun socsci tau ac il mu yaarayeshurun tel aviv using cards hspeakers h container row data col s m hoverable image img src url images picture content title centera last center affiliation institution endfor
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -28,7 +28,27 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <p><a href="http://wshimlab.com/">Won Mok Shim</a> SungKyunKwan University</p>
 <p><a href="https://talyarkoni.org/">Tal Yarkoni</a> University of Texas at Austin</p>
 <p><a href="https://people.socsci.tau.ac.il/mu/yaarayeshurun/">Yaara Yeshurun</a> Tel-Aviv University</p>
-
+<p><!-- Using Cards --></p>
+<section>
+  <h2>Speakers</h2>
+  <!-- <div class="container" id="faculty"> -->
+    <div class="row" id="faculty">
+      {% for person in site.data.faculty %}
+          <div class="col s12 m6 l4">
+            <div class="card hoverable" id="faculty">
+              <div class="card-image" id="faculty">
+                <a href="{{person.Website}}"><img src="{{site.url}}/images/Faculty/{{person.Picture}}"></a>
+              </div>
+              <div class="card-content">
+                <span class="card-title center"><a href="{{person.Website}}">{{person.First}} <span>{{person.Last}}</span></a></span>
+                <p class="center card-affiliation">{{person.Institution}}</p>
+              </div>
+            </div>
+          </div>
+      {% endfor %}
+    </div>
+  <!-- </div> -->
+</section>
 </div>
 </div>
 </div>
