@@ -10,17 +10,35 @@
         <p class="center card-affiliation">Columbia University</p>
       </div>
     </div>
+    <div class="card hoverable" id="faculty">
+      <div class="card-image" id="faculty">
+        <a href="http://www.cosanlab.com"><img src="../../images/speakers/chang.jpg" width="200"/></a>
+      </div>
+      <div class="card-content">
+        <span class="card-title center"><a href="http://www.cosanlab.com">Luke <span>Chang</span></a></span>
+        <p class="center card-affiliation">Dartmouth College</p>
+      </div>
+    </div>
+    <div class="card hoverable" id="faculty">
+      <div class="card-image" id="faculty">
+        <a href="https://esfinn.github.io/"><img src="../../images/speakers/finn.jpg" width="200"/></a>
+      </div>
+      <div class="card-content">
+        <span class="card-title center"><a href="https://esfinn.github.io/">Emily<span>Finn</span></a></span>
+        <p class="center card-affiliation">Dartmouth College</p>
+      </div>
+    </div>
+    <div class="card hoverable" id="faculty">
+      <div class="card-image" id="faculty">
+        <a href=https://lindageerligs.com/"><img src="../../images/speakers/geerligs.png" width="200"/></a>
+      </div>
+      <div class="card-content">
+        <span class="card-title center"><a href="https://lindageerligs.com/">Linda<span>Geerligs</span></a></span>
+        <p class="center card-affiliation">Dartmouth College</p>
+      </div>
+    </div>
   </div>
 </div>
-
-<a href="http://www.cosanlab.com"><img src="../../images/speakers/chang.jpg" width="200"/></a>
-[Luke Chang](http://www.cosanlab.com) Dartmouth College
-
-<a href="https://esfinn.github.io/"><img src="../../images/speakers/finn.jpg" width="200"/></a>
-[Emily Finn](https://esfinn.github.io/) Dartmouth College
-
-<a href="https://lindageerligs.com/"><img src="../../images/speakers/geerligs.png" width="200"/></a>
-[Linda Geerligs](https://lindageerligs.com/) Donders Institute for Brain, Cognition, and Behavior
 
 <a href="https://users.aalto.fi/~jlahnako/"><img src="../../images/speakers/lahnakoski.jpg" width="200"/></a>
 [Juha Lahnakoski](https://users.aalto.fi/~jlahnako/) Forschungszentrum Jülich
