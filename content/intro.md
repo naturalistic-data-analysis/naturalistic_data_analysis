@@ -17,17 +17,14 @@ Naturalistic stimuli, such as films or stories, are growing in popularity for hu
 - Intersubject Correlations (Luke/Anyone)
 - Intersubject RSA (Emily/Luke/Carolyn)
 - HMM (Chris/Jeremy/Luke)
-- Distance Correlation? (Linda/Luke)
 - Hyperalignment (Luke/Anyone?)
 - TimeCorr (Jeremy)
 
 ## Visualization
-- Hypertools (jeremy)
+- Hypertools/NLP (jeremy)
 
 ## Feature Extraction/Annotation
 - Pliers (Tal)
-- Quail (Jeremy)
-- NLP (Jeremy?)
 
 # License for this book
 All content is licensed under the [Creative Commons Attribution-ShareAlike 4.0 International](https://creativecommons.org/licenses/by-sa/4.0/)

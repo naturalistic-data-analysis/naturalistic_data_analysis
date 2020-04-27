@@ -44,14 +44,6 @@
   url: /features/notebooks/Download_Localizer_Data
   not_numbered: true
 
-- title: Introduction to Neuroimaging Data
-  url: /features/notebooks/5_Introduction_to_Neuroimaging_Data
-  not_numbered: true
-
-- title: Separating Signal from Noise with ICA
-  url: /features/notebooks/4_ICA
-  not_numbered: true
-
 - title: Connectivity
   url: /features/notebooks/13_Connectivity
   not_numbered: true
@@ -77,6 +69,10 @@
 
 - title: Introduction to Plotting
   url: /features/notebooks/3_Introduction_to_Plotting
+  not_numbered: true
+
+- title: Introduction to Neuroimaging Data
+  url: /features/notebooks/5_Introduction_to_Neuroimaging_Data
   not_numbered: true
 
 - title: Dartbrains Neuroimaging Analysis Course
