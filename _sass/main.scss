@@ -17,6 +17,7 @@ $hamburger-layer-color: $color-text;
 $hamburger-types: (arrowalt);
 @import 'hamburgers/hamburgers';
 @import 'objects/objects.thebelab-in-cell-button';
+@import 'materialize.css';
 
 // COMPONENTS
 @import 'components/components.book__layout';
