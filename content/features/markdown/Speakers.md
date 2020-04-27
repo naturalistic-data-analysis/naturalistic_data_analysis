@@ -10,6 +10,8 @@
         <p class="center card-affiliation">Columbia University</p>
       </div>
     </div>
+  </div>
+  <div class="col s12 m6 l4">
     <div class="card hoverable" id="faculty">
       <div class="card-image" id="faculty">
         <a href="http://www.cosanlab.com"><img src="../../images/speakers/chang.jpg" width="200"/></a>
@@ -19,6 +21,7 @@
         <p class="center card-affiliation">Dartmouth College</p>
       </div>
     </div>
+  </div>
     <div class="card hoverable" id="faculty">
       <div class="card-image" id="faculty">
         <a href="https://esfinn.github.io/"><img src="../../images/speakers/finn.jpg" width="200"/></a>
@@ -28,6 +31,8 @@
         <p class="center card-affiliation">Dartmouth College</p>
       </div>
     </div>
+  </div>
+  <div class="col s12 m6 l4">
     <div class="card hoverable" id="faculty">
       <div class="card-image" id="faculty">
         <a href=https://lindageerligs.com/"><img src="../../images/speakers/geerligs.png" width="200"/></a>
