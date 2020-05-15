@@ -45,11 +45,11 @@
   not_numbered: true
 
 - title: Connectivity
-  url: /features/notebooks/13_Connectivity
+  url: /features/notebooks/12_Connectivity
   not_numbered: true
 
 - title: Multivariate Prediction
-  url: /features/notebooks/14_Multivariate_Prediction
+  url: /features/notebooks/13_Multivariate_Prediction
   not_numbered: true
 
 - title: Representational Similarity Analysis
