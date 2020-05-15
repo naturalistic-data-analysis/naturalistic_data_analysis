@@ -36,12 +36,16 @@
   url: /features/markdown/Contributors
   not_numbered: true
 
-- title: Preprocessing
-  url: /features/notebooks/Preprocessing
-  not_numbered: true
-
 - title: Download Data
   url: /features/notebooks/Download_Data
+  not_numbered: true
+
+- title: Software Stack
+  url: /features/notebooks/Software
+  not_numbered: true
+
+- title: Preprocessing
+  url: /features/notebooks/Preprocessing
   not_numbered: true
 
 - title: Connectivity
