@@ -9,11 +9,11 @@ title: |-
   Download Data
 pagenum: 4
 prev_page:
-  url: /features/markdown/Preprocessing.html
+  url: /features/notebooks/Preprocessing.html
 next_page:
   url: /features/notebooks/13_Connectivity.html
 suffix: .ipynb
-search: datalad using dataset data org download annex get file sherlock downloaded git files lets datasets ds paranoia drop run python g node status repository clone only api not any openneuro might www installing install specific filename removed need en pip gin ljchang space check confound course source narrative shared branchable com command line cloning full entire computer tutorial latest recommend location gb actually want example subjects fmriprep much take again also glob load naturalistic written open original contains participants minutes audio recording stimuli folder versions chen et al structure activity individuals nat doi ambiguous social such s sharing notebook access
+search: datalad using dataset data org download annex get file sherlock downloaded git files lets datasets ds paranoia drop run python g node status repository clone only api not any openneuro might install specific filename removed need en installing pip gin ljchang space check confound course source narrative shared www branchable com command line cloning full entire computer tutorial latest recommend location gb actually want example subjects fmriprep much take again also glob load naturalistic written open original contains participants minutes audio recording stimuli folder versions chen et al structure activity individuals nat doi ambiguous social such s sharing notebook access
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -49,14 +49,13 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Installing-DataLad">Installing DataLad<a class="anchor-link" href="#Installing-DataLad"> </a></h1><p>The easist way to access the data is using <a href="https://www.datalad.org/">DataLad</a>. <a href="https://www.datalad.org/">DataLad</a> is an open source version control system for data built on top of <a href="https://git-annex.branchable.com/">git-annex</a>. Think of it like git for data. It provides a handy command line interface for downloading data, tracking changes, and sharing it with others.</p>
+<h1 id="DataLad">DataLad<a class="anchor-link" href="#DataLad"> </a></h1><p>The easist way to access the data is using <a href="https://www.datalad.org/">DataLad</a>, which is an open source version control system for data built on top of <a href="https://git-annex.branchable.com/">git-annex</a>. Think of it like git for data. It provides a handy command line interface for downloading data, tracking changes, and sharing it with others.</p>
 <p>While DataLad offers a number of useful features for working with datasets, there are three in particular that we think make it worth the effort to install for this course.</p>
 <p>1) Cloning a DataLad Repository can be completed with a single line of code <code>datalad clone &lt;repository&gt;</code> and provides the full directory structure in the form of symbolic links. This allows you to explore all of the files in the dataset, without having to download the entire dataset at once.</p>
 <p>2) Specific files can be easily downloaded using <code>datalad get &lt;filename&gt;</code>, and files can be removed from your computer at any time using <code>datalad drop &lt;filename&gt;</code>. As these datasets are large, this will allow you to only work with the data that you need for a specific tutorial and you can drop the rest when you are done with it.</p>
 <p>3) All of the DataLad commands can be run within Python using the datalad <a href="http://docs.datalad.org/en/latest/modref.html">python api</a>.</p>
-<p>We will only be covering the DataLad functions to get and drop data. We encourage the interested reader to read the very comprehensive DataLad <a href="http://handbook.datalad.org/en/latest/">User Handbook</a> for more details and troubleshooting.</p>
-<hr>
-<p>DataLad can be easily installed using <a href="https://pip.pypa.io/en/stable/">pip</a>.</p>
+<p>We will only be covering a few basic DataLad functions to get and drop data. We encourage the interested reader to read the very comprehensive DataLad <a href="http://handbook.datalad.org/en/latest/">User Handbook</a> for more details and troubleshooting.</p>
+<h2 id="Installing-Datalad">Installing Datalad<a class="anchor-link" href="#Installing-Datalad"> </a></h2><p>DataLad can be easily installed using <a href="https://pip.pypa.io/en/stable/">pip</a>.</p>
 <p><code>pip install datalad</code></p>
 <p>Unfortunately, it currently requires manually installing the <a href="https://git-annex.branchable.com/">git-annex</a> dependency, which is not automatically installed using pip.</p>
 <p>If you are using OSX, we recommend installing git-annex using <a href="https://brew.sh/">homebrew</a> package manager.</p>
@@ -91,7 +90,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Download-Data-with-DataLad">Download Data with DataLad<a class="anchor-link" href="#Download-Data-with-DataLad"> </a></h2><h3 id="Download-Sherlock">Download Sherlock<a class="anchor-link" href="#Download-Sherlock"> </a></h3><p>The Sherlock dataset can be accessed at the following location <a href="https://gin.g-node.org/ljchang/Sherlock">https://gin.g-node.org/ljchang/Sherlock</a>. To download the Sherlock dataset run <code>datalad clone https://gin.g-node.org/ljchang/Sherlock</code> in a terminal. The full dataset is approximately 35gb.</p>
+<h2 id="Download-Data-with-DataLad">Download Data with DataLad<a class="anchor-link" href="#Download-Data-with-DataLad"> </a></h2><h3 id="Download-Sherlock">Download Sherlock<a class="anchor-link" href="#Download-Sherlock"> </a></h3><p>The Sherlock dataset can be accessed at the following location <a href="https://gin.g-node.org/ljchang/Sherlock">https://gin.g-node.org/ljchang/Sherlock</a>. To download the Sherlock dataset run <code>datalad clone https://gin.g-node.org/ljchang/Sherlock</code> in a terminal. The full dataset is approximately 14gb.</p>
 <p>You can run this from the notebook using the <code>!</code> cell magic.</p>
 
 </div>
@@ -324,10 +323,10 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
  
  
-<div id="147306b8-9108-4954-bf33-52e64ff2e854"></div>
+<div id="9d938cbc-91a8-4b6f-acf9-5a19d12869ea"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#147306b8-9108-4954-bf33-52e64ff2e854');
+var element = $('#9d938cbc-91a8-4b6f-acf9-5a19d12869ea');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -344,10 +343,10 @@ var element = $('#147306b8-9108-4954-bf33-52e64ff2e854');
 
  
  
-<div id="2b17c69e-76c3-444c-9acf-e2118497adac"></div>
+<div id="27a308c8-763d-423d-90b7-6ebfb97dd59f"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#2b17c69e-76c3-444c-9acf-e2118497adac');
+var element = $('#27a308c8-763d-423d-90b7-6ebfb97dd59f');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -364,10 +363,10 @@ var element = $('#2b17c69e-76c3-444c-9acf-e2118497adac');
 
  
  
-<div id="b4247fef-f745-481c-ac38-eb54c46ea36b"></div>
+<div id="b675e194-5cca-419e-b366-2d659ef99cf1"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#b4247fef-f745-481c-ac38-eb54c46ea36b');
+var element = $('#b675e194-5cca-419e-b366-2d659ef99cf1');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -384,10 +383,10 @@ var element = $('#b4247fef-f745-481c-ac38-eb54c46ea36b');
 
  
  
-<div id="1d8a97a3-d747-42d0-80b2-f04970583b22"></div>
+<div id="c2c78db5-54bd-4ef6-861e-cdee5ca103d5"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#1d8a97a3-d747-42d0-80b2-f04970583b22');
+var element = $('#c2c78db5-54bd-4ef6-861e-cdee5ca103d5');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -823,13 +822,13 @@ var element = $('#1d8a97a3-d747-42d0-80b2-f04970583b22');
 
  
  
-<div id="9f586365-8ec3-48dd-8793-858fc76479b2"></div>
+<div id="e0efbef8-cb05-42ee-a66f-a2758227f2d0"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#9f586365-8ec3-48dd-8793-858fc76479b2');
+var element = $('#e0efbef8-cb05-42ee-a66f-a2758227f2d0');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "11bdf4615c00467f831579a187f64c09", "version_major": 2, "version_minor": 0}
+{"model_id": "", "version_major": 2, "version_minor": 0}
 </script>
 </div>
 

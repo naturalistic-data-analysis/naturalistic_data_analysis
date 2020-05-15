@@ -32,12 +32,12 @@
   url: /features/markdown/Organizers
   not_numbered: true
 
-- title: Speakers
-  url: /features/markdown/Speakers
+- title: Contributors
+  url: /features/markdown/Contributors
   not_numbered: true
 
-- title: Preprocessing Recommendation
-  url: /features/markdown/Preprocessing
+- title: Preprocessing
+  url: /features/notebooks/Preprocessing
   not_numbered: true
 
 - title: Download Data
