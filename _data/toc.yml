@@ -40,8 +40,8 @@
   url: /features/markdown/Preprocessing
   not_numbered: true
 
-- title: Download Localizer Data
-  url: /features/notebooks/Download_Localizer_Data
+- title: Download Data
+  url: /features/notebooks/Download_Data
   not_numbered: true
 
 - title: Connectivity

@@ -38,7 +38,7 @@ footer_text: This page was created by <a href="http://www.lukejchang.com/">Luke 
 show_sidebar: true                # Show the sidebar. Only set to false if your only wish to host a single page.
 collapse_inactive_chapters: true  # Whether to collapse the inactive chapters in the sidebar
 collapse_inactive_sections: true  # Whether to collapse the sub-sections within a non-active section in the sidebar
-textbook_logo: images/logo/Naturalistic_Data_Logo_v3.png # A logo to be displayed at the top of your textbook sidebar. Should be square
+textbook_logo: images/logo/Naturalistic_Data_Logo_v6.png # A logo to be displayed at the top of your textbook sidebar. Should be square
 textbook_logo_link: http://naturalistic-data.org                     # A link for the logo.
 sidebar_footer_text: Powered by <a href="https://github.com/jupyter/jupyter-book">Jupyter
   Book</a>

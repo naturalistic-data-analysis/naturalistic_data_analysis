@@ -1,0 +1,887 @@
+---
+redirect_from:
+  - "/features/notebooks/download-data"
+interact_link: content/features/notebooks/Download_Data.ipynb
+kernel_name: python3
+kernel_path: content/features/notebooks
+has_widgets: false
+title: |-
+  Download Data
+pagenum: 4
+prev_page:
+  url: /features/markdown/Preprocessing.html
+next_page:
+  url: /features/notebooks/13_Connectivity.html
+suffix: .ipynb
+search: datalad using dataset data org download annex get file sherlock downloaded git files lets datasets ds paranoia drop run python g node status repository clone only api not any openneuro might www installing install specific filename removed need en pip gin ljchang space check confound course source narrative shared branchable com command line cloning full entire computer tutorial latest recommend location gb actually want example subjects fmriprep much take again also glob load naturalistic written open original contains participants minutes audio recording stimuli folder versions chen et al structure activity individuals nat doi ambiguous social such s sharing notebook access
+
+comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
+---
+
+    <main class="jupyter-page">
+    <div id="page-info"><div id="page-title">Download Data</div>
+</div>
+    <div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Naturalistic-Datasets">Naturalistic Datasets<a class="anchor-link" href="#Naturalistic-Datasets"> </a></h1><p><em>Written by Luke Chang</em></p>
+<p>Throughout this course we will be using two open source naturalistic datasets to demonstrate how to use different analytic techniques. If you end up using any of this data in a paper, be sure to cite the original papers.</p>
+<p>The <strong>Sherlock</strong> dataset contains 16 participants that watched 45 minutes of Sherlock and then verbally recalled the narrative in the scanner using a noise cancelling microphone. An audio recording of the show can be downloaded in the stimuli folder of this <a href="https://openneuro.org/datasets/ds002345/versions/1.0.1">openneuro</a> page.</p>
+
+<pre><code>Chen, J., Leong, Y., Honey, C. et al. Shared memories reveal shared structure in neural activity across individuals. Nat Neurosci 20, 115–125 (2017). https://doi.org/10.1038/nn.4450
+
+</code></pre>
+<p>The <strong>Paranoia</strong> dataset contains 23 participants who listened to 22 minute original narrative that describes an ambiguous social scenario. It was written such that some individuals might find it highly suspicious. The transcript and audio recording can be downloaded in the stimuli folder on <a href="https://openneuro.org/datasets/ds001338/versions/1.0.0">openneuro</a>.</p>
+
+<pre><code>Finn, E.S., Corlett, P.R., Chen, G. et al. Trait paranoia shapes inter-subject synchrony in brain activity during an ambiguous social narrative. Nat Commun 9, 2043 (2018). https://doi.org/10.1038/s41467-018-04387-2
+
+</code></pre>
+<p>The datasets are being shared using <a href="https://www.datalad.org/">DataLad</a> on the <a href="http://www.g-node.org/">German Neuroinformatics Node</a>, which is an international forum for sharing experimental data and analysis tools.</p>
+<p>In this notebook, we will walk through how to access the datset using DataLad.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Installing-DataLad">Installing DataLad<a class="anchor-link" href="#Installing-DataLad"> </a></h1><p>The easist way to access the data is using <a href="https://www.datalad.org/">DataLad</a>. <a href="https://www.datalad.org/">DataLad</a> is an open source version control system for data built on top of <a href="https://git-annex.branchable.com/">git-annex</a>. Think of it like git for data. It provides a handy command line interface for downloading data, tracking changes, and sharing it with others.</p>
+<p>While DataLad offers a number of useful features for working with datasets, there are three in particular that we think make it worth the effort to install for this course.</p>
+<p>1) Cloning a DataLad Repository can be completed with a single line of code <code>datalad clone &lt;repository&gt;</code> and provides the full directory structure in the form of symbolic links. This allows you to explore all of the files in the dataset, without having to download the entire dataset at once.</p>
+<p>2) Specific files can be easily downloaded using <code>datalad get &lt;filename&gt;</code>, and files can be removed from your computer at any time using <code>datalad drop &lt;filename&gt;</code>. As these datasets are large, this will allow you to only work with the data that you need for a specific tutorial and you can drop the rest when you are done with it.</p>
+<p>3) All of the DataLad commands can be run within Python using the datalad <a href="http://docs.datalad.org/en/latest/modref.html">python api</a>.</p>
+<p>We will only be covering the DataLad functions to get and drop data. We encourage the interested reader to read the very comprehensive DataLad <a href="http://handbook.datalad.org/en/latest/">User Handbook</a> for more details and troubleshooting.</p>
+<hr>
+<p>DataLad can be easily installed using <a href="https://pip.pypa.io/en/stable/">pip</a>.</p>
+<p><code>pip install datalad</code></p>
+<p>Unfortunately, it currently requires manually installing the <a href="https://git-annex.branchable.com/">git-annex</a> dependency, which is not automatically installed using pip.</p>
+<p>If you are using OSX, we recommend installing git-annex using <a href="https://brew.sh/">homebrew</a> package manager.</p>
+<p><code>brew install git-annex</code></p>
+<p>If you are on Debian/Ubuntu we recommend enabling the <a href="http://neuro.debian.net/">NeuroDebian</a> repository and installing with apt-get.</p>
+<p><code>sudo apt-get install datalad</code></p>
+<p>For more installation options, we recommend reading the DataLad <a href="https://git-annex.branchable.com/">installation instructions</a>.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>pip install datalad
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Download-Data-with-DataLad">Download Data with DataLad<a class="anchor-link" href="#Download-Data-with-DataLad"> </a></h2><h3 id="Download-Sherlock">Download Sherlock<a class="anchor-link" href="#Download-Sherlock"> </a></h3><p>The Sherlock dataset can be accessed at the following location <a href="https://gin.g-node.org/ljchang/Sherlock">https://gin.g-node.org/ljchang/Sherlock</a>. To download the Sherlock dataset run <code>datalad clone https://gin.g-node.org/ljchang/Sherlock</code> in a terminal. The full dataset is approximately 35gb.</p>
+<p>You can run this from the notebook using the <code>!</code> cell magic.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>datalad clone https://gin.g-node.org/ljchang/Sherlock
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Download-Paranoia">Download Paranoia<a class="anchor-link" href="#Download-Paranoia"> </a></h3><p>The Paranoia dataset can be accessed at the following location <a href="https://gin.g-node.org/ljchang/Paranoia">https://gin.g-node.org/ljchang/Paranoia</a>. To download the Paranoia dataset run <code>datalad clone https://gin.g-node.org/ljchang/Paranoia</code>. The full dataset is approximately 135gb.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>datalad clone https://gin.g-node.org/ljchang/Paranoia
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Datalad-Basics">Datalad Basics<a class="anchor-link" href="#Datalad-Basics"> </a></h1><p>You might be surprised to find that after cloning the dataset that it barely takes up any space <code>du -sh</code>. This is because cloning only downloads the metadata of the dataset to see what files are included.</p>
+<p>You can check to see how big the entire dataset would be if you downloaded everything using <code>datalad status</code>.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>datalad status --annex
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Getting-Data">Getting Data<a class="anchor-link" href="#Getting-Data"> </a></h2><p>One of the really nice features of datalad is that you can see all of the data without actually storing it on your computer. When you want a specific file you use <code>datalad get &lt;filename&gt;</code> to download that specific file. Importantly, you do not need to download all of the dat at once, only when you need it.</p>
+<p>Now that we have cloned the repository we can grab individual files. For example, suppose we wanted to grab the first subject's confound regressors generated by fmriprep.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>datalad get fmriprep/sub-01/func/sub-01_task-sherlockPart1_desc-confounds_regressors.tsv
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now we can check and see how much of the total dataset we have downloaded using <code>datalad status</code></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>datalad status --annex all
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>If you would like to download all of the files you can use <code>datalad get .</code>. Depending on the size of the dataset and the speed of your internet connection, this might take awhile. One really nice thing about datalad is that if your connection is interrupted you can simply run <code>datalad get .</code> again, and it will resume where it left off.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Dropping-Data">Dropping Data<a class="anchor-link" href="#Dropping-Data"> </a></h2><p>Most people do not have unlimited space on their hard drives and are constantly looking for ways to free up space when they are no longer actively working with files. Any file in a dataset can be removed using <code>datalad drop</code>. Importantly, this does not delete the file, but rather removes it from your computer. You will still be able to see file metadata after it has been dropped in case you want to download it again in the future.</p>
+<p>As an example, let's drop the Sherlock confound regressor .tsv file.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>datalad drop fmriprep/sub-01/func/sub-01_task-sherlockPart1_desc-confounds_regressors.tsv
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Datalad-has-a-Python-API!">Datalad has a Python API!<a class="anchor-link" href="#Datalad-has-a-Python-API!"> </a></h2><p>One particularly awesome aspect of datalad is that it has a Python API, which means that anything you would like to do with datalad in the commandline, can also be run in Python. See the details of the datalad <a href="http://docs.datalad.org/en/latest/modref.html">Python API</a>.</p>
+<p>For example, suppose you would like to clone a data repository, such as the Sherlock dataset. You can run <code>dl.clone(source=url, path=location)</code>.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">glob</span>
+<span class="kn">import</span> <span class="nn">datalad.api</span> <span class="k">as</span> <span class="nn">dl</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">sherlock_path</span> <span class="o">=</span> <span class="s1">&#39;/Users/lukechang/Downloads/Sherlock&#39;</span>
+
+<span class="n">dl</span><span class="o">.</span><span class="n">clone</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="s1">&#39;https://gin.g-node.org/ljchang/Sherlock&#39;</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="n">sherlock_path</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>[INFO] Cloning dataset to &lt;Dataset path=/Users/lukechang/Downloads/Sherlock&gt; 
+[INFO] Attempting to clone from https://gin.g-node.org/ljchang/Sherlock to /Users/lukechang/Downloads/Sherlock 
+</pre>
+</div>
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="147306b8-9108-4954-bf33-52e64ff2e854"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#147306b8-9108-4954-bf33-52e64ff2e854');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="2b17c69e-76c3-444c-9acf-e2118497adac"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#2b17c69e-76c3-444c-9acf-e2118497adac');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="b4247fef-f745-481c-ac38-eb54c46ea36b"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#b4247fef-f745-481c-ac38-eb54c46ea36b');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="1d8a97a3-d747-42d0-80b2-f04970583b22"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#1d8a97a3-d747-42d0-80b2-f04970583b22');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>[INFO] Completed clone attempts for &lt;Dataset path=/Users/lukechang/Downloads/Sherlock&gt; 
+</pre>
+</div>
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;Dataset path=/Users/lukechang/Downloads/Sherlock&gt;</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ds</span> <span class="o">=</span> <span class="n">dl</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="n">sherlock_path</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">status</span><span class="p">(</span><span class="n">annex</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can now create a dataset instance using <code>dl.Dataset(path_to_data)</code>.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ds</span> <span class="o">=</span> <span class="n">dl</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="n">sherlock_path</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>How much of the dataset have we downloaded?  We can check the status of the annex using <code>ds.status(annex='all')</code>.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">status</span><span class="p">(</span><span class="n">annex</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>440 annex&#39;d files (0.0 B/33.0 GB present/total size)
+440 annex&#39;d files (0.0 B/33.0 GB present/total size)
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Looks like it's empty, which makes sense since we only cloned the dataset.</p>
+<p>Now we need to get some data. Let's start with something small to play with first.</p>
+<p>Let's use <code>glob</code> to find all of the tab-delimited confound data generated by fmriprep.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">file_list</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">sherlock_path</span><span class="p">,</span> <span class="s1">&#39;fmriprep&#39;</span><span class="p">,</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="s1">&#39;func&#39;</span><span class="p">,</span> <span class="s1">&#39;*tsv&#39;</span><span class="p">))</span>
+<span class="n">file_list</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="n">file_list</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[&#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-01/func/sub-01_task-sherlockPart1_desc-confounds_regressors.tsv&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-02/func/sub-02_task-sherlockPart1_desc-confounds_regressors.tsv&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-03/func/sub-03_task-sherlockPart1_desc-confounds_regressors.tsv&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-04/func/sub-04_task-sherlockPart1_desc-confounds_regressors.tsv&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-05/func/sub-05_task-sherlockPart1_desc-confounds_regressors.tsv&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-06/func/sub-06_task-sherlockPart1_desc-confounds_regressors.tsv&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-07/func/sub-07_task-sherlockPart1_desc-confounds_regressors.tsv&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-08/func/sub-08_task-sherlockPart1_desc-confounds_regressors.tsv&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-09/func/sub-09_task-sherlockPart1_desc-confounds_regressors.tsv&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-10/func/sub-10_task-sherlockPart1_desc-confounds_regressors.tsv&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-11/func/sub-11_task-sherlockPart1_desc-confounds_regressors.tsv&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-12/func/sub-12_task-sherlockPart1_desc-confounds_regressors.tsv&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-13/func/sub-13_task-sherlockPart1_desc-confounds_regressors.tsv&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-14/func/sub-14_task-sherlockPart1_desc-confounds_regressors.tsv&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-15/func/sub-15_task-sherlockPart1_desc-confounds_regressors.tsv&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-16/func/sub-16_task-sherlockPart1_desc-confounds_regressors.tsv&#39;]</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>glob can search the filetree and see all of the relevant data even though none of it has been downloaded yet.</p>
+<p>Let's now download the first subjects confound regressor file and load it using pandas.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">file_list</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="n">confounds</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file_list</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">confounds</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>What if we wanted to drop that file? Just like the CLI, we can use <code>ds.drop(file_name)</code>.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">file_list</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>To confirm that it is actually removed, let's try to load it again with pandas.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">confounds</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file_list</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">FileNotFoundError</span>                         Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-46-58d68c1a1fbf&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>confounds <span class="ansi-blue-fg">=</span> pd<span class="ansi-blue-fg">.</span>read_csv<span class="ansi-blue-fg">(</span>file_list<span class="ansi-blue-fg">[</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">,</span> sep<span class="ansi-blue-fg">=</span><span class="ansi-blue-fg">&#39;\t&#39;</span><span class="ansi-blue-fg">)</span>
+
+<span class="ansi-green-fg">~/anaconda3/lib/python3.7/site-packages/pandas/io/parsers.py</span> in <span class="ansi-cyan-fg">parser_f</span><span class="ansi-blue-fg">(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, squeeze, prefix, mangle_dupe_cols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, dialect, error_bad_lines, warn_bad_lines, delim_whitespace, low_memory, memory_map, float_precision)</span>
+<span class="ansi-green-intense-fg ansi-bold">    674</span>         )
+<span class="ansi-green-intense-fg ansi-bold">    675</span> 
+<span class="ansi-green-fg">--&gt; 676</span><span class="ansi-red-fg">         </span><span class="ansi-green-fg">return</span> _read<span class="ansi-blue-fg">(</span>filepath_or_buffer<span class="ansi-blue-fg">,</span> kwds<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    677</span> 
+<span class="ansi-green-intense-fg ansi-bold">    678</span>     parser_f<span class="ansi-blue-fg">.</span>__name__ <span class="ansi-blue-fg">=</span> name
+
+<span class="ansi-green-fg">~/anaconda3/lib/python3.7/site-packages/pandas/io/parsers.py</span> in <span class="ansi-cyan-fg">_read</span><span class="ansi-blue-fg">(filepath_or_buffer, kwds)</span>
+<span class="ansi-green-intense-fg ansi-bold">    446</span> 
+<span class="ansi-green-intense-fg ansi-bold">    447</span>     <span class="ansi-red-fg"># Create the parser.</span>
+<span class="ansi-green-fg">--&gt; 448</span><span class="ansi-red-fg">     </span>parser <span class="ansi-blue-fg">=</span> TextFileReader<span class="ansi-blue-fg">(</span>fp_or_buf<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>kwds<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    449</span> 
+<span class="ansi-green-intense-fg ansi-bold">    450</span>     <span class="ansi-green-fg">if</span> chunksize <span class="ansi-green-fg">or</span> iterator<span class="ansi-blue-fg">:</span>
+
+<span class="ansi-green-fg">~/anaconda3/lib/python3.7/site-packages/pandas/io/parsers.py</span> in <span class="ansi-cyan-fg">__init__</span><span class="ansi-blue-fg">(self, f, engine, **kwds)</span>
+<span class="ansi-green-intense-fg ansi-bold">    878</span>             self<span class="ansi-blue-fg">.</span>options<span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">&#34;has_index_names&#34;</span><span class="ansi-blue-fg">]</span> <span class="ansi-blue-fg">=</span> kwds<span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">&#34;has_index_names&#34;</span><span class="ansi-blue-fg">]</span>
+<span class="ansi-green-intense-fg ansi-bold">    879</span> 
+<span class="ansi-green-fg">--&gt; 880</span><span class="ansi-red-fg">         </span>self<span class="ansi-blue-fg">.</span>_make_engine<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">.</span>engine<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    881</span> 
+<span class="ansi-green-intense-fg ansi-bold">    882</span>     <span class="ansi-green-fg">def</span> close<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+
+<span class="ansi-green-fg">~/anaconda3/lib/python3.7/site-packages/pandas/io/parsers.py</span> in <span class="ansi-cyan-fg">_make_engine</span><span class="ansi-blue-fg">(self, engine)</span>
+<span class="ansi-green-intense-fg ansi-bold">   1112</span>     <span class="ansi-green-fg">def</span> _make_engine<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">,</span> engine<span class="ansi-blue-fg">=</span><span class="ansi-blue-fg">&#34;c&#34;</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">   1113</span>         <span class="ansi-green-fg">if</span> engine <span class="ansi-blue-fg">==</span> <span class="ansi-blue-fg">&#34;c&#34;</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">-&gt; 1114</span><span class="ansi-red-fg">             </span>self<span class="ansi-blue-fg">.</span>_engine <span class="ansi-blue-fg">=</span> CParserWrapper<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">.</span>f<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>self<span class="ansi-blue-fg">.</span>options<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">   1115</span>         <span class="ansi-green-fg">else</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">   1116</span>             <span class="ansi-green-fg">if</span> engine <span class="ansi-blue-fg">==</span> <span class="ansi-blue-fg">&#34;python&#34;</span><span class="ansi-blue-fg">:</span>
+
+<span class="ansi-green-fg">~/anaconda3/lib/python3.7/site-packages/pandas/io/parsers.py</span> in <span class="ansi-cyan-fg">__init__</span><span class="ansi-blue-fg">(self, src, **kwds)</span>
+<span class="ansi-green-intense-fg ansi-bold">   1889</span>         kwds<span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">&#34;usecols&#34;</span><span class="ansi-blue-fg">]</span> <span class="ansi-blue-fg">=</span> self<span class="ansi-blue-fg">.</span>usecols
+<span class="ansi-green-intense-fg ansi-bold">   1890</span> 
+<span class="ansi-green-fg">-&gt; 1891</span><span class="ansi-red-fg">         </span>self<span class="ansi-blue-fg">.</span>_reader <span class="ansi-blue-fg">=</span> parsers<span class="ansi-blue-fg">.</span>TextReader<span class="ansi-blue-fg">(</span>src<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>kwds<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">   1892</span>         self<span class="ansi-blue-fg">.</span>unnamed_cols <span class="ansi-blue-fg">=</span> self<span class="ansi-blue-fg">.</span>_reader<span class="ansi-blue-fg">.</span>unnamed_cols
+<span class="ansi-green-intense-fg ansi-bold">   1893</span> 
+
+<span class="ansi-green-fg">pandas/_libs/parsers.pyx</span> in <span class="ansi-cyan-fg">pandas._libs.parsers.TextReader.__cinit__</span><span class="ansi-blue-fg">()</span>
+
+<span class="ansi-green-fg">pandas/_libs/parsers.pyx</span> in <span class="ansi-cyan-fg">pandas._libs.parsers.TextReader._setup_parser_source</span><span class="ansi-blue-fg">()</span>
+
+<span class="ansi-red-fg">FileNotFoundError</span>: [Errno 2] File /Users/lukechang/Downloads/Sherlock/fmriprep/sub-01/func/sub-01_task-sherlockPart1_desc-confounds_regressors.tsv does not exist: &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-01/func/sub-01_task-sherlockPart1_desc-confounds_regressors.tsv&#39;</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Looks like it was successfully removed.</p>
+<p>We can also load the entire dataset in one command if want using <code>ds.get(dataset='.', recursive=True)</code>. We are not going to do it right now as this will take awhile and require lots of free hard disk space.</p>
+<p>Let's actually download one of the files we will be using in the tutorial. First, let's use glob to get a list of all of the functional data that has been preprocessed by fmriprep, denoised, and smoothed.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">file_list</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">sherlock_path</span><span class="p">,</span> <span class="s1">&#39;fmriprep&#39;</span><span class="p">,</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="s1">&#39;func&#39;</span><span class="p">,</span> <span class="s1">&#39;*denoised*nii.gz&#39;</span><span class="p">))</span>
+<span class="n">file_list</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="n">file_list</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[&#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-01/func/sub-01_denoised_smooth6mm_task-sherlockPart1_space-MNI152NLin2009cAsym_desc-preproc_bold.nii.gz&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-02/func/sub-02_denoised_smooth6mm_task-sherlockPart1_space-MNI152NLin2009cAsym_desc-preproc_bold.nii.gz&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-03/func/sub-03_denoised_smooth6mm_task-sherlockPart1_space-MNI152NLin2009cAsym_desc-preproc_bold.nii.gz&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-04/func/sub-04_denoised_smooth6mm_task-sherlockPart1_space-MNI152NLin2009cAsym_desc-preproc_bold.nii.gz&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-05/func/sub-05_denoised_smooth6mm_task-sherlockPart1_space-MNI152NLin2009cAsym_desc-preproc_bold.nii.gz&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-06/func/sub-06_denoised_smooth6mm_task-sherlockPart1_space-MNI152NLin2009cAsym_desc-preproc_bold.nii.gz&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-07/func/sub-07_denoised_smooth6mm_task-sherlockPart1_space-MNI152NLin2009cAsym_desc-preproc_bold.nii.gz&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-08/func/sub-08_denoised_smooth6mm_task-sherlockPart1_space-MNI152NLin2009cAsym_desc-preproc_bold.nii.gz&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-09/func/sub-09_denoised_smooth6mm_task-sherlockPart1_space-MNI152NLin2009cAsym_desc-preproc_bold.nii.gz&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-10/func/sub-10_denoised_smooth6mm_task-sherlockPart1_space-MNI152NLin2009cAsym_desc-preproc_bold.nii.gz&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-11/func/sub-11_denoised_smooth6mm_task-sherlockPart1_space-MNI152NLin2009cAsym_desc-preproc_bold.nii.gz&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-12/func/sub-12_denoised_smooth6mm_task-sherlockPart1_space-MNI152NLin2009cAsym_desc-preproc_bold.nii.gz&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-13/func/sub-13_denoised_smooth6mm_task-sherlockPart1_space-MNI152NLin2009cAsym_desc-preproc_bold.nii.gz&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-14/func/sub-14_denoised_smooth6mm_task-sherlockPart1_space-MNI152NLin2009cAsym_desc-preproc_bold.nii.gz&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-15/func/sub-15_denoised_smooth6mm_task-sherlockPart1_space-MNI152NLin2009cAsym_desc-preproc_bold.nii.gz&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-16/func/sub-16_denoised_smooth6mm_task-sherlockPart1_space-MNI152NLin2009cAsym_desc-preproc_bold.nii.gz&#39;]</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now let's download the first subject's file using <code>ds.get()</code>. This file is 1.65gb, so this might take a few minutes depending on your internet speed.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">file_list</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="9f586365-8ec3-48dd-8793-858fc76479b2"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#9f586365-8ec3-48dd-8793-858fc76479b2');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "11bdf4615c00467f831579a187f64c09", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>How much of the dataset have we downloaded?  We can check the status of the annex using <code>ds.status(annex='all')</code>.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ds</span><span class="o">.</span><span class="n">status</span><span class="p">(</span><span class="n">annex</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Ok, that concludes our tutorial for how to download data for this course with datalad using both the command line interface and also the Python API.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+ 
+
+
+    </main>
+    
