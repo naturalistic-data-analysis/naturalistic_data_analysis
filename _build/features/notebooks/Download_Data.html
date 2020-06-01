@@ -7,13 +7,13 @@ kernel_path: content/features/notebooks
 has_widgets: false
 title: |-
   Download Data
-pagenum: 4
+pagenum: 3
 prev_page:
-  url: /features/notebooks/Preprocessing.html
+  url: /features/markdown/Contributors.html
 next_page:
-  url: /features/notebooks/13_Connectivity.html
+  url: /features/notebooks/Software.html
 suffix: .ipynb
-search: datalad using dataset data org download annex get file sherlock downloaded git files lets datasets ds paranoia drop run python g node status repository clone only api not any openneuro might install specific filename removed need en installing pip gin ljchang space check confound course source narrative shared www branchable com command line cloning full entire computer tutorial latest recommend location gb actually want example subjects fmriprep much take again also glob load naturalistic written open original contains participants minutes audio recording stimuli folder versions chen et al structure activity individuals nat doi ambiguous social such s sharing notebook access
+search: datalad using dataset data org download annex get sherlock files file run downloaded g git lets datasets ds paranoia node install drop python only status repository specific need api not gin ljchang any openneuro might command clone filename removed tutorial en installing pip recommend space check want confound also course source narrative shared www branchable com line cloning full entire computer latest location nice actually example subjects fmriprep much internet connection take again glob load naturalistic written open original contains participants minutes across e part audio recording stimuli folder versions chen et al structure activity individuals nat doi ambiguous social
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -27,7 +27,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Naturalistic-Datasets">Naturalistic Datasets<a class="anchor-link" href="#Naturalistic-Datasets"> </a></h1><p><em>Written by Luke Chang</em></p>
 <p>Throughout this course we will be using two open source naturalistic datasets to demonstrate how to use different analytic techniques. If you end up using any of this data in a paper, be sure to cite the original papers.</p>
-<p>The <strong>Sherlock</strong> dataset contains 16 participants that watched 45 minutes of Sherlock and then verbally recalled the narrative in the scanner using a noise cancelling microphone. An audio recording of the show can be downloaded in the stimuli folder of this <a href="https://openneuro.org/datasets/ds002345/versions/1.0.1">openneuro</a> page.</p>
+<p>The <strong>Sherlock</strong> dataset contains 16 participants that watched 50 minutes of Sherlock across 2 scanning run (i.e., Part1 &amp; Part2) and then verbally recalled the narrative in the scanner using a noise cancelling microphone. An audio recording of the show can be downloaded in the stimuli folder of this <a href="https://openneuro.org/datasets/ds002345/versions/1.0.1">openneuro</a> page.</p>
 
 <pre><code>Chen, J., Leong, Y., Honey, C. et al. Shared memories reveal shared structure in neural activity across individuals. Nat Neurosci 20, 115–125 (2017). https://doi.org/10.1038/nn.4450
 
@@ -90,7 +90,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Download-Data-with-DataLad">Download Data with DataLad<a class="anchor-link" href="#Download-Data-with-DataLad"> </a></h2><h3 id="Download-Sherlock">Download Sherlock<a class="anchor-link" href="#Download-Sherlock"> </a></h3><p>The Sherlock dataset can be accessed at the following location <a href="https://gin.g-node.org/ljchang/Sherlock">https://gin.g-node.org/ljchang/Sherlock</a>. To download the Sherlock dataset run <code>datalad clone https://gin.g-node.org/ljchang/Sherlock</code> in a terminal. The full dataset is approximately 14gb.</p>
+<h2 id="Download-Data-with-DataLad">Download Data with DataLad<a class="anchor-link" href="#Download-Data-with-DataLad"> </a></h2><h3 id="Download-Sherlock">Download Sherlock<a class="anchor-link" href="#Download-Sherlock"> </a></h3><p>The Sherlock dataset can be accessed at the following location <a href="https://gin.g-node.org/ljchang/Sherlock">https://gin.g-node.org/ljchang/Sherlock</a>. To download the Sherlock dataset run <code>datalad install https://gin.g-node.org/ljchang/Sherlock</code> in a terminal. The full dataset is approximately 111gb.</p>
 <p>You can run this from the notebook using the <code>!</code> cell magic.</p>
 
 </div>
@@ -105,7 +105,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>datalad clone https://gin.g-node.org/ljchang/Sherlock
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>datalad install https://gin.g-node.org/ljchang/Sherlock
 </pre></div>
 
     </div>
@@ -119,7 +119,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Download-Paranoia">Download Paranoia<a class="anchor-link" href="#Download-Paranoia"> </a></h3><p>The Paranoia dataset can be accessed at the following location <a href="https://gin.g-node.org/ljchang/Paranoia">https://gin.g-node.org/ljchang/Paranoia</a>. To download the Paranoia dataset run <code>datalad clone https://gin.g-node.org/ljchang/Paranoia</code>. The full dataset is approximately 135gb.</p>
+<h3 id="Download-Paranoia">Download Paranoia<a class="anchor-link" href="#Download-Paranoia"> </a></h3><p>The Paranoia dataset can be accessed at the following location <a href="https://gin.g-node.org/ljchang/Paranoia">https://gin.g-node.org/ljchang/Paranoia</a>. To download the Paranoia dataset run <code>datalad clone https://gin.g-node.org/ljchang/Paranoia</code>. The full dataset is approximately 100gb.</p>
 
 </div>
 </div>
@@ -133,7 +133,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>datalad clone https://gin.g-node.org/ljchang/Paranoia
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>datalad install https://gin.g-node.org/ljchang/Paranoia
 </pre></div>
 
     </div>
@@ -234,6 +234,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>If you would like to download all of the files you can use <code>datalad get .</code>. Depending on the size of the dataset and the speed of your internet connection, this might take awhile. One really nice thing about datalad is that if your connection is interrupted you can simply run <code>datalad get .</code> again, and it will resume where it left off.</p>
+<p>You can also install the dataset and download all of the files with a single command <code>datalad install -g https://gin.g-node.org/ljchang/Sherlock</code>. You may want to do this if you have a lot of storage available and a fast internet connection. For most people, we recommend only downloading the files you need for a specific tutorial.</p>
 
 </div>
 </div>
@@ -273,7 +274,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Datalad-has-a-Python-API!">Datalad has a Python API!<a class="anchor-link" href="#Datalad-has-a-Python-API!"> </a></h2><p>One particularly awesome aspect of datalad is that it has a Python API, which means that anything you would like to do with datalad in the commandline, can also be run in Python. See the details of the datalad <a href="http://docs.datalad.org/en/latest/modref.html">Python API</a>.</p>
+<h2 id="Datalad-has-a-Python-API!">Datalad has a Python API!<a class="anchor-link" href="#Datalad-has-a-Python-API!"> </a></h2><p>One particularly nice aspect of datalad is that it has a Python API, which means that anything you would like to do with datalad in the commandline, can also be run in Python. See the details of the datalad <a href="http://docs.datalad.org/en/latest/modref.html">Python API</a>.</p>
 <p>For example, suppose you would like to clone a data repository, such as the Sherlock dataset. You can run <code>dl.clone(source=url, path=location)</code>.</p>
 
 </div>
@@ -323,10 +324,10 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
  
  
-<div id="9d938cbc-91a8-4b6f-acf9-5a19d12869ea"></div>
+<div id="93b165bd-3e0f-4405-80eb-1f69f2fbe4db"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#9d938cbc-91a8-4b6f-acf9-5a19d12869ea');
+var element = $('#93b165bd-3e0f-4405-80eb-1f69f2fbe4db');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -343,10 +344,10 @@ var element = $('#9d938cbc-91a8-4b6f-acf9-5a19d12869ea');
 
  
  
-<div id="27a308c8-763d-423d-90b7-6ebfb97dd59f"></div>
+<div id="a25dfddc-00cb-43d9-98ce-e681da849041"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#27a308c8-763d-423d-90b7-6ebfb97dd59f');
+var element = $('#a25dfddc-00cb-43d9-98ce-e681da849041');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -363,10 +364,10 @@ var element = $('#27a308c8-763d-423d-90b7-6ebfb97dd59f');
 
  
  
-<div id="b675e194-5cca-419e-b366-2d659ef99cf1"></div>
+<div id="9422a524-a864-4768-890c-be8bfe947db1"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#b675e194-5cca-419e-b366-2d659ef99cf1');
+var element = $('#9422a524-a864-4768-890c-be8bfe947db1');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -383,10 +384,10 @@ var element = $('#b675e194-5cca-419e-b366-2d659ef99cf1');
 
  
  
-<div id="c2c78db5-54bd-4ef6-861e-cdee5ca103d5"></div>
+<div id="08dd1569-317b-4638-8b0c-5627d587677b"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#c2c78db5-54bd-4ef6-861e-cdee5ca103d5');
+var element = $('#08dd1569-317b-4638-8b0c-5627d587677b');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -742,7 +743,7 @@ var element = $('#c2c78db5-54bd-4ef6-861e-cdee5ca103d5');
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">file_list</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">sherlock_path</span><span class="p">,</span> <span class="s1">&#39;fmriprep&#39;</span><span class="p">,</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="s1">&#39;func&#39;</span><span class="p">,</span> <span class="s1">&#39;*denoised*nii.gz&#39;</span><span class="p">))</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">file_list</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">sherlock_path</span><span class="p">,</span> <span class="s1">&#39;fmriprep&#39;</span><span class="p">,</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="s1">&#39;func&#39;</span><span class="p">,</span> <span class="s1">&#39;*crop*nii.gz&#39;</span><span class="p">))</span>
 <span class="n">file_list</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
 <span class="n">file_list</span>
 </pre></div>
@@ -790,7 +791,7 @@ var element = $('#c2c78db5-54bd-4ef6-861e-cdee5ca103d5');
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Now let's download the first subject's file using <code>ds.get()</code>. This file is 1.65gb, so this might take a few minutes depending on your internet speed.</p>
+<p>Now let's download the first subject's file using <code>ds.get()</code>. This file is 825mb, so this might take a few minutes depending on your internet speed.</p>
 
 </div>
 </div>
@@ -822,10 +823,10 @@ var element = $('#c2c78db5-54bd-4ef6-861e-cdee5ca103d5');
 
  
  
-<div id="e0efbef8-cb05-42ee-a66f-a2758227f2d0"></div>
+<div id="90a399f7-5d18-4f7d-9e18-86fca6c19bd1"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#e0efbef8-cb05-42ee-a66f-a2758227f2d0');
+var element = $('#90a399f7-5d18-4f7d-9e18-86fca6c19bd1');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
