@@ -69,7 +69,7 @@
   <div class="col s12 m6 l4">
     <div class="card hoverable" id="faculty">
       <div class="card-image" id="faculty">
-        <a href="http://csnlab.org/"><img src="../../images/speakers/geerligs.png" width="200"/></a>
+        <a href="http://csnlab.org/"><img src="../../images/speakers/parkinson.jpg" width="200"/></a>
       </div>
       <div class="card-content">
         <span class="card-title center"><a href="http://csnlab.org/">Carolyn <span>Parkinson</span></a></span>
@@ -80,7 +80,7 @@
   <div class="col s12 m6 l4">
     <div class="card hoverable" id="faculty">
       <div class="card-image" id="faculty">
-        <a href="http://wshimlab.com/"><img src="../../images/speakers/geerligs.png" width="200"/></a>
+        <a href="http://wshimlab.com/"><img src="../../images/speakers/shim.jpg" width="200"/></a>
       </div>
       <div class="card-content">
         <span class="card-title center"><a href="http://wshimlab.com/">Won Mok <span>Shim</span></a></span>
