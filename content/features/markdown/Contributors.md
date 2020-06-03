@@ -106,7 +106,7 @@
       </div>
       <div class="card-content">
         <span class="card-title center"><a href="https://talyarkoni.org/">Tal <span>Yarkoni</span></a></span>
-        <p class="center card-affiliation">University of Texas at Austin/p>
+        <p class="center card-affiliation">University of Texas at Austin</p>
       </div>
     </div>
   </div>
