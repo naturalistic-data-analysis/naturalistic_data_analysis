@@ -13,7 +13,7 @@ prev_page:
 next_page:
   url: /features/notebooks/12_Connectivity.html
 suffix: .ipynb
-search: preprocessing using data fmriprep spatial naturalistic org also perform our basic share very realignment derivatives e average csf activity motion written luke chang tutorial show datasets used tutorials details dartbrains course contributors thoughts issues performed minimal io dont opinions developed easily user denoising including squares squared include spikes identified global outliers derivative high pass filtering instead linear quadratic trends physiological artifacts g www biorxiv content reducing different feature selection analysis caseforge github recommended currently agreed upon conventions neuroimaging preprocessed assumes knowledge questions specific enourage read such overview features notebooks html various personal consider own labs sherlock paranoia readthedocs en stable
+search: preprocessing using data also fmriprep spatial naturalistic org perform average our tutorials basic share very realignment derivatives e csf activity motion written luke chang tutorial show datasets used details dartbrains course contributors thoughts issues performed minimal io dont opinions developed easily user denoising including squares squared include spikes identified global outliers derivative high pass filtering instead linear quadratic trends physiological artifacts finally viewing parcellation n g www biorxiv content reducing different feature selection analysis caseforge github recommended currently agreed upon conventions neuroimaging preprocessed assumes knowledge questions specific enourage read such overview features notebooks html various personal consider own labs sherlock
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -97,6 +97,199 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 </pre></div>
 
     </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We also saved the cropped denoised viewing data as an hdf5 file to speed up loading times when using nltools.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data_dir</span> <span class="o">=</span> <span class="s1">&#39;/Volumes/Engram/Data/Sherlock/fmriprep&#39;</span>
+
+<span class="k">for</span> <span class="n">scan</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;Part1&#39;</span><span class="p">,</span> <span class="s1">&#39;Part2&#39;</span><span class="p">]:</span>
+    <span class="n">file_list</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="s1">&#39;func&#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;*crop*</span><span class="si">{</span><span class="n">scan</span><span class="si">}</span><span class="s1">*nii.gz&#39;</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">file_list</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">Brain_Data</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+        <span class="n">data</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">f</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.nii.gz&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">.hdf5&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>/Users/lukechang/anaconda3/lib/python3.7/site-packages/deepdish/io/hdf5io.py:251: FutureWarning: The Panel class is removed from pandas. Accessing it from the top-level namespace will also be removed in the next version
+  elif _pandas and isinstance(level, (pd.DataFrame, pd.Series, pd.Panel)):
+</pre>
+</div>
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">KeyboardInterrupt</span>                         Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-4-b58ed4fa33be&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-intense-fg ansi-bold">      5</span>     <span class="ansi-green-fg">for</span> f <span class="ansi-green-fg">in</span> file_list<span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">      6</span>         data <span class="ansi-blue-fg">=</span> Brain_Data<span class="ansi-blue-fg">(</span>f<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-fg">----&gt; 7</span><span class="ansi-red-fg">         </span>data<span class="ansi-blue-fg">.</span>write<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">f&#34;{f.split(&#39;.nii.gz&#39;)[0]}.hdf5&#34;</span><span class="ansi-blue-fg">)</span>
+
+<span class="ansi-green-fg">~/anaconda3/lib/python3.7/site-packages/nltools-0.3.20-py3.7.egg/nltools/data/brain_data.py</span> in <span class="ansi-cyan-fg">write</span><span class="ansi-blue-fg">(self, file_name, **kwargs)</span>
+<span class="ansi-green-intense-fg ansi-bold">    464</span>                 <span class="ansi-blue-fg">&#39;mask_file_name&#39;</span><span class="ansi-blue-fg">:</span> self<span class="ansi-blue-fg">.</span>mask<span class="ansi-blue-fg">.</span>get_filename<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">,</span>
+<span class="ansi-green-intense-fg ansi-bold">    465</span>                 <span class="ansi-blue-fg">&#39;file_name&#39;</span><span class="ansi-blue-fg">:</span> self<span class="ansi-blue-fg">.</span>file_name
+<span class="ansi-green-fg">--&gt; 466</span><span class="ansi-red-fg">             }, compression=kwargs.get(&#39;compression&#39;, &#39;blosc&#39;))
+</span><span class="ansi-green-intense-fg ansi-bold">    467</span>         <span class="ansi-green-fg">else</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">    468</span>             self<span class="ansi-blue-fg">.</span>to_nifti<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">.</span>to_filename<span class="ansi-blue-fg">(</span>file_name<span class="ansi-blue-fg">)</span>
+
+<span class="ansi-green-fg">~/anaconda3/lib/python3.7/site-packages/deepdish/io/hdf5io.py</span> in <span class="ansi-cyan-fg">save</span><span class="ansi-blue-fg">(path, data, compression)</span>
+<span class="ansi-green-intense-fg ansi-bold">    582</span>             <span class="ansi-green-fg">for</span> key<span class="ansi-blue-fg">,</span> value <span class="ansi-green-fg">in</span> data<span class="ansi-blue-fg">.</span>items<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">    583</span>                 _save_level(h5file, group, value, name=key,
+<span class="ansi-green-fg">--&gt; 584</span><span class="ansi-red-fg">                             filters=filters, idtable=idtable)
+</span><span class="ansi-green-intense-fg ansi-bold">    585</span> 
+<span class="ansi-green-intense-fg ansi-bold">    586</span>         elif (_sns and isinstance(data, SimpleNamespace) and
+
+<span class="ansi-green-fg">~/anaconda3/lib/python3.7/site-packages/deepdish/io/hdf5io.py</span> in <span class="ansi-cyan-fg">_save_level</span><span class="ansi-blue-fg">(handler, group, level, name, filters, idtable)</span>
+<span class="ansi-green-intense-fg ansi-bold">    247</span> 
+<span class="ansi-green-intense-fg ansi-bold">    248</span>     <span class="ansi-green-fg">elif</span> isinstance<span class="ansi-blue-fg">(</span>level<span class="ansi-blue-fg">,</span> np<span class="ansi-blue-fg">.</span>ndarray<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">--&gt; 249</span><span class="ansi-red-fg">         </span>_save_ndarray<span class="ansi-blue-fg">(</span>handler<span class="ansi-blue-fg">,</span> group<span class="ansi-blue-fg">,</span> name<span class="ansi-blue-fg">,</span> level<span class="ansi-blue-fg">,</span> filters<span class="ansi-blue-fg">=</span>filters<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    250</span> 
+<span class="ansi-green-intense-fg ansi-bold">    251</span>     <span class="ansi-green-fg">elif</span> _pandas <span class="ansi-green-fg">and</span> isinstance<span class="ansi-blue-fg">(</span>level<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">(</span>pd<span class="ansi-blue-fg">.</span>DataFrame<span class="ansi-blue-fg">,</span> pd<span class="ansi-blue-fg">.</span>Series<span class="ansi-blue-fg">,</span> pd<span class="ansi-blue-fg">.</span>Panel<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+
+<span class="ansi-green-fg">~/anaconda3/lib/python3.7/site-packages/deepdish/io/hdf5io.py</span> in <span class="ansi-cyan-fg">_save_ndarray</span><span class="ansi-blue-fg">(handler, group, name, x, filters)</span>
+<span class="ansi-green-intense-fg ansi-bold">    161</span>         node<span class="ansi-blue-fg">.</span>_v_attrs<span class="ansi-blue-fg">.</span>strtype <span class="ansi-blue-fg">=</span> strtype
+<span class="ansi-green-intense-fg ansi-bold">    162</span>         node<span class="ansi-blue-fg">.</span>_v_attrs<span class="ansi-blue-fg">.</span>itemsize <span class="ansi-blue-fg">=</span> itemsize
+<span class="ansi-green-fg">--&gt; 163</span><span class="ansi-red-fg">     </span>node<span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">:</span><span class="ansi-blue-fg">]</span> <span class="ansi-blue-fg">=</span> x
+<span class="ansi-green-intense-fg ansi-bold">    164</span> 
+<span class="ansi-green-intense-fg ansi-bold">    165</span> 
+
+<span class="ansi-green-fg">~/anaconda3/lib/python3.7/site-packages/tables/array.py</span> in <span class="ansi-cyan-fg">__setitem__</span><span class="ansi-blue-fg">(self, key, value)</span>
+<span class="ansi-green-intense-fg ansi-bold">    728</span>         <span class="ansi-green-fg">try</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">    729</span>             startl<span class="ansi-blue-fg">,</span> stopl<span class="ansi-blue-fg">,</span> stepl<span class="ansi-blue-fg">,</span> shape <span class="ansi-blue-fg">=</span> self<span class="ansi-blue-fg">.</span>_interpret_indexing<span class="ansi-blue-fg">(</span>key<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-fg">--&gt; 730</span><span class="ansi-red-fg">             </span>self<span class="ansi-blue-fg">.</span>_write_slice<span class="ansi-blue-fg">(</span>startl<span class="ansi-blue-fg">,</span> stopl<span class="ansi-blue-fg">,</span> stepl<span class="ansi-blue-fg">,</span> shape<span class="ansi-blue-fg">,</span> nparr<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    731</span>         <span class="ansi-green-fg">except</span> TypeError<span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">    732</span>             <span class="ansi-red-fg"># Then, try with a point-wise selection</span>
+
+<span class="ansi-green-fg">~/anaconda3/lib/python3.7/site-packages/tables/array.py</span> in <span class="ansi-cyan-fg">_write_slice</span><span class="ansi-blue-fg">(self, startl, stopl, stepl, shape, nparr)</span>
+<span class="ansi-green-intense-fg ansi-bold">    810</span>         nparr <span class="ansi-blue-fg">=</span> self<span class="ansi-blue-fg">.</span>_check_shape<span class="ansi-blue-fg">(</span>nparr<span class="ansi-blue-fg">,</span> tuple<span class="ansi-blue-fg">(</span>shape<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    811</span>         countl <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">(</span>stopl <span class="ansi-blue-fg">-</span> startl <span class="ansi-blue-fg">-</span> <span class="ansi-cyan-fg">1</span><span class="ansi-blue-fg">)</span> <span class="ansi-blue-fg">//</span> stepl<span class="ansi-blue-fg">)</span> <span class="ansi-blue-fg">+</span> <span class="ansi-cyan-fg">1</span>
+<span class="ansi-green-fg">--&gt; 812</span><span class="ansi-red-fg">         </span>self<span class="ansi-blue-fg">.</span>_g_write_slice<span class="ansi-blue-fg">(</span>startl<span class="ansi-blue-fg">,</span> stepl<span class="ansi-blue-fg">,</span> countl<span class="ansi-blue-fg">,</span> nparr<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    813</span> 
+<span class="ansi-green-intense-fg ansi-bold">    814</span>     <span class="ansi-green-fg">def</span> _write_coords<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">,</span> coords<span class="ansi-blue-fg">,</span> nparr<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+
+<span class="ansi-red-fg">KeyboardInterrupt</span>: </pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Finally, we have also precomputed average activations within a whole brain parcellation (n=50) for some of the tutorials.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data_dir</span> <span class="o">=</span> <span class="s1">&#39;/Volumes/Engram/Data/Sherlock/fmriprep&#39;</span>
+
+<span class="n">mask</span> <span class="o">=</span> <span class="n">Brain_Data</span><span class="p">(</span><span class="s1">&#39;http://neurovault.org/media/images/2099/Neurosynth%20Parcellation_0.nii.gz&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">scan</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;Part1&#39;</span><span class="p">,</span> <span class="s1">&#39;Part2&#39;</span><span class="p">]:</span>
+    <span class="n">file_list</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="s1">&#39;func&#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;*crop*</span><span class="si">{</span><span class="n">scan</span><span class="si">}</span><span class="s1">*hdf5&#39;</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">file_list</span><span class="p">:</span>
+        <span class="n">sub</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">f</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">sub</span><span class="p">)</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">Brain_Data</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+        <span class="n">roi</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">extract_roi</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
+        <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">roi</span><span class="o">.</span><span class="n">T</span><span class="p">)</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">f</span><span class="p">),</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">sub</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">scan</span><span class="si">}</span><span class="s2">_Average_ROI_n50.csv&quot;</span> <span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>sub-01
+sub-02
+sub-03
+sub-04
+sub-05
+sub-06
+sub-07
+sub-08
+sub-09
+sub-10
+sub-11
+sub-12
+sub-13
+sub-14
+sub-15
+sub-16
+sub-01
+sub-02
+sub-03
+sub-04
+sub-05
+sub-06
+sub-07
+sub-08
+sub-09
+sub-10
+sub-11
+sub-12
+sub-13
+sub-14
+sub-15
+sub-16
+</pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 
