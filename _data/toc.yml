@@ -48,16 +48,12 @@
   url: /features/notebooks/Preprocessing
   not_numbered: true
 
-- title: Connectivity
-  url: /features/notebooks/12_Connectivity
+- title: Functional Alignment
+  url: /features/notebooks/Functional_Alignment
   not_numbered: true
 
-- title: Multivariate Prediction
-  url: /features/notebooks/13_Multivariate_Prediction
-  not_numbered: true
-
-- title: Representational Similarity Analysis
-  url: /features/notebooks/15_RSA
+- title: Event Segmentation
+  url: /features/notebooks/Event_Segmentation
   not_numbered: true
 
 - divider: true
