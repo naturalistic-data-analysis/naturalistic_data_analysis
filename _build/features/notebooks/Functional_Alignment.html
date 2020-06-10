@@ -13,7 +13,7 @@ prev_page:
 next_page:
   url: /features/notebooks/Event_Segmentation.html
 suffix: .ipynb
-search: data space common into subject hyperalignment model voxels using dimensional voxel functional et al org response alignment also based shared across cortical project subjects align isc participants patterns activity overall plot part course models new article lower tutorial srm within transformation latent same example aligned e www com high n perform sherlock lets components brain information multivariate haxby s guntupalli idea transformed procrustes load need braindata similar after here component algorithms not signal well classification features g interest pattern d average roi encourage different papers pdf cortex implemented pymvpa toolbox brainiak nltools change original extract early visual takes list matrices
+search: data space common into hyperalignment model subject voxels using dimensional voxel functional shared response et al org alignment also based cortical j across project subjects align isc participants haxby s patterns activity overall plot part course information models e new article guntupalli n lower tutorial srm within transformation latent same example aligned www com high cortex perform sherlock lets components brain multivariate idea d transformed procrustes chen load need braindata similar after here component algorithms not signal well classification features g topographies interest pattern average roi encourage v different papers fmri pdf implemented pymvpa toolbox developed brainiak nltools change original
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -29,7 +29,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <p>One of the main goals of cognitive neuroscience is to understand how the brain represents and processes information about the external world, integrates it with internal goals and previous experiences, and produces actions. An implicit assumption in almost all neuroimaging studies is that each person's brain processes information in the same way as other people's brains. In neuroimaging we have acknowledged the importance that there is wide variation in neuroanatomy and a key preprocessing step is warping each step into a common sterotactic space. We also know that these algorithms are not perfect and that applying a small amount of local gaussian smoothing tends to account for these misalignments and increases signal to noise ratios. While these techniques appear to work reasonably well when performing mass univariate testing, they may have limitations when using multivariate models. For example, multivariate models such as prediction/classification and representational similarity analysis assume that the features are aligned across participants (e.g., voxels), and are able to map information based on fine and coarse cortical topographies.</p>
 <p>There has been growing interest in developing new algorithms to project subjects into a common space based on how a voxels responds to stimuli (<a href="https://www.sciencedirect.com/science/article/pii/S0896627311007811">Haxby et al., 2011</a> ; <a href="https://academic.oup.com/cercor/article/26/6/2919/1754308">Guntupalli et al., 2016</a>) or is connected to other voxels (<a href="https://journals.plos.org/ploscompbiol/article?rev=1&amp;id=10.1371/journal.pcbi.1006120">Guntupalli, et al., 2018</a>). These efforts have been lead by Jim Haxby's research group over the past decade and the approach is called <em>hyperalignment</em>, or <em>functional alignment</em>.</p>
 <p>The basic idea behind hyperalignment is to treat cortical patterns as vectors corresponding to locations in a high dimensional space, where each axis reflects a measurement of that pattern (e.g., voxel activity) (<a href="https://www.annualreviews.org/doi/abs/10.1146/annurev-neuro-062012-170325">Haxby, 2014</a>). Thus rather than treating cortical functions in a 1D (average roi activity), 2D (cortical sheet), or 3D physical space, hyperalignment models information as being embedded in an n-dimensional space, where n reflects the number of measurements (e.g., voxels). Vector representations of cortical patterns can then be transformed into a common high dimensional space that is shared across participants. This idea of transforming individual cortical patterns into a common high dimensional model space can be seen in the following figure from (<a href="https://elifesciences.org/articles/56601">Haxby et al., 2020</a>), and we encourage the interested reader to read this excellent overview.</p>
-<p><img src="../../images/elife-56601-fig1-v1.jpg" alt="hyperalignment"></p>
+<p><img src="../../images/hyperalignment/elife-56601-fig1-v1.jpg" alt="hyperalignment"></p>
 <p>There are many different models of functional alignment. <em>Response-based hyperalignment</em> uses an iterative procrustes transform to scale, rotate, and reflect voxel time series so that they are in the same functional space across participants (<a href="https://www.sciencedirect.com/science/article/pii/S0896627311007811">Haxby et al., 2011</a> ; <a href="https://academic.oup.com/cercor/article/26/6/2919/1754308">Guntupalli et al., 2016</a>). <em>Connectivity-based hyperalignment</em> instead aligns voxels based on their embedding with other voxels using seed-based functional connectivity (<a href="https://journals.plos.org/ploscompbiol/article?rev=1&amp;id=10.1371/journal.pcbi.1006120">Guntupalli, et al., 2018</a>). There is also another approach called the <em>Shared Response Model</em>, which learns a joint-SVD and can project subjects into a lower dimensional common space (<a href="https://ieeexplore.ieee.org/abstract/document/6958912">Chen et al., 2014</a>, <a href="http://papers.nips.cc/paper/5855-a-reduced-dimension-fmri-shared-response-model.pdf">Chen et al., 2015</a>). Overall, it has been shown that all of these different approaches can dramatically improve between subject classification accuracy particularly in <a href="http://haxbylab.dartmouth.edu/publications/HGC+11.pdf">ventral temporal cortex</a>. In addition, lower dimensional projections removes redundant axes in the high dimensional space and can effectively denoise the signal, which also improves classification accuracy.</p>
 <p>Hyperalignment is implemented in the <a href="http://www.pymvpa.org">PyMVPA</a> toolbox developed at Dartmouth College and I encourage you to check out their <a href="http://www.pymvpa.org/examples/hyperalignment.html">tutorial</a>. The Shared Response Model is implemented in the <a href="https://brainiak.org/">brainiak</a> toolbox developed at Princeton University and I also encourage you to see their excellent <a href="https://brainiak.org/tutorials/11-SRM/">tutorial</a>.</p>
 <p>In this tutorial, we will walk through how to perform Response-Based Hyperalignment and the Shared Response model on the Sherlock dataset using the <a href="https://neurolearn.readthedocs.io/en/latest/">nltools</a> toolbox.</p>
@@ -1093,6 +1093,39 @@ sub-16
 </div>
 </div>
 
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Recommended-reading">Recommended reading<a class="anchor-link" href="#Recommended-reading"> </a></h3><ul>
+<li>Haxby, J. V., Guntupalli, J. S., Nastase, S. A., &amp; Feilong, M. (2020). Hyperalignment: Modeling shared information encoded in idiosyncratic cortical topographies. Elife, 9, e56601.</li>
+</ul>
+<ul>
+<li>Cohen, J. D., Daw, N., Engelhardt, B., Hasson, U., Li, K., Niv, Y., ... &amp; Willke, T. L. (2017). Computational approaches to fMRI analysis. Nature neuroscience, 20(3), 304.</li>
+</ul>
+<ul>
+<li>Chen, P. H. C., Chen, J., Yeshurun, Y., Hasson, U., Haxby, J., &amp; Ramadge, P. J. (2015). A reduced-dimension fMRI shared response model. In Advances in Neural Information Processing Systems (pp. 460-468).</li>
+</ul>
+<ul>
+<li>Guntupalli, J. S., Hanke, M., Halchenko, Y. O., Connolly, A. C., Ramadge, P. J., &amp; Haxby, J. V. (2016). A model of representational spaces in human cortex. Cerebral cortex, 26(6), 2919-2934.</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Contributions">Contributions<a class="anchor-link" href="#Contributions"> </a></h3><p>Luke Chang developed the initial notebook.</p>
+
+</div>
+</div>
 </div>
 </div>
 
