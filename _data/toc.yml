@@ -58,6 +58,10 @@
   url: /features/notebooks/Functional_Alignment
   not_numbered: true
 
+- title: Intersubject Correlation
+  url: /features/notebooks/Intersubject_Correlation
+  not_numbered: true
+
 - title: Event Segmentation
   url: /features/notebooks/Event_Segmentation
   not_numbered: true
