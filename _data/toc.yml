@@ -36,6 +36,9 @@
   url: /features/markdown/Contributors
   not_numbered: true
 
+- divider: true
+- header: Getting Started
+
 - title: Download Data
   url: /features/notebooks/Download_Data
   not_numbered: true
@@ -47,6 +50,9 @@
 - title: Preprocessing
   url: /features/notebooks/Preprocessing
   not_numbered: true
+
+- divider: true
+- header: Analysis Tutorials
 
 - title: Functional Alignment
   url: /features/notebooks/Functional_Alignment
