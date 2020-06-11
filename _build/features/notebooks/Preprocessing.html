@@ -13,7 +13,7 @@ prev_page:
 next_page:
   url: /features/notebooks/Functional_Alignment.html
 suffix: .ipynb
-search: preprocessing using data also fmriprep spatial naturalistic org perform average our tutorials basic share very realignment derivatives e csf activity motion written luke chang tutorial show datasets used details dartbrains course contributors thoughts issues performed minimal io dont opinions developed easily user denoising including squares squared include spikes identified global outliers derivative high pass filtering instead linear quadratic trends physiological artifacts finally viewing parcellation n g www biorxiv content reducing different feature selection analysis caseforge github recommended currently agreed upon conventions neuroimaging preprocessed assumes knowledge questions specific enourage read such overview features notebooks html various personal consider own labs sherlock
+search: preprocessing using data also e spatial chang naturalistic fmriprep j org perform average motion biorxiv our tutorials basic share very realignment derivatives csf activity viewing n reducing feature selection jolly l recommended written luke tutorial show datasets used details dartbrains course contributors thoughts issues performed minimal io dont opinions developed easily state user denoising including squares squared include spikes identified global outliers derivative high pass filtering instead linear quadratic trends physiological artifacts finally parcellation multivariate g www content different analysis osf efficacy caseforge headcases head fmri h github currently agreed upon conventions neuroimaging preprocessed assumes knowledge questions specific enourage read
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -181,6 +181,14 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Contributors'-Opinions-on-Preprocessing">Contributors' Opinions on Preprocessing<a class="anchor-link" href="#Contributors'-Opinions-on-Preprocessing"> </a></h1><h2 id="Luke-Chang">Luke Chang<a class="anchor-link" href="#Luke-Chang"> </a></h2><p>In our work, we perform standard realignment and spatial normalization. We also perform basic denoising by removing global and multivariate spikes, average CSF activity, linear/quadratic trends, and 24 motion covariates (e.g., 6 centered realignment, their squares, derivative, and squared derivatives). We are very cautious about performing high-pass filtering as many of the effects we are interested in occur in <a href="https://www.biorxiv.org/content/early/2018/12/16/487892">slower frequencies</a>. We find that including average activity from a CSF mask helps a lot in reducing different types of physiological and motion related artifacts. We typically apply spatial smoothing, but depending on the question we don't always perform this step. For spatial feature selection, we rarely use searchlights and instead tend to use parcellations. This allows us to quickly prototype analysis ideas using smaller numbers of parcels (e.g., n=50) and then increase the number if we want greater spatial specificity. We usually use a <a href="https://neurovault.org/collections/2099/">parcellation</a> that we developed based on meta-analytic coactivation using the neurosynth database. We have written a <a href="https://osf.io/4exrn/?show=view">paper</a> about the costs and benefits of different spatial feature selection strategies. We have also evaluated the <a href="https://www.biorxiv.org/content/10.1101/2020.03.27.012310v1">efficacy</a> of using <a href="https://caseforge.co/?gclid=CjwKCAjw8df2BRA3EiwAvfZWaGA5Jz_RABlW6vKdvdjJCULwaeFW3BHMI-FkSLX27DbS4B7LlUHOrhoCYKIQAvD_BwE">caseforge headcases</a> in reducing head motion in naturalistic viewing studies.</p>
+<h3 id="Recommended-reading">Recommended reading<a class="anchor-link" href="#Recommended-reading"> </a></h3><ul>
+<li><p>Jolly, E., Sadhukha, S., &amp; Chang, L. J. (2020). Custom-molded headcases have limited efficacy in reducing head motion for fMRI. BioRxiv.</p>
+</li>
+<li><p>Jolly, E., &amp; Chang, L.J. (2020). Multivariate spatial feature selection in fMRI. OSF.</p>
+</li>
+<li><p>Chang, L. J., Jolly, E., Cheong, J. H., Rapuano, K., Greenstein, N., Chen, P. H. A., &amp; Manning, J. R. (2018). Endogenous variation in ventromedial prefrontal cortex state dynamics during naturalistic viewing reflects affective experience. BioRxiv, 487892.</p>
+</li>
+</ul>
 
 </div>
 </div>

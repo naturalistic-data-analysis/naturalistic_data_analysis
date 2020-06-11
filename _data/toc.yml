@@ -56,6 +56,10 @@
   url: /features/notebooks/Event_Segmentation
   not_numbered: true
 
+- title: Hidden Semi-Markov Models
+  url: /features/notebooks/HiddenSemiMarkovModel
+  not_numbered: true
+
 - divider: true
 - header: Background Resources
 
