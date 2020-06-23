@@ -74,6 +74,10 @@
   url: /features/notebooks/HiddenSemiMarkovModel
   not_numbered: true
 
+- title: Natural Language Processing
+  url: /features/notebooks/Natural_Language_Processing
+  not_numbered: true
+
 - divider: true
 - header: Background Resources
 
