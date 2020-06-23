@@ -62,6 +62,10 @@
   url: /features/notebooks/Intersubject_Correlation
   not_numbered: true
 
+- title: Intersubject Representational Similarity Analysis
+  url: /features/notebooks/Intersubject_RSA
+  not_numbered: true
+
 - title: Event Segmentation
   url: /features/notebooks/Event_Segmentation
   not_numbered: true

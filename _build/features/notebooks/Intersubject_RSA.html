@@ -1,0 +1,2909 @@
+---
+redirect_from:
+  - "/features/notebooks/intersubject-rsa"
+interact_link: content/features/notebooks/Intersubject_RSA.ipynb
+kernel_name: python3
+kernel_path: content/features/notebooks
+has_widgets: false
+title: |-
+  Intersubject Representational Similarity Analysis
+pagenum: 8
+prev_page:
+  url: /features/notebooks/Intersubject_Correlation.html
+next_page:
+  url: /features/notebooks/Event_Segmentation.html
+suffix: .ipynb
+search: similarity subjects data brain our subject www rsa com nodes isc matrix behavioral s representational well et al run also behavior similar using org values node across j article e matrices low where same model science not high scorers its want naturalistic score between distance case lets r inter paranoia while sciencedirect pii since annak value p analysis sure into structure scale both voxels calculate x below take space should correlation activity level different nn t participants higher m line nature metric articles results based us parcellation looks need tutorial dataset any only g during individual regions euclidean another scores
+
+comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
+---
+
+    <main class="jupyter-page">
+    <div id="page-info"><div id="page-title">Intersubject Representational Similarity Analysis</div>
+</div>
+    <div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Inter-subject-Representational-Similarity-Analysis">Inter-subject Representational Similarity Analysis<a class="anchor-link" href="#Inter-subject-Representational-Similarity-Analysis"> </a></h1>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">glob</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">scipy</span> <span class="k">as</span> <span class="nn">sp</span>
+
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib.lines</span> <span class="k">as</span> <span class="nn">mlines</span>
+<span class="kn">import</span> <span class="nn">matplotlib.transforms</span> <span class="k">as</span> <span class="nn">mtransforms</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="kn">import</span> <span class="nn">statsmodels.stats.multitest</span> <span class="k">as</span> <span class="nn">smm</span>
+
+<span class="kn">import</span> <span class="nn">nibabel</span> <span class="k">as</span> <span class="nn">nib</span>
+<span class="kn">from</span> <span class="nn">nilearn.input_data</span> <span class="kn">import</span> <span class="n">NiftiLabelsMasker</span>
+<span class="kn">from</span> <span class="nn">nilearn</span> <span class="kn">import</span> <span class="n">plotting</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.utils</span> <span class="kn">import</span> <span class="n">check_random_state</span>
+<span class="kn">from</span> <span class="nn">sklearn.manifold</span> <span class="kn">import</span> <span class="n">TSNE</span>
+
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>/Users/finnes/anaconda3/lib/python3.6/site-packages/sklearn/externals/joblib/__init__.py:15: DeprecationWarning: sklearn.externals.joblib is deprecated in 0.21 and will be removed in 0.23. Please import this functionality directly from joblib, which can be installed with: pip install joblib. If this warning is raised when loading pickled models, you may need to re-serialize those models with scikit-learn 0.21+.
+  warnings.warn(msg, category=DeprecationWarning)
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Download-data">Download data<a class="anchor-link" href="#Download-data"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>First things first, we need to download the data we'll be working with. If you haven't already installed Datalad, see <a href="http://naturalistic-data.org/features/notebooks/Download_Data.html">this tutorial</a> for how to do so.</p>
+<p>Run the below lines of code in a Terminal. The first line installs the Paranoia dataset, which basically clones the metadata of the dataset so you can see what files are available, but doesn't actually download any of the data yet.</p>
+<p>Before you run the install, make sure you <code>cd</code> into the directory where you'd like to store the data. Here we'll only download the first run, but it will take up ~11GB overall (each run is a little over 0.5GB, and there are 22 subjects), so make sure you have enough space.</p>
+<p>On the second line we <code>cd</code> into our newly cloned dataset directory, and on the third line we download the preprocessed run 1 for all subjects. Depending on the speed of your internet connection, this could take a little while to run -- up to a few hours, in fact. Patience is a virtue :D</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><code>$: datalad install https://gin.g-node.org/ljchang/Paranoia</code> <br>
+<code>$: cd Paranoia</code> <br>
+<code>$: datalad get ./fmriprep/*/func/*denoise_smooth6mm_task-story_run-1*nii.gz</code></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Also make sure this notebook is located in the same parent directory as the data. So, for example, if your <code>Paranoia</code> directory from datalad is in <code>/Documents/naturalistic-data/Paranoia</code>, then this notebook should be in <code>/Documents/naturalistic-data/inter-subject_RSA.ipynb</code>.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Inter-subject-Representational-Similarity-Analysis:-Theory">Inter-subject Representational Similarity Analysis: Theory<a class="anchor-link" href="#Inter-subject-Representational-Similarity-Analysis:-Theory"> </a></h1>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>“Model-free” analyses that exploit the time-locked nature of a stimulus across subjects—e.g., inter-subject correlation (ISC; <a href="https://science.sciencemag.org/content/303/5664/1634?casa_token=T_9g7N-Xu0MAAAAA:m1i9AAa80QHe_pA3xosCV-ucWhdU-0RUKQHoBr07J-5M7iUt8Clqxv5JiCwmA_WkUjboRmeBQFiAcQ">Hasson et al., 2004</a>) and related approaches—are a powerful way to analyze naturalistic neuroimaging data.</p>
+<p>These approaches use one subject’s brain activity as a model for a second subject’s brain activity, reasoning that as long as two subjects receive the same input at the same time, any shared variance must be due to stimulus processing. If you haven't already, be sure to check out the <a href="http://naturalistic-data.org/features/notebooks/Intersubject_Correlation.html">ISC tutorial</a> that is part of this book.</p>
+<p>However, while ISC and related approaches were traditionally developed to detect responses shared at the group level, we know that brain activity during naturalistic stimuli also shows interesting individual differences.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Q:-How-can-we-use-inter-subject-approaches-to-study-what-is-different-across-subjects,-rather-than-what-is-common?">Q: How can we use inter-subject approaches to study what is <strong>different</strong> across subjects, rather than what is common?<a class="anchor-link" href="#Q:-How-can-we-use-inter-subject-approaches-to-study-what-is-different-across-subjects,-rather-than-what-is-common?"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>One problem is that ISC by definition operates at the level of subject pairs, while traits and behaviors operate at the level of single subjects. So, how can we relate ISC (one measure per subject pair) to behavior (one measure per subject)?</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="A.-Representational-similarity-analysis!">A. Representational similarity analysis!<a class="anchor-link" href="#A.-Representational-similarity-analysis!"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>If we take our subjects-by-subjects ISC matrix to be a "brain similarity" matrix, we can construct a "behavioral similarity" matrix and use RSA to find brain regions where subjects who are more similar in their behavior are also more similar in their neural response. The basic idea behind this is illustrated in the figure below:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="../../images/isrsa/Fig1_multilayer_figure_R1.jpg" alt="isrsa"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Fig. 1. Schematic of inter-subject representational similarity analysis.</strong>
+<em>From <a href="https://www.sciencedirect.com/science/article/pii/S1053811920303153">Finn et al., 2020</a></em>. Each subject (bottom layer) is associated with a behavioral score (middle layer) and a pattern of brain activity (top layer, e.g., a time series from a given brain region during naturalistic stimulation). The middle and upper layers depict weighted graphs obtained using the similarity matrices as adjacency matrices, where thicker lines indicate increased similarity between nodes (subjects). In IS-RSA, we construct pairwise (i.e, subject-by-subject) similarity matrices for the behavioral data and the brain data, then compare these matrices using a Mantel test. Thus, we can leverage inter-subject analysis methods such as ISC to detect shared structure between brain data and behavioral data. This figure is a modified version of Fig. 1 in <a href="https://onlinelibrary.wiley.com/doi/full/10.1002/hbm.23084">Glerean et al. (2016)</a>.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This sounds straightforward enough. But one critical question is, how do we measure behavioral similarity? In choosing a distance metric, particularly when our behavior is one-dimensional (e.g., age (<a href="https://www.nature.com/articles/s41598-018-20600-0">Moraczewski et al., 2018</a>; <a href="https://www.nature.com/articles/s41467-018-03399-2">Richardson et al., 2018</a>), a trait score (<a href="https://www.nature.com/articles/s41467-018-04387-2">Finn et al., 2018</a>), accuracy on a cognitive task), we bake in some fundamental assumptions about the structure of the brain-behavior representational similarity that affect the ultimate results and how we interpret them. To get a feel for some potential structures, imagine arranging the rows and columns of the ISC matrix such that subjects are ordered by their behavioral score. What would we expect the resulting matrix to look like?</p>
+<p>If we use Euclidean distance or another relative distance metric, we implicitly assume that subjects with closer scores should be more similar to one another, regardless of where they fall on the scale. In other words, for a behavior that is measured on a scale from 0 to 100, a pair of subjects scoring 0 and 1 should be just as similar as a pair of subjects scoring 99 and 100 (since in both cases, the Euclidean distance is 1). We call this the Nearest Neighbors (NN) model, since it assumes that a subject should always look most similar to his or her immediate neighbors, regardless of their absolute position on the scale.</p>
+<p>The NN model may be appropriate for certain behaviors, but we could imagine an equally if not more plausible scenario: that similarity between subjects increases or decreases as one moves up or down the scale, in an absolute rather than relative sense. For example, perhaps high-scoring subjects are more similar to other high scorers, while low-scoring subjects are less similar both to high scorers and other low scorers. In other words, brain responses cluster together for subjects at one end of the behavioral spectrum, while variability increases as one moves toward the opposite end of the spectrum. We call this the Anna Karenina (or AnnaK) model, after the famous opening line of Leo Tolstoy’s novel, which reads “All happy families are alike; each unhappy family is unhappy in its own way” (or, in this context, “all high [low] scorers are alike; each low [high] scorer is different in his or her own way”). In this case, Euclidean distance would not be the most appropriate choice. Instead, we would want to model similarity using a metric that reflects absolute position on the scale—for example, mean: (i ​+ ​j)/2, minimum: min(i, j), or the product of the mean and minimum.</p>
+<p>Let's do some simulations and visualizations to make this more concrete:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># First, choose number of subjects and simulate behavior chosen from random distribution</span>
+<span class="n">n_subs</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">behav_raw</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n_subs</span><span class="p">)</span>
+<span class="n">behav</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">rankdata</span><span class="p">(</span><span class="n">behav_raw</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span>
+
+<span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s1">&#39;RdYlBu_r&#39;</span><span class="p">)</span>
+<span class="n">cmap</span><span class="o">.</span><span class="n">set_bad</span><span class="p">(</span><span class="s1">&#39;#C0C0C0&#39;</span><span class="p">)</span>
+
+<span class="c1"># Define some helper functions</span>
+<span class="k">def</span> <span class="nf">sort_square_mtx</span><span class="p">(</span><span class="n">mtx</span><span class="p">,</span> <span class="n">vct</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Sorts rows/columns of a matrix according to a separate vector.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="n">inds</span> <span class="o">=</span> <span class="n">vct</span><span class="o">.</span><span class="n">argsort</span><span class="p">()</span>
+    <span class="n">mtx_sorted</span> <span class="o">=</span> <span class="n">mtx</span>
+    <span class="n">mtx_sorted</span> <span class="o">=</span> <span class="n">mtx_sorted</span><span class="p">[</span><span class="n">inds</span><span class="p">,</span> <span class="p">:]</span>
+    <span class="n">mtx_sorted</span> <span class="o">=</span> <span class="n">mtx_sorted</span><span class="p">[:,</span> <span class="n">inds</span><span class="p">]</span>
+    
+    <span class="k">return</span> <span class="n">mtx_sorted</span>
+
+<span class="k">def</span> <span class="nf">scale_mtx</span><span class="p">(</span><span class="n">mtx</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Scales a matrix to have values between 0 and 1.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">mtx</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">mtx</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">mtx</span><span class="p">)</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">mtx</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>First, let's see what we're assuming the similarity structure should look like if we use Euclidean distance as our metric. The matrix below is subjects-by-subjects, with subjects ordered according to behavioral score (from low to high):</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">nn_mtx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_subs</span><span class="p">,</span> <span class="n">n_subs</span><span class="p">))</span> <span class="c1"># initialize a similarity matrix</span>
+<span class="n">noise_factor</span> <span class="o">=</span> <span class="mf">0.1</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_subs</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_subs</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">j</span><span class="p">:</span>
+            <span class="n">dist_ij</span> <span class="o">=</span> <span class="mi">1</span><span class="o">-</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">behav</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">-</span><span class="n">behav</span><span class="p">[</span><span class="n">j</span><span class="p">])</span><span class="o">/</span><span class="n">n_subs</span><span class="p">)</span> 
+            <span class="n">dist_ij</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">()</span><span class="o">*</span><span class="n">noise_factor</span> <span class="c1"># add some random noise</span>
+            <span class="n">nn_mtx</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">dist_ij</span>
+            <span class="n">nn_mtx</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">dist_ij</span>
+            
+<span class="n">nn_mtx</span> <span class="o">=</span> <span class="n">scale_mtx</span><span class="p">(</span><span class="n">nn_mtx</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">fill_diagonal</span><span class="p">(</span><span class="n">nn_mtx</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>    
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">sort_square_mtx</span><span class="p">(</span><span class="n">nn_mtx</span><span class="p">,</span> <span class="n">behav</span><span class="p">),</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">square</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">xticklabels</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">yticklabels</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Nearest neighbor</span><span class="se">\n</span><span class="s2">(model: Euclidean distance(i,j))&quot;</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/features/notebooks/Intersubject_RSA_17_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>So we can see that in the NN case, we see the highest similarity right along the diagonal. This means we're assuming that a subject should always look most similar to his or her immediate neighbors, regardless of where they fall on the scale more generally.</p>
+<p>What about the "Anna K" case?</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">annak_mtx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_subs</span><span class="p">,</span> <span class="n">n_subs</span><span class="p">))</span>
+<span class="n">noise_factor</span> <span class="o">=</span> <span class="mf">0.1</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_subs</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_subs</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">j</span><span class="p">:</span>
+            <span class="n">dist_ij</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">([</span><span class="n">behav</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">/</span><span class="n">n_subs</span><span class="p">,</span> <span class="n">behav</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">/</span><span class="n">n_subs</span><span class="p">])</span> <span class="c1"># calculate distance between i and j as </span>
+            <span class="n">dist_ij</span> <span class="o">+=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">()</span><span class="o">*</span><span class="n">noise_factor</span><span class="p">)</span> <span class="c1"># add some random noise</span>
+            <span class="n">annak_mtx</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">dist_ij</span>
+            <span class="n">annak_mtx</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">dist_ij</span>
+
+<span class="n">annak_mtx</span> <span class="o">=</span> <span class="n">scale_mtx</span><span class="p">(</span><span class="n">annak_mtx</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">fill_diagonal</span><span class="p">(</span><span class="n">annak_mtx</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="c1"># Draw heatmap</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">sort_square_mtx</span><span class="p">(</span><span class="n">annak_mtx</span><span class="p">,</span> <span class="n">behav</span><span class="p">),</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">square</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">xticklabels</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">yticklabels</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/features/notebooks/Intersubject_RSA_19_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now we can see that similarity increases as we move down and to the right, meaning that we expect that high scorers will look similar to other high scorers, but low scorers won't look particularly similar to one another or to high scorers.</p>
+<p>Another way to visualize the similarity structure of these matrices is to project them into a two-dimensional embedding using t-SNE (t-Distributed Stochastic Neighbor Embedding). In the righthand panels in the figure below, each dot represents a subject, and subjects are colored according to their behavioral score. In this embedding, similar observations (in this case, subjects) appear nearby, while dissimilar observations appear further away.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">list_of_matrices</span> <span class="o">=</span> <span class="p">[</span><span class="n">nn_mtx</span><span class="p">,</span> <span class="n">annak_mtx</span><span class="p">]</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">list_of_matrices</span><span class="p">),</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">m</span><span class="p">,</span> <span class="n">mtx</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">list_of_matrices</span><span class="p">):</span>
+    <span class="n">ax1</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="n">m</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+    <span class="n">ax2</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="n">m</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+    
+    <span class="c1"># Draw heatmap</span>
+    <span class="k">if</span> <span class="n">m</span> <span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+        <span class="n">cbar</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">cbar</span> <span class="o">=</span> <span class="kc">False</span>
+        
+    <span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">sort_square_mtx</span><span class="p">(</span><span class="n">mtx</span><span class="p">,</span> <span class="n">behav</span><span class="p">),</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">,</span> 
+                <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">square</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cbar</span><span class="o">=</span><span class="n">cbar</span><span class="p">,</span> <span class="n">cbar_kws</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;Similarity&#39;</span><span class="p">},</span>
+                <span class="n">xticklabels</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">yticklabels</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    
+    <span class="c1"># Draw tSNE plot</span>
+    <span class="c1"># Note that TSNE operates on distance matrices, so because our simlarity matrices are already scaled </span>
+    <span class="c1"># to be between 0 and 1, we can convert easily by doing (1 – similarity matrix)</span>
+    <span class="n">isc_embedded</span> <span class="o">=</span> <span class="n">TSNE</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;precomputed&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">mtx</span><span class="p">)</span> 
+    <span class="n">scatter_p</span> <span class="o">=</span> <span class="n">ax2</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">isc_embedded</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">isc_embedded</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">behav</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([])</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
+    
+    <span class="k">if</span> <span class="n">m</span> <span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+        <span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Component 1&#39;</span><span class="p">)</span>
+        <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Component 2&#39;</span><span class="p">)</span>
+        <span class="c1"># cbar.ax2.set_xticklabels([&#39;Low&#39;, &#39;High&#39;])</span>
+        
+    <span class="n">ax2</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;square&#39;</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlim</span> <span class="o">=</span> <span class="n">ax2</span><span class="o">.</span><span class="n">get_xlim</span><span class="p">(),</span> <span class="n">ylim</span> <span class="o">=</span> <span class="n">ax2</span><span class="o">.</span><span class="n">get_ylim</span><span class="p">())</span>
+
+<span class="n">cbar</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">scatter_p</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="n">ticks</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">([</span><span class="s1">&#39;Low&#39;</span><span class="p">,</span> <span class="s1">&#39;High&#39;</span><span class="p">])</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s1">&#39;Behavior score&#39;</span><span class="p">,</span> <span class="n">labelpad</span> <span class="o">=</span> <span class="o">-</span><span class="mi">5</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/features/notebooks/Intersubject_RSA_21_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Inter-subject-Representational-Similarity-Analysis:-Application">Inter-subject Representational Similarity Analysis: Application<a class="anchor-link" href="#Inter-subject-Representational-Similarity-Analysis:-Application"> </a></h1>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>OK, so we've seen using theory and simulations that we can apply RSA to subject-wise data, and that our choice of similarity/distance metric has implications for our underlying assumptions and how we interpret results.</p>
+<p>How much does this matter in practice? Next we're going to walk through an example of how to apply IS-RSA to the Paranoia dataset.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Read-in-behavioral-data">Read in behavioral data<a class="anchor-link" href="#Read-in-behavioral-data"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>First let's read in the table that contains demographic and behavioral info on our participants:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">behav_file</span> <span class="o">=</span> <span class="s1">&#39;Paranoia/participants.tsv&#39;</span>
+<span class="n">behav_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">behav_file</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">behav_data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>participant_id</th>
+      <th>age</th>
+      <th>sex</th>
+      <th>gptsa_score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>sub-tb2994</td>
+      <td>27</td>
+      <td>M</td>
+      <td>22</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>sub-tb3132</td>
+      <td>28</td>
+      <td>F</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>sub-tb3240</td>
+      <td>25</td>
+      <td>M</td>
+      <td>18</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>sub-tb3279</td>
+      <td>20</td>
+      <td>M</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>sub-tb3512</td>
+      <td>34</td>
+      <td>M</td>
+      <td>18</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In this study, the main variable of interest was trait paranoia, which was measured using the Green et al. Paranoid Thoughts Scale A (<a href="https://www.cambridge.org/core/journals/psychological-medicine/article/measuring-ideas-of-persecution-and-social-reference-the-green-et-al-paranoid-thought-scales-gpts/4FDC2275DF3AE6D44BF86C60AEF84CE5">Green et al., 2008</a>). This is a self-report questionnaire that asks participants to rate how strongly they agree with statements relating to paranoid ideation over the last month. Some examples are: "I spent time thinking about friends gossiping about me", "People have been dropping hints for me", and "I was frustrated by people laughing at me." There are 16 items and each item is rated on a scale from 1 (not at all) to 5 (totally). Therefore, the minimum possible score is 16 and the maximym possible score is 80.</p>
+<p>(Note that if you're interested in using this scale in future studies, a revised version, the <a href="https://www.cambridge.org/core/journals/psychological-medicine/article/revised-green-et-al-paranoid-thoughts-scale-rgpts-psychometric-properties-severity-ranges-and-clinical-cutoffs/1386D29D50A94FD3F2F17A56B3C5D368">R-GPTS</a>, has since been released.)</p>
+<p>This was a sample of all healthy participants -- that is, no one had a diagnosis of schizophrenia or other mental illness -- so we expect most scores to be toward the low end of the spectrum. Still, trait paranoia varies even among the general population, and this study was designed to look at how normative variation in this trait relates to brain responses to an ambiguous social narrative.</p>
+<p>(A quick aside: Measuring traits is notoriously difficult, and self-report suffers from a number of issues. Many people are working on better ways to phenotype individuals, such as using behavior [e.g., task performance] assessments, sometimes in conjunction with computational models . However, these trait measures are still commonly used. So, while we should take them with a large grain of salt, they can still be a useful starting point.)</p>
+<p>You can see that GPTS-A scores follow a pretty skewed distribution in our sample of 22 participants, with most participants scoring fairly low and only a couple scoring higher. This is not necessarily ideal, but it's also not uncommon for a scale like this. For some analyses, we might be worried about these two extreme values driving some or all of our effects, but in RSA it's common to use rank-based similarity metrics (i.e., Spearman correlation instead of Pearson). This means that subjects are  not their absolute score, but rather their rank relative to other subjects, meaning that these two extreme scorers will not be overweighted. We'll get into this further below.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">behav</span> <span class="o">=</span> <span class="n">behav_data</span><span class="p">[</span><span class="s2">&quot;gptsa_score&quot;</span><span class="p">]</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">behav</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x123289048&gt;</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/features/notebooks/Intersubject_RSA_28_1.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>So for most intents and purposes, you can think of our behavior as following a uniform distribution of ranks between 1-22 (with some ties where 2 or more subjects had the same raw score):</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">behav_rank</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">rankdata</span><span class="p">(</span><span class="n">behav</span><span class="p">)</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">behav_rank</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x1235c6f28&gt;</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/features/notebooks/Intersubject_RSA_30_1.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Read-in-brain-data">Read in brain data<a class="anchor-link" href="#Read-in-brain-data"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In working with fMRI data, we have a choice as to whether we'd like to work in the original resolution of the data -- voxels -- or if we'd like to summarize across space in some way. We could calculate similarity across the whole brain at once, but there are probably some regions where the representational similarity with behavior is stronger than in other regions, and we'd like to be able to visualize and say something about which regions are contributing most to our effect. We could calculate similarity at each individual voxel separately. This has the advantage of maximizing spatial specificity, but it's also expensive in terms of time and computation, and we know the BOLD response tends to be smoother than single voxels. Another option would be to take a searchlight approach, where we calculate similarity within a "searchlight", or a relatively small sphere or cube of voxels centered around a voxel. This preserves some degree of spatial specificity while boosting signal relative to single voxels (which can be noisy) and recognizing the inherent smoothness of the local BOLD response, but it still requires us to loop through every voxel, which takes a lot of time and memory. Furthermore, both single-voxel and searchlight approaches also lead to larger penalties when it comes time to correct for multiple comparisons, since we've effectively done as many tests as there are voxels, and we need to stringently control for false positives.</p>
+<p>A happy medium is to summarize voxelwise data into nodes, or parcels. In this approach, we used predefined ROIs to group voxels into contiguous regions. At each TR, we average signal in all the voxels in a node to get one representative timecourse for that node. This way, we cut down on computational complexity by several orders of magnitude (compare ~70,000 brain voxels in a typical 3mm<sup>3</sup> whole-brain acquisition with ~100-300 nodes found in most parcellations).</p>
+<p>For purposes of this tutorial, we'll take the nodewise approach. We'll use a functional parcellation called the Shen atlas (<a href="https://www.sciencedirect.com/science/article/abs/pii/S1053811913005818">Shen et al., 2013</a>), which has 268 nodes. I personally like this parcellation because it covers the whole brain including the subcortex and cerebellum, whereas many other parcellations only cover cortex. Also, in general, parcellations in the 200-300 node range provide a good balance of spatial specificity without having nodes so small that they amplify registration errors and partial voluming effects from slight misalignments across subjects. In general, though, I don't believe there is necessarily one "true" parcellation -- I see it more as a data-reduction step, and it's never a bad idea to make sure your results are robust to the choice of parcellation.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Applying-a-parcellation-mask-and-calculating-nodewise-timeseries">Applying a parcellation mask and calculating nodewise timeseries<a class="anchor-link" href="#Applying-a-parcellation-mask-and-calculating-nodewise-timeseries"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>First, let's load our parcellation image (in the same space as our fMRI data, "TTN27"*) and initialize a "masker" object from nilearn that will allow us to average voxels each individual node:</p>
+<p>*<em>One thing to be aware of in this dataset is that the fMRI data were normalized to the Talairach atlas (specifically the "TTN27" image available in AFNI), rather than the more common MNI space. This isn't much of an issue for purposes of this tutorial, since we plan to reduce the data into nodes and do the rest of our analyses in node rather than voxel space, but it's good to be aware of if you'd like to use the fMRI data for other purposes.</em></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">atlas_filename</span> <span class="o">=</span> <span class="s1">&#39;shen_2mm_268_parcellation_adwarpTTN27.nii.gz&#39;</span>
+
+<span class="n">masker</span> <span class="o">=</span> <span class="n">NiftiLabelsMasker</span><span class="p">(</span><span class="n">labels_img</span><span class="o">=</span><span class="n">atlas_filename</span><span class="p">,</span> <span class="n">standardize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let's try this on the first run from the first subject to see if it's working as expected:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fmri_file</span> <span class="o">=</span> <span class="s1">&#39;Paranoia/fmriprep/sub-tb2994/func/sub-tb2994_denoise_smooth6mm_task-story_run-1_space-MNI152NLin2009cAsym_desc-preproc_bold.nii.gz&#39;</span>
+
+<span class="n">time_series</span> <span class="o">=</span> <span class="n">masker</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">fmri_file</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">time_series</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">time_series</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>(526, 268)
+</pre>
+</div>
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/features/notebooks/Intersubject_RSA_37_1.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The array has the correct shape: 526 TRs (the length of run 1) x 268 nodes. When we visualize it as a heatmap we can see that the values look reasonable: centered around 0 (which we would expect given that the masker function normalizes the data by default), and no stripe-y artifacts that look <em>too</em> concerning.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Next, we'll create node time series for all subjects for all runs. There are 22 subjects, each with 3 runs, so this will take a little while. The good news is we only have to run this once -- the cell below will save the node time series as .txt files, and we can just load these directly next time we want to use them.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">subj_list</span> <span class="o">=</span> <span class="n">behav_data</span><span class="p">[</span><span class="s2">&quot;participant_id&quot;</span><span class="p">]</span>
+<span class="n">out_dir</span> <span class="o">=</span> <span class="s1">&#39;./nodeTimeSeries/&#39;</span>
+
+<span class="k">for</span> <span class="n">s</span><span class="p">,</span><span class="n">subj</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">subj_list</span><span class="p">):</span>    
+    <span class="k">for</span> <span class="n">run</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]:</span>
+
+        <span class="n">fmri_suffix</span> <span class="o">=</span> <span class="s1">&#39;_denoise_smooth6mm_task-story_run-&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">run</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;_space-MNI152NLin2009cAsym_desc-preproc_bold&#39;</span> 
+        <span class="n">time_series_fname</span> <span class="o">=</span> <span class="n">subj</span> <span class="o">+</span> <span class="n">fmri_suffix</span> <span class="o">+</span> <span class="s1">&#39;_nodeTimeSeries.txt&#39;</span>
+        
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">out_dir</span><span class="o">+</span><span class="n">time_series_fname</span><span class="p">):</span> <span class="c1"># check if time series file already exists</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Node time series for subject </span><span class="si">{}</span><span class="s2">, run </span><span class="si">{}</span><span class="s2"> already exists!&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">s</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">run</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span> <span class="c1"># create it</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Creating node time series for subject </span><span class="si">{}</span><span class="s2">, run </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">s</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">run</span><span class="p">))</span>
+            <span class="n">fmri_file</span> <span class="o">=</span> <span class="s1">&#39;Paranoia/fmriprep/&#39;</span> <span class="o">+</span> <span class="n">subj</span> <span class="o">+</span> <span class="s1">&#39;/func/&#39;</span> <span class="o">+</span> <span class="n">subj</span> <span class="o">+</span> <span class="n">fmri_suffix</span> <span class="o">+</span> <span class="s1">&#39;.nii.gz&#39;</span>
+            <span class="n">time_series</span> <span class="o">=</span> <span class="n">masker</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">fmri_file</span><span class="p">)</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">savetxt</span><span class="p">(</span><span class="n">out_dir</span><span class="o">+</span><span class="n">time_series_fname</span><span class="p">,</span> <span class="n">time_series</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Node time series for subject 1, run 1 already exists!
+Node time series for subject 1, run 2 already exists!
+Node time series for subject 1, run 3 already exists!
+Node time series for subject 2, run 1 already exists!
+Node time series for subject 2, run 2 already exists!
+Node time series for subject 2, run 3 already exists!
+Node time series for subject 3, run 1 already exists!
+Node time series for subject 3, run 2 already exists!
+Node time series for subject 3, run 3 already exists!
+Node time series for subject 4, run 1 already exists!
+Node time series for subject 4, run 2 already exists!
+Node time series for subject 4, run 3 already exists!
+Node time series for subject 5, run 1 already exists!
+Node time series for subject 5, run 2 already exists!
+Node time series for subject 5, run 3 already exists!
+Node time series for subject 6, run 1 already exists!
+Node time series for subject 6, run 2 already exists!
+Node time series for subject 6, run 3 already exists!
+Node time series for subject 7, run 1 already exists!
+Node time series for subject 7, run 2 already exists!
+Node time series for subject 7, run 3 already exists!
+Node time series for subject 8, run 1 already exists!
+Node time series for subject 8, run 2 already exists!
+Node time series for subject 8, run 3 already exists!
+Node time series for subject 9, run 1 already exists!
+Node time series for subject 9, run 2 already exists!
+Node time series for subject 9, run 3 already exists!
+Node time series for subject 10, run 1 already exists!
+Node time series for subject 10, run 2 already exists!
+Node time series for subject 10, run 3 already exists!
+Node time series for subject 11, run 1 already exists!
+Node time series for subject 11, run 2 already exists!
+Node time series for subject 11, run 3 already exists!
+Node time series for subject 12, run 1 already exists!
+Node time series for subject 12, run 2 already exists!
+Node time series for subject 12, run 3 already exists!
+Node time series for subject 13, run 1 already exists!
+Node time series for subject 13, run 2 already exists!
+Node time series for subject 13, run 3 already exists!
+Node time series for subject 14, run 1 already exists!
+Node time series for subject 14, run 2 already exists!
+Node time series for subject 14, run 3 already exists!
+Node time series for subject 15, run 1 already exists!
+Node time series for subject 15, run 2 already exists!
+Node time series for subject 15, run 3 already exists!
+Node time series for subject 16, run 1 already exists!
+Node time series for subject 16, run 2 already exists!
+Node time series for subject 16, run 3 already exists!
+Node time series for subject 17, run 1 already exists!
+Node time series for subject 17, run 2 already exists!
+Node time series for subject 17, run 3 already exists!
+Node time series for subject 18, run 1 already exists!
+Node time series for subject 18, run 2 already exists!
+Node time series for subject 18, run 3 already exists!
+Node time series for subject 19, run 1 already exists!
+Node time series for subject 19, run 2 already exists!
+Node time series for subject 19, run 3 already exists!
+Node time series for subject 20, run 1 already exists!
+Node time series for subject 20, run 2 already exists!
+Node time series for subject 20, run 3 already exists!
+Node time series for subject 21, run 1 already exists!
+Node time series for subject 21, run 2 already exists!
+Node time series for subject 21, run 3 already exists!
+Node time series for subject 22, run 1 already exists!
+Node time series for subject 22, run 2 already exists!
+Node time series for subject 22, run 3 already exists!
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now the next time we want to work with this data, we can just load these text files containing the nodewise timeseries. As we load them, we stack them into a 3d array that is TRs x nodes x subjects:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">run_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="n">subj_list</span> <span class="o">=</span> <span class="n">behav_data</span><span class="p">[</span><span class="s2">&quot;participant_id&quot;</span><span class="p">]</span>
+<span class="n">out_dir</span> <span class="o">=</span> <span class="s1">&#39;./nodeTimeSeries/&#39;</span>
+
+<span class="k">for</span> <span class="n">s</span><span class="p">,</span> <span class="n">subj</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">subj_list</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">r</span><span class="p">,</span><span class="n">run</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">run_list</span><span class="p">):</span>
+    
+        <span class="n">f_suffix</span> <span class="o">=</span> <span class="s1">&#39;_denoise_smooth6mm_task-story_run-&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">run</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;_space-MNI152NLin2009cAsym_desc-preproc_bold&#39;</span> 
+        <span class="n">ts_fname</span> <span class="o">=</span> <span class="n">subj</span> <span class="o">+</span> <span class="n">f_suffix</span> <span class="o">+</span> <span class="s1">&#39;_nodeTimeSeries.txt&#39;</span>
+        <span class="n">ts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">out_dir</span> <span class="o">+</span> <span class="n">ts_fname</span><span class="p">)</span>
+        
+        <span class="k">if</span> <span class="n">r</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+            <span class="n">this_subj_data</span> <span class="o">=</span> <span class="n">ts</span>
+        <span class="k">elif</span> <span class="n">r</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">this_subj_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">this_subj_data</span><span class="p">,</span> <span class="n">ts</span><span class="p">))</span>
+
+    <span class="k">if</span> <span class="n">s</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">this_subj_data</span>
+    <span class="k">elif</span> <span class="n">s</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dstack</span><span class="p">((</span><span class="n">data</span><span class="p">,</span> <span class="n">this_subj_data</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let's make sure our data has the expected shape:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(526, 268, 22)</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>526 TRs (which is the number of timepoints in Run 1) x 268 nodes x 22 subjects -- looks good.</p>
+<p>Let's save those dimensions so we can continue to use them throughout our analysis:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">n_trs</span><span class="p">,</span> <span class="n">n_nodes</span><span class="p">,</span> <span class="n">n_subs</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Calculate-brain-similarity">Calculate brain similarity<a class="anchor-link" href="#Calculate-brain-similarity"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now that we've loaded the fMRI data for each subject, we want to compute similarity between each pair of subjects. We'll use inter-subject correlation (ISC) as our measure of brain similarity. ISC, originally proposed by Hasson et al. (<a href="https://science.sciencemag.org/content/303/5664/1634?casa_token=3oVmG98qSHgAAAAA:LXmtpfYQkGXP5GNuejgi1PpFRqrsBb0eC_jixgG_ezQt4Jnd_aEPhE9ZO6KO_lMIeSoW2vUK_T7iBw">2004</a>), is the Pearson correlation of activity in the same spatial location across two or more subjects. Because all subjects heard the same time-locked story, any correlated activity across brains likely reflects processing of the stimulus.</p>
+<p>Keep in mind that, in theory, we could calculate brain similarity based on any type of information we can extract from single subjects’ neuroimaging data. For example, we could use functional connectivity (<a href="https://onlinelibrary.wiley.com/doi/full/10.1002/hbm.23084">Glerean et al., 2016</a>), or compare subjects’ temporal trajectories over the course of a stimulus using low-dimensional topological embeddings (e.g., <a href="https://www.sciencedirect.com/science/article/pii/S1053811919307207?casa_token=5T27kc403nYAAAAA:N1AOdnwOScPcbvf5iIB8h6kN55DRGibCP6XsrOWell4KSIMCo6FDXAxnTX2K59jQXSxHoAtfkA">Gonzalez-Castillo et al., 2019</a>; <a href="https://www.nature.com/articles/s41467-018-03664-4">Saggar et al., 2018</a>), latent state discovery (<a href="https://www.biorxiv.org/content/10.1101/487892v1.abstract">Chang et al., 2018</a>), or projection into a higher-order space using recurrent neural networks (<a href="https://www.sciencedirect.com/science/article/pii/S105381191832086X?casa_token=QTC-yPNogCoAAAAA:uMb-Hek05cjMAlRJ6msHKC3cwYQU1QuP9TSQaBky8iuLxsHt6Tr5RVkohw4SGPo2GZCrGeoQ8A">Venkatesh et al., 2019</a>). These are all really interesting potential extensions of IS-RSA. For now, we'll use ISC because it is straightforward to compute, visualize, and interpret.</p>
+<p>We'll calculate one ISC matrix (with dimensions subjects x subjects) for each of our 268 nodes:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Use list comprehension to quickly iterate through all 268 nodes (denoted with `x`)</span>
+<span class="c1"># The .T operator means transpose, so that we are correlating a single node&#39;s activity across all TRs, </span>
+<span class="c1"># rather than taking a single TR and correlating the spatial activity pattern across all nodes</span>
+<span class="c1"># This way we end up with one ISC matrix per node, rather than one ISC matrix per TR </span>
+<span class="c1"># (But you can imagine the other way -- one ISC matrix per TR -- might be interesting too! </span>
+<span class="c1"># This alternative is sometimes referred to as &#39;spatial ISC&#39; or &#39;inter-subject pattern correlation&#39;</span>
+
+<span class="n">isc</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">data</span><span class="p">[:,</span><span class="n">x</span><span class="p">,:]</span><span class="o">.</span><span class="n">T</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_nodes</span><span class="p">)]</span> 
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let's make sure our <code>isc</code> data is the expected shape:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">isc</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">isc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>268
+(22, 22)
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>So <code>isc</code> is a list of length 268 (one per node) and each item in this list is a 22 x 22 matrix (subjects x subjects).</p>
+<p>Let's visualize one of these matrices to make sure it looks reasonable:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">isc</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/features/notebooks/Intersubject_RSA_53_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This looks reasonable: most values are positive, and there is some variance in correlation strength across subject pairs. (The diagonal is all 1s since each subject is perfectly correlated with him or herself.)</p>
+<p>Before diving into this variability across subject pairs and how it relates to behavior, we might want to see which nodes show the highest ISC across the whole group.</p>
+<p>We'll define a function that will load in our parcellation image and color ROIs by some value -- in this case, average ISC <em>r</em> value -- to make it easy to visualize.</p>
+<p>(Note that even though the original data was in Talairach space, now that we've translated everything to nodes, we can easily switch back to MNI space to take advantage of nilearn's plotting functions, which use MNI space by default. To do this we just use the MNI version of the parcellation: <code>shen_2mm_268_parcellation.nii.gz</code>)</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">color_rois</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">atlas_fname</span> <span class="o">=</span> <span class="s2">&quot;shen_2mm_268_parcellation.nii.gz&quot;</span><span class="p">):</span>
+    
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This function assumes you are passing a vector &quot;values&quot; with the same length as the number of nodes in the atlas.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="n">atlas</span> <span class="o">=</span> <span class="n">nib</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">atlas_fname</span><span class="p">)</span>
+    <span class="n">atlas_data</span> <span class="o">=</span> <span class="n">atlas</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">atlas_data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">roi</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">)):</span>
+        <span class="n">itemindex</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">atlas_data</span><span class="o">==</span><span class="n">roi</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># find voxels in this node (add 1 to account for zero-indexing)</span>
+        <span class="n">img</span><span class="p">[</span><span class="n">itemindex</span><span class="p">]</span> <span class="o">=</span> <span class="n">values</span><span class="p">[</span><span class="n">roi</span><span class="p">]</span> <span class="c1"># color them by the desired value </span>
+
+    <span class="n">affine</span> <span class="o">=</span> <span class="n">atlas</span><span class="o">.</span><span class="n">affine</span>
+    <span class="n">img_nii</span> <span class="o">=</span> <span class="n">nib</span><span class="o">.</span><span class="n">Nifti1Image</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">affine</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">img_nii</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The ISC matrices are symmetric, so we only need to average the upper triangle (and we want to avoid including the diagonal of 1s, since this will inflate the mean values). We use numpy's handy <code>triu_indices_from</code> function to get the indices corresponding to the upper triangle of a matrix of a certain shape (in this case, 22 x 22).</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">upp_inds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">triu_indices_from</span><span class="p">(</span><span class="n">isc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># k=1 tells it to omit the diagonal</span>
+
+<span class="n">avg_isc</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">upp_inds</span><span class="p">])</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">isc</span><span class="p">]</span> <span class="c1"># average the upper triangle</span>
+
+<span class="n">avg_isc_img</span> <span class="o">=</span> <span class="n">color_rois</span><span class="p">(</span><span class="n">avg_isc</span><span class="p">)</span> <span class="c1"># use our color_rois function to map these average ISCs onto our parcellation image</span>
+
+<span class="n">plotting</span><span class="o">.</span><span class="n">plot_glass_brain</span><span class="p">(</span><span class="n">avg_isc_img</span><span class="p">,</span> <span class="n">colorbar</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span> <span class="c1"># plot it!</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/features/notebooks/Intersubject_RSA_57_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Happily, it looks like the highest synchrony was in superior temporal cortex, which makes sense given that these areas are involved in auditory processing and language. Visual regions aren't particularly synchronized, which also makes sense, since this was a purely audio story. But there is also some interesting synchrony in the temporo-parietal junction, anterior temporal lobe, parts of prefrontal cortex, and posterior cerebellum. This may be a hint that above and beyond receiving the same low-level auditory and linguistic input, participants' higher-level processing of the stimulus may have been somewhat similar as well.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>OK, that was a good sanity check, but what we really want to know is not where there's high ISC overall, but where ISC is higher among pairs of participants that are also more similar in their behavior score.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Calculate-behavioral-similarity">Calculate behavioral similarity<a class="anchor-link" href="#Calculate-behavioral-similarity"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>As we saw in the "Theory" section above, there are multiple ways to calculate behavioral similarity, and the metric we choose both implies something about our assumptions for what the similarity structure should look like and affects how we interpret the results.</p>
+<p>Let's extract our vector of scores for the behavior we're interested in:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">behav</span> <span class="o">=</span> <span class="n">behav_data</span><span class="p">[</span><span class="s2">&quot;gptsa_score&quot;</span><span class="p">]</span>
+<span class="n">behav_rank</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">rankdata</span><span class="p">(</span><span class="n">behav</span><span class="p">)</span> <span class="c1"># explicity convert the raw scores to ranks</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We're going to explore both types of similarity structures presented above (nearest-neighbors and Anna Karenina) to see which one is a better fit for our data.</p>
+<p>We'll start by calculating the "nearest neighbors" behavioral similarity matrix. The metric for this is Euclidean distance, or just the difference between two subjects' ranks. While RSA operates equally well on similarity and distance matrices, I personally find it a bit easier to keep things straight when both matrices are of the same type. Because ISC is inherently a similarity measure (higher scores = more similar), and Euclidean distance is inherently a distance measure (higher scores = more distant/less similar), we'll convert the Euclidean distances to similarities by normalizing them and subtracting them from 1. This makes it more straightforward later on, when we can interpret positive RSA <em>r</em> values as reflecting a higher representational similarity between brain and behavior.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">behav_sim_nn</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_subs</span><span class="p">,</span> <span class="n">n_subs</span><span class="p">))</span> <span class="c1"># initialize a similarity matrix to store pairwise similarities</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_subs</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_subs</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">j</span><span class="p">:</span>
+            <span class="n">sim_ij</span> <span class="o">=</span> <span class="mi">1</span><span class="o">-</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">behav_rank</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">-</span><span class="n">behav_rank</span><span class="p">[</span><span class="n">j</span><span class="p">])</span><span class="o">/</span><span class="n">n_subs</span><span class="p">)</span> <span class="c1"># this is essentially normalized and inverted Euclidean distance</span>
+            <span class="n">behav_sim_nn</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">sim_ij</span>
+            <span class="n">behav_sim_nn</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">sim_ij</span>
+        <span class="k">if</span> <span class="n">i</span><span class="o">==</span><span class="n">j</span><span class="p">:</span>
+            <span class="n">behav_sim_nn</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">behav_sim_nn</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">ax1</span><span class="p">,</span> <span class="n">square</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Behavioral similarity matrix before sorting&quot;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">sort_square_mtx</span><span class="p">(</span><span class="n">behav_sim_nn</span><span class="p">,</span> <span class="n">behav</span><span class="p">),</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">ax2</span><span class="p">,</span> <span class="n">square</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Behavioral similarity matrix after sorting&quot;</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/features/notebooks/Intersubject_RSA_64_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can see that after sorting subjects in order of paranoia score rank (from low to high), the expected diagonal structure -- where each subject is more similar to his/her immediate neighbors -- becomes clearly visible. However, note that this matrix is <strong>only</strong> for purposes of visualization: for our IS-RSA analyses, we'll want to use the original matrix to make sure that the subject order matches our brain similarity (ISC) matrices!</p>
+<p>Now we'll construct a behavioral similarity matrix reflecting the "Anna Karenina" structure. The metric for this is the mean of two subjects' ranks, which we'll normalize by the highest possible rank (the number of subjects):</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">behav_sim_annak</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_subs</span><span class="p">,</span> <span class="n">n_subs</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_subs</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_subs</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">j</span><span class="p">:</span>
+            <span class="n">sim_ij</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">([</span><span class="n">behav_rank</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">behav_rank</span><span class="p">[</span><span class="n">j</span><span class="p">]])</span><span class="o">/</span><span class="n">n_subs</span>
+            <span class="n">behav_sim_annak</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">sim_ij</span>
+            <span class="n">behav_sim_annak</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">sim_ij</span>
+        <span class="k">elif</span> <span class="n">i</span><span class="o">==</span><span class="n">j</span><span class="p">:</span>
+            <span class="n">behav_sim_annak</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+
+        
+<span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">behav_sim_annak</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">ax1</span><span class="p">,</span> <span class="n">square</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Behavioral similarity matrix before sorting&quot;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">sort_square_mtx</span><span class="p">(</span><span class="n">behav_sim_annak</span><span class="p">,</span> <span class="n">behav</span><span class="p">),</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">ax2</span><span class="p">,</span> <span class="n">square</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Behavioral similarity matrix after sorting&quot;</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/features/notebooks/Intersubject_RSA_66_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can see the expected structure in the sorted similarity matrix: similarity increases as you move down and to the right, reflecting the idea that pairs of participants that score higher on trait paranoia should be more similar that pairs of low-scoring participants.</p>
+<p>One convenient feature of operationalizing the similarity matrix in this way is that that the same model can detect effects in both directions, based on the sign of the resulting r-value between the brain and behavioral similarity matrices. If high scorers are alike and low scorers different, the resulting r-value would be positive; if low scorers are alike and high scorers different, it would be negative. This means we don't have to run two different models to check for effects in different directions.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Relate-brain-similarity-to-behavioral-similarity-using-RSA">Relate brain similarity to behavioral similarity using RSA<a class="anchor-link" href="#Relate-brain-similarity-to-behavioral-similarity-using-RSA"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now that we have our similarity matrices for both brain and behavior data, we can do intersubject RSA!</p>
+<p>It's easy enough to calculate a correlation coefficient between the upper triangles of two similarity matrices, but we need to be careful when assessing the statistical significance of this correlation. Parametric p-values won't work here, since the values in each matrix are not independent: each value is associated with two subjects, meaning that any two values that share a row or column are not independent. In other words, the value for (<em>i,j</em>) is not independent from the value for (<em>i,k</em>), since they share subject <em>i</em>.</p>
+<p>This means that we need to calculate significance non-parametrically, by randomly shuffling one of the matrices in a way that respects this complicated dependence structure. We can do this by simply making sure we permute rows and columns at the same time. One easy way to think about this is, in the case of the behavioral similarity matrix, it's as if we shuffled behavior scores across subjects and recalculated the behavioral similarity matrix. (Or, in the case of the brain similarity matrix, it's as if we shuffled node timeseries across subjects and recalculated the ISC matrix.) Then we correlate this shuffled matrix with the second matrix, and we do this a large number of times to build up a distribution for the correlation we might expect by chance. In the cells that follow, we define some functions to help us do this.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">matrix_correlation</span><span class="p">(</span><span class="n">data1</span><span class="p">,</span> <span class="n">data2</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;spearman&#39;</span><span class="p">):</span>
+    
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Takes two square (symmetric) matrices and returns correlation between their upper triangles.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">upper_tri_inds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">triu_indices_from</span><span class="p">(</span><span class="n">data1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="n">metric</span> <span class="o">==</span> <span class="s1">&#39;spearman&#39;</span><span class="p">:</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">spearmanr</span><span class="p">(</span><span class="n">data1</span><span class="p">[</span><span class="n">upper_tri_inds</span><span class="p">],</span> <span class="n">data2</span><span class="p">[</span><span class="n">upper_tri_inds</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">elif</span> <span class="n">metric</span> <span class="o">==</span> <span class="s1">&#39;pearson&#39;</span><span class="p">:</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">pearsonr</span><span class="p">(</span><span class="n">data1</span><span class="p">[</span><span class="n">upper_tri_inds</span><span class="p">],</span> <span class="n">data2</span><span class="p">[</span><span class="n">upper_tri_inds</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">r</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">permute_matrix</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    
+    <span class="sd">&quot;&quot;&quot; </span>
+<span class="sd">    Permutes rows and columns of a symmetrical matrix, preserving dependence structure.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="n">random_state</span> <span class="o">=</span> <span class="n">check_random_state</span><span class="p">(</span><span class="n">random_state</span><span class="p">)</span>
+
+    <span class="n">data_row_id</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">permuted_ix</span> <span class="o">=</span> <span class="n">random_state</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">data_row_id</span><span class="p">,</span>
+                                      <span class="n">size</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">data_row_id</span><span class="p">),</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">data</span><span class="p">[</span><span class="n">permuted_ix</span><span class="p">,</span> <span class="p">:][:,</span> <span class="n">permuted_ix</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">mantel_perms</span><span class="p">(</span><span class="n">data1</span><span class="p">,</span> <span class="n">data2</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;spearman&#39;</span><span class="p">,</span> <span class="n">n_perms</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Permutes one of two input matrices and recalculates correlation a large number of times </span>
+<span class="sd">    to generate a null distribution for the expected correlation between the two matrices due to chance.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+        
+    <span class="c1"># Do permutation testing</span>
+    <span class="n">r_perm</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">perm</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_perms</span><span class="p">):</span>
+        <span class="n">new_data1</span> <span class="o">=</span> <span class="n">permute_matrix</span><span class="p">(</span><span class="n">data1</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="n">random_state</span><span class="p">)</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">matrix_correlation</span><span class="p">(</span><span class="n">new_data1</span><span class="p">,</span> <span class="n">data2</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="n">metric</span><span class="p">)</span>
+        <span class="n">r_perm</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">r_perm</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">mantel_test</span><span class="p">(</span><span class="n">data1</span><span class="p">,</span> <span class="n">data2</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;spearman&#39;</span><span class="p">,</span> <span class="n">n_perms</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">,</span> <span class="n">tail</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Wraps the previous 3 functions and calculates non-parametric p-value </span>
+<span class="sd">    by counting how many times a permuted correlation coefficient </span>
+<span class="sd">    exceeds the true correlation coefficient.</span>
+<span class="sd">    </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+        
+    <span class="c1"># Calculate observed correlation</span>
+    <span class="n">r_obs</span> <span class="o">=</span> <span class="n">matrix_correlation</span><span class="p">(</span><span class="n">data1</span><span class="p">,</span> <span class="n">data2</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="n">metric</span><span class="p">)</span>
+    
+    <span class="c1"># Do permutations</span>
+    <span class="n">r_perm</span> <span class="o">=</span> <span class="n">mantel_perms</span><span class="p">(</span><span class="n">data1</span><span class="p">,</span> <span class="n">data2</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="n">metric</span><span class="p">,</span> <span class="n">n_perms</span><span class="o">=</span><span class="n">n_perms</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="n">random_state</span><span class="p">)</span>
+    
+    <span class="c1"># Calculate p-value</span>
+    <span class="n">denom</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">r_perm</span><span class="p">))</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="k">if</span> <span class="n">tail</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">numer</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">r_perm</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">r_obs</span><span class="p">))</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="k">elif</span> <span class="n">tail</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">r_obs</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">numer</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">r_perm</span> <span class="o">&gt;=</span> <span class="n">r_obs</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">numer</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">r_perm</span> <span class="o">&lt;=</span> <span class="n">r_obs</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;tail must be either 1 or 2&#39;</span><span class="p">)</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">numer</span> <span class="o">/</span> <span class="n">denom</span>
+    
+    <span class="k">return</span> <span class="p">(</span><span class="n">r_obs</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>OK, now we're going to try this on our data. Remember that we want to run IS-RSA for every node in our atlas (268 total), so we're going to write a for-loop to help us do this, and append the resulting IS-RSA stats (r value and permutation-based p-value) to a running list called either <code>result_nn</code> or <code>result_annak</code>, depending on which distance function we're using for the behavior.</p>
+<p>First, let's try nearest-neighbor (NN)-based similarity:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">behav_sim</span> <span class="o">=</span> <span class="n">behav_sim_nn</span>
+<span class="n">run_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">n_perms</span> <span class="o">=</span> <span class="mi">10000</span>
+
+<span class="n">f_name</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s1">&#39;isrsa_nn_runs&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">run_list</span><span class="p">),</span> <span class="s1">&#39;_nperms&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">n_perms</span><span class="p">)])</span>
+
+<span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">f_name</span> <span class="o">+</span> <span class="s1">&#39;.csv&#39;</span><span class="p">):</span> <span class="c1"># check if results file already exists</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Reading NN result from existing file&quot;</span><span class="p">)</span>
+    <span class="n">result_nn</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">f_name</span> <span class="o">+</span> <span class="s1">&#39;.csv&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span> <span class="c1"># otherwise, create it</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Running IS-RSA using NN model&quot;</span><span class="p">)</span>
+    <span class="n">result_nn</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_nodes</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+        <span class="n">brain_sim</span> <span class="o">=</span> <span class="n">isc</span><span class="p">[:,</span><span class="n">node</span><span class="p">]</span>
+        <span class="n">brain_sim</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">spatial</span><span class="o">.</span><span class="n">distance</span><span class="o">.</span><span class="n">squareform</span><span class="p">(</span><span class="n">brain_sim</span><span class="p">)</span>
+        <span class="n">result_nn</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mantel_test</span><span class="p">(</span><span class="n">brain_sim</span><span class="p">,</span> <span class="n">behav_sim</span><span class="p">,</span> <span class="n">n_perms</span><span class="o">=</span><span class="n">n_perms</span><span class="p">))</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">result_nn</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;r_val&quot;</span><span class="p">,</span> <span class="s2">&quot;p_val&quot;</span><span class="p">])</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">f_name</span> <span class="o">+</span> <span class="s1">&#39;.csv&#39;</span><span class="p">)</span>
+    
+<span class="n">result_nn</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Reading NN result from existing file
+</pre>
+</div>
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Unnamed: 0</th>
+      <th>r_val</th>
+      <th>p_val</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>0.050348</td>
+      <td>0.450555</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>0.115661</td>
+      <td>0.092191</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>0.114427</td>
+      <td>0.099390</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3</td>
+      <td>0.085473</td>
+      <td>0.191681</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4</td>
+      <td>0.100302</td>
+      <td>0.144786</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>That took a little while to run. We've saved it so that if we want to use the results in the future, we won't need to rerun it.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The first thing we can do is look at the distribution of RSA r-values across all nodes, to see if there is generally some level of representational similarity between brain and behavior:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">result_nn</span><span class="p">[</span><span class="s2">&quot;r_val&quot;</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/features/notebooks/Intersubject_RSA_78_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We see that the values are generally shifted positive (the expected direction), meaning that there is more representational similarity between brain and behavior than we would expect by chance. We can also run a one-sample t-test. Note that this doesn't tell us which, if any, individual nodes show significant representational similarity, but it can tell us if there is significant representational similarity at the whole-brain level:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sp</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest_1samp</span><span class="p">(</span><span class="n">result_nn</span><span class="p">[</span><span class="s2">&quot;r_val&quot;</span><span class="p">],</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Ttest_1sampResult(statistic=14.574954924975039, pvalue=8.424580684798784e-36)</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Looks like there is, in fact, significance at the whole-brain level. But we probably want to see which nodes show the highest level of representational similarity. We can do that using the same <code>color_rois</code> function that we defined above, and give it the list of RSA r-values to color nodes by:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plotting</span><span class="o">.</span><span class="n">plot_glass_brain</span><span class="p">(</span><span class="n">color_rois</span><span class="p">(</span><span class="n">result_nn</span><span class="p">[</span><span class="s2">&quot;r_val&quot;</span><span class="p">]),</span> <span class="n">plot_abs</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">colorbar</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;nilearn.plotting.displays.OrthoProjector at 0x1262bc358&gt;</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/features/notebooks/Intersubject_RSA_82_1.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plotting</span><span class="o">.</span><span class="n">plot_stat_map</span><span class="p">(</span><span class="n">color_rois</span><span class="p">(</span><span class="n">result_nn</span><span class="p">[</span><span class="s2">&quot;r_val&quot;</span><span class="p">]),</span> <span class="n">display_mode</span><span class="o">=</span><span class="s1">&#39;z&#39;</span><span class="p">,</span> <span class="n">cut_coords</span><span class="o">=</span><span class="mi">8</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/features/notebooks/Intersubject_RSA_83_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Interesting, it looks like some of the nodes with the highest RSA values are in the angular gyrus/temporo-parietal junction (a typical "default mode" region), and the ventromedial prefrontal cortex.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>OK, now we'll try it based on AnnaK similarity:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">behav_sim</span> <span class="o">=</span> <span class="n">behav_sim_annak</span>
+<span class="n">run_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">n_perms</span> <span class="o">=</span> <span class="mi">10000</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">result_nn</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;r_val&quot;</span><span class="p">,</span> <span class="s2">&quot;p_val&quot;</span><span class="p">])</span>
+<span class="n">f_name</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s1">&#39;isrsa_annak_runs&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">run_list</span><span class="p">),</span> <span class="s1">&#39;_nperms&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">n_perms</span><span class="p">)])</span>
+
+<span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">f_name</span> <span class="o">+</span> <span class="s1">&#39;.csv&#39;</span><span class="p">):</span> <span class="c1"># check if results file already exists</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Reading AnnaK result from existing file&quot;</span><span class="p">)</span>
+    <span class="n">result_annak</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">f_name</span> <span class="o">+</span> <span class="s1">&#39;.csv&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span> <span class="c1"># otherwise, create it</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Running IS-RSA using AnnaK model&quot;</span><span class="p">)</span>
+    <span class="n">result_annak</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_nodes</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+        <span class="n">brain_sim</span> <span class="o">=</span> <span class="n">isc</span><span class="p">[:,</span><span class="n">node</span><span class="p">]</span>
+        <span class="n">brain_sim</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">spatial</span><span class="o">.</span><span class="n">distance</span><span class="o">.</span><span class="n">squareform</span><span class="p">(</span><span class="n">brain_sim</span><span class="p">)</span>
+        <span class="n">result_annak</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mantel_test</span><span class="p">(</span><span class="n">brain_sim</span><span class="p">,</span> <span class="n">behav_sim</span><span class="p">,</span> <span class="n">n_perms</span><span class="o">=</span><span class="n">n_perms</span><span class="p">))</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">result_annak</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;r_val&quot;</span><span class="p">,</span> <span class="s2">&quot;p_val&quot;</span><span class="p">])</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">f_name</span> <span class="o">+</span> <span class="s1">&#39;.csv&#39;</span><span class="p">)</span>
+
+<span class="n">result_annak</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Reading AnnaK result from existing file
+</pre>
+</div>
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Unnamed: 0</th>
+      <th>r_val</th>
+      <th>p_val</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>0.202293</td>
+      <td>0.002400</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>0.150159</td>
+      <td>0.086891</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>0.193489</td>
+      <td>0.044996</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3</td>
+      <td>0.161539</td>
+      <td>0.016598</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4</td>
+      <td>0.115532</td>
+      <td>0.226677</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can do the same thing for the AnnaK RSA values: plot the distribution across all nodes, and run a one-sample t-test:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">result_annak</span><span class="p">[</span><span class="s2">&quot;r_val&quot;</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/features/notebooks/Intersubject_RSA_88_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sp</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest_1samp</span><span class="p">(</span><span class="n">result_annak</span><span class="p">[</span><span class="s2">&quot;r_val&quot;</span><span class="p">],</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Ttest_1sampResult(statistic=16.157478114353832, pvalue=1.9961732768974243e-41)</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Looks like the whole-brain representational similarity is also significant with the AnnaK model. Let's plot it on the brain:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plotting</span><span class="o">.</span><span class="n">plot_glass_brain</span><span class="p">(</span><span class="n">color_rois</span><span class="p">(</span><span class="n">result_annak</span><span class="p">[</span><span class="s2">&quot;r_val&quot;</span><span class="p">]),</span> <span class="n">plot_abs</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">colorbar</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;nilearn.plotting.displays.OrthoProjector at 0x124f38278&gt;</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/features/notebooks/Intersubject_RSA_91_1.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now it looks like we still see the angular gyrus, but also PCC and left temporal pole -- also regions that have been implicated in social cognition.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Comparing-different-models">Comparing different models<a class="anchor-link" href="#Comparing-different-models"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now that we have run both the NN and AnnaK models, we might want to test which is more sensitive:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">result_nn</span><span class="p">[</span><span class="s2">&quot;r_val&quot;</span><span class="p">],</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;NN&quot;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">result_annak</span><span class="p">[</span><span class="s2">&quot;r_val&quot;</span><span class="p">],</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;AnnaK&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/features/notebooks/Intersubject_RSA_95_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Seems like the AnnaK values are shifted right relative to the NN values. We can confirm this with a paired t-test:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sp</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest_rel</span><span class="p">(</span><span class="n">result_nn</span><span class="p">[</span><span class="s2">&quot;r_val&quot;</span><span class="p">],</span> <span class="n">result_annak</span><span class="p">[</span><span class="s2">&quot;r_val&quot;</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Ttest_relResult(statistic=-5.739925567672386, pvalue=2.567594748575515e-08)</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Another way to visually compare results from the two models is with a scatterplot. In the plot below, each dot is a node, and we also plot the identity line (where y = x, <em>not the regression line</em>). If the NN and AnnaK models gave identical results, all the dots would fall on this diagonal line. The fact that some dots are above and some dots are below means that different nodes are best fit by different models (some by NN, others by AnnaK). The fact that most of the dots are above (rather than below) the line means that overall, the AnnaK model is better for the majority of nodes.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">set_aspect_ratio</span><span class="p">(</span><span class="n">ax</span><span class="p">):</span>
+    
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    helper function to make square axes with equal x and y ranges</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_xlim</span><span class="p">()</span>
+    <span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_ylim</span><span class="p">()</span>
+    <span class="n">both_min</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">([</span><span class="n">xmin</span><span class="p">,</span> <span class="n">ymin</span><span class="p">])</span>
+    <span class="n">both_max</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">([</span><span class="n">xmax</span><span class="p">,</span> <span class="n">ymax</span><span class="p">])</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">((</span><span class="n">both_min</span><span class="p">,</span> <span class="n">both_max</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">((</span><span class="n">both_min</span><span class="p">,</span> <span class="n">both_max</span><span class="p">))</span>
+    <span class="n">x0</span><span class="p">,</span><span class="n">x1</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_xlim</span><span class="p">()</span>
+    <span class="n">y0</span><span class="p">,</span><span class="n">y1</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_ylim</span><span class="p">()</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">x1</span><span class="o">-</span><span class="n">x0</span><span class="p">)</span><span class="o">/</span><span class="nb">abs</span><span class="p">(</span><span class="n">y1</span><span class="o">-</span><span class="n">y0</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">result_nn</span><span class="p">[</span><span class="s2">&quot;r_val&quot;</span><span class="p">],</span> <span class="n">result_annak</span><span class="p">[</span><span class="s2">&quot;r_val&quot;</span><span class="p">])</span>
+
+<span class="c1"># Set up axis with identity line</span>
+<span class="n">line</span> <span class="o">=</span> <span class="n">mlines</span><span class="o">.</span><span class="n">Line2D</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">transform</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span>
+<span class="n">line</span><span class="o">.</span><span class="n">set_transform</span><span class="p">(</span><span class="n">transform</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">add_line</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+<span class="n">set_aspect_ratio</span><span class="p">(</span><span class="n">ax</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;NN r value&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;AnnaK r value&quot;</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/features/notebooks/Intersubject_RSA_100_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can also compare the brain maps side-by-side:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">img_nn</span> <span class="o">=</span> <span class="n">color_rois</span><span class="p">(</span><span class="n">result_nn</span><span class="p">[</span><span class="s2">&quot;r_val&quot;</span><span class="p">])</span>
+<span class="n">img_annak</span> <span class="o">=</span> <span class="n">color_rois</span><span class="p">(</span><span class="n">result_annak</span><span class="p">[</span><span class="s2">&quot;r_val&quot;</span><span class="p">])</span>
+
+<span class="c1"># Find the max absolute magnitude r_val across both sets of results so we can plot using the same colorscale</span>
+<span class="n">vmax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">([</span><span class="n">result_nn</span><span class="p">[</span><span class="s2">&quot;r_val&quot;</span><span class="p">],</span> <span class="n">result_annak</span><span class="p">[</span><span class="s2">&quot;r_val&quot;</span><span class="p">]]))</span>
+
+<span class="n">plotting</span><span class="o">.</span><span class="n">plot_stat_map</span><span class="p">(</span><span class="n">img_nn</span><span class="p">,</span> <span class="n">display_mode</span><span class="o">=</span><span class="s1">&#39;z&#39;</span><span class="p">,</span> <span class="n">cut_coords</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">vmax</span><span class="p">,</span> <span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;NN&quot;</span><span class="p">)</span>
+<span class="n">plotting</span><span class="o">.</span><span class="n">plot_stat_map</span><span class="p">(</span><span class="n">img_annak</span><span class="p">,</span> <span class="n">display_mode</span><span class="o">=</span><span class="s1">&#39;z&#39;</span><span class="p">,</span> <span class="n">cut_coords</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">vmax</span><span class="p">,</span> <span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;AnnaK&quot;</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/features/notebooks/Intersubject_RSA_102_0.png"
+>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/features/notebooks/Intersubject_RSA_102_1.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Correcting-for-multiple-comparisons">Correcting for multiple comparisons<a class="anchor-link" href="#Correcting-for-multiple-comparisons"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>If we want to make inferences about the significance of representational similarity at individual nodes, we need to correct for multiple comparisons (since for each model we've run 268 tests -- one for each node). We could use Bonferroni correction, where we divide our alpha threshold (typically 0.05) by the number of tests we've run (268) to get a corrected alpha threshold (in this case 0.05/268 = 0.00019), but this is probably too conservative, resulting in many false negatives. An alternative is to use the false discovery rate method (FDR) to give us better power.</p>
+<p>We can use the implementation available in the Python package <code>statsmodels</code> to do FDR correction. This returns two arrays of length 268 (one per test, or node in this case): a Boolean indicating whether this node is significant after correction (using, in this case, the default alpha value of 0.05; <code>rej_null</code>), and the actual corrected <em>p</em> value (<code>p_corr</code>).</p>
+<p>First we'll do it for the results from the NN model:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">rej_null_nn</span><span class="p">,</span> <span class="n">p_corr_nn</span> <span class="o">=</span> <span class="n">smm</span><span class="o">.</span><span class="n">multipletests</span><span class="p">(</span><span class="n">result_nn</span><span class="p">[</span><span class="s2">&quot;p_val&quot;</span><span class="p">],</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;fdr_bh&#39;</span><span class="p">)[:</span><span class="mi">2</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">rej_null_nn</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Unfortunately it seems like none of our nodes survive multiple comparisons correction. We can also look at a histogram of corrected <em>p</em> values and see that many are on the higher end of the distribution:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">p_corr_nn</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x1266c71d0&gt;</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/features/notebooks/Intersubject_RSA_108_1.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>How about for the AnnaK model?</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">rej_null_annak</span><span class="p">,</span> <span class="n">p_corr_annak</span> <span class="o">=</span> <span class="n">smm</span><span class="o">.</span><span class="n">multipletests</span><span class="p">(</span><span class="n">result_annak</span><span class="p">[</span><span class="s2">&quot;p_val&quot;</span><span class="p">],</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;fdr_bh&#39;</span><span class="p">)[:</span><span class="mi">2</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">rej_null_annak</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">p_corr_annak</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x129b46390&gt;</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/features/notebooks/Intersubject_RSA_112_1.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Unfortunately it seems like none of the nodes survive multiple comparisons correction using the AnnaK model either (though there are a few that are close).</p>
+<p>Why might this be? It's likely a lack of power: with only 22 subjects, it's difficult to detect brain-behavior relationships.</p>
+<p>In the <a href="https://www.nature.com/articles/s41467-018-04387-2">original paper</a>, we took a voxelwise approach, which greatly increased computational complexity -- and the number of tests -- but also allowed us to take advantage of cluster-based correction, which is another way to control the family-wise error rate that leverages the spatial structure of the data (based on the assumption that if many contiguous voxels are significant, it's unlikely to be due to chance). One tradeoff with using nodes is that we are not able to use cluster correction or other spatial methods.</p>
+<p>In any case, we hope this has still been a useful discussion of the concepts behind inter-subject RSA and demonstration of how to apply this method to a real dataset. There are some publicly available datasets that include both naturalistic fMRI data and phenotyping data on larger numbers of subjects than what is available in the Paranoia dataset. These include:</p>
+<ul>
+<li><a href="https://www.humanconnectome.org/study/hcp-young-adult">Human Connectome Project 7T movie-watching data</a> (n = 184, four 15-minute movie-watching runs, many cognitive, affective, and clinical measures)</li>
+<li><a href="http://fcon_1000.projects.nitrc.org/indi/cmi_healthy_brain_network/index.html">Child Mind Institute Health Brain Network project</a> (n = 2,500+ and growing, two movie-watching runs [one 10-minute and one 3.5-minute], many cognitive, affective, and clinical measures)</li>
+</ul>
+<p>If you know of others, please submit a pull request and add them here!</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="More-resources-on-IS-RSA-and-RSA-in-general">More resources on IS-RSA and RSA in general<a class="anchor-link" href="#More-resources-on-IS-RSA-and-RSA-in-general"> </a></h1>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Many of the ideas presented here come from this paper:</p>
+<ul>
+<li><a href="https://www.sciencedirect.com/science/article/pii/S1053811920303153">E. S. Finn, E. Glerean, A. Y. Khojandi, D. Nielson, P. J. Molfese, D. A. Handwerker, P. A. Bandettini. Idiosynchrony: From shared responses to individual differences during naturalistic neuroimaging. <em>NeuroImage,</em> 215, 2020</a></li>
+</ul>
+<p>If this tutorial was useful to you, please consider citing this paper in addition to the <a href="http://naturalistic-data.org/intro">naturalistic-data-analysis book</a>. Thanks!</p>
+<p>Here are some other great resources for learning more about how RSA is generally used in brain imaging:</p>
+<ul>
+<li><a href="https://www.frontiersin.org/articles/10.3389/neuro.06.004.2008/full?utm_source=FWEB&amp;utm_medium=NBLOG&amp;utm_campaign=ECO_10YA_top-research">N. Kriegeskorte, M. Mur, P. Bandettini. Representational similarity analysis - connecting the branches of systems neuroscience. <em>Front. Syst. Neurosci.,</em> 2 (2008)</a></li>
+<li><a href="https://www.sciencedirect.com/science/article/pii/S1364661313001277">N. Kriegeskorte, R.A. Kievit. Representational geometry: integrating cognition, computation, and the brain. <em>Trends Cognit. Sci.,</em> 17 (2013), pp. 401-412</a></li>
+<li><a href="https://www.sciencedirect.com/science/article/pii/B9780128120286000276">H. R. Dimsdale-Zucker, C. Ranganath. Chapter 27 - Representational Similarity Analyses: A Practical Guide for Functional MRI Applications, <em>Handbook of Behavioral Neuroscience,</em> Editor(s): Denise Manahan-Vaughan, Elsevier, Volume 28, 2018</a></li>
+<li>Luke Chang's <a href="https://dartbrains.org/features/notebooks/14_RSA.html">RSA tutorial</a> for the <a href="https://dartbrains.org/intro">dartbrains project</a></li>
+<li>Mark Thornton's <a href="https://www.youtube.com/watch?v=ufGtuT_J75w&amp;index=29&amp;t=0s&amp;list=PLEE6ggCEJ0H0KOlMKx_PUVB_16VoCfGj9">lecture</a> and <a href="https://github.com/Summer-MIND/mind_2018/tree/master/tutorials/representational_similarity">tutorial</a> at the <a href="https://mindsummerschool.org/2018/07/30/narratives-and-naturalistic-contexts.html">Methods in Neuroscience at Dartmouth (MIND) Summer School 2018</a></li>
+</ul>
+<p>And here are some cool papers using IS-RSA methods:</p>
+<ul>
+<li><a href="https://www.nature.com/articles/s41467-019-09161-6">van Baar, J.M., Chang, L.J. &amp; Sanfey, A.G. The computational and neural substrates of moral strategies in social decision-making. Nat Commun 10, 1483 (2019).</a></li>
+<li><a href="https://www.sciencedirect.com/science/article/pii/S1053811919308080">David C. Gruskin, Monica D. Rosenberg, Avram J. Holmes. Relationships between depressive symptoms and brain responses during emotional movie viewing emerge in adolescence. NeuroImage, 216 (2020)</a></li>
+<li><a href="https://www.sciencedirect.com/science/article/pii/S1053811920303372">P. A. Chen, E. Jolly, J. H. Cheong, . J. Chang. Intersubject representational similarity analysis reveals individual variations in affective experience when watching erotic movies. NeuroImage, 216 (2020)</a></li>
+<li><a href="https://www.pnas.org/content/109/24/9599.short">L. Nummenmaa, E. Glerean, M. Viinikainen, I. P. Jääskeläinen, R. Hari, M. Sams. Emotions promote social interaction by synchronizing brain activity across individuals. Proceedings of the National Academy of Sciences, Jun 2012, 109 (24) 9599-9604</a></li>
+<li><a href="https://www.nature.com/articles/srep27741">Jääskeläinen, I., Pajula, J., Tohka, J. et al. Brain hemodynamic activity during viewing and re-viewing of comedy movies explained by experienced humor. Sci Rep 6, 27741 (2016).</a></li>
+<li><a href="https://www.sciencedirect.com/science/article/pii/S016801021830244X">S. Tei, J.-P. Kauppi, J. Fujino, K. F. Jankowski, R. Kawada, T. Murai, H. Takahashi. Inter-subject correlation of temporoparietal junction activity is associated with conflict patterns during flexible decision-making. Neuroscience Research, 144 (2019)</a></li>
+<li><a href="https://www.sciencedirect.com/science/article/pii/S1053811918307948">M. Nguyen, T. Vanderwal, U. Hasson. Shared understanding of narratives is correlated with shared neural responses. NeuroImage, 184 (2019)</a></li>
+<li><a href="https://onlinelibrary.wiley.com/doi/full/10.1002/brb3.1288">Saalasti, S, Alho, J, Bar, M, et al. Inferior parietal lobule and early visual areas support elicitation of individualized meanings during narrative listening. Brain Behav. 2019; 9:e01288.</a></li>
+<li><a href="https://academic.oup.com/scan/article/13/12/1293/5168059">M. Bacha-Trams, Y. I. Alexandrov, E. Broman, E. Glerean, M. Kauppila, J. Kauttonen, E. Ryyppö, M. Sams, I. P. Jääskeläinen. A drama movie activates brains of holistic and analytical thinkers differentially. Social Cognitive and Affective Neuroscience, 13 (2018)</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+ 
+
+
+    </main>
+    
