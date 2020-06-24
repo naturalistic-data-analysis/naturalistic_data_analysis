@@ -54,6 +54,10 @@
 - divider: true
 - header: Analysis Tutorials
 
+- title: Annotations
+  url: /features/notebooks/Pliers_Tutorial
+  not_numbered: true
+
 - title: Functional Alignment
   url: /features/notebooks/Functional_Alignment
   not_numbered: true

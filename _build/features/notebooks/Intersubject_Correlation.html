@@ -11,9 +11,9 @@ pagenum: 7
 prev_page:
   url: /features/notebooks/Functional_Alignment.html
 next_page:
-  url: /features/notebooks/Event_Segmentation.html
+  url: /features/notebooks/Intersubject_RSA.html
 suffix: .ipynb
-search: synchrony activity brain et al values correlations correlation j doi signals phase between however intersubject participants data isc thus com distribution www pairwise e m signal distributions connectivity regions mean functional null during not shared stimulus also measures statistics similar real temporal lahnakoski individuals science s iscs timecourse individual resting state n synchronization similarity pairs coefficient timepoints used frequency c article such calculated within participant shows glerean sciencedirect pii while window linear level below average g show example group zero amplitude same left increases extreme angular t u l pdf conditions hasson imaging measure different seen second analysis matrices averaging
+search: synchrony et al activity brain values correlations correlation j isc com doi however data signals phase www intersubject between participants thus pairwise distribution e m science s also functional signal distributions measures connectivity mean null article during not shared stimulus statistics similar real temporal regions lahnakoski individuals sciencedirect pii iscs timecourse individual resting state n synchronization similarity pairs coefficient frequency used timepoints c such level calculated within participant shows t glerean f window imaging using linear average g same example increases show left group angular into value zero amplitude extreme u l org pdf while content conditions hasson method measure
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -26,11 +26,36 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Intersubject-Correlations">Intersubject Correlations<a class="anchor-link" href="#Intersubject-Correlations"> </a></h1><p><em>Written by Juha Lahnakoski and Luke Chang</em></p>
-<p>Synchrony between individuals happens at several levels from behavior to brain activity (<a href="https://www.sciencedirect.com/science/article/pii/S2352250X1830023X">Nummenmaa et al., 2018</a>, <a href="https://academic.oup.com/scan/article/14/6/667/5489905">Nastase et al., 2019</a>). To an observer, synchrony during interaction or joint motion can reflect prosocial qualities such rapport (<a href="https://www.sciencedirect.com/science/article/pii/S0022103109000328">Miles et al., 2009</a>) or affiliation (<a href="https://pdfs.semanticscholar.org/393f/e817c4e137335dc7b8c304be5037c15e716c.pdf">Hove and Risen, 2009</a>). During physically arousing ritualistic experiences, observers may selectively synchronize their heart rates while observing related, but not unrelated individuals participating in the ritual (<a href="https://www.pnas.org/content/pnas/108/20/8514.full.pdf">Konvalinka et al., 2011</a>). Synchrony of brain activity is associated with, among other things, shared psychological perspectives toward a stimulus (<a href="https://www.sciencedirect.com/science/article/pii/S1053811914004996">Lahnakoski et al., 2014</a>) and friendship (<a href="https://www.nature.com/articles/s41467-017-02722-7">Parkinson et al., 2018</a>), and may also be disturbed in psychiatric conditions ranging from developmental conditions such as autism (<a href="https://onlinelibrary.wiley.com/doi/pdf/10.1002/aur.89">Hasson et al., 2009</a>; <a href="https://www.sciencedirect.com/science/article/pii/S2213158213001411">Salmi et al., 2013</a>) to more acute conditions such as first-episode psychosis (<a href="https://www.sciencedirect.com/science/article/pii/S0006322318314690">Mäntylä et al., 2018</a>). Thus, measures of synchrony can offer a simple window to many psychological processes.</p>
-<p>In brain imaging, synchrony of brain activity is most commonly measured using intersubject correlations (ISC; <a href="https://science.sciencemag.org/content/sci/303/5664/1634.full.pdf">Hasson et al., 2004</a>). As the name implies, this method calculates linear correlations between participants and derives summary statistics from these correlations to measure the level of similarity of brain activity. Most commonly, ISCs are calculated locally within each voxel (or region), while recent extensions also consider intersubject connectivity between different regions of the brain (see below).</p>
+<p>Synchrony between individuals happens at several levels from behavior to brain activity (<a href="https://www.sciencedirect.com/science/article/pii/S2352250X1830023X">Nummenmaa et al., 2018</a>, <a href="https://academic.oup.com/scan/article/14/6/667/5489905">Nastase et al., 2019</a>). To an observer, synchrony during interaction or joint motion can reflect prosocial qualities such rapport (<a href="https://www.sciencedirect.com/science/article/pii/S0022103109000328">Miles et al., 2009</a>, <a href="https://psyarxiv.com/bd9wn">Cheong et al., 2020</a>) or affiliation (<a href="https://pdfs.semanticscholar.org/393f/e817c4e137335dc7b8c304be5037c15e716c.pdf">Hove and Risen, 2009</a>). During physically arousing ritualistic experiences, observers may selectively synchronize their heart rates while observing related, but not unrelated individuals participating in the ritual (<a href="https://www.pnas.org/content/pnas/108/20/8514.full.pdf">Konvalinka et al., 2011</a>). Synchrony of brain activity is associated with, among other things, shared psychological perspectives toward a stimulus (<a href="https://www.sciencedirect.com/science/article/pii/S1053811914004996">Lahnakoski et al., 2014</a>, <a href="https://psyarxiv.com/bd9wn">Yeshurun et al., 2017</a>) and friendship (<a href="https://www.nature.com/articles/s41467-017-02722-7">Parkinson et al., 2018</a>), and may also be disturbed in psychiatric conditions ranging from developmental conditions such as autism (<a href="https://onlinelibrary.wiley.com/doi/pdf/10.1002/aur.89">Hasson et al., 2009</a>; <a href="https://www.sciencedirect.com/science/article/pii/S2213158213001411">Salmi et al., 2013</a>, <a href="https://www.jneurosci.org/content/35/14/5837.short">Byrge et al., 2015</a>) to more acute conditions such as first-episode psychosis (<a href="https://www.sciencedirect.com/science/article/pii/S0006322318314690">Mäntylä et al., 2018</a>). Thus, measures of synchrony can offer a simple window to many psychological processes.</p>
+<p>In brain imaging, synchrony of brain activity is most commonly measured using intersubject correlations (ISC; <a href="https://science.sciencemag.org/content/sci/303/5664/1634.full.pdf">Hasson et al., 2004</a>). As the name implies, this method calculates linear correlations between participants and derives summary statistics from these correlations to measure the level of similarity of brain activity. Most commonly, ISCs are calculated locally within each voxel (or region), but this approach has also been extended to functional connectivity (<a href="https://www.nature.com/articles/ncomms12141">Simony et al., 2016</a>). Intersubject correlations give a summary statistic of synchrony over long periods of time, usually over an entire imaging session. However, the level of synchrony may change considerably from one moment to the next with the experimental condition. We will also introduce time-varying measures of synchrony.</p>
+<p>In this tutorial, we will cover:</p>
+<ul>
+<li>how to compute pairwise ISC</li>
+<li>how to perform hypothesis tests with ISC</li>
+<li>how to perform dynamic ISC</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <p>Generally, ISCs are calculated using one of two main approaches. First one calculates correlations between all participant pairs to build a full intersubject correlation matrix. This matrix can be useful in various ways as can be seen in some of the following topics. The second popular option is to use the mean activity timecourse of the other participant as a model timecourse for each person individually. This procedure produces individual, rather than pairwise, spatial maps of similarity reflecting how similarly, or “typically”, each person’s brain activates. These maps lend themselves to similar analyses as one might perform with first level results of a traditional general linear model (GLM) analysis. However, some of the individual variability is lost with the latter approach, and thus the ISC values are typically of much higher magnitude than in the pairwise matrices. Optionally, individual values of similarity to all other participants can be calculated by averaging over the rows/columns of the ISC matrices. Usually, to make the correlation coefficients more normally distributed on the whole line of real number, the Fisher’s Z transformation (inverse hyperbolic tangent) would be applied before calculating the mean in this way. The effect of Fisher’s Z transformation affects mainly the higher end of absolute correlation values, eventually stretching the correlation coefficient 1 to infinity. However, with the typical range of values of pairwise ISCs, the effects of this transformation are relatively small reaching ~10% at the higher end of the scale of r=0.5.</p>
 <p>Overall, the brain activity measured with fMRI during naturalistic stimulation conditions can be thought to consist of for main sources 1) stimulus-driven brain activity between individuals shared by all or most of the participants, 2) individual or idiosyncratic activity elicited by the stimulus, 3) intrinsic activity that is not time-locked to the stimulus, and 4) noise from various sources. Using the above-mentioned second approach to calculate ISCs with the average activity of everyone else, we arguably only catch the brain activity that is shared by a large proportion of the participants (category 1). Thus, this method evaluates how much of an individual’s brain activity is explained by this shared component. By contrast, if smaller groups of participants, e.g. pairs of friends within the study, share similar individual activity patterns (category 2), it may be better caught by the dyadic values in the pairwise matrices. Generally, the third category of activity is not readily detected by synchrony approaches. However, with inventive experimental designs, e.g. during verbal recall of previously experienced stimuli (<a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5191958/">Chen et al., 2017</a>), it is still possible to extract shared brain activity patterns by temporally reorganizing the data, even when the original experiences of the participants were out of sync. The optimal choice of analysis will depend on the research question and the type of shared activity patterns that are of particular interest.</p>
 <p>Intersubject correlations give a summary statistic of synchrony over long periods of time, usually over an entire imaging session. However, the level of synchrony may change considerably from one moment to the next with the experimental condition. Time varying measures of synchrony will be discussed below, after we consider the topic of statistical inference on static intersubject correlation values.</p>
+<h1 id="Statistics-for-intersubject-synchrony">Statistics for intersubject synchrony<a class="anchor-link" href="#Statistics-for-intersubject-synchrony"> </a></h1><p>Because of the dependence between the pairwise correlation values and the inflated number of variables in the pairwise correlation matrices, non-parametric statistics are generally preferred when evaluating the significance of these correlations. This is often achieved by creating surrogate data and repeating the same analysis enough times (e.g. 5-10k iterations) to build an empirical null distribution. Surrogate data can be created, for example, by circularly shifting the timecourses of the participants or scrambling the phases of the Fourier transform of the signals and transforming these scrambled signals back to the time domain (<a href="https://www.sciencedirect.com/science/article/pii/016727899290102S">Theiler et al., 1992</a>, <a href="https://www.sciencedirect.com/science/article/pii/S0370157318301340">Lancaster et al., 2018</a>). Various blockwise scrambling techniques have also been applied and autoregressive models have been proposed to create artificial data for statistical inference . These approaches have the benefit that, when properly designed, they retain important characteristics of the original signal, such as the frequency content and autocorrelation, while removing temporal synchrony in the data. To illustrate these approaches, Video/Figure 1 below shows the process of creating these null distributions and compares these to a similar distribution built based on real resting state data of the same duration in the same participants recorded just prior to the movie data in the same imaging study. Resting state is an ideal condition for demonstrating the true null distribution of intersubject correlation as it involves no external synchronizing factors apart from the repeating noise of the scanner gradients, which are generally not of interest to us. Thus, any correlations in the resting state data arise by chance. As can be seen, the null distributions based on the surrogate data follow the distribution of resting state ISCs well as the number of iterations increases.</p>
+<p>Figure 1: Distributions of pairwise ISC values  in real movie data (blue), compared with null distributions based on temporally shifted (red) and phase scrambled (yellow) data, as well as real resting state data (purple). Top rows show the timecourse of a randomly selected voxel of one participant that have been shifted or scrambled in the case of the surrogate timecourses. Second row shows the timecourse of a second participant extracted from the same voxel. Bottom plot shows how the distributions evolve as the number of iterations increases. Dashed vertical lines correspond to the 95th percentile of each distribution. Note the distinctly extended right tail in the movie data, whereas other distributions appear highly consistent.</p>
+<p>The number of participants, N, of the mean of pairwise ISC analysis greatly affects the null distribution. As the values are always below one, the standard deviation of the null distribution is reduced with the square of N (see Figure 2 below). This is true also for the resting state data and thus it does not affect the validity of the distributions. However, as a result, very small correlations become significant as N increases, which may not be desirable as interpretation of very weak correlations can be troublesome.</p>
+<p>When the mean activity of participants is used the activity timecourse of a left-out participant, the effects of the sample size and variance of the ISC values is greatly reduced and group level statistics can be derived more similarly to traditional second level GLM analyses. For example, parametric t-statistics are largely consistent with those derived based on surrogate or resting state data.</p>
+<p>Overall, the statistics for ISFC can be performed similarly to local ISC. However, it is important to note that the distribution of mean correlations between two different regions differs from within-region correlations. In particular, as the number of participant pairs increases, the distribution of ISC values is increasingly skewed to the right as negative correlations are eliminated nearly completely due to dependencies between the pairwise correlations. This is intuitive as any larger group of individuals who correlate negatively with other participants would often be positively correlated within the group, thus cancelling out any large negative values in the mean ISC. By contrast, when correlations are calculated between two different regions, negative values can occur if the stimulus-evoked activity timecourses in the two regions are consistently anticorrelated.</p>
+<p>The distributions of ISCs and ISFCs in real and null data are depicted below as a function of the number of participants on a logarithmic color scale. Overall, the null distribution of the ISFC values appears slightly wider than the ISC null distribution. However, this is mainly driven by the increased number values in the correlation matrices for the ISFC (off-diagonal entries) than ISC (diagonal entries) as the shape of the distribution appears similar but the tail is truncated (see bottom right panel).</p>
+<p><img src="../../images/isc/NullMethodsVsMovieAndRest.gif" alt="null_distribution"></p>
+<p>Figure 2: Distributions of real ISCs and ISFCs (top) and their null distributions (bottom) with different numbers of participants. Left-most panels show the ISCs and middle panels the ISFCs. Right-most panels show example distributions from the two left panels corresponding to the case with N=11 participants. The distributions are plotted on a logarithmic scale to make the differences in the left tails visible. Note that negative numbers exist in the real ISFC distribution while they are largely eliminated in the ISC.</p>
+<p>Statistics for timevarying measures of synchrony can largely follow a similar bootstrapping approach as with the static measures of synchrony. However, depending on the values that are used, statistics of phase synchrony differ slightly from linear measures of synchrony. In particular, circular statistics can be used to estimate the parametric statistics of phase differences on the unit circle, as wrapping of the phase angle causes the angular difference to change signs as the signals rotate around the circle. Thus, angular difference of –pi and pi are equivalent on the unit circle, but are at the different ends of a linear axis. However, in the current examples, we have used cosines of the angular differences, which is an even function and thus is indifferent to the sign of the angular difference. It also naturally maps the angular difference to a linear range between -1 and 1 similar to the correlation coefficient, thus simplifying the interpretation. If the sign of the phase shift is of interest, such as when trying to infer the temporal precedence of one signal over another, alternative measures taking into account the direction of the phase shift may be preferable.</p>
 
 </div>
 </div>
@@ -49,17 +74,19 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">glob</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">numpy.fft</span> <span class="kn">import</span> <span class="n">fft</span><span class="p">,</span> <span class="n">ifft</span><span class="p">,</span> <span class="n">fftfreq</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 <span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
 <span class="kn">from</span> <span class="nn">nltools.data</span> <span class="kn">import</span> <span class="n">Brain_Data</span><span class="p">,</span> <span class="n">Design_Matrix</span><span class="p">,</span> <span class="n">Adjacency</span>
 <span class="kn">from</span> <span class="nn">nltools.mask</span> <span class="kn">import</span> <span class="n">expand_mask</span><span class="p">,</span> <span class="n">roi_to_brain</span>
-<span class="kn">from</span> <span class="nn">nltools.stats</span> <span class="kn">import</span> <span class="n">regress</span><span class="p">,</span> <span class="n">zscore</span><span class="p">,</span> <span class="n">fdr</span><span class="p">,</span> <span class="n">threshold</span>
+<span class="kn">from</span> <span class="nn">nltools.stats</span> <span class="kn">import</span> <span class="n">isc</span><span class="p">,</span> <span class="n">fdr</span><span class="p">,</span> <span class="n">threshold</span><span class="p">,</span> <span class="n">phase_randomize</span><span class="p">,</span> <span class="n">circle_shift</span>
 <span class="kn">from</span> <span class="nn">nltools.file_reader</span> <span class="kn">import</span> <span class="n">onsets_to_dm</span>
 <span class="kn">from</span> <span class="nn">nltools.external</span> <span class="kn">import</span> <span class="n">glover_hrf</span>
 <span class="kn">from</span> <span class="nn">nilearn.plotting</span> <span class="kn">import</span> <span class="n">view_img</span><span class="p">,</span> <span class="n">glass_brain</span><span class="p">,</span> <span class="n">plot_stat_map</span>
 <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">pairwise_distances</span>
+<span class="kn">from</span> <span class="nn">sklearn.utils</span> <span class="kn">import</span> <span class="n">check_random_state</span>
 <span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">binom</span><span class="p">,</span> <span class="n">ttest_1samp</span><span class="p">,</span> <span class="n">pearsonr</span>
 
 
@@ -78,6 +105,15 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Extract-Average-ROI-activity">Extract Average ROI activity<a class="anchor-link" href="#Extract-Average-ROI-activity"> </a></h1><p>We have already done this step for you, but want to show you how to extract average activity within a set of ROIs from a functional parcellation. There are many ways to do this, but here we will write out a separate CSV for each participant's run.</p>
+<div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">scan</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;Part1&#39;</span><span class="p">,</span> <span class="s1">&#39;Part2&#39;</span><span class="p">]:</span>
+    <span class="n">file_list</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">base_dir</span><span class="p">,</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="s1">&#39;func&#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;*crop*</span><span class="si">{</span><span class="n">scan</span><span class="si">}</span><span class="s1">*hdf5&#39;</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">file_list</span><span class="p">:</span>
+        <span class="n">sub</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">f</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">sub</span><span class="p">)</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">Brain_Data</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+        <span class="n">roi</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">extract_roi</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
+        <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">roi</span><span class="o">.</span><span class="n">T</span><span class="p">)</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">f</span><span class="p">),</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">sub</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">scan</span><span class="si">}</span><span class="s2">_Average_ROI_n50.csv&quot;</span> <span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
 
 </div>
 </div>
@@ -93,33 +129,29 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">mask</span> <span class="o">=</span> <span class="n">Brain_Data</span><span class="p">(</span><span class="s1">&#39;http://neurovault.org/media/images/2099/Neurosynth%20Parcellation_0.nii.gz&#39;</span><span class="p">)</span>
 <span class="n">mask_x</span> <span class="o">=</span> <span class="n">expand_mask</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
+
+<span class="n">mask</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </pre></div>
 
     </div>
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/features/notebooks/Intersubject_Correlation_4_0.png"
+>
+</div>
+
 </div>
 </div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">scan</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;Part1&#39;</span><span class="p">,</span> <span class="s1">&#39;Part2&#39;</span><span class="p">]:</span>
-    <span class="n">file_list</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">base_dir</span><span class="p">,</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="s1">&#39;func&#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;*crop*</span><span class="si">{</span><span class="n">scan</span><span class="si">}</span><span class="s1">*hdf5&#39;</span><span class="p">))</span>
-    <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">file_list</span><span class="p">:</span>
-        <span class="n">sub</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">f</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">sub</span><span class="p">)</span>
-        <span class="n">data</span> <span class="o">=</span> <span class="n">Brain_Data</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
-        <span class="n">roi</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">extract_roi</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
-        <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">roi</span><span class="o">.</span><span class="n">T</span><span class="p">)</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">f</span><span class="p">),</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">sub</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">scan</span><span class="si">}</span><span class="s2">_Average_ROI_n50.csv&quot;</span> <span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</pre></div>
-
-    </div>
 </div>
 </div>
 
@@ -189,17 +221,210 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">isc</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="k">for</span> <span class="n">roi</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">50</span><span class="p">):</span>
-    <span class="n">sub_rois</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="k">for</span> <span class="n">sub</span> <span class="ow">in</span> <span class="n">sub_timeseries</span><span class="p">:</span>
-        <span class="n">sub_rois</span><span class="p">[</span><span class="n">sub</span><span class="p">]</span> <span class="o">=</span> <span class="n">sub_timeseries</span><span class="p">[</span><span class="n">sub</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">roi</span><span class="p">]</span>
-    <span class="n">sub_rois</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">sub_rois</span><span class="p">)</span>
-    <span class="n">time_dist</span> <span class="o">=</span> <span class="n">Adjacency</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">pairwise_distances</span><span class="p">(</span><span class="n">sub_rois</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;correlation&#39;</span><span class="p">),</span> <span class="n">matrix_type</span><span class="o">=</span><span class="s1">&#39;similarity&#39;</span><span class="p">)</span>
-    <span class="n">isc</span><span class="p">[</span><span class="n">roi</span><span class="p">]</span> <span class="o">=</span> <span class="n">time_dist</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<span class="n">isc_brain</span> <span class="o">=</span> <span class="n">roi_to_brain</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">isc</span><span class="p">),</span> <span class="n">mask_x</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">roi</span> <span class="o">=</span> <span class="mi">32</span>
 
-<span class="n">isc_brain</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">sub_rois</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">sub</span> <span class="ow">in</span> <span class="n">sub_timeseries</span><span class="p">:</span>
+    <span class="n">sub_rois</span><span class="p">[</span><span class="n">sub</span><span class="p">]</span> <span class="o">=</span> <span class="n">sub_timeseries</span><span class="p">[</span><span class="n">sub</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="n">roi</span><span class="p">]</span>
+<span class="n">sub_rois</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">sub_rois</span><span class="p">)</span>
+
+<span class="n">sub_rois</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sub-01</th>
+      <th>sub-02</th>
+      <th>sub-03</th>
+      <th>sub-04</th>
+      <th>sub-05</th>
+      <th>sub-06</th>
+      <th>sub-07</th>
+      <th>sub-08</th>
+      <th>sub-09</th>
+      <th>sub-10</th>
+      <th>sub-11</th>
+      <th>sub-12</th>
+      <th>sub-13</th>
+      <th>sub-14</th>
+      <th>sub-15</th>
+      <th>sub-16</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>3.362605</td>
+      <td>-1.967253</td>
+      <td>-0.243505</td>
+      <td>2.527032</td>
+      <td>5.166227</td>
+      <td>-0.678549</td>
+      <td>2.199253</td>
+      <td>-1.646883e+00</td>
+      <td>0.421235</td>
+      <td>0.500547</td>
+      <td>0.361623</td>
+      <td>4.639737e+00</td>
+      <td>1.490442</td>
+      <td>1.806639</td>
+      <td>1.039467</td>
+      <td>3.483579e-13</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.995695</td>
+      <td>1.730923</td>
+      <td>1.552836</td>
+      <td>1.068784</td>
+      <td>4.066954</td>
+      <td>0.117737</td>
+      <td>3.184899</td>
+      <td>8.464993e-01</td>
+      <td>-0.118011</td>
+      <td>0.981400</td>
+      <td>-0.069505</td>
+      <td>2.522244e+00</td>
+      <td>1.145760</td>
+      <td>-0.582861</td>
+      <td>-0.420722</td>
+      <td>-1.237187e-13</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2.084567</td>
+      <td>-1.940155</td>
+      <td>1.914897</td>
+      <td>1.103097</td>
+      <td>2.168681</td>
+      <td>0.030628</td>
+      <td>2.036096</td>
+      <td>1.782011e-01</td>
+      <td>0.984125</td>
+      <td>3.957482</td>
+      <td>-0.792416</td>
+      <td>1.326291e+00</td>
+      <td>0.472309</td>
+      <td>-3.066318</td>
+      <td>0.869296</td>
+      <td>-1.931528e-02</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>-0.217049</td>
+      <td>-0.636084</td>
+      <td>1.501459</td>
+      <td>-0.701397</td>
+      <td>1.704406</td>
+      <td>0.042397</td>
+      <td>2.353035</td>
+      <td>1.088203e+00</td>
+      <td>1.650786</td>
+      <td>3.687806</td>
+      <td>3.839885</td>
+      <td>2.105321e-02</td>
+      <td>-2.885314</td>
+      <td>-1.212683</td>
+      <td>1.213115</td>
+      <td>-1.460159e+00</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>-2.628723</td>
+      <td>1.650023</td>
+      <td>-1.196258</td>
+      <td>0.079026</td>
+      <td>1.297944</td>
+      <td>-0.743593</td>
+      <td>1.188282</td>
+      <td>3.375227e-13</td>
+      <td>1.515944</td>
+      <td>-0.709527</td>
+      <td>4.874887</td>
+      <td>2.279356e-13</td>
+      <td>-5.277045</td>
+      <td>0.232831</td>
+      <td>1.914874</td>
+      <td>1.745742e+00</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sub</span> <span class="o">=</span> <span class="s1">&#39;sub-02&#39;</span>
+<span class="n">sampling_freq</span> <span class="o">=</span> <span class="o">.</span><span class="mi">5</span>
+
+<span class="n">f</span><span class="p">,</span><span class="n">a</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sub_rois</span><span class="p">[</span><span class="n">sub</span><span class="p">],</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Avg Activity&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time (TR)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Observed Data&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+
+<span class="n">fft_data</span> <span class="o">=</span> <span class="n">fft</span><span class="p">(</span><span class="n">sub_rois</span><span class="p">[</span><span class="n">sub</span><span class="p">])</span>
+<span class="n">freq</span> <span class="o">=</span> <span class="n">fftfreq</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">fft_data</span><span class="p">),</span> <span class="mi">1</span><span class="o">/</span><span class="n">sampling_freq</span><span class="p">)</span>
+<span class="n">n_freq</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">fft_data</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">freq</span><span class="p">[:</span><span class="n">n_freq</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">fft_data</span><span class="p">)[:</span><span class="n">n_freq</span><span class="p">],</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Frequency (Hz)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Amplitude&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Power Spectrum&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+
+<span class="n">circle_shift_data</span> <span class="o">=</span> <span class="n">circle_shift</span><span class="p">(</span><span class="n">sub_rois</span><span class="p">[</span><span class="n">sub</span><span class="p">])</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">circle_shift_data</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Avg Activity&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time (TR)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Circle Shifted Data&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+
+<span class="n">fft_circle</span> <span class="o">=</span> <span class="n">fft</span><span class="p">(</span><span class="n">circle_shift_data</span><span class="p">)</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">freq</span><span class="p">[:</span><span class="n">n_freq</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">fft_circle</span><span class="p">)[:</span><span class="n">n_freq</span><span class="p">],</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Frequency (Hz)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Amplitude&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Circle Shifted Power Spectrum&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 </pre></div>
 
     </div>
@@ -215,8 +440,482 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Intersubject_Correlation_9_0.png"
+<img src="../../images/features/notebooks/Intersubject_Correlation_10_0.png"
 >
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">stats_circle</span> <span class="o">=</span> <span class="n">isc</span><span class="p">(</span><span class="n">sub_rois</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;circle_shift&#39;</span><span class="p">,</span> <span class="n">n_bootstraps</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span> <span class="n">return_bootstraps</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ISC: </span><span class="si">{</span><span class="n">stats_circle</span><span class="p">[</span><span class="s1">&#39;isc&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.02</span><span class="si">}</span><span class="s2">, p = </span><span class="si">{</span><span class="n">stats_circle</span><span class="p">[</span><span class="s1">&#39;p&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.03</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>ISC: 0.074, p = 0.0002
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sub</span> <span class="o">=</span> <span class="s1">&#39;sub-02&#39;</span>
+<span class="n">sampling_freq</span> <span class="o">=</span> <span class="o">.</span><span class="mi">5</span>
+
+<span class="n">f</span><span class="p">,</span><span class="n">a</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sub_rois</span><span class="p">[</span><span class="n">sub</span><span class="p">],</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Avg Activity&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time (TR)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Observed Data&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+
+<span class="n">fft_data</span> <span class="o">=</span> <span class="n">fft</span><span class="p">(</span><span class="n">sub_rois</span><span class="p">[</span><span class="n">sub</span><span class="p">])</span>
+<span class="n">freq</span> <span class="o">=</span> <span class="n">fftfreq</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">fft_data</span><span class="p">),</span> <span class="mi">1</span><span class="o">/</span><span class="n">sampling_freq</span><span class="p">)</span>
+<span class="n">n_freq</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">fft_data</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">freq</span><span class="p">[:</span><span class="n">n_freq</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">fft_data</span><span class="p">)[:</span><span class="n">n_freq</span><span class="p">],</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Frequency (Hz)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Amplitude&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Power Spectrum&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+
+<span class="n">phase_random_data</span> <span class="o">=</span> <span class="n">phase_randomize</span><span class="p">(</span><span class="n">sub_rois</span><span class="p">[</span><span class="n">sub</span><span class="p">])</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">phase_random_data</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Avg Activity&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time (TR)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Phase Randomized Data&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+
+<span class="n">fft_phase</span> <span class="o">=</span> <span class="n">fft</span><span class="p">(</span><span class="n">phase_random_data</span><span class="p">)</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">freq</span><span class="p">[:</span><span class="n">n_freq</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">fft_phase</span><span class="p">)[:</span><span class="n">n_freq</span><span class="p">],</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Frequency (Hz)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Amplitude&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Phase Randomized Power Spectrum&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/features/notebooks/Intersubject_Correlation_12_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">stats_phase</span> <span class="o">=</span> <span class="n">isc</span><span class="p">(</span><span class="n">sub_rois</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;phase_randomize&#39;</span><span class="p">,</span> <span class="n">n_bootstraps</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span> <span class="n">return_bootstraps</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ISC: </span><span class="si">{</span><span class="n">stats_phase</span><span class="p">[</span><span class="s1">&#39;isc&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.02</span><span class="si">}</span><span class="s2">, p = </span><span class="si">{</span><span class="n">stats_phase</span><span class="p">[</span><span class="s1">&#39;p&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.03</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>ISC: 0.074, p = 0.0002
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">_bootstrap_isc</span><span class="p">(</span><span class="n">Adjacency</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">pairwise_distances</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">sub_rois</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;correlation&#39;</span><span class="p">),</span> <span class="n">matrix_type</span><span class="o">=</span><span class="s1">&#39;similarity&#39;</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0.602809507196864</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">bootstrap_subject_matrix</span><span class="p">(</span><span class="n">similarity_matrix</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;This function shuffles subjects within a similarity matrix based on recommendation by Chen et al., 2016&#39;&#39;&#39;</span>
+    
+    <span class="n">random_state</span> <span class="o">=</span> <span class="n">check_random_state</span><span class="p">(</span><span class="n">random_state</span><span class="p">)</span>
+
+    <span class="n">n_sub</span> <span class="o">=</span> <span class="n">similarity_matrix</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">bootstrap_subject</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">random_state</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n_sub</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">n_sub</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">similarity_matrix</span><span class="p">[</span><span class="n">bootstrap_subject</span><span class="p">,</span> <span class="p">:][:,</span> <span class="n">bootstrap_subject</span><span class="p">]</span>
+
+
+<span class="n">similarity</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">pairwise_distances</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">sub_rois</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;correlation&#39;</span><span class="p">)</span>
+
+<span class="n">f</span><span class="p">,</span><span class="n">a</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">similarity</span><span class="p">,</span> <span class="n">square</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;RdBu_r&#39;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">xticklabels</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">yticklabels</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Subject&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Subject&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Pairwise Similarity&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">bootstrap_subject_matrix</span><span class="p">(</span><span class="n">similarity</span><span class="p">),</span> <span class="n">square</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;RdBu_r&#39;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">xticklabels</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">yticklabels</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Subject&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Subject&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Bootstrapped Pairwise Similarity&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Text(0.5, 1.0, &#39;Bootstrapped Pairwise Similarity&#39;)</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/features/notebooks/Intersubject_Correlation_15_1.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">stats_boot</span> <span class="o">=</span> <span class="n">isc</span><span class="p">(</span><span class="n">sub_rois</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;bootstrap&#39;</span><span class="p">,</span> <span class="n">n_bootstraps</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span> <span class="n">return_bootstraps</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ISC: </span><span class="si">{</span><span class="n">stats_boot</span><span class="p">[</span><span class="s1">&#39;isc&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.02</span><span class="si">}</span><span class="s2">, p = </span><span class="si">{</span><span class="n">stats_boot</span><span class="p">[</span><span class="s1">&#39;p&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.03</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>ISC: 0.074, p = 0.0002
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="c1"># plt.hist(stats_boot[&#39;null_distribution&#39;] - stats_boot[&#39;isc&#39;], alpha=.5)</span>
+<span class="c1"># plt.hist(stats_circle[&#39;null_distribution&#39;], alpha=.5)</span>
+<span class="c1"># plt.hist(stats_phase[&#39;null_distribution&#39;], alpha=.5)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">stats_boot</span><span class="p">[</span><span class="s1">&#39;null_distribution&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">stats_boot</span><span class="p">[</span><span class="s1">&#39;isc&#39;</span><span class="p">],</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Bootstrap&#39;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">stats_circle</span><span class="p">[</span><span class="s1">&#39;null_distribution&#39;</span><span class="p">],</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Bootstrap&#39;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">stats_phase</span><span class="p">[</span><span class="s1">&#39;null_distribution&#39;</span><span class="p">],</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Bootstrap&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;ISC Values (correlation)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;ISC Null Distribution&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">stats_boot</span><span class="p">[</span><span class="s1">&#39;isc&#39;</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;Observed ISC&#39;</span><span class="p">,</span> <span class="s1">&#39;Bootstrap Null&#39;</span><span class="p">,</span><span class="s1">&#39;Circle Shift Null&#39;</span><span class="p">,</span> <span class="s1">&#39;Phase Randomize Null&#39;</span><span class="p">],</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">stats_boot</span><span class="p">[</span><span class="s1">&#39;ci&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">stats_boot</span><span class="p">[</span><span class="s1">&#39;isc&#39;</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">stats_boot</span><span class="p">[</span><span class="s1">&#39;ci&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">stats_boot</span><span class="p">[</span><span class="s1">&#39;isc&#39;</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">stats_circle</span><span class="p">[</span><span class="s1">&#39;ci&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">stats_circle</span><span class="p">[</span><span class="s1">&#39;ci&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">stats_phase</span><span class="p">[</span><span class="s1">&#39;ci&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">stats_phase</span><span class="p">[</span><span class="s1">&#39;ci&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;matplotlib.lines.Line2D at 0x7fa241d9c2d0&gt;</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/features/notebooks/Intersubject_Correlation_17_1.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now, let's calculate ISC looping over each of the 50 ROIs from the whole-brain meta-analytic parcellation (<a href="https://www.jneurosci.org/content/36/24/6553?utm_source=TrendMD&amp;utm_medium=cpc&amp;utm_campaign=JNeurosci_TrendMD_0">de la Vega, 2016</a>). Here we loop over each ROI and grab the column from each subject's dataframe. We then run ISC on the combined subject's ROI timeseries using the median method and compute a hypothesis test using the subject-wise bootstrap method with 5000 samples (<a href="https://www.sciencedirect.com/science/article/pii/S1053811916301331">Chen et al., 2016</a>). Finally, we convert each correlation and p-value from each region back into a Brain_Data instance.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">isc_r</span><span class="p">,</span> <span class="n">isc_p</span> <span class="o">=</span> <span class="p">{},</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">roi</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">50</span><span class="p">):</span>
+    <span class="n">sub_rois</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">sub</span> <span class="ow">in</span> <span class="n">sub_timeseries</span><span class="p">:</span>
+        <span class="n">sub_rois</span><span class="p">[</span><span class="n">sub</span><span class="p">]</span> <span class="o">=</span> <span class="n">sub_timeseries</span><span class="p">[</span><span class="n">sub</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">roi</span><span class="p">]</span>
+    <span class="n">stats</span> <span class="o">=</span> <span class="n">isc</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">sub_rois</span><span class="p">),</span> <span class="n">n_bootstraps</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;median&#39;</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;bootstrap&#39;</span><span class="p">)</span>
+    <span class="n">isc_r</span><span class="p">[</span><span class="n">roi</span><span class="p">],</span> <span class="n">isc_p</span><span class="p">[</span><span class="n">roi</span><span class="p">]</span> <span class="o">=</span> <span class="n">stats</span><span class="p">[</span><span class="s1">&#39;isc&#39;</span><span class="p">],</span> <span class="n">stats</span><span class="p">[</span><span class="s1">&#39;p&#39;</span><span class="p">]</span>
+<span class="n">isc_r_brain</span><span class="p">,</span> <span class="n">isc_p_brain</span> <span class="o">=</span> <span class="n">roi_to_brain</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">isc_r</span><span class="p">),</span> <span class="n">mask_x</span><span class="p">),</span> <span class="n">roi_to_brain</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">isc_p</span><span class="p">),</span> <span class="n">mask_x</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Now</span> <span class="n">we</span> <span class="n">can</span> <span class="n">plot</span> <span class="n">the</span> <span class="n">ISC</span> <span class="n">values</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">isc_r_brain</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/features/notebooks/Intersubject_Correlation_21_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can also threshold the values using FDR q &lt; 0.05 and interactively view the results.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">threshold</span><span class="p">(</span><span class="n">isc_r_brain</span><span class="p">,</span> <span class="n">isc_p_brain</span><span class="p">,</span> <span class="n">thr</span><span class="o">=</span><span class="n">fdr</span><span class="p">(</span><span class="n">isc_p_brain</span><span class="o">.</span><span class="n">data</span><span class="p">))</span><span class="o">.</span><span class="n">iplot</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="e3483f03-0e11-4005-9de4-08bcbb936ec1"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#e3483f03-0e11-4005-9de4-08bcbb936ec1');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "69d13c2f1a90453382af20f211a90b7f", "version_major": 2, "version_minor": 0}
+</script>
 </div>
 
 </div>
@@ -780,27 +1479,6 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <p>Compared to sliding-window correlations, phase synchronization has the benefit that no explicit time windowing is required and synchronization is estimated at the original sampling frequency of the signals. However, in a single pairwise comparison, phase synchrony can get extreme values by chance, much like a stopped clock that shows the right time twice a day. This is illustrated in the bottom panel of Video 2. Despite the two signals being independent, the histogram on the left shows that many of the time points show extreme synchrony values. Accordingly, the estimate of mean synchrony oscillates with the phase of the signals, until eventually stabilizing around zero as expected for independent signals. Thus, phase synchrony of two signals has the potential of producing extreme synchrony values much like time windowed correlations. This can be mitigated by averaging. Averaging over the timepoints of a full session, intersubject phase synchronization (ISPS) of regional activity produces highly similar group-level results to ISC. However, this removes the benefit of the temporal accuracy of ISPS and is thus of limited use. By contrast, averaging over (pairs of) subjects improves the reliability of synchrony in a larger population while retaining the temporal accuracy.</p>
 <p>Note that, here, we have used the cosine of the angular difference as a measure of pairwise synchrony. This produces time-averaged values that are consistent with the ISCs in the regions. However, there are other measures can also be derived, such as the phase locking value, that is the absolute value of the mean of the phase vectors of the participants (<a href="https://www.liebertpub.com/doi/pdfplus/10.1089/brain.2011.0068">Glerean et al., 2012</a>). This is simpler than pairwise measures, and can be beneficial particularly where memory is of concern, but it is limited in the range [0 1] rather than [-1 1] as for correlation coefficients.</p>
 <p><img src="../../images/isc/PhaseSynchronyAndCorrelation.gif" alt="null_distribution"></p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Statistics-for-intersubject-synchrony">Statistics for intersubject synchrony<a class="anchor-link" href="#Statistics-for-intersubject-synchrony"> </a></h1><p>Notes:
-Let's integrate this in with the tutorial.</p>
-<p>Because of the dependence between the pairwise correlation values and the inflated number of variables in the pairwise correlation matrices, non-parametric statistics are generally preferred when evaluating the significance of these correlations. This is often achieved by creating surrogate data and repeating the same analysis enough times (e.g. tens of thousands of iterations) to build an empirical null distribution. Surrogate data can be created, for example, by circularly shifting the timecourses of the participants or scrambling the phases of the Fourier transform of the signals and transforming these scrambled signals back to the time domain. Various blockwise scrambling techniques have also been applied and autoregressive models have been proposed to create artificial data for statistical inference . These approaches have the benefit that, when properly designed, they retain important characteristics of the original signal, such as the frequency content and autocorrelation, while removing temporal synchrony in the data. To illustrate these approaches, Video/Figure 1 below shows the process of creating these null distributions and compares these to a similar distribution built based on real resting state data of the same duration in the same participants recorded just prior to the movie data in the same imaging study. Resting state is an ideal condition for demonstrating the true null distribution of intersubject correlation as it involves no external synchronizing factors apart from the repeating noise of the scanner gradients, which are generally not of interest to us. Thus, any correlations in the resting state data arise by chance. As can be seen, the null distributions based on the surrogate data follow the distribution of resting state ISCs well as the number of iterations increases.</p>
-<p>Figure 1: Distributions of pairwise ISC values  in real movie data (blue), compared with null distributions based on temporally shifted (red) and phase scrambled (yellow) data, as well as real resting state data (purple). Top rows show the timecourse of a randomly selected voxel of one participant that have been shifted or scrambled in the case of the surrogate timecourses. Second row shows the timecourse of a second participant extracted from the same voxel. Bottom plot shows how the distributions evolve as the number of iterations increases. Dashed vertical lines correspond to the 95th percentile of each distribution. Note the distinctly extended right tail in the movie data, whereas other distributions appear highly consistent.</p>
-<p>The number of participants, N, of the mean of pairwise ISC analysis greatly affects the null distribution. As the values are always below one, the standard deviation of the null distribution is reduced with the square of N (see Figure 2 below). This is true also for the resting state data and thus it does not affect the validity of the distributions. However, as a result, very small correlations become significant as N increases, which may not be desirable as interpretation of very weak correlations can be troublesome.</p>
-<p>When the mean activity of participants is used the activity timecourse of a left-out participant, the effects of the sample size and variance of the ISC values is greatly reduced and group level statistics can be derived more similarly to traditional second level GLM analyses. For example, parametric t-statistics are largely consistent with those derived based on surrogate or resting state data.</p>
-<p>Overall, the statistics for ISFC can be performed similarly to local ISC. However, it is important to note that the distribution of mean correlations between two different regions differs from within-region correlations. In particular, as the number of participant pairs increases, the distribution of ISC values is increasingly skewed to the right as negative correlations are eliminated nearly completely due to dependencies between the pairwise correlations. This is intuitive as any larger group of individuals who correlate negatively with other participants would often be positively correlated within the group, thus cancelling out any large negative values in the mean ISC. By contrast, when correlations are calculated between two different regions, negative values can occur if the stimulus-evoked activity timecourses in the two regions are consistently anticorrelated.</p>
-<p>The distributions of ISCs and ISFCs in real and null data are depicted below as a function of the number of participants on a logarithmic color scale. Overall, the null distribution of the ISFC values appears slightly wider than the ISC null distribution. However, this is mainly driven by the increased number values in the correlation matrices for the ISFC (off-diagonal entries) than ISC (diagonal entries) as the shape of the distribution appears similar but the tail is truncated (see bottom right panel).</p>
-<p><img src="../../images/isc/NullMethodsVsMovieAndRest.gif" alt="null_distribution"></p>
-<p>Figure 2: Distributions of real ISCs and ISFCs (top) and their null distributions (bottom) with different numbers of participants. Left-most panels show the ISCs and middle panels the ISFCs. Right-most panels show example distributions from the two left panels corresponding to the case with N=11 participants. The distributions are plotted on a logarithmic scale to make the differences in the left tails visible. Note that negative numbers exist in the real ISFC distribution while they are largely eliminated in the ISC.</p>
-<p>Statistics for timevarying measures of synchrony can largely follow a similar bootstrapping approach as with the static measures of synchrony. However, depending on the values that are used, statistics of phase synchrony differ slightly from linear measures of synchrony. In particular, circular statistics can be used to estimate the parametric statistics of phase differences on the unit circle, as wrapping of the phase angle causes the angular difference to change signs as the signals rotate around the circle. Thus, angular difference of –pi and pi are equivalent on the unit circle, but are at the different ends of a linear axis. However, in the current examples, we have used cosines of the angular differences, which is an even function and thus is indifferent to the sign of the angular difference. It also naturally maps the angular difference to a linear range between -1 and 1 similar to the correlation coefficient, thus simplifying the interpretation. If the sign of the phase shift is of interest, such as when trying to infer the temporal precedence of one signal over another, alternative measures taking into account the direction of the phase shift may be preferable.</p>
 
 </div>
 </div>
