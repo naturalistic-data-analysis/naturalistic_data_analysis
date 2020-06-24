@@ -7,13 +7,13 @@ kernel_path: content/features/notebooks
 has_widgets: false
 title: |-
   Intersubject Correlation
-pagenum: 7
+pagenum: 8
 prev_page:
   url: /features/notebooks/Functional_Alignment.html
 next_page:
   url: /features/notebooks/Intersubject_RSA.html
 suffix: .ipynb
-search: synchrony et al activity brain values correlations correlation j isc com doi however data signals phase www intersubject between participants thus pairwise distribution e m science s also functional signal distributions measures connectivity mean null article during not shared stimulus statistics similar real temporal regions lahnakoski individuals sciencedirect pii iscs timecourse individual resting state n synchronization similarity pairs coefficient frequency used timepoints c such level calculated within participant shows t glerean f window imaging using linear average g same example increases show left group angular into value zero amplitude extreme u l org pdf while content conditions hasson method measure
+search: et al synchrony activity isc correlation values brain correlations com data j www however doi phase participants signals intersubject between pairwise s thus science distribution article e m also using participant signal distributions sciencedirect pii not measures functional connectivity mean null temporal regions during shared stimulus statistics similar real lahnakoski individuals individual iscs average into used resting state n synchronization method level similarity pairs within timecourse coefficient frequency roi timepoints c such approach same lets t shows glerean org f content window imaging linear summary overall second g chen analysis calculated across subjects different example value group zero amplitude left
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -26,8 +26,8 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Intersubject-Correlations">Intersubject Correlations<a class="anchor-link" href="#Intersubject-Correlations"> </a></h1><p><em>Written by Juha Lahnakoski and Luke Chang</em></p>
-<p>Synchrony between individuals happens at several levels from behavior to brain activity (<a href="https://www.sciencedirect.com/science/article/pii/S2352250X1830023X">Nummenmaa et al., 2018</a>, <a href="https://academic.oup.com/scan/article/14/6/667/5489905">Nastase et al., 2019</a>). To an observer, synchrony during interaction or joint motion can reflect prosocial qualities such rapport (<a href="https://www.sciencedirect.com/science/article/pii/S0022103109000328">Miles et al., 2009</a>, <a href="https://psyarxiv.com/bd9wn">Cheong et al., 2020</a>) or affiliation (<a href="https://pdfs.semanticscholar.org/393f/e817c4e137335dc7b8c304be5037c15e716c.pdf">Hove and Risen, 2009</a>). During physically arousing ritualistic experiences, observers may selectively synchronize their heart rates while observing related, but not unrelated individuals participating in the ritual (<a href="https://www.pnas.org/content/pnas/108/20/8514.full.pdf">Konvalinka et al., 2011</a>). Synchrony of brain activity is associated with, among other things, shared psychological perspectives toward a stimulus (<a href="https://www.sciencedirect.com/science/article/pii/S1053811914004996">Lahnakoski et al., 2014</a>, <a href="https://psyarxiv.com/bd9wn">Yeshurun et al., 2017</a>) and friendship (<a href="https://www.nature.com/articles/s41467-017-02722-7">Parkinson et al., 2018</a>), and may also be disturbed in psychiatric conditions ranging from developmental conditions such as autism (<a href="https://onlinelibrary.wiley.com/doi/pdf/10.1002/aur.89">Hasson et al., 2009</a>; <a href="https://www.sciencedirect.com/science/article/pii/S2213158213001411">Salmi et al., 2013</a>, <a href="https://www.jneurosci.org/content/35/14/5837.short">Byrge et al., 2015</a>) to more acute conditions such as first-episode psychosis (<a href="https://www.sciencedirect.com/science/article/pii/S0006322318314690">Mäntylä et al., 2018</a>). Thus, measures of synchrony can offer a simple window to many psychological processes.</p>
-<p>In brain imaging, synchrony of brain activity is most commonly measured using intersubject correlations (ISC; <a href="https://science.sciencemag.org/content/sci/303/5664/1634.full.pdf">Hasson et al., 2004</a>). As the name implies, this method calculates linear correlations between participants and derives summary statistics from these correlations to measure the level of similarity of brain activity. Most commonly, ISCs are calculated locally within each voxel (or region), but this approach has also been extended to functional connectivity (<a href="https://www.nature.com/articles/ncomms12141">Simony et al., 2016</a>). Intersubject correlations give a summary statistic of synchrony over long periods of time, usually over an entire imaging session. However, the level of synchrony may change considerably from one moment to the next with the experimental condition. We will also introduce time-varying measures of synchrony.</p>
+<p>Synchrony between individuals happens at several levels from behavior to brain activity (<a href="https://www.sciencedirect.com/science/article/pii/S2352250X1830023X">Nummenmaa et al., 2018</a>, <a href="https://academic.oup.com/scan/article/14/6/667/5489905">Nastase et al., 2019</a>). To an observer, synchrony during interaction or joint motion (<a href="https://link.springer.com/article/10.1007/s10919-019-00320-3">Hale et al., 2020</a>) can reflect prosocial qualities such rapport (<a href="https://www.sciencedirect.com/science/article/pii/S0022103109000328">Miles et al., 2009</a>, <a href="https://psyarxiv.com/bd9wn">Cheong et al., 2020</a>) or affiliation (<a href="https://pdfs.semanticscholar.org/393f/e817c4e137335dc7b8c304be5037c15e716c.pdf">Hove and Risen, 2009</a>). During physically arousing ritualistic experiences, observers may selectively synchronize their heart rates while observing related, but not unrelated individuals participating in the ritual (<a href="https://www.pnas.org/content/pnas/108/20/8514.full.pdf">Konvalinka et al., 2011</a>). Synchrony of brain activity is associated with, among other things, shared psychological perspectives toward a stimulus (<a href="https://www.sciencedirect.com/science/article/pii/S1053811914004996">Lahnakoski et al., 2014</a>, <a href="https://psyarxiv.com/bd9wn">Yeshurun et al., 2017</a>, <a href="https://journals.sagepub.com/doi/full/10.1177/0956797616682029">Yeshurun et al., 2017</a>) and friendship (<a href="https://www.nature.com/articles/s41467-017-02722-7">Parkinson et al., 2018</a>), and may also be disturbed in psychiatric conditions ranging from developmental conditions such as autism (<a href="https://onlinelibrary.wiley.com/doi/pdf/10.1002/aur.89">Hasson et al., 2009</a>; <a href="https://www.sciencedirect.com/science/article/pii/S2213158213001411">Salmi et al., 2013</a>, <a href="https://www.jneurosci.org/content/35/14/5837.short">Byrge et al., 2015</a>) to more acute conditions such as first-episode psychosis (<a href="https://www.sciencedirect.com/science/article/pii/S0006322318314690">Mäntylä et al., 2018</a>). Thus, measures of synchrony can offer a simple window to many psychological processes.</p>
+<p>In brain imaging, synchrony of brain activity is most commonly measured using intersubject correlations (ISC; <a href="https://science.sciencemag.org/content/sci/303/5664/1634.full.pdf">Hasson et al., 2004</a>). As the name implies, this method calculates linear correlations between participants and derives summary statistics from these correlations to measure the level of similarity of brain activity. Overall, the brain activity measured with fMRI during naturalistic stimulation conditions can be thought to consist of for main sources 1) stimulus-driven brain activity between individuals shared by all or most of the participants, 2) individual or idiosyncratic activity elicited by the stimulus, 3) intrinsic activity that is not time-locked to the stimulus, and 4) noise from various sources. Using the above-mentioned second approach to calculate ISCs with the average activity of everyone else, we arguably only catch the brain activity that is shared by a large proportion of the participants (category 1). Thus, this method evaluates how much of an individual’s brain activity is explained by this shared component. By contrast, if smaller groups of participants, e.g. pairs of friends within the study, share similar individual activity patterns (category 2), it may be better caught by the dyadic values in the pairwise matrices. Generally, the third category of activity is not readily detected by synchrony approaches. However, with inventive experimental designs, e.g. during verbal recall of previously experienced stimuli (<a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5191958/">Chen et al., 2017</a>), it is still possible to extract shared brain activity patterns by temporally reorganizing the data, even when the original experiences of the participants were out of sync. The optimal choice of analysis will depend on the research question and the type of shared activity patterns that are of particular interest. Most commonly, ISCs are calculated locally within each voxel (or region), but this approach has also been extended to functional connectivity (<a href="https://www.nature.com/articles/ncomms12141">Simony et al., 2016</a>). Intersubject correlations give a summary statistic of synchrony over long periods of time, usually over an entire imaging session. However, the level of synchrony may change considerably from one moment to the next with the experimental condition. We will also introduce time-varying measures of synchrony.</p>
 <p>In this tutorial, we will cover:</p>
 <ul>
 <li>how to compute pairwise ISC</li>
@@ -44,18 +44,22 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Generally, ISCs are calculated using one of two main approaches. First one calculates correlations between all participant pairs to build a full intersubject correlation matrix. This matrix can be useful in various ways as can be seen in some of the following topics. The second popular option is to use the mean activity timecourse of the other participant as a model timecourse for each person individually. This procedure produces individual, rather than pairwise, spatial maps of similarity reflecting how similarly, or “typically”, each person’s brain activates. These maps lend themselves to similar analyses as one might perform with first level results of a traditional general linear model (GLM) analysis. However, some of the individual variability is lost with the latter approach, and thus the ISC values are typically of much higher magnitude than in the pairwise matrices. Optionally, individual values of similarity to all other participants can be calculated by averaging over the rows/columns of the ISC matrices. Usually, to make the correlation coefficients more normally distributed on the whole line of real number, the Fisher’s Z transformation (inverse hyperbolic tangent) would be applied before calculating the mean in this way. The effect of Fisher’s Z transformation affects mainly the higher end of absolute correlation values, eventually stretching the correlation coefficient 1 to infinity. However, with the typical range of values of pairwise ISCs, the effects of this transformation are relatively small reaching ~10% at the higher end of the scale of r=0.5.</p>
-<p>Overall, the brain activity measured with fMRI during naturalistic stimulation conditions can be thought to consist of for main sources 1) stimulus-driven brain activity between individuals shared by all or most of the participants, 2) individual or idiosyncratic activity elicited by the stimulus, 3) intrinsic activity that is not time-locked to the stimulus, and 4) noise from various sources. Using the above-mentioned second approach to calculate ISCs with the average activity of everyone else, we arguably only catch the brain activity that is shared by a large proportion of the participants (category 1). Thus, this method evaluates how much of an individual’s brain activity is explained by this shared component. By contrast, if smaller groups of participants, e.g. pairs of friends within the study, share similar individual activity patterns (category 2), it may be better caught by the dyadic values in the pairwise matrices. Generally, the third category of activity is not readily detected by synchrony approaches. However, with inventive experimental designs, e.g. during verbal recall of previously experienced stimuli (<a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5191958/">Chen et al., 2017</a>), it is still possible to extract shared brain activity patterns by temporally reorganizing the data, even when the original experiences of the participants were out of sync. The optimal choice of analysis will depend on the research question and the type of shared activity patterns that are of particular interest.</p>
-<p>Intersubject correlations give a summary statistic of synchrony over long periods of time, usually over an entire imaging session. However, the level of synchrony may change considerably from one moment to the next with the experimental condition. Time varying measures of synchrony will be discussed below, after we consider the topic of statistical inference on static intersubject correlation values.</p>
-<h1 id="Statistics-for-intersubject-synchrony">Statistics for intersubject synchrony<a class="anchor-link" href="#Statistics-for-intersubject-synchrony"> </a></h1><p>Because of the dependence between the pairwise correlation values and the inflated number of variables in the pairwise correlation matrices, non-parametric statistics are generally preferred when evaluating the significance of these correlations. This is often achieved by creating surrogate data and repeating the same analysis enough times (e.g. 5-10k iterations) to build an empirical null distribution. Surrogate data can be created, for example, by circularly shifting the timecourses of the participants or scrambling the phases of the Fourier transform of the signals and transforming these scrambled signals back to the time domain (<a href="https://www.sciencedirect.com/science/article/pii/016727899290102S">Theiler et al., 1992</a>, <a href="https://www.sciencedirect.com/science/article/pii/S0370157318301340">Lancaster et al., 2018</a>). Various blockwise scrambling techniques have also been applied and autoregressive models have been proposed to create artificial data for statistical inference . These approaches have the benefit that, when properly designed, they retain important characteristics of the original signal, such as the frequency content and autocorrelation, while removing temporal synchrony in the data. To illustrate these approaches, Video/Figure 1 below shows the process of creating these null distributions and compares these to a similar distribution built based on real resting state data of the same duration in the same participants recorded just prior to the movie data in the same imaging study. Resting state is an ideal condition for demonstrating the true null distribution of intersubject correlation as it involves no external synchronizing factors apart from the repeating noise of the scanner gradients, which are generally not of interest to us. Thus, any correlations in the resting state data arise by chance. As can be seen, the null distributions based on the surrogate data follow the distribution of resting state ISCs well as the number of iterations increases.</p>
-<p>Figure 1: Distributions of pairwise ISC values  in real movie data (blue), compared with null distributions based on temporally shifted (red) and phase scrambled (yellow) data, as well as real resting state data (purple). Top rows show the timecourse of a randomly selected voxel of one participant that have been shifted or scrambled in the case of the surrogate timecourses. Second row shows the timecourse of a second participant extracted from the same voxel. Bottom plot shows how the distributions evolve as the number of iterations increases. Dashed vertical lines correspond to the 95th percentile of each distribution. Note the distinctly extended right tail in the movie data, whereas other distributions appear highly consistent.</p>
-<p>The number of participants, N, of the mean of pairwise ISC analysis greatly affects the null distribution. As the values are always below one, the standard deviation of the null distribution is reduced with the square of N (see Figure 2 below). This is true also for the resting state data and thus it does not affect the validity of the distributions. However, as a result, very small correlations become significant as N increases, which may not be desirable as interpretation of very weak correlations can be troublesome.</p>
-<p>When the mean activity of participants is used the activity timecourse of a left-out participant, the effects of the sample size and variance of the ISC values is greatly reduced and group level statistics can be derived more similarly to traditional second level GLM analyses. For example, parametric t-statistics are largely consistent with those derived based on surrogate or resting state data.</p>
-<p>Overall, the statistics for ISFC can be performed similarly to local ISC. However, it is important to note that the distribution of mean correlations between two different regions differs from within-region correlations. In particular, as the number of participant pairs increases, the distribution of ISC values is increasingly skewed to the right as negative correlations are eliminated nearly completely due to dependencies between the pairwise correlations. This is intuitive as any larger group of individuals who correlate negatively with other participants would often be positively correlated within the group, thus cancelling out any large negative values in the mean ISC. By contrast, when correlations are calculated between two different regions, negative values can occur if the stimulus-evoked activity timecourses in the two regions are consistently anticorrelated.</p>
-<p>The distributions of ISCs and ISFCs in real and null data are depicted below as a function of the number of participants on a logarithmic color scale. Overall, the null distribution of the ISFC values appears slightly wider than the ISC null distribution. However, this is mainly driven by the increased number values in the correlation matrices for the ISFC (off-diagonal entries) than ISC (diagonal entries) as the shape of the distribution appears similar but the tail is truncated (see bottom right panel).</p>
-<p><img src="../../images/isc/NullMethodsVsMovieAndRest.gif" alt="null_distribution"></p>
-<p>Figure 2: Distributions of real ISCs and ISFCs (top) and their null distributions (bottom) with different numbers of participants. Left-most panels show the ISCs and middle panels the ISFCs. Right-most panels show example distributions from the two left panels corresponding to the case with N=11 participants. The distributions are plotted on a logarithmic scale to make the differences in the left tails visible. Note that negative numbers exist in the real ISFC distribution while they are largely eliminated in the ISC.</p>
-<p>Statistics for timevarying measures of synchrony can largely follow a similar bootstrapping approach as with the static measures of synchrony. However, depending on the values that are used, statistics of phase synchrony differ slightly from linear measures of synchrony. In particular, circular statistics can be used to estimate the parametric statistics of phase differences on the unit circle, as wrapping of the phase angle causes the angular difference to change signs as the signals rotate around the circle. Thus, angular difference of –pi and pi are equivalent on the unit circle, but are at the different ends of a linear axis. However, in the current examples, we have used cosines of the angular differences, which is an even function and thus is indifferent to the sign of the angular difference. It also naturally maps the angular difference to a linear range between -1 and 1 similar to the correlation coefficient, thus simplifying the interpretation. If the sign of the phase shift is of interest, such as when trying to infer the temporal precedence of one signal over another, alternative measures taking into account the direction of the phase shift may be preferable.</p>
+<h1 id="Computing-Intersubject-Correlation">Computing Intersubject Correlation<a class="anchor-link" href="#Computing-Intersubject-Correlation"> </a></h1><h2 id="Pairwise-vs-Average-Response">Pairwise vs Average Response<a class="anchor-link" href="#Pairwise-vs-Average-Response"> </a></h2><p>Generally, ISCs are calculated using one of two main approaches. First, one calculates <strong>pairwise</strong> correlations between all participant pairs to build a full intersubject correlation matrix. The second approach, use the <strong>average</strong> activity timecourse of the other participant as a model for each individual participant. This procedure produces individual, rather than pairwise, spatial maps of similarity reflecting how similarly, or “typically”, each person’s brain activates. These maps lend themselves to similar analyses as one might perform with first level results of a traditional general linear model (GLM) analysis. However, some of the individual variability is lost with the latter approach, and thus the ISC values are typically of much higher magnitude compared to the pairwise matrices.</p>
+<h2 id="Summary-Statistic">Summary Statistic<a class="anchor-link" href="#Summary-Statistic"> </a></h2><p>The next step after computing either the pairwise or average similarity across participants is to summarize the overall level of synchrony across participants. A straightforward approach is to compute the <strong>mean</strong> correlation. However, to make the correlation coefficients more normally distributed across the range of values, the Fisher’s Z transformation (inverse hyperbolic tangent) is typically applied before computing the mean correlation. The Fisher’s Z transformation mainly affects the higher end of absolute correlation values, eventually stretching the correlation coefficient 1 to infinity. However, with the typical range of values of pairwise ISCs, the effects of this transformation are relatively small reaching ~10% at the higher end of the scale of r=0.5. More recently, it has been suggested that computing the <strong>median</strong>, particularly when using the pairwise approach, provides a more accurate summary of the correlation values (<a href="https://www.sciencedirect.com/science/article/pii/S1053811916301331">Chen et al., 2016</a>).</p>
+<h2 id="Hypothesis-tests">Hypothesis tests<a class="anchor-link" href="#Hypothesis-tests"> </a></h2><p>Performing hypothesis tests that appropriately account for the false positive rate is tricky with ISC because of the dependence between the pairwise correlation values and the inflated number of variables in the pairwise correlation matrices. Though there have been proposals to use mixed-effects models for a parametric solution (<a href="https://www.sciencedirect.com/science/article/pii/S1053811916304141">Chen et al., 2017</a>), we generally recommend using non-parametric statistics when evaluating the significance of these correlations.</p>
+<p>There are two general non-parametric approaches to performing hypothesis tests with ISC. The first method is a <em>permutation</em> or randomization method, achieved by creating surrogate data and repeating the same analysis many times to build an empirical null distribution (e.g. 5-10k iterations). However, to meet the exchangeability assumption, it is important to consider the temporal dependence structure. Surrogate data can be created by <strong>circularly shifting</strong> the timecourses of the participants, or <strong>scrambling the phases</strong> of the Fourier transform of the signals and transforming these scrambled signals back to the time domain (<a href="https://www.sciencedirect.com/science/article/pii/016727899290102S">Theiler et al., 1992</a>, <a href="https://www.sciencedirect.com/science/article/pii/S0370157318301340">Lancaster et al., 2018</a>). Various blockwise scrambling techniques have also been applied and autoregressive models have been proposed to create artificial data for statistical inference . These approaches have the benefit that, when properly designed, they retain important characteristics of the original signal, such as the frequency content and autocorrelation, while removing temporal synchrony in the data. The second method employs a <em>subject-wise bootstrap</em> on the pairwise similarity matrices. Essentially, participants are randomly sampled with replacement and then a new similarity matrix is computed with these resampled participants. As a consequence of the procedure, sometimes the same subjects is sampled multiple times, which introduces correlation values of 1 off the diagonal. Summarizing the ISC using the median can minimize the impact of these outliers. Python implementations in Brainiak and nltools convert these values to NaNs by default so that they are not included in the overall ISC summary statistic.</p>
+<h1 id="ISC-Tutorial">ISC Tutorial<a class="anchor-link" href="#ISC-Tutorial"> </a></h1><p>Ok, now that we have covered the basics of ISC analysis, let's see how this works with real data. In this tutorial, we will be computing ISC on average activity within 50 ROIs using data from the Sherlock dataset using the nltools Python toolbox.</p>
+<p>We have already extracted the data for you to make this easier and have written out the average activity within each ROI into a separate csv file for each participant. If you would like to get practice doing this yourself, here is the code we used.</p>
+<div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">scan</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;Part1&#39;</span><span class="p">,</span> <span class="s1">&#39;Part2&#39;</span><span class="p">]:</span>
+    <span class="n">file_list</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">base_dir</span><span class="p">,</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="s1">&#39;func&#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;*crop*</span><span class="si">{</span><span class="n">scan</span><span class="si">}</span><span class="s1">*hdf5&#39;</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">file_list</span><span class="p">:</span>
+        <span class="n">sub</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">f</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">sub</span><span class="p">)</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">Brain_Data</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+        <span class="n">roi</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">extract_roi</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
+        <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">roi</span><span class="o">.</span><span class="n">T</span><span class="p">)</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">f</span><span class="p">),</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">sub</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">scan</span><span class="si">}</span><span class="s2">_Average_ROI_n50.csv&quot;</span> <span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+<p>Let's load the modules we will be using for this tutorial. Make sure that you changed the <code>base_dir</code> path to wherever you have downloaded the sherlock dataset.</p>
 
 </div>
 </div>
@@ -78,16 +82,11 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
-<span class="kn">from</span> <span class="nn">nltools.data</span> <span class="kn">import</span> <span class="n">Brain_Data</span><span class="p">,</span> <span class="n">Design_Matrix</span><span class="p">,</span> <span class="n">Adjacency</span>
+<span class="kn">from</span> <span class="nn">nltools.data</span> <span class="kn">import</span> <span class="n">Brain_Data</span><span class="p">,</span> <span class="n">Adjacency</span>
 <span class="kn">from</span> <span class="nn">nltools.mask</span> <span class="kn">import</span> <span class="n">expand_mask</span><span class="p">,</span> <span class="n">roi_to_brain</span>
 <span class="kn">from</span> <span class="nn">nltools.stats</span> <span class="kn">import</span> <span class="n">isc</span><span class="p">,</span> <span class="n">fdr</span><span class="p">,</span> <span class="n">threshold</span><span class="p">,</span> <span class="n">phase_randomize</span><span class="p">,</span> <span class="n">circle_shift</span>
-<span class="kn">from</span> <span class="nn">nltools.file_reader</span> <span class="kn">import</span> <span class="n">onsets_to_dm</span>
-<span class="kn">from</span> <span class="nn">nltools.external</span> <span class="kn">import</span> <span class="n">glover_hrf</span>
-<span class="kn">from</span> <span class="nn">nilearn.plotting</span> <span class="kn">import</span> <span class="n">view_img</span><span class="p">,</span> <span class="n">glass_brain</span><span class="p">,</span> <span class="n">plot_stat_map</span>
 <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">pairwise_distances</span>
 <span class="kn">from</span> <span class="nn">sklearn.utils</span> <span class="kn">import</span> <span class="n">check_random_state</span>
-<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">binom</span><span class="p">,</span> <span class="n">ttest_1samp</span><span class="p">,</span> <span class="n">pearsonr</span>
 
 
 <span class="n">base_dir</span> <span class="o">=</span> <span class="s1">&#39;/Volumes/Engram/Data/Sherlock/fmriprep&#39;</span>
@@ -104,16 +103,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Extract-Average-ROI-activity">Extract Average ROI activity<a class="anchor-link" href="#Extract-Average-ROI-activity"> </a></h1><p>We have already done this step for you, but want to show you how to extract average activity within a set of ROIs from a functional parcellation. There are many ways to do this, but here we will write out a separate CSV for each participant's run.</p>
-<div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">scan</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;Part1&#39;</span><span class="p">,</span> <span class="s1">&#39;Part2&#39;</span><span class="p">]:</span>
-    <span class="n">file_list</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">base_dir</span><span class="p">,</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="s1">&#39;func&#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;*crop*</span><span class="si">{</span><span class="n">scan</span><span class="si">}</span><span class="s1">*hdf5&#39;</span><span class="p">))</span>
-    <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">file_list</span><span class="p">:</span>
-        <span class="n">sub</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">f</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">sub</span><span class="p">)</span>
-        <span class="n">data</span> <span class="o">=</span> <span class="n">Brain_Data</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
-        <span class="n">roi</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">extract_roi</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
-        <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">roi</span><span class="o">.</span><span class="n">T</span><span class="p">)</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">f</span><span class="p">),</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">sub</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">scan</span><span class="si">}</span><span class="s2">_Average_ROI_n50.csv&quot;</span> <span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</pre></div>
+<p>Ok, now let's download the k=50 whole brain meta-analytic parcellation (<a href="https://www.jneurosci.org/content/36/24/6553?utm_source=TrendMD&amp;utm_medium=cpc&amp;utm_campaign=JNeurosci_TrendMD_0">de la Vega, 2016</a>). Each ROI is indicated with a unique integer. We can expand this mask into 50 separate binary masks with the <code>expand_mask</code> function.</p>
 
 </div>
 </div>
@@ -162,7 +152,8 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Load-Time-Series">Load Time Series<a class="anchor-link" href="#Load-Time-Series"> </a></h2>
+<p>Now, let's load the csv files for each participant. Remember, Sherlock viewing was separated into two 25 minute runs. We will need to combine these separately for each participant. There are many different ways to do this step. In this example, we will be storing everything in a dictionary.</p>
+
 </div>
 </div>
 </div>
@@ -198,17 +189,9 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Compute-Similarity-of-Time-Courses">Compute Similarity of Time Courses<a class="anchor-link" href="#Compute-Similarity-of-Time-Courses"> </a></h1>
-</div>
-</div>
-</div>
-</div>
+<p>Now, let's pick a single ROI to demonstrate how to perform ISC analyses. We can pick any region, but let's start with the vmPFC (roi=32), feel free to play with different regions as you work with the code.</p>
+<p>We can plot the mask and create a new pandas DataFrame that has the average vmPFC activity for each participant.</p>
 
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Average-Pairwise-Similarity-Matrix">Average Pairwise Similarity Matrix<a class="anchor-link" href="#Average-Pairwise-Similarity-Matrix"> </a></h2>
 </div>
 </div>
 </div>
@@ -222,6 +205,8 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">roi</span> <span class="o">=</span> <span class="mi">32</span>
+
+<span class="n">mask_x</span><span class="p">[</span><span class="n">roi</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 
 <span class="n">sub_rois</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="k">for</span> <span class="n">sub</span> <span class="ow">in</span> <span class="n">sub_timeseries</span><span class="p">:</span>
@@ -382,9 +367,31 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 </div>
 </div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/features/notebooks/Intersubject_Correlation_8_1.png"
+>
+</div>
+
+</div>
+</div>
 </div>
 </div>
 
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Circle-Shift-Randomization">Circle Shift Randomization<a class="anchor-link" href="#Circle-Shift-Randomization"> </a></h2>
+</div>
+</div>
 </div>
 </div>
 
@@ -488,6 +495,16 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="jb_cell">
 
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Phase-Randomization">Phase Randomization<a class="anchor-link" href="#Phase-Randomization"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
@@ -538,7 +555,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Intersubject_Correlation_12_0.png"
+<img src="../../images/features/notebooks/Intersubject_Correlation_13_0.png"
 >
 </div>
 
@@ -573,7 +590,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>ISC: 0.074, p = 0.0002
+<pre>ISC: 0.45, p = 0.0002
 </pre>
 </div>
 </div>
@@ -586,35 +603,11 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="jb_cell">
 
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">_bootstrap_isc</span><span class="p">(</span><span class="n">Adjacency</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">pairwise_distances</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">sub_rois</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;correlation&#39;</span><span class="p">),</span> <span class="n">matrix_type</span><span class="o">=</span><span class="s1">&#39;similarity&#39;</span><span class="p">))</span>
-</pre></div>
-
-    </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Subject-wise-Bootstrapping">Subject-wise Bootstrapping<a class="anchor-link" href="#Subject-wise-Bootstrapping"> </a></h2>
 </div>
 </div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>0.602809507196864</pre>
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -673,7 +666,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Intersubject_Correlation_15_1.png"
+<img src="../../images/features/notebooks/Intersubject_Correlation_16_1.png"
 >
 </div>
 
@@ -708,7 +701,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>ISC: 0.074, p = 0.0002
+<pre>ISC: 0.45, p = 0.0002
 </pre>
 </div>
 </div>
@@ -762,7 +755,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.lines.Line2D at 0x7fa241d9c2d0&gt;</pre>
+<pre>&lt;matplotlib.lines.Line2D at 0x7fa2b146b090&gt;</pre>
 </div>
 
 </div>
@@ -773,7 +766,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Intersubject_Correlation_17_1.png"
+<img src="../../images/features/notebooks/Intersubject_Correlation_18_1.png"
 >
 </div>
 
@@ -860,7 +853,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Intersubject_Correlation_21_0.png"
+<img src="../../images/features/notebooks/Intersubject_Correlation_22_0.png"
 >
 </div>
 
@@ -908,10 +901,10 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
  
  
-<div id="e3483f03-0e11-4005-9de4-08bcbb936ec1"></div>
+<div id="5daa1ff3-aaba-4d05-8459-7251328e4782"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#e3483f03-0e11-4005-9de4-08bcbb936ec1');
+var element = $('#5daa1ff3-aaba-4d05-8459-7251328e4782');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "69d13c2f1a90453382af20f211a90b7f", "version_major": 2, "version_minor": 0}
@@ -1479,6 +1472,7 @@ var element = $('#e3483f03-0e11-4005-9de4-08bcbb936ec1');
 <p>Compared to sliding-window correlations, phase synchronization has the benefit that no explicit time windowing is required and synchronization is estimated at the original sampling frequency of the signals. However, in a single pairwise comparison, phase synchrony can get extreme values by chance, much like a stopped clock that shows the right time twice a day. This is illustrated in the bottom panel of Video 2. Despite the two signals being independent, the histogram on the left shows that many of the time points show extreme synchrony values. Accordingly, the estimate of mean synchrony oscillates with the phase of the signals, until eventually stabilizing around zero as expected for independent signals. Thus, phase synchrony of two signals has the potential of producing extreme synchrony values much like time windowed correlations. This can be mitigated by averaging. Averaging over the timepoints of a full session, intersubject phase synchronization (ISPS) of regional activity produces highly similar group-level results to ISC. However, this removes the benefit of the temporal accuracy of ISPS and is thus of limited use. By contrast, averaging over (pairs of) subjects improves the reliability of synchrony in a larger population while retaining the temporal accuracy.</p>
 <p>Note that, here, we have used the cosine of the angular difference as a measure of pairwise synchrony. This produces time-averaged values that are consistent with the ISCs in the regions. However, there are other measures can also be derived, such as the phase locking value, that is the absolute value of the mean of the phase vectors of the participants (<a href="https://www.liebertpub.com/doi/pdfplus/10.1089/brain.2011.0068">Glerean et al., 2012</a>). This is simpler than pairwise measures, and can be beneficial particularly where memory is of concern, but it is limited in the range [0 1] rather than [-1 1] as for correlation coefficients.</p>
 <p><img src="../../images/isc/PhaseSynchronyAndCorrelation.gif" alt="null_distribution"></p>
+<p>Statistics for timevarying measures of synchrony can largely follow a similar bootstrapping approach as with the static measures of synchrony. However, depending on the values that are used, statistics of phase synchrony differ slightly from linear measures of synchrony. In particular, circular statistics can be used to estimate the parametric statistics of phase differences on the unit circle, as wrapping of the phase angle causes the angular difference to change signs as the signals rotate around the circle. Thus, angular difference of –pi and pi are equivalent on the unit circle, but are at the different ends of a linear axis. However, in the current examples, we have used cosines of the angular differences, which is an even function and thus is indifferent to the sign of the angular difference. It also naturally maps the angular difference to a linear range between -1 and 1 similar to the correlation coefficient, thus simplifying the interpretation. If the sign of the phase shift is of interest, such as when trying to infer the temporal precedence of one signal over another, alternative measures taking into account the direction of the phase shift may be preferable.</p>
 
 </div>
 </div>
@@ -1533,6 +1527,25 @@ var element = $('#e3483f03-0e11-4005-9de4-08bcbb936ec1');
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Contributions">Contributions<a class="anchor-link" href="#Contributions"> </a></h1><p>Juha Lahnakoski wrote text, Luke Chang edited text and developed the practical tutorials.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Cut-Text">Cut Text<a class="anchor-link" href="#Cut-Text"> </a></h1><p>Intersubject correlations give a summary statistic of synchrony over long periods of time, usually over an entire imaging session. However, the level of synchrony may change considerably from one moment to the next with the experimental condition. Time varying measures of synchrony will be discussed below, after we consider the topic of statistical inference on static intersubject correlation values.</p>
+<h2 id="From-statistics-section.">From statistics section.<a class="anchor-link" href="#From-statistics-section."> </a></h2><p>To illustrate these approaches, Video/Figure 1 below shows the process of creating these null distributions and compares these to a similar distribution built based on real resting state data of the same duration in the same participants recorded just prior to the movie data in the same imaging study. Resting state is an ideal condition for demonstrating the true null distribution of intersubject correlation as it involves no external synchronizing factors apart from the repeating noise of the scanner gradients, which are generally not of interest to us. Thus, any correlations in the resting state data arise by chance. As can be seen, the null distributions based on the surrogate data follow the distribution of resting state ISCs well as the number of iterations increases.</p>
+<p>Figure 1: Distributions of pairwise ISC values  in real movie data (blue), compared with null distributions based on temporally shifted (red) and phase scrambled (yellow) data, as well as real resting state data (purple). Top rows show the timecourse of a randomly selected voxel of one participant that have been shifted or scrambled in the case of the surrogate timecourses. Second row shows the timecourse of a second participant extracted from the same voxel. Bottom plot shows how the distributions evolve as the number of iterations increases. Dashed vertical lines correspond to the 95th percentile of each distribution. Note the distinctly extended right tail in the movie data, whereas other distributions appear highly consistent.</p>
+<p>The number of participants, N, of the mean of pairwise ISC analysis greatly affects the null distribution. As the values are always below one, the standard deviation of the null distribution is reduced with the square of N (see Figure 2 below). This is true also for the resting state data and thus it does not affect the validity of the distributions. However, as a result, very small correlations become significant as N increases, which may not be desirable as interpretation of very weak correlations can be troublesome.</p>
+<p>When the mean activity of participants is used the activity timecourse of a left-out participant, the effects of the sample size and variance of the ISC values is greatly reduced and group level statistics can be derived more similarly to traditional second level GLM analyses. For example, parametric t-statistics are largely consistent with those derived based on surrogate or resting state data.</p>
+<p>Overall, the statistics for ISFC can be performed similarly to local ISC. However, it is important to note that the distribution of mean correlations between two different regions differs from within-region correlations. In particular, as the number of participant pairs increases, the distribution of ISC values is increasingly skewed to the right as negative correlations are eliminated nearly completely due to dependencies between the pairwise correlations. This is intuitive as any larger group of individuals who correlate negatively with other participants would often be positively correlated within the group, thus cancelling out any large negative values in the mean ISC. By contrast, when correlations are calculated between two different regions, negative values can occur if the stimulus-evoked activity timecourses in the two regions are consistently anticorrelated.</p>
+<p>The distributions of ISCs and ISFCs in real and null data are depicted below as a function of the number of participants on a logarithmic color scale. Overall, the null distribution of the ISFC values appears slightly wider than the ISC null distribution. However, this is mainly driven by the increased number values in the correlation matrices for the ISFC (off-diagonal entries) than ISC (diagonal entries) as the shape of the distribution appears similar but the tail is truncated (see bottom right panel).</p>
+<p><img src="../../images/isc/NullMethodsVsMovieAndRest.gif" alt="null_distribution"></p>
+<p>Figure 2: Distributions of real ISCs and ISFCs (top) and their null distributions (bottom) with different numbers of participants. Left-most panels show the ISCs and middle panels the ISFCs. Right-most panels show example distributions from the two left panels corresponding to the case with N=11 participants. The distributions are plotted on a logarithmic scale to make the differences in the left tails visible. Note that negative numbers exist in the real ISFC distribution while they are largely eliminated in the ISC.</p>
 
 </div>
 </div>
