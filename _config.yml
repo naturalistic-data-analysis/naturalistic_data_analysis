@@ -32,7 +32,7 @@ url: http://naturalistic-data.org # the base hostname & protocol for your site, 
 
 # Main page settings
 footer_text: This page was created by <a href="http://www.lukejchang.com/">Luke Chang<a>
-  using <a href="https://jupyterbook.org/">Jupyter Book and partially supported by an NSF CAREER Award 1848370.</a>
+  using <a href="https://jupyterbook.org/">Jupyter Book</a> and partially supported by an NSF CAREER Award 1848370.
 
 # Sidebar settings
 show_sidebar: true                # Show the sidebar. Only set to false if your only wish to host a single page.
