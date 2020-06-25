@@ -91,6 +91,17 @@
   <div class="col s12 m6 l4">
     <div class="card hoverable" id="faculty">
       <div class="card-image" id="faculty">
+        <a href="https://www.bu.edu/csmet/profile/heather-shappell/"><img src="../../images/speakers/shappell.jpg" width="200"/></a>
+      </div>
+      <div class="card-content">
+        <span class="card-title center"><a href="https://www.bu.edu/csmet/profile/heather-shappell/">Heather <span>Shappell</span></a></span>
+        <p class="center card-affiliation">Johns Hopkins University</p>
+      </div>
+    </div>
+  </div>
+  <div class="col s12 m6 l4">
+    <div class="card hoverable" id="faculty">
+      <div class="card-image" id="faculty">
         <a href="http://wshimlab.com/"><img src="../../images/speakers/shim.jpg" width="200"/></a>
       </div>
       <div class="card-content">

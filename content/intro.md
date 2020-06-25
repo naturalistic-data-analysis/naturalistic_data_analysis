@@ -29,6 +29,3 @@ Naturalistic stimuli, such as films or stories, are growing in popularity for hu
 # License for this book
 All content is licensed under the [Creative Commons Attribution-ShareAlike 4.0 International](https://creativecommons.org/licenses/by-sa/4.0/)
 (CC BY-SA 4.0) license.
-
-# Acknowledgements 
-Website was created by [Luke Chang](http://www.lukejchang.com/) and supported by an NSF CAREER Award 1848370.
