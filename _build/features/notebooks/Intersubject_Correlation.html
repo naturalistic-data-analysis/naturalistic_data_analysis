@@ -13,7 +13,7 @@ prev_page:
 next_page:
   url: /features/notebooks/Intersubject_RSA.html
 suffix: .ipynb
-search: et al synchrony activity isc correlation values brain correlations com data j www however doi phase participants signals intersubject between pairwise s thus science distribution article e m also using participant signal distributions sciencedirect pii not measures functional connectivity mean null temporal regions during shared stimulus statistics similar real lahnakoski individuals individual iscs average into used resting state n synchronization method level similarity pairs within timecourse coefficient frequency roi timepoints c such approach same lets t shows glerean org f content window imaging linear summary overall second g chen analysis calculated across subjects different example value group zero amplitude left
+search: et al isc data values www com synchrony correlation correlations brain activity j phase s however distribution doi null using pairwise science article participants between signals distributions intersubject sciencedirect pii org also e method similar thus same resting state roi regions functional connectivity into isfc m not participant temporal signal real example used during shared measures statistics similarity average mean subjects lahnakoski individuals within chen approach matrix timecourse p value c while stimulus individual iscs surrogate frequency different n shows synchronization summary level pairs original tests coefficient based increases lets t function plot timepoints glerean such content imaging overall tutorial
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -26,8 +26,8 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Intersubject-Correlations">Intersubject Correlations<a class="anchor-link" href="#Intersubject-Correlations"> </a></h1><p><em>Written by Juha Lahnakoski and Luke Chang</em></p>
-<p>Synchrony between individuals happens at several levels from behavior to brain activity (<a href="https://www.sciencedirect.com/science/article/pii/S2352250X1830023X">Nummenmaa et al., 2018</a>, <a href="https://academic.oup.com/scan/article/14/6/667/5489905">Nastase et al., 2019</a>). To an observer, synchrony during interaction or joint motion (<a href="https://link.springer.com/article/10.1007/s10919-019-00320-3">Hale et al., 2020</a>) can reflect prosocial qualities such rapport (<a href="https://www.sciencedirect.com/science/article/pii/S0022103109000328">Miles et al., 2009</a>, <a href="https://psyarxiv.com/bd9wn">Cheong et al., 2020</a>) or affiliation (<a href="https://pdfs.semanticscholar.org/393f/e817c4e137335dc7b8c304be5037c15e716c.pdf">Hove and Risen, 2009</a>). During physically arousing ritualistic experiences, observers may selectively synchronize their heart rates while observing related, but not unrelated individuals participating in the ritual (<a href="https://www.pnas.org/content/pnas/108/20/8514.full.pdf">Konvalinka et al., 2011</a>). Synchrony of brain activity is associated with, among other things, shared psychological perspectives toward a stimulus (<a href="https://www.sciencedirect.com/science/article/pii/S1053811914004996">Lahnakoski et al., 2014</a>, <a href="https://psyarxiv.com/bd9wn">Yeshurun et al., 2017</a>, <a href="https://journals.sagepub.com/doi/full/10.1177/0956797616682029">Yeshurun et al., 2017</a>) and friendship (<a href="https://www.nature.com/articles/s41467-017-02722-7">Parkinson et al., 2018</a>), and may also be disturbed in psychiatric conditions ranging from developmental conditions such as autism (<a href="https://onlinelibrary.wiley.com/doi/pdf/10.1002/aur.89">Hasson et al., 2009</a>; <a href="https://www.sciencedirect.com/science/article/pii/S2213158213001411">Salmi et al., 2013</a>, <a href="https://www.jneurosci.org/content/35/14/5837.short">Byrge et al., 2015</a>) to more acute conditions such as first-episode psychosis (<a href="https://www.sciencedirect.com/science/article/pii/S0006322318314690">Mäntylä et al., 2018</a>). Thus, measures of synchrony can offer a simple window to many psychological processes.</p>
-<p>In brain imaging, synchrony of brain activity is most commonly measured using intersubject correlations (ISC; <a href="https://science.sciencemag.org/content/sci/303/5664/1634.full.pdf">Hasson et al., 2004</a>). As the name implies, this method calculates linear correlations between participants and derives summary statistics from these correlations to measure the level of similarity of brain activity. Overall, the brain activity measured with fMRI during naturalistic stimulation conditions can be thought to consist of for main sources 1) stimulus-driven brain activity between individuals shared by all or most of the participants, 2) individual or idiosyncratic activity elicited by the stimulus, 3) intrinsic activity that is not time-locked to the stimulus, and 4) noise from various sources. Using the above-mentioned second approach to calculate ISCs with the average activity of everyone else, we arguably only catch the brain activity that is shared by a large proportion of the participants (category 1). Thus, this method evaluates how much of an individual’s brain activity is explained by this shared component. By contrast, if smaller groups of participants, e.g. pairs of friends within the study, share similar individual activity patterns (category 2), it may be better caught by the dyadic values in the pairwise matrices. Generally, the third category of activity is not readily detected by synchrony approaches. However, with inventive experimental designs, e.g. during verbal recall of previously experienced stimuli (<a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5191958/">Chen et al., 2017</a>), it is still possible to extract shared brain activity patterns by temporally reorganizing the data, even when the original experiences of the participants were out of sync. The optimal choice of analysis will depend on the research question and the type of shared activity patterns that are of particular interest. Most commonly, ISCs are calculated locally within each voxel (or region), but this approach has also been extended to functional connectivity (<a href="https://www.nature.com/articles/ncomms12141">Simony et al., 2016</a>). Intersubject correlations give a summary statistic of synchrony over long periods of time, usually over an entire imaging session. However, the level of synchrony may change considerably from one moment to the next with the experimental condition. We will also introduce time-varying measures of synchrony.</p>
+<p>Synchrony between individuals happens at several levels from behavior to brain activity (<a href="https://www.sciencedirect.com/science/article/pii/S2352250X1830023X">Nummenmaa et al., 2018</a>, <a href="https://academic.oup.com/scan/article/14/6/667/5489905">Nastase et al., 2019</a>). To an observer, synchrony during interaction or joint motion (<a href="https://link.springer.com/article/10.1007/s10919-019-00320-3">Hale et al., 2020</a>) can reflect prosocial qualities such rapport (<a href="https://www.sciencedirect.com/science/article/pii/S0022103109000328">Miles et al., 2009</a>) or affiliation (<a href="https://pdfs.semanticscholar.org/393f/e817c4e137335dc7b8c304be5037c15e716c.pdf">Hove and Risen, 2009</a>). During physically arousing ritualistic experiences, observers may selectively synchronize their heart rates while observing related, but not unrelated individuals participating in the ritual (<a href="https://www.pnas.org/content/pnas/108/20/8514.full.pdf">Konvalinka et al., 2011</a>) and the degree of affective synchrony can predict the perceived social connection between two individuals (<a href="https://psyarxiv.com/bd9wn">Cheong et al., 2020</a>). Synchrony of brain activity is associated with, among other things, shared psychological perspectives toward a stimulus (<a href="https://www.sciencedirect.com/science/article/pii/S1053811914004996">Lahnakoski et al., 2014</a>, <a href="https://psyarxiv.com/bd9wn">Yeshurun et al., 2017</a>, <a href="https://journals.sagepub.com/doi/full/10.1177/0956797616682029">Yeshurun et al., 2017</a>, <a href="https://europepmc.org/article/med/28383993">Kang &amp; Wheatley, 2017</a>, <a href="https://psyarxiv.com/bd9wn">Cheong et al., 2020</a>) and friendship (<a href="https://www.nature.com/articles/s41467-017-02722-7">Parkinson et al., 2018</a>), and may also be disturbed in psychiatric conditions ranging from developmental conditions such as autism (<a href="https://onlinelibrary.wiley.com/doi/pdf/10.1002/aur.89">Hasson et al., 2009</a>; <a href="https://www.sciencedirect.com/science/article/pii/S2213158213001411">Salmi et al., 2013</a>, <a href="https://www.jneurosci.org/content/35/14/5837.short">Byrge et al., 2015</a>) to more acute conditions such as first-episode psychosis (<a href="https://www.sciencedirect.com/science/article/pii/S0006322318314690">Mäntylä et al., 2018</a>). Thus, measures of synchrony can offer a simple window to many psychological processes.</p>
+<p>In brain imaging, synchrony of brain activity is most commonly measured using intersubject correlations (ISC; <a href="https://science.sciencemag.org/content/sci/303/5664/1634.full.pdf">Hasson et al., 2004</a>). As the name implies, this method calculates linear correlations between participants and derives summary statistics from these correlations to measure the level of similarity of brain activity. Overall, the brain activity measured with fMRI during naturalistic stimulation conditions can be thought to consist of for main sources: (1) <em>stimulus-driven brain activity</em> between individuals shared by all or most of the participants, (2) individual or <em>idiosyncratic activity</em> elicited by the stimulus, (3) <em>intrinsic activity</em> that is not time-locked to the stimulus, and (4) <em>noise</em> from various sources. The idea behind ISC is to identify brain activity that is shared by a large proportion of the participants (category 1). Thus, this method evaluates how much of an individual’s brain activity is explained by this shared component. By contrast, if smaller groups of participants, e.g. pairs of friends within the study, share similar individual activity patterns (category 2), it may be better captured by the dyadic values in the pairwise matrices (<a href="https://www.nature.com/articles/s41467-017-02722-7">Parkinson et al., 2018</a>, <a href="https://www.sciencedirect.com/science/article/pii/S1053811920303372">Chen et al., 2020</a>, <a href="https://www.sciencedirect.com/science/article/pii/S1053811920303153">Finn et al., 2020</a>). Generally, the third category of activity is not readily detected by synchrony approaches (<a href="https://www.biorxiv.org/content/10.1101/487892v1.abstract">Chang et al., 2018</a>). However, with inventive experimental designs, e.g. during verbal recall of previously experienced stimuli (<a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5191958/">Chen et al., 2017</a>), it is still possible to extract shared brain activity patterns by temporally reorganizing the data, even when the original experiences of the participants were out of sync. The optimal choice of analysis will depend on the research question and the type of shared activity patterns that are of particular interest. Most commonly, ISCs are calculated locally within each voxel (or region), but this approach has also been extended to functional connectivity (<a href="https://www.nature.com/articles/ncomms12141">Simony et al., 2016</a>). Intersubject correlations give a summary statistic of synchrony over long periods of time, usually over an entire imaging session. However, the level of synchrony may change considerably from one moment to the next with the experimental condition. We will also introduce time-varying measures of synchrony.</p>
 <p>In this tutorial, we will cover:</p>
 <ul>
 <li>how to compute pairwise ISC</li>
@@ -44,12 +44,15 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Computing-Intersubject-Correlation">Computing Intersubject Correlation<a class="anchor-link" href="#Computing-Intersubject-Correlation"> </a></h1><h2 id="Pairwise-vs-Average-Response">Pairwise vs Average Response<a class="anchor-link" href="#Pairwise-vs-Average-Response"> </a></h2><p>Generally, ISCs are calculated using one of two main approaches. First, one calculates <strong>pairwise</strong> correlations between all participant pairs to build a full intersubject correlation matrix. The second approach, use the <strong>average</strong> activity timecourse of the other participant as a model for each individual participant. This procedure produces individual, rather than pairwise, spatial maps of similarity reflecting how similarly, or “typically”, each person’s brain activates. These maps lend themselves to similar analyses as one might perform with first level results of a traditional general linear model (GLM) analysis. However, some of the individual variability is lost with the latter approach, and thus the ISC values are typically of much higher magnitude compared to the pairwise matrices.</p>
+<h1 id="Computing-Intersubject-Correlation">Computing Intersubject Correlation<a class="anchor-link" href="#Computing-Intersubject-Correlation"> </a></h1><h2 id="Pairwise-vs-Average-Response">Pairwise vs Average Response<a class="anchor-link" href="#Pairwise-vs-Average-Response"> </a></h2><p>Generally, ISCs are calculated using one of two main approaches. First, one calculates <strong>pairwise</strong> correlations between all participant pairs to build a full intersubject correlation matrix. The second approach, uses the <strong>average</strong> activity timecourse of the other participants as a model for each individual left out participant. This procedure produces individual, rather than pairwise, spatial maps of similarity reflecting how similarly, or “typically”, each person’s brain activates. These maps lend themselves to similar analyses as one might perform with first level results of a traditional general linear model (GLM) analysis. However, some of the individual variability is lost with the latter approach, and thus the ISC values are typically of much higher magnitude compared to the pairwise matrices.</p>
 <h2 id="Summary-Statistic">Summary Statistic<a class="anchor-link" href="#Summary-Statistic"> </a></h2><p>The next step after computing either the pairwise or average similarity across participants is to summarize the overall level of synchrony across participants. A straightforward approach is to compute the <strong>mean</strong> correlation. However, to make the correlation coefficients more normally distributed across the range of values, the Fisher’s Z transformation (inverse hyperbolic tangent) is typically applied before computing the mean correlation. The Fisher’s Z transformation mainly affects the higher end of absolute correlation values, eventually stretching the correlation coefficient 1 to infinity. However, with the typical range of values of pairwise ISCs, the effects of this transformation are relatively small reaching ~10% at the higher end of the scale of r=0.5. More recently, it has been suggested that computing the <strong>median</strong>, particularly when using the pairwise approach, provides a more accurate summary of the correlation values (<a href="https://www.sciencedirect.com/science/article/pii/S1053811916301331">Chen et al., 2016</a>).</p>
-<h2 id="Hypothesis-tests">Hypothesis tests<a class="anchor-link" href="#Hypothesis-tests"> </a></h2><p>Performing hypothesis tests that appropriately account for the false positive rate is tricky with ISC because of the dependence between the pairwise correlation values and the inflated number of variables in the pairwise correlation matrices. Though there have been proposals to use mixed-effects models for a parametric solution (<a href="https://www.sciencedirect.com/science/article/pii/S1053811916304141">Chen et al., 2017</a>), we generally recommend using non-parametric statistics when evaluating the significance of these correlations.</p>
-<p>There are two general non-parametric approaches to performing hypothesis tests with ISC. The first method is a <em>permutation</em> or randomization method, achieved by creating surrogate data and repeating the same analysis many times to build an empirical null distribution (e.g. 5-10k iterations). However, to meet the exchangeability assumption, it is important to consider the temporal dependence structure. Surrogate data can be created by <strong>circularly shifting</strong> the timecourses of the participants, or <strong>scrambling the phases</strong> of the Fourier transform of the signals and transforming these scrambled signals back to the time domain (<a href="https://www.sciencedirect.com/science/article/pii/016727899290102S">Theiler et al., 1992</a>, <a href="https://www.sciencedirect.com/science/article/pii/S0370157318301340">Lancaster et al., 2018</a>). Various blockwise scrambling techniques have also been applied and autoregressive models have been proposed to create artificial data for statistical inference . These approaches have the benefit that, when properly designed, they retain important characteristics of the original signal, such as the frequency content and autocorrelation, while removing temporal synchrony in the data. The second method employs a <em>subject-wise bootstrap</em> on the pairwise similarity matrices. Essentially, participants are randomly sampled with replacement and then a new similarity matrix is computed with these resampled participants. As a consequence of the procedure, sometimes the same subjects is sampled multiple times, which introduces correlation values of 1 off the diagonal. Summarizing the ISC using the median can minimize the impact of these outliers. Python implementations in Brainiak and nltools convert these values to NaNs by default so that they are not included in the overall ISC summary statistic.</p>
-<h1 id="ISC-Tutorial">ISC Tutorial<a class="anchor-link" href="#ISC-Tutorial"> </a></h1><p>Ok, now that we have covered the basics of ISC analysis, let's see how this works with real data. In this tutorial, we will be computing ISC on average activity within 50 ROIs using data from the Sherlock dataset using the nltools Python toolbox.</p>
-<p>We have already extracted the data for you to make this easier and have written out the average activity within each ROI into a separate csv file for each participant. If you would like to get practice doing this yourself, here is the code we used.</p>
+<h2 id="Hypothesis-tests">Hypothesis tests<a class="anchor-link" href="#Hypothesis-tests"> </a></h2><p>Performing hypothesis tests that appropriately account for the false positive rate can be tricky with ISC because of the dependence between the pairwise correlation values and the inflated number of variables in the pairwise correlation matrices. Though there have been proposals to use mixed-effects models for a parametric solution (<a href="https://www.sciencedirect.com/science/article/pii/S1053811916304141">Chen et al., 2017</a>), we generally recommend using non-parametric statistics when evaluating the significance of these correlations.</p>
+<p>There are two general non-parametric approaches to performing hypothesis tests with ISC. The first method is a <em>permutation</em> or randomization method, achieved by creating surrogate data and repeating the same analysis many times to build an empirical null distribution (e.g. 5-10k iterations). However, to meet the exchangeability assumption, it is important to consider the temporal dependence structure. Surrogate data can be created by <strong>circularly shifting</strong> the timecourses of the participants, or <strong>scrambling the phases</strong> of the Fourier transform of the signals and transforming these scrambled signals back to the time domain (<a href="https://www.sciencedirect.com/science/article/pii/016727899290102S">Theiler et al., 1992</a>, <a href="https://www.sciencedirect.com/science/article/pii/S0370157318301340">Lancaster et al., 2018</a>). Various blockwise scrambling techniques have also been applied and autoregressive models have been proposed to create artificial data for statistical inference . These approaches have the benefit that, when properly designed, they retain important characteristics of the original signal, such as the frequency content and autocorrelation, while removing temporal synchrony in the data.</p>
+<p>To illustrate these permutation based approaches, the animation below depicts the process of creating these null distributions and compares these to a similar distribution built based on real resting state data of the same duration in the same participants recorded just prior to the movie data in the same imaging study. Resting state is an ideal condition for demonstrating the true null distribution of intersubject correlation as it involves no external synchronizing factors apart from the repeating noise of the scanner gradients, which are generally not of interest to us. Thus, any correlations in the resting state data arise by chance. As can be seen, the null distributions based on the surrogate data follow the distribution of resting state ISCs well as the number of iterations increases.</p>
+<p><img src="../../images/isc/NullMethodsVsMovieAndRest.gif" alt="null_distribution"></p>
+<p>The second approach employs a <em>subject-wise bootstrap</em> on the pairwise similarity matrices. Essentially, participants are randomly sampled with replacement and then a new similarity matrix is computed with these resampled participants. As a consequence of the resampling procedure, sometimes the same subjects are sampled multiple times, which introduces correlation values of 1 off the diagonal. Summarizing the ISC using the median can minimize the impact of these outliers. Python implementations in Brainiak and nltools convert these values to NaNs by default so that they are not included in the overall ISC summary statistic. If you would like to learn more about resampling methods, we encourage you to read our <a href="https://dartbrains.org/features/notebooks/15_Resampling_Statistics.html">brief introduction</a> available on the dartbrains course.</p>
+<h1 id="ISC-Tutorial">ISC Tutorial<a class="anchor-link" href="#ISC-Tutorial"> </a></h1><p>Ok, now that we have covered the basics of ISC analysis, let's see how this works with real data. In this tutorial, we will be computing ISC on average activity within 50 ROIs using data from the Sherlock dataset using the nltools Python toolbox. We also recommend checking out the Brainiak <a href="https://brainiak.org/tutorials/10-isc/">tutorial</a>, and the Matlab <a href="https://www.nitrc.org/projects/isc-toolbox/">ISC-Toolbox</a> (<a href="http://www.frontiersin.org/neuroinformatics/10.3389/fninf.2014.00002/abstract">Kauppi et al., 2014</a>).</p>
+<p>We have already extracted the data for you to make this easier and have written out the average activity within each ROI into a separate csv file for each participant. If you would like to get practice doing this yourself, here is the code we used. Note that we are working with the hdf5 files as they load much faster than the nifti images, but either one will work for this example.</p>
 <div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">scan</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;Part1&#39;</span><span class="p">,</span> <span class="s1">&#39;Part2&#39;</span><span class="p">]:</span>
     <span class="n">file_list</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">base_dir</span><span class="p">,</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="s1">&#39;func&#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;*crop*</span><span class="si">{</span><span class="n">scan</span><span class="si">}</span><span class="s1">*hdf5&#39;</span><span class="p">))</span>
     <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">file_list</span><span class="p">:</span>
@@ -84,12 +87,12 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 <span class="kn">from</span> <span class="nn">nltools.data</span> <span class="kn">import</span> <span class="n">Brain_Data</span><span class="p">,</span> <span class="n">Adjacency</span>
 <span class="kn">from</span> <span class="nn">nltools.mask</span> <span class="kn">import</span> <span class="n">expand_mask</span><span class="p">,</span> <span class="n">roi_to_brain</span>
-<span class="kn">from</span> <span class="nn">nltools.stats</span> <span class="kn">import</span> <span class="n">isc</span><span class="p">,</span> <span class="n">fdr</span><span class="p">,</span> <span class="n">threshold</span><span class="p">,</span> <span class="n">phase_randomize</span><span class="p">,</span> <span class="n">circle_shift</span>
+<span class="kn">from</span> <span class="nn">nltools.stats</span> <span class="kn">import</span> <span class="n">isc</span><span class="p">,</span> <span class="n">isfc</span><span class="p">,</span> <span class="n">fdr</span><span class="p">,</span> <span class="n">threshold</span><span class="p">,</span> <span class="n">phase_randomize</span><span class="p">,</span> <span class="n">circle_shift</span>
 <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">pairwise_distances</span>
 <span class="kn">from</span> <span class="nn">sklearn.utils</span> <span class="kn">import</span> <span class="n">check_random_state</span>
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
 
-
-<span class="n">base_dir</span> <span class="o">=</span> <span class="s1">&#39;/Volumes/Engram/Data/Sherlock/fmriprep&#39;</span>
+<span class="n">base_dir</span> <span class="o">=</span> <span class="s1">&#39;/Volumes/Engram/Data/Sherlock/fmriprep&#39;</span> <span class="c1"># change this to your path to the data</span>
 </pre></div>
 
     </div>
@@ -103,7 +106,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Ok, now let's download the k=50 whole brain meta-analytic parcellation (<a href="https://www.jneurosci.org/content/36/24/6553?utm_source=TrendMD&amp;utm_medium=cpc&amp;utm_campaign=JNeurosci_TrendMD_0">de la Vega, 2016</a>). Each ROI is indicated with a unique integer. We can expand this mask into 50 separate binary masks with the <code>expand_mask</code> function.</p>
+<p>Ok, now let's download the k=50 whole brain meta-analytic parcellation of the neurosynth database (<a href="https://www.jneurosci.org/content/36/24/6553?utm_source=TrendMD&amp;utm_medium=cpc&amp;utm_campaign=JNeurosci_TrendMD_0">de la Vega, 2016</a>) from <a href="https://neurovault.org/collections/2099/">neurovault</a>. Each ROI is indicated with a unique integer. We can expand this mask into 50 separate binary masks with the <code>expand_mask</code> function.</p>
 
 </div>
 </div>
@@ -389,7 +392,10 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Circle-Shift-Randomization">Circle Shift Randomization<a class="anchor-link" href="#Circle-Shift-Randomization"> </a></h2>
+<h2 id="Circle-Shift-Randomization">Circle Shift Randomization<a class="anchor-link" href="#Circle-Shift-Randomization"> </a></h2><p>To perform ISC we will be using the <code>nltools.stats.isc</code> function. There are three different methods implemented to perform hypothesis tests (i.e., circular shifting data, phase randomization, and subject-wise bootstrap). We will walk through an example of how to run each one.</p>
+<p>The idea behind circular shifting the data is to generate random surrogate data that has the same autoregressive and temporal properties of the original data (<a href="https://www.sciencedirect.com/science/article/pii/S0370157318301340">Lancaster et al., 2018</a>). This is fairly straightforward and involves randomly selecting a time point to become the new beginning of the timeseries and then concatenating the rest of the data at the end so that it has the same length as the original data. Of course, there will potentially be a sudden change in the data where the two parts were merged.</p>
+<p>To demonstrate how this works and that the circular shifted data has the same spectral properties of the original data, we will plot one subject's time series and shift it using the <code>nltools.stats.circle_shift</code> function. Next to both timeseries we plot the coefficients from a fast fourier transform.</p>
+
 </div>
 </div>
 </div>
@@ -461,6 +467,17 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="jb_cell">
 
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now that you understand how the circular shifting method works with a single time series, let's compute the ISC of the Sherlock viewing data within the vmPFC roi with 5000 permutations. The function outputs a dictionary that contains the ISC values, the p-value, the 95% confidence intervals, and optionally returns the 5000 bootstraps. All of the permutation and bootstraps are parallelized and will use as many cores as your computer has available.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
@@ -497,7 +514,8 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Phase-Randomization">Phase Randomization<a class="anchor-link" href="#Phase-Randomization"> </a></h2>
+<h2 id="Phase-Randomization">Phase Randomization<a class="anchor-link" href="#Phase-Randomization"> </a></h2><p>Next we will show how phase randomization works. This method projects the data into frequency space using a fast fourier transform and randomizes the phase and then projects the data back into the time domain (<a href="https://www.sciencedirect.com/science/article/pii/016727899290102S">Theiler et al., 1992</a>, <a href="https://www.sciencedirect.com/science/article/pii/S0370157318301340">Lancaster et al., 2018</a>). Similar to the circular shifting method, this generates a random surrogate of the data, while maintaining a similar temporal and autoregressive structure as the original data. We will generate the same plots from the example above to illustrate how this works using the <code>nltools.stats.phase_randomize</code> function.</p>
+
 </div>
 </div>
 </div>
@@ -555,7 +573,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Intersubject_Correlation_13_0.png"
+<img src="../../images/features/notebooks/Intersubject_Correlation_14_0.png"
 >
 </div>
 
@@ -590,7 +608,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>ISC: 0.45, p = 0.0002
+<pre>ISC: 0.074, p = 0.0002
 </pre>
 </div>
 </div>
@@ -605,7 +623,20 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Subject-wise-Bootstrapping">Subject-wise Bootstrapping<a class="anchor-link" href="#Subject-wise-Bootstrapping"> </a></h2>
+<p>As you can see the ISC value is identical as the median of the pairwise correlations are identical. The p-values are also similar and likely reflect the limited precision of the possible p-values that can be computed using only 5,000 permutations. For greater precision, you will need to increase the number of permutations, but remember that this will also increase the computational time.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Subject-wise-Bootstrapping">Subject-wise Bootstrapping<a class="anchor-link" href="#Subject-wise-Bootstrapping"> </a></h2><p>The final approach we will illustrate is subject-wise bootstrapping of the pairwise similarity matrix . This is currently the recommended approach as it has been demonstrated to accurately control false positive rates and is almost an order of magnitude faster shuffling the similarity matrix rather than recomputing the pairwise similarity for the null distribution (<a href="https://www.sciencedirect.com/science/article/pii/S1053811916301331">Chen et al., 2016</a>). Bootstrapping and permutation tests are different types of resampling statistics (see our resampling <a href="https://dartbrains.org/features/notebooks/15_Resampling_Statistics.html">tutorial</a> for a more in depth overview). Bootstrapping is typically used more for generating confidence intervals around an estimator, while permutation tests are used for performing hypothesis tests. However, p-values can also be computed using a bootstrap by subtracting the ISC from the null distribution and evaluating the percent of samples from the distribution that are smaller than the observed ISC (<a href="https://www.jstor.org/stable/2532163#metadata_info_tab_contents">Hall et al., 1991</a>).</p>
+<p>Just like the examples above, we will illustrate what an example bootstrapped similarity matrix looks like. Notice how some subjects are repeatedly resampled, which means that there are multiple values of perfect correlations found off the diagonal. This should be accounted for by using the <strong>median</strong> summary statistic of the lower triangle. However, both Brainiak and nltools toolboxes convert these values to NaNs to minimize the impact of these outliers on the summary statistic.</p>
+
 </div>
 </div>
 </div>
@@ -622,7 +653,6 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
     <span class="sd">&#39;&#39;&#39;This function shuffles subjects within a similarity matrix based on recommendation by Chen et al., 2016&#39;&#39;&#39;</span>
     
     <span class="n">random_state</span> <span class="o">=</span> <span class="n">check_random_state</span><span class="p">(</span><span class="n">random_state</span><span class="p">)</span>
-
     <span class="n">n_sub</span> <span class="o">=</span> <span class="n">similarity_matrix</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">bootstrap_subject</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">random_state</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n_sub</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">n_sub</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">similarity_matrix</span><span class="p">[</span><span class="n">bootstrap_subject</span><span class="p">,</span> <span class="p">:][:,</span> <span class="n">bootstrap_subject</span><span class="p">]</span>
@@ -666,7 +696,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Intersubject_Correlation_16_1.png"
+<img src="../../images/features/notebooks/Intersubject_Correlation_18_1.png"
 >
 </div>
 
@@ -701,7 +731,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>ISC: 0.45, p = 0.0002
+<pre>ISC: 0.074, p = 0.0002
 </pre>
 </div>
 </div>
@@ -714,15 +744,24 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="jb_cell">
 
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The bootstrap procedure tends to run much faster than the permutation methods on our computer, which is one of the reasons that this is the recommended approach beyond effectively controlling the false positive rate (<a href="https://www.sciencedirect.com/science/article/pii/S1053811916301331">Chen et al., 2016</a>).</p>
+<h2 id="Null-Distributions">Null Distributions<a class="anchor-link" href="#Null-Distributions"> </a></h2><p>Since each of our examples saved the null distribution, we can plot a histogram of the null distribution from each method including the confidence intervals. Notice that the circle shift and phase randomization methods produce highly similar null distributions and confidence intervals, while the bootstrap method has a wider and less symmetric distribution. However, the observed ISC of 0.074 (red line) exceeds all of the samples from the null distribution yielding a very small p-value. Notice that our observed null distributions from the Sherlock data are very similar to the animation of null data presented above.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
-<span class="c1"># plt.hist(stats_boot[&#39;null_distribution&#39;] - stats_boot[&#39;isc&#39;], alpha=.5)</span>
-<span class="c1"># plt.hist(stats_circle[&#39;null_distribution&#39;], alpha=.5)</span>
-<span class="c1"># plt.hist(stats_phase[&#39;null_distribution&#39;], alpha=.5)</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">stats_boot</span><span class="p">[</span><span class="s1">&#39;null_distribution&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">stats_boot</span><span class="p">[</span><span class="s1">&#39;isc&#39;</span><span class="p">],</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Bootstrap&#39;</span><span class="p">)</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">stats_circle</span><span class="p">[</span><span class="s1">&#39;null_distribution&#39;</span><span class="p">],</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Bootstrap&#39;</span><span class="p">)</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">stats_phase</span><span class="p">[</span><span class="s1">&#39;null_distribution&#39;</span><span class="p">],</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Bootstrap&#39;</span><span class="p">)</span>
@@ -755,7 +794,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.lines.Line2D at 0x7fa2b146b090&gt;</pre>
+<pre>&lt;matplotlib.lines.Line2D at 0x7fa242268c10&gt;</pre>
 </div>
 
 </div>
@@ -766,7 +805,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Intersubject_Correlation_18_1.png"
+<img src="../../images/features/notebooks/Intersubject_Correlation_21_1.png"
 >
 </div>
 
@@ -782,7 +821,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Now, let's calculate ISC looping over each of the 50 ROIs from the whole-brain meta-analytic parcellation (<a href="https://www.jneurosci.org/content/36/24/6553?utm_source=TrendMD&amp;utm_medium=cpc&amp;utm_campaign=JNeurosci_TrendMD_0">de la Vega, 2016</a>). Here we loop over each ROI and grab the column from each subject's dataframe. We then run ISC on the combined subject's ROI timeseries using the median method and compute a hypothesis test using the subject-wise bootstrap method with 5000 samples (<a href="https://www.sciencedirect.com/science/article/pii/S1053811916301331">Chen et al., 2016</a>). Finally, we convert each correlation and p-value from each region back into a Brain_Data instance.</p>
+<h2 id="Whole-brain-ISC">Whole brain ISC<a class="anchor-link" href="#Whole-brain-ISC"> </a></h2><p>Now, let's calculate ISC looping over each of the 50 ROIs from the whole-brain meta-analytic parcellation (<a href="https://www.jneurosci.org/content/36/24/6553?utm_source=TrendMD&amp;utm_medium=cpc&amp;utm_campaign=JNeurosci_TrendMD_0">de la Vega, 2016</a>). Here we loop over each ROI and grab the column from each subject's dataframe. We then run ISC on the combined subject's ROI timeseries using the median method and compute a hypothesis test using the subject-wise bootstrap method with 5000 samples (<a href="https://www.sciencedirect.com/science/article/pii/S1053811916301331">Chen et al., 2016</a>). Finally, we convert each correlation and p-value from each region back into a Brain_Data instance.</p>
 
 </div>
 </div>
@@ -815,18 +854,12 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="jb_cell">
 
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now we can plot the ISC values to visualize which regions had a higher overall ISC.</p>
 
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Now</span> <span class="n">we</span> <span class="n">can</span> <span class="n">plot</span> <span class="n">the</span> <span class="n">ISC</span> <span class="n">values</span>
-</pre></div>
-
-    </div>
 </div>
 </div>
-
 </div>
 </div>
 
@@ -837,7 +870,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">isc_r_brain</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">isc_r_brain</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;RdBu_r&#39;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -853,7 +886,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Intersubject_Correlation_22_0.png"
+<img src="../../images/features/notebooks/Intersubject_Correlation_25_0.png"
 >
 </div>
 
@@ -869,7 +902,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>We can also threshold the values using FDR q &lt; 0.05 and interactively view the results.</p>
+<p>We can also threshold the values using FDR q &lt; 0.05 and interactively view the results using the <code>.iplot()</code> method. if you would like to use a different threshold, simply set the <code>thr=0.001</code> parameter to your desired uncorrected threshold.</p>
 
 </div>
 </div>
@@ -883,7 +916,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">threshold</span><span class="p">(</span><span class="n">isc_r_brain</span><span class="p">,</span> <span class="n">isc_p_brain</span><span class="p">,</span> <span class="n">thr</span><span class="o">=</span><span class="n">fdr</span><span class="p">(</span><span class="n">isc_p_brain</span><span class="o">.</span><span class="n">data</span><span class="p">))</span><span class="o">.</span><span class="n">iplot</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">threshold</span><span class="p">(</span><span class="n">isc_r_brain</span><span class="p">,</span> <span class="n">isc_p_brain</span><span class="p">,</span> <span class="n">thr</span><span class="o">=</span><span class="n">fdr</span><span class="p">(</span><span class="n">isc_p_brain</span><span class="o">.</span><span class="n">data</span><span class="p">))</span><span class="o">.</span><span class="n">iplot</span><span class="p">(</span><span class="n">surface</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -901,13 +934,13 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
  
  
-<div id="5daa1ff3-aaba-4d05-8459-7251328e4782"></div>
+<div id="53d9164e-cd5d-412f-9be8-e1bafb82fdec"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#5daa1ff3-aaba-4d05-8459-7251328e4782');
+var element = $('#53d9164e-cd5d-412f-9be8-e1bafb82fdec');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "69d13c2f1a90453382af20f211a90b7f", "version_major": 2, "version_minor": 0}
+{"model_id": "c375e3bb3e5a486d9f35df85795ef3d9", "version_major": 2, "version_minor": 0}
 </script>
 </div>
 
@@ -923,7 +956,21 @@ var element = $('#5daa1ff3-aaba-4d05-8459-7251328e4782');
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Similarity-with-Average-Response">Similarity with Average Response<a class="anchor-link" href="#Similarity-with-Average-Response"> </a></h2>
+<h1 id="Intersubject-functional-connectivity">Intersubject functional connectivity<a class="anchor-link" href="#Intersubject-functional-connectivity"> </a></h1><p>Functional connectivity reflects the similarity of activity timecourses between pairs of regions and it has been particularly effective in characterizing the functional architecture of the brain during resting state, in the absence of task or external stimulation. Given enough data, these resting state correlations are stable within an individual and perturbations to the correlations between regions caused by external stimuli or tasks are relatively small (<a href="https://www.sciencedirect.com/science/article/pii/S0896627318302411">Gratton et al., 2018</a>). Moreover, functional connectivity signals may be more effective at identifying unique functional connectivity patterns compared to resting state scans (<a href="https://www.sciencedirect.com/science/article/pii/S1053811917304962">Vanderwal et al., 2017</a>).</p>
+<p>To specifically address how brain regions coactivate due to naturalistic stimulation, ISC was recently extended to intersubject functional connectivity (ISFC) to measure brain connectivity between subjects (<a href="https://www.nature.com/articles/ncomms12141">Simony et al., 2016</a>). This method has the benefit of identifying connections that are activated consistently between participants by the stimulus while disregarding the intrinsic fluctuations as they are not time-locked between individuals. ISFC can illustrate how distant brain regions cooperate to make sense of the incoming stimulus streams. However, it can also highlight pairs of regions that show similar temporal activity patterns that are driven by the external stimulus rather than neural connections between the regions, which should be taken into account in the interpretation.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Compute-average-functional-connectivity">Compute average functional connectivity<a class="anchor-link" href="#Compute-average-functional-connectivity"> </a></h2><p>In this tutorial, we will demonstrate how to perform ISFC using the <strong>averaging</strong> method. We iterate over each subject and compute the cross-correlation between each of the target subject's ROIs with the average ROI response of the other subjects. This yields a separate ROI by ROI ISFC matrix for each subject. We use the <code>nltools.stats.isfc</code> function, but we encourage the interested reader to check out the <a href="https://brainiak.org/">Brainiak</a> implementation for a faster and more feature rich option.</p>
+<p>We plot the average of these matrices as a heatmap. The diagonal reflects the ROI's ISC using the averaging method. You might recall that we used the <strong>pairwise</strong> method in the previous example to compute ISC for each ROI. Off diagonal values reflect the average intersubject functional connectivity (ISFC) between each ROI.</p>
+
 </div>
 </div>
 </div>
@@ -936,42 +983,14 @@ var element = $('#5daa1ff3-aaba-4d05-8459-7251328e4782');
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">all_rois</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="k">for</span> <span class="n">roi</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">50</span><span class="p">):</span>
-    <span class="n">sub_rois</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="k">for</span> <span class="n">sub</span> <span class="ow">in</span> <span class="n">sub_timeseries</span><span class="p">:</span>
-        <span class="n">sub_rois</span><span class="p">[</span><span class="n">sub</span><span class="p">]</span> <span class="o">=</span> <span class="n">sub_timeseries</span><span class="p">[</span><span class="n">sub</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">roi</span><span class="p">]</span>
-    <span class="n">all_rois</span><span class="p">[</span><span class="n">roi</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">sub_rois</span><span class="p">)</span>
-<span class="c1">#     time_dist = Adjacency(1 - pairwise_distances(sub_rois.T, metric=&#39;correlation&#39;), matrix_type=&#39;similarity&#39;)</span>
-<span class="c1">#     isc[roi] = time_dist.mean()</span>
-<span class="c1"># isc_brain = roi_to_brain(pd.Series(isc), mask_x)</span>
-<span class="p">[</span><span class="n">all_rois</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">x</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">all_rois</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
-</pre></div>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">sub_timeseries</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
 
-    </div>
-</div>
-</div>
+<span class="n">isfc_output</span> <span class="o">=</span> <span class="n">isfc</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">i</span><span class="o">=</span><span class="mi">0</span>
-<span class="n">avg_isc_r</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="k">for</span> <span class="n">roi</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">50</span><span class="p">):</span>
-    <span class="n">all_r</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="k">for</span> <span class="n">sub</span> <span class="ow">in</span> <span class="n">all_rois</span><span class="p">[</span><span class="n">roi</span><span class="p">]:</span>
-        <span class="n">group_avg</span> <span class="o">=</span> <span class="n">all_rois</span><span class="p">[</span><span class="n">roi</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="n">all_rois</span><span class="p">[</span><span class="n">roi</span><span class="p">]</span><span class="o">.</span><span class="n">columns</span> <span class="o">!=</span> <span class="n">sub</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-        <span class="n">all_r</span><span class="p">[</span><span class="n">sub</span><span class="p">],</span> <span class="n">p</span> <span class="o">=</span> <span class="n">pearsonr</span><span class="p">(</span><span class="n">all_rois</span><span class="p">[</span><span class="n">roi</span><span class="p">][</span><span class="n">sub</span><span class="p">],</span> <span class="n">group_avg</span><span class="p">)</span>
-        <span class="n">avg_isc_r</span><span class="p">[</span><span class="n">roi</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">all_r</span><span class="p">)</span>
-<span class="n">avg_isc_r</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">avg_isc_r</span><span class="p">)</span>
-<span class="n">avg_isc_r</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">isfc_output</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="n">vmin</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">square</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;RdBu_r&#39;</span><span class="p">,</span> <span class="n">xticklabels</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">yticklabels</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Average ISFC&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;ROI&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;ROI&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -985,437 +1004,202 @@ var element = $('#5daa1ff3-aaba-4d05-8459-7251328e4782');
 <div class="output_area">
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>0</th>
-      <th>1</th>
-      <th>2</th>
-      <th>3</th>
-      <th>4</th>
-      <th>5</th>
-      <th>6</th>
-      <th>7</th>
-      <th>8</th>
-      <th>9</th>
-      <th>...</th>
-      <th>40</th>
-      <th>41</th>
-      <th>42</th>
-      <th>43</th>
-      <th>44</th>
-      <th>45</th>
-      <th>46</th>
-      <th>47</th>
-      <th>48</th>
-      <th>49</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>sub-01</th>
-      <td>0.748356</td>
-      <td>0.736447</td>
-      <td>0.865057</td>
-      <td>0.684058</td>
-      <td>0.694833</td>
-      <td>0.743998</td>
-      <td>0.738786</td>
-      <td>0.823943</td>
-      <td>0.624566</td>
-      <td>0.808790</td>
-      <td>...</td>
-      <td>0.652550</td>
-      <td>0.118277</td>
-      <td>0.363761</td>
-      <td>0.569747</td>
-      <td>0.365645</td>
-      <td>0.264736</td>
-      <td>0.686591</td>
-      <td>0.662956</td>
-      <td>0.712507</td>
-      <td>0.799203</td>
-    </tr>
-    <tr>
-      <th>sub-02</th>
-      <td>0.569214</td>
-      <td>0.861525</td>
-      <td>0.818693</td>
-      <td>0.737793</td>
-      <td>0.740949</td>
-      <td>0.642857</td>
-      <td>0.769693</td>
-      <td>0.832345</td>
-      <td>0.732641</td>
-      <td>-0.281420</td>
-      <td>...</td>
-      <td>0.623868</td>
-      <td>0.267525</td>
-      <td>-0.503297</td>
-      <td>-0.286891</td>
-      <td>0.417314</td>
-      <td>0.764211</td>
-      <td>0.529019</td>
-      <td>0.774178</td>
-      <td>0.893284</td>
-      <td>0.874796</td>
-    </tr>
-    <tr>
-      <th>sub-03</th>
-      <td>0.215853</td>
-      <td>0.624439</td>
-      <td>0.637802</td>
-      <td>0.713321</td>
-      <td>0.798070</td>
-      <td>0.790270</td>
-      <td>0.788946</td>
-      <td>0.879664</td>
-      <td>0.869180</td>
-      <td>0.819086</td>
-      <td>...</td>
-      <td>0.140377</td>
-      <td>0.347873</td>
-      <td>0.131346</td>
-      <td>0.452738</td>
-      <td>0.478019</td>
-      <td>0.499744</td>
-      <td>0.723832</td>
-      <td>0.717610</td>
-      <td>0.794710</td>
-      <td>0.774728</td>
-    </tr>
-    <tr>
-      <th>sub-04</th>
-      <td>0.306526</td>
-      <td>0.609787</td>
-      <td>0.790974</td>
-      <td>0.396001</td>
-      <td>0.603083</td>
-      <td>0.252118</td>
-      <td>0.525458</td>
-      <td>0.628255</td>
-      <td>0.679065</td>
-      <td>0.637533</td>
-      <td>...</td>
-      <td>0.745460</td>
-      <td>0.677036</td>
-      <td>0.418312</td>
-      <td>0.301435</td>
-      <td>0.272332</td>
-      <td>0.605047</td>
-      <td>0.820816</td>
-      <td>0.677751</td>
-      <td>0.685901</td>
-      <td>0.415052</td>
-    </tr>
-    <tr>
-      <th>sub-05</th>
-      <td>0.428479</td>
-      <td>0.694906</td>
-      <td>0.746619</td>
-      <td>0.838413</td>
-      <td>0.792086</td>
-      <td>0.801231</td>
-      <td>0.765997</td>
-      <td>0.820664</td>
-      <td>0.867333</td>
-      <td>0.814567</td>
-      <td>...</td>
-      <td>0.179571</td>
-      <td>0.180285</td>
-      <td>-0.001464</td>
-      <td>0.599250</td>
-      <td>0.606638</td>
-      <td>0.818953</td>
-      <td>0.905427</td>
-      <td>0.615107</td>
-      <td>0.591806</td>
-      <td>0.639295</td>
-    </tr>
-    <tr>
-      <th>sub-06</th>
-      <td>0.294382</td>
-      <td>0.621599</td>
-      <td>0.832831</td>
-      <td>0.857960</td>
-      <td>0.813303</td>
-      <td>0.841535</td>
-      <td>0.854475</td>
-      <td>0.822105</td>
-      <td>0.890826</td>
-      <td>0.761885</td>
-      <td>...</td>
-      <td>0.658344</td>
-      <td>0.397154</td>
-      <td>0.119892</td>
-      <td>-0.330484</td>
-      <td>0.046226</td>
-      <td>0.501395</td>
-      <td>0.506246</td>
-      <td>0.529517</td>
-      <td>0.792454</td>
-      <td>0.651299</td>
-    </tr>
-    <tr>
-      <th>sub-07</th>
-      <td>0.733165</td>
-      <td>0.873626</td>
-      <td>0.682673</td>
-      <td>0.466276</td>
-      <td>0.328735</td>
-      <td>0.618183</td>
-      <td>0.643854</td>
-      <td>0.782665</td>
-      <td>0.789117</td>
-      <td>0.686631</td>
-      <td>...</td>
-      <td>0.535771</td>
-      <td>0.685958</td>
-      <td>0.457837</td>
-      <td>0.613749</td>
-      <td>0.605141</td>
-      <td>0.750901</td>
-      <td>0.782315</td>
-      <td>0.698883</td>
-      <td>0.803718</td>
-      <td>0.752458</td>
-    </tr>
-    <tr>
-      <th>sub-08</th>
-      <td>0.387250</td>
-      <td>0.364086</td>
-      <td>0.485767</td>
-      <td>0.566322</td>
-      <td>0.154568</td>
-      <td>-0.324794</td>
-      <td>0.323130</td>
-      <td>0.693798</td>
-      <td>0.154706</td>
-      <td>0.077630</td>
-      <td>...</td>
-      <td>0.204386</td>
-      <td>0.476639</td>
-      <td>0.522318</td>
-      <td>0.554205</td>
-      <td>0.318634</td>
-      <td>0.417845</td>
-      <td>0.521245</td>
-      <td>0.820830</td>
-      <td>0.105545</td>
-      <td>0.687005</td>
-    </tr>
-    <tr>
-      <th>sub-09</th>
-      <td>0.734020</td>
-      <td>0.792309</td>
-      <td>0.877801</td>
-      <td>0.859824</td>
-      <td>0.796496</td>
-      <td>0.782738</td>
-      <td>0.771366</td>
-      <td>0.834529</td>
-      <td>0.762212</td>
-      <td>0.671906</td>
-      <td>...</td>
-      <td>0.460337</td>
-      <td>0.367605</td>
-      <td>0.451114</td>
-      <td>0.302941</td>
-      <td>-0.225773</td>
-      <td>0.115316</td>
-      <td>0.289164</td>
-      <td>0.539802</td>
-      <td>0.792066</td>
-      <td>0.621553</td>
-    </tr>
-    <tr>
-      <th>sub-10</th>
-      <td>0.528940</td>
-      <td>0.333966</td>
-      <td>0.683110</td>
-      <td>0.661799</td>
-      <td>0.434066</td>
-      <td>0.565455</td>
-      <td>0.471665</td>
-      <td>0.551834</td>
-      <td>0.481256</td>
-      <td>0.463447</td>
-      <td>...</td>
-      <td>0.397182</td>
-      <td>0.482234</td>
-      <td>-0.206256</td>
-      <td>-0.087457</td>
-      <td>0.493583</td>
-      <td>0.673510</td>
-      <td>0.817466</td>
-      <td>0.905424</td>
-      <td>0.879214</td>
-      <td>0.727890</td>
-    </tr>
-    <tr>
-      <th>sub-11</th>
-      <td>0.695829</td>
-      <td>0.732621</td>
-      <td>0.763976</td>
-      <td>0.757260</td>
-      <td>0.677044</td>
-      <td>0.711152</td>
-      <td>0.776475</td>
-      <td>0.796055</td>
-      <td>0.759095</td>
-      <td>0.751328</td>
-      <td>...</td>
-      <td>0.533052</td>
-      <td>0.687391</td>
-      <td>0.555067</td>
-      <td>0.676120</td>
-      <td>0.456258</td>
-      <td>0.636083</td>
-      <td>0.787228</td>
-      <td>0.816758</td>
-      <td>0.616178</td>
-      <td>0.727545</td>
-    </tr>
-    <tr>
-      <th>sub-12</th>
-      <td>0.811216</td>
-      <td>0.693369</td>
-      <td>0.819974</td>
-      <td>0.874862</td>
-      <td>0.039994</td>
-      <td>0.119225</td>
-      <td>0.470558</td>
-      <td>0.462425</td>
-      <td>0.560899</td>
-      <td>0.709793</td>
-      <td>...</td>
-      <td>0.368771</td>
-      <td>0.373963</td>
-      <td>0.167264</td>
-      <td>0.443146</td>
-      <td>0.259438</td>
-      <td>0.688152</td>
-      <td>0.853293</td>
-      <td>0.784909</td>
-      <td>0.760940</td>
-      <td>0.599713</td>
-    </tr>
-    <tr>
-      <th>sub-13</th>
-      <td>0.735028</td>
-      <td>0.828451</td>
-      <td>0.720966</td>
-      <td>0.439719</td>
-      <td>0.321267</td>
-      <td>0.622926</td>
-      <td>0.765588</td>
-      <td>0.661018</td>
-      <td>0.562418</td>
-      <td>0.831640</td>
-      <td>...</td>
-      <td>0.689218</td>
-      <td>0.782577</td>
-      <td>0.374889</td>
-      <td>0.108945</td>
-      <td>0.417455</td>
-      <td>0.644347</td>
-      <td>0.816742</td>
-      <td>0.719528</td>
-      <td>0.738142</td>
-      <td>0.848315</td>
-    </tr>
-    <tr>
-      <th>sub-14</th>
-      <td>0.526474</td>
-      <td>0.449239</td>
-      <td>0.701901</td>
-      <td>0.788331</td>
-      <td>0.820051</td>
-      <td>0.717727</td>
-      <td>0.750921</td>
-      <td>0.707235</td>
-      <td>0.798786</td>
-      <td>0.729582</td>
-      <td>...</td>
-      <td>0.714800</td>
-      <td>0.560824</td>
-      <td>0.382766</td>
-      <td>-0.155656</td>
-      <td>-0.106877</td>
-      <td>0.080555</td>
-      <td>0.392156</td>
-      <td>0.492857</td>
-      <td>0.862472</td>
-      <td>0.666661</td>
-    </tr>
-    <tr>
-      <th>sub-15</th>
-      <td>0.458322</td>
-      <td>0.493672</td>
-      <td>0.498799</td>
-      <td>0.816099</td>
-      <td>0.799013</td>
-      <td>0.895522</td>
-      <td>0.870563</td>
-      <td>0.889834</td>
-      <td>0.890259</td>
-      <td>0.691744</td>
-      <td>...</td>
-      <td>0.748120</td>
-      <td>0.803927</td>
-      <td>0.491443</td>
-      <td>0.510447</td>
-      <td>0.697748</td>
-      <td>0.774504</td>
-      <td>0.727248</td>
-      <td>0.733710</td>
-      <td>0.783523</td>
-      <td>0.718055</td>
-    </tr>
-    <tr>
-      <th>sub-16</th>
-      <td>-0.528693</td>
-      <td>-0.363698</td>
-      <td>0.708047</td>
-      <td>0.753478</td>
-      <td>0.813425</td>
-      <td>0.773108</td>
-      <td>0.836594</td>
-      <td>0.878375</td>
-      <td>0.788115</td>
-      <td>0.766687</td>
-      <td>...</td>
-      <td>0.497534</td>
-      <td>0.654310</td>
-      <td>-0.003171</td>
-      <td>0.297113</td>
-      <td>0.515580</td>
-      <td>0.696442</td>
-      <td>0.827166</td>
-      <td>0.846452</td>
-      <td>0.849575</td>
-      <td>0.788751</td>
-    </tr>
-  </tbody>
-</table>
-<p>16 rows × 50 columns</p>
+<div class="output_text output_subarea output_execute_result">
+<pre>Text(100.40000000000006, 0.5, &#39;ROI&#39;)</pre>
 </div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/features/notebooks/Intersubject_Correlation_30_1.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can threshold the ISFC connectivity matrix by running a one-sample ttest on each ISFC value and correcting for multiple comparisons using FDR.</p>
+<p>We can also convert this into an adjacency matrix, by binarizing the continuous t-values. In this example, we specifically are interested in exploring which regions have a positive ISFC. We use an arbitrary fdr threshold (q &lt; 0.000001) in this example to create a sparse adjacency matrix.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">t</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">ttest_1samp</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">x</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">isfc_output</span><span class="p">]),</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">thresh</span> <span class="o">=</span> <span class="n">fdr</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="o">.</span><span class="mi">000001</span><span class="p">)</span>
+<span class="n">thresholded_t_pos</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">thresholded_t_pos</span><span class="p">[</span><span class="n">p</span> <span class="o">&gt;</span> <span class="n">thresh</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">thresholded_t_pos</span><span class="p">[</span><span class="n">thresholded_t_pos</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">thresholded_t_pos</span><span class="p">[</span><span class="n">thresholded_t_pos</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">thresholded_t_pos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">thresholded_t_pos</span><span class="p">,</span> <span class="n">isfc_output</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">thresholded_t_pos</span><span class="p">,</span> <span class="n">square</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">xticklabels</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">yticklabels</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Positive ISFC Edges&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;ROI&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;ROI&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Text(100.40000000000006, 0.5, &#39;ROI&#39;)</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/features/notebooks/Intersubject_Correlation_32_1.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can now convert this adjacency matrix into a graph and can visualize which regions are functionally connected to the most other regions.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">plot_isfc_network</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Plot the degree of the thresholded isfc Adjaceny matrix&#39;&#39;&#39;</span>
+    
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">Adjacency</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;data must be an Adjacency instance.&#39;</span><span class="p">)</span>
+        
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">15</span><span class="p">))</span>
+    <span class="n">G</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">to_graph</span><span class="p">()</span>
+    <span class="n">pos</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">kamada_kawai_layout</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+    <span class="n">node_and_degree</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">degree</span><span class="p">()</span>
+    <span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_edges</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=.</span><span class="mi">4</span><span class="p">)</span>
+    <span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_labels</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">font_size</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">font_color</span><span class="o">=</span><span class="s1">&#39;darkslategray&#39;</span><span class="p">)</span>
+
+    <span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_nodes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">nodelist</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">node_and_degree</span><span class="p">)</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span>
+                           <span class="n">node_size</span><span class="o">=</span><span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="mi">100</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">node_and_degree</span><span class="p">],</span>
+                           <span class="n">node_color</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">node_and_degree</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">()),</span>
+                           <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Reds_r</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">edgecolors</span><span class="o">=</span><span class="s1">&#39;darkslategray&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">with_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    
+<span class="n">plot_isfc_network</span><span class="p">(</span><span class="n">Adjacency</span><span class="p">(</span><span class="n">thresholded_t_pos</span><span class="p">,</span> <span class="n">matrix_type</span><span class="o">=</span><span class="s1">&#39;similarity&#39;</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/features/notebooks/Intersubject_Correlation_34_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Each ROI number is not particularly informative. Most of the time, we find it helpful to project the number of connections (i.e., degree) with each node back into brain space.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">degree</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">Adjacency</span><span class="p">(</span><span class="n">thresholded_t_pos</span><span class="p">,</span> <span class="n">matrix_type</span><span class="o">=</span><span class="s1">&#39;similarity&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">to_graph</span><span class="p">()</span><span class="o">.</span><span class="n">degree</span><span class="p">()))</span>
+<span class="n">brain_degree</span> <span class="o">=</span> <span class="n">roi_to_brain</span><span class="p">(</span><span class="n">degree</span><span class="p">,</span> <span class="n">mask_x</span><span class="p">)</span>
+<span class="n">brain_degree</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/features/notebooks/Intersubject_Correlation_36_0.png"
+>
 </div>
 
 </div>
@@ -1433,19 +1217,39 @@ var element = $('#5daa1ff3-aaba-4d05-8459-7251328e4782');
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">n_permute</span> <span class="o">=</span> <span class="mi">5000</span>
-
-<span class="n">all_permutations</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_permute</span><span class="p">):</span>
-    <span class="n">all_bootstraps</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">avg_isc_r</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">*</span> <span class="n">avg_isc_r</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
-<span class="n">all_permutations</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">all_permutations</span><span class="p">)</span>
-<span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">all_bootstraps</span> <span class="o">&gt;</span> <span class="n">avg_isc_r</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">brain_degree</span><span class="o">.</span><span class="n">iplot</span><span class="p">(</span><span class="n">surface</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 
     </div>
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="c92a1ae4-e5f8-4836-9938-418e6cb5f368"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#c92a1ae4-e5f8-4836-9938-418e6cb5f368');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "3a79c09e54fb4562861a34ebdf9cb863", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -1453,22 +1257,10 @@ var element = $('#5daa1ff3-aaba-4d05-8459-7251328e4782');
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Intersubject-functional-connectivity">Intersubject functional connectivity<a class="anchor-link" href="#Intersubject-functional-connectivity"> </a></h1><p>Functional connectivity reflects the similarity of activity timecourses between pairs of regions and it has been particularly popular in recent years in inquiry to the functional architecture of the brain during resting state, in the absence of task or external stimulation. Given enough data, these resting state correlations are stable within an individual and perturbations to the correlations between regions caused by external stimuli or tasks are relatively small (<a href="https://www.sciencedirect.com/science/article/pii/S0896627318302411">Gratton et al., 2018</a>). Thus, functional connectivity appears to reflect intrinsic fluctuations of BOLD activity more than stimulus evoked processing.</p>
-<p>To specifically address how brain regions coactivate due to naturalistic stimulation, intersubject synchrony analysis was recently extended to measure brain connectivity between subjects (<a href="https://www.nature.com/articles/ncomms12141">Simony et al., 2016</a>), or intersubject functional connectivity (ISFC). This method has the benefit that it only highlights those connections that are activated consistently between participants by the stimulus while disregarding the intrinsic fluctuations as they are not time-locked between individuals. This type of intersubject connectivity can suggest how distant brain regions cooperate to make sense of the incoming stimulus streams. However, it can also highlight pairs of regions that show similar temporal activity patterns that are driven by the external stimulus rather than neural connections between the regions.  which should be taken into account in the interpretation. Future work will evaluate the usefulness of these measures for elucidating individual variability and, for example, effects of psychiatric disorders on intersubject connectivity. However, our initial results presented in this conference suggest that stimulus-driven connectivity may reveal exciting insight into how functional network structure relevant for understanding naturalistic events is affected by social interaction disorders (see poster 206 and the accompanying talk in the Neurodevelopmental Disorders and Environmental Impact oral session).</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Temporal-dynamics-of-intersubject-synchrony">Temporal dynamics of intersubject synchrony<a class="anchor-link" href="#Temporal-dynamics-of-intersubject-synchrony"> </a></h1><p>Most studies so far have focused on correlations calculated over entire datasets to reveal the average connectivity or intersubject similarity in a group of participants. However, functional brain networks are widely accepted to be dynamic. Thus, it is not clear whether tools like correlation, which assumes a constant statistical dependence between the variables over the entire imaging session, are the most appropriate way to analyze data gathered during complex naturalistic stimulation.</p>
+<h1 id="Temporal-dynamics-of-intersubject-synchrony">Temporal dynamics of intersubject synchrony<a class="anchor-link" href="#Temporal-dynamics-of-intersubject-synchrony"> </a></h1><p>The majority of research has focused on correlations calculated over entire datasets to reveal the average connectivity or intersubject similarity in a group of participants. However, functional brain networks are widely thought to be dynamic. Thus, it is not clear whether tools like correlation, which assumes a constant statistical dependence between the variables over the entire imaging session, are the most appropriate way to analyze data gathered during complex naturalistic stimulation.</p>
 <p>To get an intuition of temporal constituents of Pearson’s correlation coefficient of two signals, it can be written as the expected value of the elementwise product of the signals (standardized to zero mean and unit variance). This case can be seen in the top panel of video 2, where two independent sinusoidal signals are shown in blue and red, and their elementwise product is shown in gray dotted line. The correlation coefficient of the two signals is the expected value of the gray signal, that is, sum of the timepoints divided by N-1, where N is the number of timepoints. This timecourse gives direct insight to which timepoints are contributing most to the correlation. However, as can be seen from this simple example, the correlation coefficient tends to be dominated by high-amplitude timepoints; when one (or both) of the signals is close to zero the mean value, the product is also close to zero. By contrast, when both are far away from zero, the timepoints contribute more to the overall correlation, either negatively when the signals have opposite signs or positively when the signs are the same. The vertical histogram on the left shows a dynamically updating distribution of the elementwise products and the correlation coefficient as the number of timepoints increases. As can be seen, after a few periods of the signal, the correlation coefficient stabilizes near zero. Similarly, ISC can be derived by producing a similar timecourse of elementwise products for all pairs of subjects and averaging over the participant pairs (<a href="https://onlinelibrary.wiley.com/doi/pdf/10.1002/hbm.23591">Lahnakoski et al., 2017</a>). This timecourse directly produces the ISC values, but the dependence on the extreme amplitude values remains and the timecourse only shows the relative importance of the individual timepoints rather than a readily interpretable statistical measure of synchrony.</p>
-<p>A simple, and still a popular way of looking at temporal variability of synchrony and limit the effect of the local amplitudes is to calculate correlation in sliding time windows. This allows the estimation of synchrony also during time windows when the signals are close to their mean values as the amplitude within each time window is standardized when the correlation is calculated. However, the length of the temporal window forces a trade-off between temporal accuracy and stability of the correlation coefficient calculated in that window. Very short time windows allow one to follow precisely when correlations occur, but short windows yield extremely unstable correlations, which can be dominated completely by e.g. single co-occurring spikes or slopes. Thus, sliding-window correlations in short time-windows are often characterized by extreme correlation values that change signs wildly.</p>
-<p>Calculating the phase synchronization or phase locking of signals is one option to estimate timevarying synchronization of signals in a way that largely separates synchronization from signal amplitudes. It has been used widely for electrophysiological measures such as EEG and MEG, and more recently also for fMRI (<a href="https://www.liebertpub.com/doi/pdfplus/10.1089/brain.2011.0068">Glerean et al., 2012</a>). Phase synchronization leverages the Hilbert transform to transform the real-valued signals into a complex valued, analytic signal, which is a generalization of the phasor notation of sinusoidal signals that are used widely in engineering applications. For illustration, two examples of analytic signals with constant frequency and amplitude are shown in the bottom panel of video 2, plotted in three dimensions (real, imaginary and time axes). In contrast to a time-invariant phasor, an analytic signal has a timevarying amplitude envelope and frequency and can thus be used to track changes in synchrony over time. However, for meaningful separation of the envelope and phase of the signal, the original signal has to be contained in a limited frequency band, which can be obtained through band-pass filtering. The smaller this frequency band is, the better the amplitude envelope is separated into a lower frequency than the phase of the signal in the pass-band (<a href="https://www.liebertpub.com/doi/pdfplus/10.1089/brain.2011.0068">Glerean et al., 2012</a>). However, poorly designed filters may affect the shape of the signal considerably and in extreme cases even remove the signal of interest. For example, some filters can cause non-linear phase shifts across the frequency spectrum, or excessively tight pass-band may miss important frequencies completely.</p>
+<p>A simple, and popular way of looking at temporal variability of synchrony while limiting the effects of signal amplitudes is to calculate correlations within sliding time windows. This allows the estimation of synchrony also during time windows when the signals are close to their mean values as the amplitude within each time window is standardized when the correlation is calculated. However, the length of the temporal window forces a trade-off between temporal accuracy and stability of the correlation coefficient calculated in that window. Very short time windows allow one to follow precisely when correlations occur, but short windows yield extremely unstable correlations, which can be dominated completely by e.g. single co-occurring spikes or slopes. Thus, sliding-window correlations in short time-windows are often characterized by extreme correlation values that change signs wildly.</p>
+<p>Calculating the phase synchronization or phase locking of signals is one option to estimate time-varying synchronization of signals in a way that largely separates synchronization from signal amplitudes. It has been used widely for electrophysiological measures such as EEG and MEG, and more recently also for fMRI (<a href="https://www.liebertpub.com/doi/pdfplus/10.1089/brain.2011.0068">Glerean et al., 2012</a>). Phase synchronization leverages the Hilbert transform to transform the real-valued signals into a complex valued, analytic signal, which is a generalization of the phasor notation of sinusoidal signals that are used widely in engineering applications. For illustration, two examples of analytic signals with constant frequency and amplitude are shown in the bottom panel of video 2, plotted in three dimensions (real, imaginary and time axes). In contrast to a time-invariant phasor, an analytic signal has a timevarying amplitude envelope and frequency and can thus be used to track changes in synchrony over time. However, for meaningful separation of the envelope and phase of the signal, the original signal has to be contained in a limited frequency band, which can be obtained through band-pass filtering. The smaller this frequency band is, the better the amplitude envelope is separated into a lower frequency than the phase of the signal in the pass-band (<a href="https://www.liebertpub.com/doi/pdfplus/10.1089/brain.2011.0068">Glerean et al., 2012</a>). However, poorly designed filters may affect the shape of the signal considerably and in extreme cases even remove the signal of interest. For example, some filters can cause non-linear phase shifts across the frequency spectrum, or excessively tight pass-band may miss important frequencies completely.</p>
 <p>Compared to sliding-window correlations, phase synchronization has the benefit that no explicit time windowing is required and synchronization is estimated at the original sampling frequency of the signals. However, in a single pairwise comparison, phase synchrony can get extreme values by chance, much like a stopped clock that shows the right time twice a day. This is illustrated in the bottom panel of Video 2. Despite the two signals being independent, the histogram on the left shows that many of the time points show extreme synchrony values. Accordingly, the estimate of mean synchrony oscillates with the phase of the signals, until eventually stabilizing around zero as expected for independent signals. Thus, phase synchrony of two signals has the potential of producing extreme synchrony values much like time windowed correlations. This can be mitigated by averaging. Averaging over the timepoints of a full session, intersubject phase synchronization (ISPS) of regional activity produces highly similar group-level results to ISC. However, this removes the benefit of the temporal accuracy of ISPS and is thus of limited use. By contrast, averaging over (pairs of) subjects improves the reliability of synchrony in a larger population while retaining the temporal accuracy.</p>
 <p>Note that, here, we have used the cosine of the angular difference as a measure of pairwise synchrony. This produces time-averaged values that are consistent with the ISCs in the regions. However, there are other measures can also be derived, such as the phase locking value, that is the absolute value of the mean of the phase vectors of the participants (<a href="https://www.liebertpub.com/doi/pdfplus/10.1089/brain.2011.0068">Glerean et al., 2012</a>). This is simpler than pairwise measures, and can be beneficial particularly where memory is of concern, but it is limited in the range [0 1] rather than [-1 1] as for correlation coefficients.</p>
 <p><img src="../../images/isc/PhaseSynchronyAndCorrelation.gif" alt="null_distribution"></p>
@@ -1481,14 +1273,86 @@ var element = $('#5daa1ff3-aaba-4d05-8459-7251328e4782');
 
 <div class="jb_cell">
 
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">What</span> <span class="n">about</span> <span class="n">the</span> <span class="n">phase</span> <span class="n">synchrony</span><span class="p">,</span> <span class="n">would</span> <span class="n">we</span> <span class="n">also</span> <span class="n">have</span> <span class="n">a</span> <span class="n">practical</span> <span class="n">example</span> <span class="k">for</span> <span class="n">that</span> <span class="ow">and</span> <span class="k">if</span> <span class="n">so</span><span class="p">,</span> <span class="n">can</span> <span class="n">I</span> <span class="n">do</span> <span class="n">anything</span> <span class="n">to</span> <span class="n">help</span><span class="err">?</span> <span class="n">As</span> <span class="n">I</span> <span class="n">briefly</span> <span class="n">mention</span><span class="p">,</span> <span class="n">I</span> <span class="n">used</span> <span class="n">cosines</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">example</span> <span class="n">video</span><span class="p">,</span> <span class="n">which</span> <span class="ow">is</span> <span class="n">different</span> <span class="kn">from</span> <span class="nn">our</span> <span class="n">paper</span> <span class="n">that</span> <span class="n">I</span> <span class="n">cite</span><span class="p">,</span> <span class="n">where</span> <span class="n">we</span> <span class="n">had</span> <span class="n">just</span> <span class="n">normalized</span> <span class="n">angular</span> <span class="n">differences</span> <span class="ow">and</span> <span class="n">average</span> <span class="n">phase</span> <span class="n">vectors</span><span class="o">.</span> <span class="n">If</span> <span class="n">we</span> <span class="n">add</span> <span class="n">a</span> <span class="n">practical</span> <span class="n">example</span><span class="p">,</span> <span class="n">we</span> <span class="n">could</span> <span class="n">use</span> <span class="n">either</span> <span class="n">the</span> <span class="n">cosines</span> <span class="ow">or</span> <span class="n">the</span> <span class="n">angles</span><span class="o">.</span> <span class="n">Cosine</span> <span class="ow">is</span><span class="p">,</span> <span class="n">of</span> <span class="n">course</span><span class="p">,</span> <span class="n">more</span> <span class="n">consistent</span> <span class="k">with</span> <span class="n">how</span> <span class="n">the</span> <span class="n">slope</span> <span class="ow">in</span> <span class="n">correlation</span> <span class="ow">is</span> <span class="n">calculated</span><span class="p">,</span> <span class="n">so</span> <span class="n">the</span> <span class="n">scaling</span> <span class="ow">is</span> <span class="n">also</span> <span class="n">more</span> <span class="n">similar</span> <span class="n">to</span> <span class="n">correlation</span> <span class="n">than</span> <span class="k">with</span> <span class="n">angles</span><span class="o">.</span> <span class="n">This</span><span class="p">,</span> <span class="n">I</span> <span class="n">think</span><span class="p">,</span> <span class="ow">is</span> <span class="n">helpful</span> <span class="k">if</span> <span class="n">people</span> <span class="n">want</span> <span class="n">to</span> <span class="n">compare</span> <span class="n">the</span> <span class="n">results</span><span class="o">.</span> <span class="n">However</span><span class="p">,</span> <span class="n">I</span> <span class="n">have</span> <span class="n">no</span> <span class="n">strong</span> <span class="n">preference</span> <span class="n">on</span> <span class="n">which</span> <span class="n">one</span> <span class="n">to</span> <span class="n">show</span> <span class="k">as</span> <span class="n">they</span> <span class="n">are</span> <span class="n">essentially</span> <span class="n">the</span> <span class="n">same</span> <span class="n">thing</span><span class="o">.</span>
+
+<span class="n">To</span> <span class="n">create</span> <span class="n">the</span> <span class="n">signals</span> <span class="ow">and</span> <span class="n">the</span> <span class="n">synchrony</span> <span class="n">timecourse</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">example</span> <span class="n">video</span><span class="p">,</span> <span class="n">I</span> <span class="n">used</span> <span class="n">the</span> <span class="n">lines</span> <span class="n">below</span> <span class="ow">in</span> <span class="n">Matlab</span> <span class="k">for</span> <span class="n">ISPS</span> <span class="n">that</span> <span class="n">can</span> <span class="n">be</span> <span class="n">a</span> <span class="n">applied</span> <span class="n">to</span> <span class="n">the</span> <span class="n">ROI</span> <span class="n">data</span> <span class="k">with</span> <span class="n">a</span> <span class="n">few</span> <span class="n">edits</span> <span class="p">(</span><span class="n">replacing</span> <span class="n">the</span> <span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="ow">and</span> <span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="o">*</span><span class="mf">1.5</span><span class="p">)</span> <span class="k">with</span> <span class="n">real</span> <span class="n">signals</span><span class="p">)</span> <span class="ow">and</span> <span class="n">translating</span> <span class="n">them</span> <span class="n">to</span> <span class="n">Python</span><span class="p">:</span>
+<span class="n">t</span><span class="o">=</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">14</span><span class="o">*</span><span class="n">pi</span><span class="p">,</span><span class="mi">750</span><span class="p">);</span>
+<span class="n">sig</span><span class="o">=</span><span class="n">hilbert</span><span class="p">(</span><span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="p">));</span>
+<span class="n">sig2</span><span class="o">=</span><span class="n">hilbert</span><span class="p">(</span><span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="o">*</span><span class="mf">1.5</span><span class="p">));</span>
+<span class="n">sig</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">29</span><span class="p">)</span><span class="o">=</span><span class="p">[];</span>
+<span class="n">sig2</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">29</span><span class="p">)</span><span class="o">=</span><span class="p">[];</span>
+<span class="n">t</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">29</span><span class="p">)</span><span class="o">=</span><span class="p">[];</span>
+<span class="n">sig</span><span class="p">(</span><span class="n">end</span><span class="o">-</span><span class="mi">29</span><span class="p">:</span><span class="n">end</span><span class="p">)</span><span class="o">=</span><span class="p">[];</span>
+<span class="n">sig2</span><span class="p">(</span><span class="n">end</span><span class="o">-</span><span class="mi">29</span><span class="p">:</span><span class="n">end</span><span class="p">)</span><span class="o">=</span><span class="p">[];</span>
+<span class="n">t</span><span class="p">(</span><span class="n">end</span><span class="o">-</span><span class="mi">29</span><span class="p">:</span><span class="n">end</span><span class="p">)</span><span class="o">=</span><span class="p">[];</span>
+<span class="n">sync</span><span class="o">=</span><span class="n">cos</span><span class="p">(</span><span class="n">angle</span><span class="p">(</span><span class="n">exp</span><span class="p">(</span><span class="mi">1</span><span class="n">i</span><span class="o">*</span><span class="p">(</span><span class="n">angle</span><span class="p">(</span><span class="n">sig</span><span class="p">)</span><span class="o">-</span><span class="n">angle</span><span class="p">(</span><span class="n">sig2</span><span class="p">)))));</span>
+
+<span class="n">Also</span> <span class="n">the</span> <span class="s2">&quot;angle(exp(1*&quot;</span> <span class="ow">is</span> <span class="n">unnecessay</span> <span class="k">as</span> <span class="n">the</span> <span class="n">cosine</span> <span class="n">of</span> <span class="n">the</span> <span class="n">angular</span> <span class="n">difference</span> <span class="n">would</span> <span class="n">produce</span> <span class="n">the</span> <span class="n">same</span> <span class="n">result</span><span class="p">,</span> <span class="n">so</span> <span class="n">it</span> <span class="n">can</span> <span class="n">be</span> <span class="n">simplified</span> <span class="n">a</span> <span class="n">bit</span> <span class="n">to</span> <span class="s2">&quot;sync=cos(angle(sig)-angle(sig2))&quot;</span><span class="p">,</span> <span class="n">I</span> <span class="n">believe</span><span class="o">.</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Recommended-reading">Recommended reading<a class="anchor-link" href="#Recommended-reading"> </a></h1><p>Notes: We might want to highlight a few key papers and just leave embedded links for the other ones.</p>
-<ul>
-<li><p>Chen, J., Leong, Y. C., Honey, C. J., Yong, C. H., Norman, K. A., and Hasson, U. (2017). Shared memories reveal shared structure in neural activity across individuals. Nat. Neurosci. 20, 115–125. doi:10.1038/nn.4450.</p>
-</li>
+<h1 id="Recommended-reading">Recommended reading<a class="anchor-link" href="#Recommended-reading"> </a></h1><ul>
 <li><p>Glerean, E., Salmi, J., Lahnakoski, J. M., Jääskeläinen, I. P., and Sams, M. (2012). Functional Magnetic Resonance Imaging Phase Synchronization as a Measure of Dynamic Functional Connectivity. Brain Connect. 2, 91–101. doi:10.1089/brain.2011.0068.</p>
 </li>
+<li><p>Nastase, S. A., Gazzola, V., Hasson, U., &amp; Keysers, C. (2019). Measuring shared responses across subjects using intersubject correlation. Social Cognitive and Affective Neuroscience, Volume 14, Issue 6, June 2019, Pages 667–685, <a href="https://doi.org/10.1093/scan/nsz037">https://doi.org/10.1093/scan/nsz037</a></p>
+</li>
+<li><p>Nummenmaa, L., Lahnakoski, J. M., and Glerean, E. (2018). Sharing the social world via intersubject neural synchronisation. Curr. Opin. Psychol. 24. doi:10.1016/j.copsyc.2018.02.021.</p>
+</li>
+<li><p>Simony, E., Honey, C. J., Chen, J., Lositsky, O., Yeshurun, Y., Wiesel, A., et al. (2016). Dynamic reconfiguration of the default mode network during narrative comprehension. Nat. Commun. 7. doi:10.1038/ncomms12141.</p>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Contributions">Contributions<a class="anchor-link" href="#Contributions"> </a></h1><p>Juha Lahnakoski wrote text, Luke Chang wrote text and developed the practical tutorials.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Cut-Text">Cut Text<a class="anchor-link" href="#Cut-Text"> </a></h1><p>Intersubject correlations give a summary statistic of synchrony over long periods of time, usually over an entire imaging session. However, the level of synchrony may change considerably from one moment to the next with the experimental condition. Time varying measures of synchrony will be discussed below, after we consider the topic of statistical inference on static intersubject correlation values.</p>
+<h2 id="From-statistics-section.">From statistics section.<a class="anchor-link" href="#From-statistics-section."> </a></h2><p>To illustrate these approaches, Video/Figure 1 below shows the process of creating these null distributions and compares these to a similar distribution built based on real resting state data of the same duration in the same participants recorded just prior to the movie data in the same imaging study. Resting state is an ideal condition for demonstrating the true null distribution of intersubject correlation as it involves no external synchronizing factors apart from the repeating noise of the scanner gradients, which are generally not of interest to us. Thus, any correlations in the resting state data arise by chance. As can be seen, the null distributions based on the surrogate data follow the distribution of resting state ISCs well as the number of iterations increases.</p>
+<p>Figure 1: Distributions of pairwise ISC values  in real movie data (blue), compared with null distributions based on temporally shifted (red) and phase scrambled (yellow) data, as well as real resting state data (purple). Top rows show the timecourse of a randomly selected voxel of one participant that have been shifted or scrambled in the case of the surrogate timecourses. Second row shows the timecourse of a second participant extracted from the same voxel. Bottom plot shows how the distributions evolve as the number of iterations increases. Dashed vertical lines correspond to the 95th percentile of each distribution. Note the distinctly extended right tail in the movie data, whereas other distributions appear highly consistent.</p>
+<p>The number of participants, N, of the mean of pairwise ISC analysis greatly affects the null distribution. As the values are always below one, the standard deviation of the null distribution is reduced with the square of N (see Figure 2 below). This is true also for the resting state data and thus it does not affect the validity of the distributions. However, as a result, very small correlations become significant as N increases, which may not be desirable as interpretation of very weak correlations can be troublesome.</p>
+<p>When the mean activity of participants is used the activity timecourse of a left-out participant, the effects of the sample size and variance of the ISC values is greatly reduced and group level statistics can be derived more similarly to traditional second level GLM analyses. For example, parametric t-statistics are largely consistent with those derived based on surrogate or resting state data.</p>
+<p>Overall, the statistics for ISFC can be performed similarly to local ISC. However, it is important to note that the distribution of mean correlations between two different regions differs from within-region correlations. In particular, as the number of participant pairs increases, the distribution of ISC values is increasingly skewed to the right as negative correlations are eliminated nearly completely due to dependencies between the pairwise correlations. This is intuitive as any larger group of individuals who correlate negatively with other participants would often be positively correlated within the group, thus cancelling out any large negative values in the mean ISC. By contrast, when correlations are calculated between two different regions, negative values can occur if the stimulus-evoked activity timecourses in the two regions are consistently anticorrelated.</p>
+<p>The distributions of ISCs and ISFCs in real and null data are depicted below as a function of the number of participants on a logarithmic color scale. Overall, the null distribution of the ISFC values appears slightly wider than the ISC null distribution. However, this is mainly driven by the increased number values in the correlation matrices for the ISFC (off-diagonal entries) than ISC (diagonal entries) as the shape of the distribution appears similar but the tail is truncated (see bottom right panel).</p>
+<p><img src="../../images/isc/NullMethodsVsMovieAndRest.gif" alt="null_distribution"></p>
+<p>Figure 2: Distributions of real ISCs and ISFCs (top) and their null distributions (bottom) with different numbers of participants. Left-most panels show the ISCs and middle panels the ISFCs. Right-most panels show example distributions from the two left panels corresponding to the case with N=11 participants. The distributions are plotted on a logarithmic scale to make the differences in the left tails visible. Note that negative numbers exist in the real ISFC distribution while they are largely eliminated in the ISC.</p>
+<p>Figure 1: Distributions of pairwise ISC values in real movie data (blue), compared with null distributions based on temporally shifted (red) and phase scrambled (yellow) data, as well as real resting state data (purple). Top rows show the timecourse of a randomly selected voxel of one participant that have been shifted or scrambled in the case of the surrogate timecourses. Second row shows the timecourse of a second participant extracted from the same voxel. Bottom plot shows how the distributions evolve as the number of iterations increases. Dashed vertical lines correspond to the 95th percentile of each distribution. Note the distinctly extended right tail in the movie data, whereas other distributions appear highly consistent."</p>
+<p>Future work will evaluate the usefulness of these measures for elucidating individual variability and, for example, effects of psychiatric disorders on intersubject connectivity. However, our initial results presented in this conference suggest that stimulus-driven connectivity may reveal exciting insight into how functional network structure relevant for understanding naturalistic events is affected by social interaction disorders (see poster 206 and the accompanying talk in the Neurodevelopmental Disorders and Environmental Impact oral session).
+-LC: this felt a little out of place, any chance you have a link to the video?  We could embed it in the ISFC section if you want.</p>
+<ul>
+<li>Chen, J., Leong, Y. C., Honey, C. J., Yong, C. H., Norman, K. A., and Hasson, U. (2017). Shared memories reveal shared structure in neural activity across individuals. Nat. Neurosci. 20, 115–125. doi:10.1038/nn.4450.</li>
+</ul>
+<ul>
 <li><p>Gratton, C., Laumann, T. O., Nielsen, A. N., Greene, D. J., Gordon, E. M., Gilmore, A. W., et al. (2018). Functional Brain Networks Are Dominated by Stable Group and Individual Factors, Not Cognitive or Daily Variation. Neuron 98, 439-452.e5. doi:10.1016/j.neuron.2018.03.035.</p>
 </li>
 <li><p>Hasson, U., Avidan, G., Gelbard, H., Vallines, I., Harel, M., Minshew, N., et al. (2009). Shared and idiosyncratic cortical activation patterns in autism revealed under continuous real-life viewing conditions. Autism Res. 2, 220–231. doi:10.1002/aur.89.</p>
@@ -1516,36 +1380,6 @@ var element = $('#5daa1ff3-aaba-4d05-8459-7251328e4782');
 <li><p>Simony, E., Honey, C. J., Chen, J., Lositsky, O., Yeshurun, Y., Wiesel, A., et al. (2016). Dynamic reconfiguration of the default mode network during narrative comprehension. Nat. Commun. 7. doi:10.1038/ncomms12141.</p>
 </li>
 </ul>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Contributions">Contributions<a class="anchor-link" href="#Contributions"> </a></h1><p>Juha Lahnakoski wrote text, Luke Chang edited text and developed the practical tutorials.</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Cut-Text">Cut Text<a class="anchor-link" href="#Cut-Text"> </a></h1><p>Intersubject correlations give a summary statistic of synchrony over long periods of time, usually over an entire imaging session. However, the level of synchrony may change considerably from one moment to the next with the experimental condition. Time varying measures of synchrony will be discussed below, after we consider the topic of statistical inference on static intersubject correlation values.</p>
-<h2 id="From-statistics-section.">From statistics section.<a class="anchor-link" href="#From-statistics-section."> </a></h2><p>To illustrate these approaches, Video/Figure 1 below shows the process of creating these null distributions and compares these to a similar distribution built based on real resting state data of the same duration in the same participants recorded just prior to the movie data in the same imaging study. Resting state is an ideal condition for demonstrating the true null distribution of intersubject correlation as it involves no external synchronizing factors apart from the repeating noise of the scanner gradients, which are generally not of interest to us. Thus, any correlations in the resting state data arise by chance. As can be seen, the null distributions based on the surrogate data follow the distribution of resting state ISCs well as the number of iterations increases.</p>
-<p>Figure 1: Distributions of pairwise ISC values  in real movie data (blue), compared with null distributions based on temporally shifted (red) and phase scrambled (yellow) data, as well as real resting state data (purple). Top rows show the timecourse of a randomly selected voxel of one participant that have been shifted or scrambled in the case of the surrogate timecourses. Second row shows the timecourse of a second participant extracted from the same voxel. Bottom plot shows how the distributions evolve as the number of iterations increases. Dashed vertical lines correspond to the 95th percentile of each distribution. Note the distinctly extended right tail in the movie data, whereas other distributions appear highly consistent.</p>
-<p>The number of participants, N, of the mean of pairwise ISC analysis greatly affects the null distribution. As the values are always below one, the standard deviation of the null distribution is reduced with the square of N (see Figure 2 below). This is true also for the resting state data and thus it does not affect the validity of the distributions. However, as a result, very small correlations become significant as N increases, which may not be desirable as interpretation of very weak correlations can be troublesome.</p>
-<p>When the mean activity of participants is used the activity timecourse of a left-out participant, the effects of the sample size and variance of the ISC values is greatly reduced and group level statistics can be derived more similarly to traditional second level GLM analyses. For example, parametric t-statistics are largely consistent with those derived based on surrogate or resting state data.</p>
-<p>Overall, the statistics for ISFC can be performed similarly to local ISC. However, it is important to note that the distribution of mean correlations between two different regions differs from within-region correlations. In particular, as the number of participant pairs increases, the distribution of ISC values is increasingly skewed to the right as negative correlations are eliminated nearly completely due to dependencies between the pairwise correlations. This is intuitive as any larger group of individuals who correlate negatively with other participants would often be positively correlated within the group, thus cancelling out any large negative values in the mean ISC. By contrast, when correlations are calculated between two different regions, negative values can occur if the stimulus-evoked activity timecourses in the two regions are consistently anticorrelated.</p>
-<p>The distributions of ISCs and ISFCs in real and null data are depicted below as a function of the number of participants on a logarithmic color scale. Overall, the null distribution of the ISFC values appears slightly wider than the ISC null distribution. However, this is mainly driven by the increased number values in the correlation matrices for the ISFC (off-diagonal entries) than ISC (diagonal entries) as the shape of the distribution appears similar but the tail is truncated (see bottom right panel).</p>
-<p><img src="../../images/isc/NullMethodsVsMovieAndRest.gif" alt="null_distribution"></p>
-<p>Figure 2: Distributions of real ISCs and ISFCs (top) and their null distributions (bottom) with different numbers of participants. Left-most panels show the ISCs and middle panels the ISFCs. Right-most panels show example distributions from the two left panels corresponding to the case with N=11 participants. The distributions are plotted on a logarithmic scale to make the differences in the left tails visible. Note that negative numbers exist in the real ISFC distribution while they are largely eliminated in the ISC.</p>
 
 </div>
 </div>
