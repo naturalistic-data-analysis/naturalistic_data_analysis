@@ -54,18 +54,14 @@
 - divider: true
 - header: Analysis Tutorials
 
-- title: Annotations
-  url: /features/notebooks/Pliers_Tutorial
-  not_numbered: true
-
 - title: Functional Alignment
   url: /features/notebooks/Functional_Alignment
   not_numbered: true
-
+  
 - title: Intersubject Correlation
   url: /features/notebooks/Intersubject_Correlation
   not_numbered: true
-
+  
 - title: Intersubject Representational Similarity Analysis
   url: /features/notebooks/Intersubject_RSA
   not_numbered: true
@@ -74,12 +70,16 @@
   url: /features/notebooks/Event_Segmentation
   not_numbered: true
 
+- title: Natural Language Processing
+  url: /features/notebooks/Natural_Language_Processing
+  not_numbered: true
+
 - title: Hidden Semi-Markov Models
   url: /features/notebooks/HiddenSemiMarkovModel
   not_numbered: true
 
-- title: Natural Language Processing
-  url: /features/notebooks/Natural_Language_Processing
+- title: Annotations
+  url: /features/notebooks/Pliers_Tutorial
   not_numbered: true
 
 - divider: true
