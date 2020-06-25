@@ -25,10 +25,10 @@
   <div class="col s12 m6 l4">
     <div class="card hoverable" id="faculty">
       <div class="card-image" id="faculty">
-        <a href="adelavega.github.io"><img src="../../images/speakers/delavega.jpg" width="200"/></a>
+        <a href="https://adelavega.github.io/"><img src="../../images/speakers/delavega.jpg" width="200"/></a>
       </div>
       <div class="card-content">
-        <span class="card-title center"><a href="adelavega.github.io">Alejandro <span>de la Vega</span></a></span>
+        <span class="card-title center"><a href="https://adelavega.github.io/">Alejandro <span>de la Vega</span></a></span>
         <p class="center card-affiliation">University of Texas Austin</p>
       </div>
     </div>

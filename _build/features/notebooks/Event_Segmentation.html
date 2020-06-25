@@ -7,13 +7,13 @@ kernel_path: content/features/notebooks
 has_widgets: false
 title: |-
   Event Segmentation
-pagenum: 7
+pagenum: 10
 prev_page:
-  url: /features/notebooks/Functional_Alignment.html
+  url: /features/notebooks/Intersubject_RSA.html
 next_page:
-  url: /features/notebooks/1_Introduction_to_Programming.html
+  url: /features/notebooks/HiddenSemiMarkovModel.html
 suffix: .ipynb
-search: event boundaries events hmm recall gsbs data model patterns movie both between timepoints fit states activity well during set human optimal distance segmentation voxel perception used here using also show subjects org only finding correlation corresponding log likelihood measure timepoint similarity comparison determine t same baldassano geerligs search load angular gyrus loading doi dataset applying plot models fitting need specify note test below since matrix being split merge fits labeled possible datasets variance fmri chris gordon fleetwood linda shows spatial across greedy state boundary free et al subject recalled narrative nii files step figshare structure before looking timings class toolbox
+search: event events boundaries hmm recall gsbs data model patterns movie both between segmentation activity timepoints fit states well used during using set human optimal distance voxel perception org here also baldassano geerligs show search subjects only finding correlation corresponding log likelihood measure timepoint similarity comparison determine t same chris linda greedy state boundary different load angular gyrus loading doi dataset applying plot models fitting need specify note test below since matrix being split merge fits labeled possible datasets variance fmri gordon fleetwood shows spatial across free watching methods performing dr phd assistant professor com et al subject recalled narrative nii
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -27,9 +27,106 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Event-segmentation-and-alignment-in-fMRI-data">Event segmentation and alignment in fMRI data<a class="anchor-link" href="#Event-segmentation-and-alignment-in-fMRI-data"> </a></h1><p><em>Written by Chris Baldassano, Gordon Fleetwood, and Linda Geerligs</em></p>
 <p>This tutorial shows how to detect event boundaries in fMRI data (defined as shifts in spatial patterns of voxel activity) and align events across perception and recall. We'll show how both an HMM (Hidden Markov Model) and GSBS (Greedy State Boundary Search) can be used to find boundaries, and how the HMM (or GSBS+HMM) can be used to track reactivation of event patterns during free recall.</p>
+<p>Let's get started by watching some short videos introducing the concept of event segmentation and two different methods for performing this type of analysis.</p>
+<p>First, <a href="http://www.dpmlab.org/">Dr. Chris Baldassano, PhD</a>, an Assistant Professor at Columbia University, will introduce performing event segmentation using HMMs</p>
 
 </div>
 </div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">YouTubeVideo</span>
+
+<span class="n">YouTubeVideo</span><span class="p">(</span><span class="s1">&#39;-iDMphdGVxo&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+
+<iframe
+    width="400"
+    height="300"
+    src="https://www.youtube.com/embed/-iDMphdGVxo"
+    frameborder="0"
+    allowfullscreen
+></iframe>
+
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Next, <a href="https://lindageerligs.com/">Dr. Linda Geerligs, PhD</a> an Assistant Professor at the Donders Institute, will discuss how the Greedy State Boundary Search can be used to segment events from brain activity.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">YouTubeVideo</span><span class="p">(</span><span class="s1">&#39;KvwzjRtbJ6U&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+
+<iframe
+    width="400"
+    height="300"
+    src="https://www.youtube.com/embed/KvwzjRtbJ6U"
+    frameborder="0"
+    allowfullscreen
+></iframe>
+
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -170,7 +267,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Event_Segmentation_6_0.png"
+<img src="../../images/features/notebooks/Event_Segmentation_9_0.png"
 >
 </div>
 
@@ -265,7 +362,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Event_Segmentation_10_1.png"
+<img src="../../images/features/notebooks/Event_Segmentation_13_1.png"
 >
 </div>
 
@@ -316,7 +413,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Event_Segmentation_11_1.png"
+<img src="../../images/features/notebooks/Event_Segmentation_14_1.png"
 >
 </div>
 
@@ -378,7 +475,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Event_Segmentation_12_2.png"
+<img src="../../images/features/notebooks/Event_Segmentation_15_2.png"
 >
 </div>
 
@@ -444,7 +541,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Event_Segmentation_13_0.png"
+<img src="../../images/features/notebooks/Event_Segmentation_16_0.png"
 >
 </div>
 
@@ -576,7 +673,7 @@ Trying 60 events
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Event_Segmentation_16_2.png"
+<img src="../../images/features/notebooks/Event_Segmentation_19_2.png"
 >
 </div>
 
@@ -737,7 +834,7 @@ Fitting split-merge HMM with 40 events...
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Event_Segmentation_22_2.png"
+<img src="../../images/features/notebooks/Event_Segmentation_25_2.png"
 >
 </div>
 
@@ -805,7 +902,7 @@ Fitting split-merge HMM with 40 events...
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Event_Segmentation_24_1.png"
+<img src="../../images/features/notebooks/Event_Segmentation_27_1.png"
 >
 </div>
 
@@ -857,7 +954,7 @@ Fitting split-merge HMM with 40 events...
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Event_Segmentation_25_1.png"
+<img src="../../images/features/notebooks/Event_Segmentation_28_1.png"
 >
 </div>
 
@@ -968,7 +1065,7 @@ Fitting split-merge HMM with 109 events...
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Event_Segmentation_28_1.png"
+<img src="../../images/features/notebooks/Event_Segmentation_31_1.png"
 >
 </div>
 
@@ -1086,7 +1183,7 @@ HMM40=0.001398, HMM_SM40=0.000275, GSBS40=0.019417, HMM109=0.020840, HMM_SM109=0
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Event_Segmentation_31_1.png"
+<img src="../../images/features/notebooks/Event_Segmentation_34_1.png"
 >
 </div>
 
@@ -1176,7 +1273,7 @@ HMM40=0.001398, HMM_SM40=0.000275, GSBS40=0.019417, HMM109=0.020840, HMM_SM109=0
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Event_Segmentation_36_0.png"
+<img src="../../images/features/notebooks/Event_Segmentation_39_0.png"
 >
 </div>
 
@@ -1286,7 +1383,7 @@ HMM40=0.001398, HMM_SM40=0.000275, GSBS40=0.019417, HMM109=0.020840, HMM_SM109=0
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Event_Segmentation_40_0.png"
+<img src="../../images/features/notebooks/Event_Segmentation_43_0.png"
 >
 </div>
 
