@@ -47,6 +47,17 @@
   <div class="col s12 m6 l4">
     <div class="card hoverable" id="faculty">
       <div class="card-image" id="faculty">
+        <a href="https://gfleetwood.netlify.app/"><img src="../../images/speakers/fleetwood.jpg" width="200"/></a>
+      </div>
+      <div class="card-content">
+        <span class="card-title center"><a href="https://gfleetwood.netlify.app/">Gordon <span>Fleetwood</span></a></span>
+        <p class="center card-affiliation">New Classrooms</p>
+      </div>
+    </div>
+  </div>
+  <div class="col s12 m6 l4">
+    <div class="card hoverable" id="faculty">
+      <div class="card-image" id="faculty">
         <a href="https://lindageerligs.com/"><img src="../../images/speakers/geerligs.png" width="200"/></a>
       </div>
       <div class="card-content">
