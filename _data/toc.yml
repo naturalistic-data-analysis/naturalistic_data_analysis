@@ -82,6 +82,10 @@
   url: /features/notebooks/Pliers_Tutorial
   not_numbered: true
 
+- title: Visualizing High Dimensional Data
+  url: /features/notebooks/hypertools
+  not_numbered: true
+
 - divider: true
 - header: Background Resources
 
