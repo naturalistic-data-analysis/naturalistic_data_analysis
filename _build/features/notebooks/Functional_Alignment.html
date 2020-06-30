@@ -11,9 +11,9 @@ pagenum: 6
 prev_page:
   url: /features/notebooks/Preprocessing.html
 next_page:
-  url: /features/notebooks/Event_Segmentation.html
+  url: /features/notebooks/Intersubject_Correlation.html
 suffix: .ipynb
-search: data space common model hyperalignment into subject voxels using voxel dimensional functional shared response et al org j alignment also across project subjects based haxby cortical align isc participants within s patterns activity overall plot part course information e new article guntupalli n lower tutorial srm transformation latent same example models aligned www com high cortex perform sherlock lets components brain multivariate features idea d transformed different procrustes chen pymvpa load need braindata similar after here component algorithms not signal well classification g processing interest dartmouth edu html ramadge pattern average roi v papers fmri pdf developed implemented toolbox brainiak
+search: data space hyperalignment common model into subject voxels using voxel dimensional shared functional org response et al j alignment also haxby cortical across project subjects based align isc information participants within s patterns activity overall tutorial plot part course e new article guntupalli n lower srm transformation latent same example models aligned www com high cortex perform sherlock lets components brain multivariate features dartmouth edu html idea d transformed different procrustes chen pymvpa load need braindata similar after here component algorithms not signal well classification g processing interest haxbylab ramadge pattern average roi v papers fmri pdf implemented toolbox brainiak
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -33,9 +33,53 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <p>There are many different models of functional alignment. <em>Response-based hyperalignment</em> uses an iterative procrustes transform to scale, rotate, and reflect voxel time series so that they are in the same functional space across participants (<a href="https://www.sciencedirect.com/science/article/pii/S0896627311007811">Haxby et al., 2011</a> ; <a href="https://academic.oup.com/cercor/article/26/6/2919/1754308">Guntupalli et al., 2016</a>). <em>Connectivity-based hyperalignment</em> instead aligns voxels based on their embedding with other voxels using seed-based functional connectivity (<a href="https://journals.plos.org/ploscompbiol/article?rev=1&amp;id=10.1371/journal.pcbi.1006120">Guntupalli, et al., 2018</a>). There is also another approach called the <em>Shared Response Model</em>, which learns a joint-SVD and can project subjects into a lower dimensional common space (<a href="https://ieeexplore.ieee.org/abstract/document/6958912">Chen et al., 2014</a>, <a href="http://papers.nips.cc/paper/5855-a-reduced-dimension-fmri-shared-response-model.pdf">Chen et al., 2015</a>). Overall, it has been shown that all of these different approaches can dramatically improve between subject classification accuracy particularly in <a href="http://haxbylab.dartmouth.edu/publications/HGC+11.pdf">ventral temporal cortex</a>. In addition, lower dimensional projections removes redundant axes in the high dimensional space and can effectively denoise the signal, which also improves classification accuracy.</p>
 <p>Hyperalignment was developed at Dartmouth College and is implemented in the <a href="http://www.pymvpa.org">PyMVPA</a> toolbox. There is a <a href="http://www.pymvpa.org/examples/hyperalignment.html">tutorial</a> on the PyMVPA website for how to implement different versions of hyperalignment. The Shared Response Model was developed at Princeton University and is implemented in the <a href="https://brainiak.org/">brainiak</a> toolbox and I also encourage you to see their excellent <a href="https://brainiak.org/tutorials/11-SRM/">tutorial</a>.</p>
 <p>In this tutorial, we will walk through how to perform Response-Based Hyperalignment and the Shared Response model on the Sherlock dataset using the <a href="https://neurolearn.readthedocs.io/en/latest/">nltools</a> toolbox.</p>
+<p>Before we get started, I encourage you to watch this video by <a href="http://haxbylab.dartmouth.edu/ppl/jim.html">Dr. James Haxby, PhD</a> from the <a href="http://mindsummerschool.org/">2018 MIND Computational Summer School</a> in which he discusses how hyperalignment can be used to model the shared deep structure of information encoded in fine-scale cortical topographies. This video is about an hour long and provides an excellent overview of hyperalignment.</p>
 
 </div>
 </div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">YouTubeVideo</span>
+
+<span class="n">YouTubeVideo</span><span class="p">(</span><span class="s1">&#39;QX7sNaLyxdo&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+
+<iframe
+    width="400"
+    height="300"
+    src="https://www.youtube.com/embed/QX7sNaLyxdo"
+    frameborder="0"
+    allowfullscreen
+></iframe>
+
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -136,7 +180,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Functional_Alignment_4_0.png"
+<img src="../../images/features/notebooks/Functional_Alignment_5_0.png"
 >
 </div>
 
@@ -240,7 +284,7 @@ sub-16
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Functional_Alignment_7_0.png"
+<img src="../../images/features/notebooks/Functional_Alignment_8_0.png"
 >
 </div>
 
@@ -357,7 +401,7 @@ sub-16
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Functional_Alignment_12_1.png"
+<img src="../../images/features/notebooks/Functional_Alignment_13_1.png"
 >
 </div>
 
@@ -419,7 +463,7 @@ sub-16
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Functional_Alignment_14_1.png"
+<img src="../../images/features/notebooks/Functional_Alignment_15_1.png"
 >
 </div>
 
@@ -491,7 +535,7 @@ sub-16
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Functional_Alignment_17_0.png"
+<img src="../../images/features/notebooks/Functional_Alignment_18_0.png"
 >
 </div>
 
@@ -589,7 +633,7 @@ sub-16
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Functional_Alignment_21_1.png"
+<img src="../../images/features/notebooks/Functional_Alignment_22_1.png"
 >
 </div>
 
@@ -650,7 +694,7 @@ sub-16
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Functional_Alignment_23_1.png"
+<img src="../../images/features/notebooks/Functional_Alignment_24_1.png"
 >
 </div>
 
@@ -714,7 +758,7 @@ sub-16
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Functional_Alignment_25_0.png"
+<img src="../../images/features/notebooks/Functional_Alignment_26_0.png"
 >
 </div>
 
@@ -762,7 +806,7 @@ sub-16
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Functional_Alignment_27_0.png"
+<img src="../../images/features/notebooks/Functional_Alignment_28_0.png"
 >
 </div>
 
@@ -799,7 +843,7 @@ sub-16
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Functional_Alignment_28_0.png"
+<img src="../../images/features/notebooks/Functional_Alignment_29_0.png"
 >
 </div>
 
@@ -863,7 +907,7 @@ sub-16
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Functional_Alignment_31_0.png"
+<img src="../../images/features/notebooks/Functional_Alignment_32_0.png"
 >
 </div>
 
@@ -1122,7 +1166,7 @@ sub-16
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Contributions">Contributions<a class="anchor-link" href="#Contributions"> </a></h1><p>Luke Chang developed the initial notebook.</p>
+<h1 id="Contributions">Contributions<a class="anchor-link" href="#Contributions"> </a></h1><p>Luke Chang wrote the tutorial and code in this notebook.</p>
 
 </div>
 </div>

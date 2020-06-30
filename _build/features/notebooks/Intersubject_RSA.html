@@ -13,7 +13,7 @@ prev_page:
 next_page:
   url: /features/notebooks/Event_Segmentation.html
 suffix: .ipynb
-search: similarity subjects data brain our subject www rsa com nodes isc matrix behavioral s representational well et al run also behavior similar using org values node across j article e matrices low where same model science not high scorers its want naturalistic score between distance case lets r inter paranoia while sciencedirect pii since annak value p analysis sure into structure scale both voxels calculate x below take space should correlation activity level different nn t participants higher m line nature metric articles results based us parcellation looks need tutorial dataset any only g during individual regions euclidean another scores
+search: similarity subjects data brain our subject www rsa com nodes isc matrix behavioral s et al well representational also behavior using run similar org values across j node article e matrices low model science naturalistic same where lets not high scorers its want score between distance case r while sciencedirect pii since annak paranoia value p inter sure structure scale both into voxels calculate x analysis correlation activity level different take below should nn space t participants higher m nature tutorial metric articles results line based us parcellation looks g any during individual regions social euclidean another scores scoring need
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -25,7 +25,77 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Inter-subject-Representational-Similarity-Analysis">Inter-subject Representational Similarity Analysis<a class="anchor-link" href="#Inter-subject-Representational-Similarity-Analysis"> </a></h1>
+<h1 id="Inter-subject-Representational-Similarity-Analysis">Inter-subject Representational Similarity Analysis<a class="anchor-link" href="#Inter-subject-Representational-Similarity-Analysis"> </a></h1><p><em>Written by Emily Finn</em></p>
+<p>“Model-free” analyses that exploit the time-locked nature of a stimulus across subjects—e.g., inter-subject correlation (ISC; <a href="https://science.sciencemag.org/content/303/5664/1634?casa_token=T_9g7N-Xu0MAAAAA:m1i9AAa80QHe_pA3xosCV-ucWhdU-0RUKQHoBr07J-5M7iUt8Clqxv5JiCwmA_WkUjboRmeBQFiAcQ">Hasson et al., 2004</a>) and related approaches—are a powerful way to analyze naturalistic neuroimaging data.</p>
+<p>These approaches use one subject’s brain activity as a model for a second subject’s brain activity, reasoning that as long as two subjects receive the same input at the same time, any shared variance must be due to stimulus processing. If you haven't already, be sure to check out the <a href="http://naturalistic-data.org/features/notebooks/Intersubject_Correlation.html">ISC tutorial</a> that is part of this book.</p>
+<p>However, while ISC and related approaches were traditionally developed to detect responses shared at the group level, we know that brain activity during naturalistic stimuli also shows interesting individual differences.</p>
+<p><strong>Q: How can we use inter-subject approaches to study what is <em>different</em></strong> across subjects, rather than what is common?**</p>
+<p>One problem is that ISC by definition operates at the level of subject pairs, while traits and behaviors operate at the level of single subjects. So, how can we relate ISC (one measure per subject pair) to behavior (one measure per subject)?</p>
+<p><strong>A. Representational similarity analysis!</strong></p>
+<p>If we take our subjects-by-subjects ISC matrix to be a "brain similarity" matrix, we can construct a "behavioral similarity" matrix and use RSA to find brain regions where subjects who are more similar in their behavior are also more similar in their neural response. The basic idea behind this is illustrated in the figure below:</p>
+<p><img src="../../images/isrsa/Fig1_multilayer_figure_R1.jpg" alt="isrsa"></p>
+<p><strong>Fig. 1. Schematic of inter-subject representational similarity analysis.</strong>
+<em>From <a href="https://www.sciencedirect.com/science/article/pii/S1053811920303153">Finn et al., 2020</a></em>. Each subject (bottom layer) is associated with a behavioral score (middle layer) and a pattern of brain activity (top layer, e.g., a time series from a given brain region during naturalistic stimulation). The middle and upper layers depict weighted graphs obtained using the similarity matrices as adjacency matrices, where thicker lines indicate increased similarity between nodes (subjects). In IS-RSA, we construct pairwise (i.e, subject-by-subject) similarity matrices for the behavioral data and the brain data, then compare these matrices using a Mantel test. Thus, we can leverage inter-subject analysis methods such as ISC to detect shared structure between brain data and behavioral data. This figure is a modified version of Fig. 1 in <a href="https://onlinelibrary.wiley.com/doi/full/10.1002/hbm.23084">Glerean et al. (2016)</a>.</p>
+<p>Let's watch a short video demonstrating an application of ISRSA using social network information.</p>
+<p><a href="https://people.socsci.tau.ac.il/mu/yaarayeshurun/">Dr. Carolyn Parkinson, PhD</a> is an Assistant Professor at University of California Los Angeles and will discuss practical considerations for analyzing naturalistic data.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">YouTubeVideo</span>
+
+<span class="n">YouTubeVideo</span><span class="p">(</span><span class="s1">&#39;roG9gkTOx_U&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+
+<iframe
+    width="400"
+    height="300"
+    src="https://www.youtube.com/embed/roG9gkTOx_U"
+    frameborder="0"
+    allowfullscreen
+></iframe>
+
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Measuring-similarity">Measuring similarity<a class="anchor-link" href="#Measuring-similarity"> </a></h2><p>How do we measure behavioral similarity? In choosing a distance metric, particularly when our behavior is one-dimensional (e.g., age (<a href="https://www.nature.com/articles/s41598-018-20600-0">Moraczewski et al., 2018</a>; <a href="https://www.nature.com/articles/s41467-018-03399-2">Richardson et al., 2018</a>), a trait score (<a href="https://www.nature.com/articles/s41467-018-04387-2">Finn et al., 2018</a>), accuracy on a cognitive task), we bake in some fundamental assumptions about the structure of the brain-behavior representational similarity that affect the ultimate results and how we interpret them. To get a feel for some potential structures, imagine arranging the rows and columns of the ISC matrix such that subjects are ordered by their behavioral score. What would we expect the resulting matrix to look like?</p>
+<p>If we use Euclidean distance or another relative distance metric, we implicitly assume that subjects with closer scores should be more similar to one another, regardless of where they fall on the scale. In other words, for a behavior that is measured on a scale from 0 to 100, a pair of subjects scoring 0 and 1 should be just as similar as a pair of subjects scoring 99 and 100 (since in both cases, the Euclidean distance is 1). We call this the Nearest Neighbors (NN) model, since it assumes that a subject should always look most similar to his or her immediate neighbors, regardless of their absolute position on the scale.</p>
+<p>The NN model may be appropriate for certain behaviors, but we could imagine an equally if not more plausible scenario: that similarity between subjects increases or decreases as one moves up or down the scale, in an absolute rather than relative sense. For example, perhaps high-scoring subjects are more similar to other high scorers, while low-scoring subjects are less similar both to high scorers and other low scorers. In other words, brain responses cluster together for subjects at one end of the behavioral spectrum, while variability increases as one moves toward the opposite end of the spectrum. We call this the Anna Karenina (or AnnaK) model, after the famous opening line of Leo Tolstoy’s novel, which reads “All happy families are alike; each unhappy family is unhappy in its own way” (or, in this context, “all high [low] scorers are alike; each low [high] scorer is different in his or her own way”). In this case, Euclidean distance would not be the most appropriate choice. Instead, we would want to model similarity using a metric that reflects absolute position on the scale—for example, mean: (i ​+ ​j)/2, minimum: min(i, j), or the product of the mean and minimum.</p>
+<p>Let's do some simulations and visualizations to make this more concrete:</p>
+
 </div>
 </div>
 </div>
@@ -91,146 +161,14 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Download-data">Download data<a class="anchor-link" href="#Download-data"> </a></h3>
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>First things first, we need to download the data we'll be working with. If you haven't already installed Datalad, see <a href="http://naturalistic-data.org/features/notebooks/Download_Data.html">this tutorial</a> for how to do so.</p>
+<h3 id="Download-data">Download data<a class="anchor-link" href="#Download-data"> </a></h3><p>First things first, we need to download the data we'll be working with. If you haven't already installed Datalad, see <a href="http://naturalistic-data.org/features/notebooks/Download_Data.html">this tutorial</a> for how to do so.</p>
 <p>Run the below lines of code in a Terminal. The first line installs the Paranoia dataset, which basically clones the metadata of the dataset so you can see what files are available, but doesn't actually download any of the data yet.</p>
 <p>Before you run the install, make sure you <code>cd</code> into the directory where you'd like to store the data. Here we'll only download the first run, but it will take up ~11GB overall (each run is a little over 0.5GB, and there are 22 subjects), so make sure you have enough space.</p>
 <p>On the second line we <code>cd</code> into our newly cloned dataset directory, and on the third line we download the preprocessed run 1 for all subjects. Depending on the speed of your internet connection, this could take a little while to run -- up to a few hours, in fact. Patience is a virtue :D</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
 <p><code>$: datalad install https://gin.g-node.org/ljchang/Paranoia</code> <br>
 <code>$: cd Paranoia</code> <br>
 <code>$: datalad get ./fmriprep/*/func/*denoise_smooth6mm_task-story_run-1*nii.gz</code></p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
 <p>Also make sure this notebook is located in the same parent directory as the data. So, for example, if your <code>Paranoia</code> directory from datalad is in <code>/Documents/naturalistic-data/Paranoia</code>, then this notebook should be in <code>/Documents/naturalistic-data/inter-subject_RSA.ipynb</code>.</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Inter-subject-Representational-Similarity-Analysis:-Theory">Inter-subject Representational Similarity Analysis: Theory<a class="anchor-link" href="#Inter-subject-Representational-Similarity-Analysis:-Theory"> </a></h1>
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>“Model-free” analyses that exploit the time-locked nature of a stimulus across subjects—e.g., inter-subject correlation (ISC; <a href="https://science.sciencemag.org/content/303/5664/1634?casa_token=T_9g7N-Xu0MAAAAA:m1i9AAa80QHe_pA3xosCV-ucWhdU-0RUKQHoBr07J-5M7iUt8Clqxv5JiCwmA_WkUjboRmeBQFiAcQ">Hasson et al., 2004</a>) and related approaches—are a powerful way to analyze naturalistic neuroimaging data.</p>
-<p>These approaches use one subject’s brain activity as a model for a second subject’s brain activity, reasoning that as long as two subjects receive the same input at the same time, any shared variance must be due to stimulus processing. If you haven't already, be sure to check out the <a href="http://naturalistic-data.org/features/notebooks/Intersubject_Correlation.html">ISC tutorial</a> that is part of this book.</p>
-<p>However, while ISC and related approaches were traditionally developed to detect responses shared at the group level, we know that brain activity during naturalistic stimuli also shows interesting individual differences.</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Q:-How-can-we-use-inter-subject-approaches-to-study-what-is-different-across-subjects,-rather-than-what-is-common?">Q: How can we use inter-subject approaches to study what is <strong>different</strong> across subjects, rather than what is common?<a class="anchor-link" href="#Q:-How-can-we-use-inter-subject-approaches-to-study-what-is-different-across-subjects,-rather-than-what-is-common?"> </a></h3>
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>One problem is that ISC by definition operates at the level of subject pairs, while traits and behaviors operate at the level of single subjects. So, how can we relate ISC (one measure per subject pair) to behavior (one measure per subject)?</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="A.-Representational-similarity-analysis!">A. Representational similarity analysis!<a class="anchor-link" href="#A.-Representational-similarity-analysis!"> </a></h3>
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>If we take our subjects-by-subjects ISC matrix to be a "brain similarity" matrix, we can construct a "behavioral similarity" matrix and use RSA to find brain regions where subjects who are more similar in their behavior are also more similar in their neural response. The basic idea behind this is illustrated in the figure below:</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="../../images/isrsa/Fig1_multilayer_figure_R1.jpg" alt="isrsa"></p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Fig. 1. Schematic of inter-subject representational similarity analysis.</strong>
-<em>From <a href="https://www.sciencedirect.com/science/article/pii/S1053811920303153">Finn et al., 2020</a></em>. Each subject (bottom layer) is associated with a behavioral score (middle layer) and a pattern of brain activity (top layer, e.g., a time series from a given brain region during naturalistic stimulation). The middle and upper layers depict weighted graphs obtained using the similarity matrices as adjacency matrices, where thicker lines indicate increased similarity between nodes (subjects). In IS-RSA, we construct pairwise (i.e, subject-by-subject) similarity matrices for the behavioral data and the brain data, then compare these matrices using a Mantel test. Thus, we can leverage inter-subject analysis methods such as ISC to detect shared structure between brain data and behavioral data. This figure is a modified version of Fig. 1 in <a href="https://onlinelibrary.wiley.com/doi/full/10.1002/hbm.23084">Glerean et al. (2016)</a>.</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>This sounds straightforward enough. But one critical question is, how do we measure behavioral similarity? In choosing a distance metric, particularly when our behavior is one-dimensional (e.g., age (<a href="https://www.nature.com/articles/s41598-018-20600-0">Moraczewski et al., 2018</a>; <a href="https://www.nature.com/articles/s41467-018-03399-2">Richardson et al., 2018</a>), a trait score (<a href="https://www.nature.com/articles/s41467-018-04387-2">Finn et al., 2018</a>), accuracy on a cognitive task), we bake in some fundamental assumptions about the structure of the brain-behavior representational similarity that affect the ultimate results and how we interpret them. To get a feel for some potential structures, imagine arranging the rows and columns of the ISC matrix such that subjects are ordered by their behavioral score. What would we expect the resulting matrix to look like?</p>
-<p>If we use Euclidean distance or another relative distance metric, we implicitly assume that subjects with closer scores should be more similar to one another, regardless of where they fall on the scale. In other words, for a behavior that is measured on a scale from 0 to 100, a pair of subjects scoring 0 and 1 should be just as similar as a pair of subjects scoring 99 and 100 (since in both cases, the Euclidean distance is 1). We call this the Nearest Neighbors (NN) model, since it assumes that a subject should always look most similar to his or her immediate neighbors, regardless of their absolute position on the scale.</p>
-<p>The NN model may be appropriate for certain behaviors, but we could imagine an equally if not more plausible scenario: that similarity between subjects increases or decreases as one moves up or down the scale, in an absolute rather than relative sense. For example, perhaps high-scoring subjects are more similar to other high scorers, while low-scoring subjects are less similar both to high scorers and other low scorers. In other words, brain responses cluster together for subjects at one end of the behavioral spectrum, while variability increases as one moves toward the opposite end of the spectrum. We call this the Anna Karenina (or AnnaK) model, after the famous opening line of Leo Tolstoy’s novel, which reads “All happy families are alike; each unhappy family is unhappy in its own way” (or, in this context, “all high [low] scorers are alike; each low [high] scorer is different in his or her own way”). In this case, Euclidean distance would not be the most appropriate choice. Instead, we would want to model similarity using a metric that reflects absolute position on the scale—for example, mean: (i ​+ ​j)/2, minimum: min(i, j), or the product of the mean and minimum.</p>
-<p>Let's do some simulations and visualizations to make this more concrete:</p>
 
 </div>
 </div>
@@ -329,7 +267,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Intersubject_RSA_17_0.png"
+<img src="../../images/features/notebooks/Intersubject_RSA_7_0.png"
 >
 </div>
 
@@ -393,7 +331,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Intersubject_RSA_19_0.png"
+<img src="../../images/features/notebooks/Intersubject_RSA_9_0.png"
 >
 </div>
 
@@ -476,7 +414,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Intersubject_RSA_21_0.png"
+<img src="../../images/features/notebooks/Intersubject_RSA_11_0.png"
 >
 </div>
 
@@ -679,7 +617,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Intersubject_RSA_28_1.png"
+<img src="../../images/features/notebooks/Intersubject_RSA_18_1.png"
 >
 </div>
 
@@ -738,7 +676,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Intersubject_RSA_30_1.png"
+<img src="../../images/features/notebooks/Intersubject_RSA_20_1.png"
 >
 </div>
 
@@ -861,7 +799,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Intersubject_RSA_37_1.png"
+<img src="../../images/features/notebooks/Intersubject_RSA_27_1.png"
 >
 </div>
 
@@ -1256,7 +1194,7 @@ Node time series for subject 22, run 3 already exists!
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Intersubject_RSA_53_0.png"
+<img src="../../images/features/notebooks/Intersubject_RSA_43_0.png"
 >
 </div>
 
@@ -1356,7 +1294,7 @@ Node time series for subject 22, run 3 already exists!
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Intersubject_RSA_57_0.png"
+<img src="../../images/features/notebooks/Intersubject_RSA_47_0.png"
 >
 </div>
 
@@ -1480,7 +1418,7 @@ Node time series for subject 22, run 3 already exists!
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Intersubject_RSA_64_0.png"
+<img src="../../images/features/notebooks/Intersubject_RSA_54_0.png"
 >
 </div>
 
@@ -1543,7 +1481,7 @@ Node time series for subject 22, run 3 already exists!
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Intersubject_RSA_66_0.png"
+<img src="../../images/features/notebooks/Intersubject_RSA_56_0.png"
 >
 </div>
 
@@ -1902,7 +1840,7 @@ Node time series for subject 22, run 3 already exists!
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Intersubject_RSA_78_0.png"
+<img src="../../images/features/notebooks/Intersubject_RSA_68_0.png"
 >
 </div>
 
@@ -2004,7 +1942,7 @@ Node time series for subject 22, run 3 already exists!
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Intersubject_RSA_82_1.png"
+<img src="../../images/features/notebooks/Intersubject_RSA_72_1.png"
 >
 </div>
 
@@ -2039,7 +1977,7 @@ Node time series for subject 22, run 3 already exists!
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Intersubject_RSA_83_0.png"
+<img src="../../images/features/notebooks/Intersubject_RSA_73_0.png"
 >
 </div>
 
@@ -2228,7 +2166,7 @@ Node time series for subject 22, run 3 already exists!
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Intersubject_RSA_88_0.png"
+<img src="../../images/features/notebooks/Intersubject_RSA_78_0.png"
 >
 </div>
 
@@ -2319,7 +2257,7 @@ Node time series for subject 22, run 3 already exists!
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Intersubject_RSA_91_1.png"
+<img src="../../images/features/notebooks/Intersubject_RSA_81_1.png"
 >
 </div>
 
@@ -2389,7 +2327,7 @@ Node time series for subject 22, run 3 already exists!
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Intersubject_RSA_95_0.png"
+<img src="../../images/features/notebooks/Intersubject_RSA_85_0.png"
 >
 </div>
 
@@ -2522,7 +2460,7 @@ Node time series for subject 22, run 3 already exists!
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Intersubject_RSA_100_0.png"
+<img src="../../images/features/notebooks/Intersubject_RSA_90_0.png"
 >
 </div>
 
@@ -2575,7 +2513,7 @@ Node time series for subject 22, run 3 already exists!
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Intersubject_RSA_102_0.png"
+<img src="../../images/features/notebooks/Intersubject_RSA_92_0.png"
 >
 </div>
 
@@ -2587,7 +2525,7 @@ Node time series for subject 22, run 3 already exists!
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Intersubject_RSA_102_1.png"
+<img src="../../images/features/notebooks/Intersubject_RSA_92_1.png"
 >
 </div>
 
@@ -2718,7 +2656,7 @@ Node time series for subject 22, run 3 already exists!
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Intersubject_RSA_108_1.png"
+<img src="../../images/features/notebooks/Intersubject_RSA_98_1.png"
 >
 </div>
 
@@ -2826,7 +2764,7 @@ Node time series for subject 22, run 3 already exists!
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Intersubject_RSA_112_1.png"
+<img src="../../images/features/notebooks/Intersubject_RSA_102_1.png"
 >
 </div>
 
@@ -2896,6 +2834,17 @@ Node time series for subject 22, run 3 already exists!
 <li><a href="https://onlinelibrary.wiley.com/doi/full/10.1002/brb3.1288">Saalasti, S, Alho, J, Bar, M, et al. Inferior parietal lobule and early visual areas support elicitation of individualized meanings during narrative listening. Brain Behav. 2019; 9:e01288.</a></li>
 <li><a href="https://academic.oup.com/scan/article/13/12/1293/5168059">M. Bacha-Trams, Y. I. Alexandrov, E. Broman, E. Glerean, M. Kauppila, J. Kauttonen, E. Ryyppö, M. Sams, I. P. Jääskeläinen. A drama movie activates brains of holistic and analytical thinkers differentially. Social Cognitive and Affective Neuroscience, 13 (2018)</a></li>
 </ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Contributions">Contributions<a class="anchor-link" href="#Contributions"> </a></h1><p>Emily Finn wrote the tutorial. Luke Chang edited text and code.</p>
 
 </div>
 </div>
