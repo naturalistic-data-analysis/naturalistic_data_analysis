@@ -11,7 +11,7 @@ prev_page:
 next_page:
   url: /features/notebooks/1_Introduction_to_Programming.html
 suffix: .ipynb
-search: hypertools data org into sherlock well dataset d paper using visualization pipeline here notebooks participants responses cortex brain movie model topic dimensional visual patterns also matrices html text space readthedocs io en latest toolbox www pdf github com rows lets different high shape visualize additional contextlab example set used generate following columns features embedding dimension same next roi auditory motor content window tools subject datasets useful our tutorial neural jmlr analysis papers single matrix note types within reduce plot command download naturalistic g examine primary regions show shared trajectory sense response episode sliding annotation code parts provides insights multi idea
+search: hypertools data org sherlock into dataset d using also well model paper space dimensional visualization pipeline here notebooks participants embedding responses cortex different high visual patterns html text across readthedocs io en latest toolbox www pdf github com set used matrices topic shape visualize neural additional contextlab example generate following columns features dimension lets g examine auditory motor brain movie shared episode content window tools subject idea properties useful gain tutorial jmlr papers single rows timepoints feature note same reduce plot command download naturalistic next e roi primary regions show agreement v sense response annotations sliding code provides insights multi
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -23,7 +23,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Visualizing-High-Dimensional-Data-with-Hypertools">Visualizing High Dimensional Data with Hypertools<a class="anchor-link" href="#Visualizing-High-Dimensional-Data-with-Hypertools"> </a></h1><p><em>Written by Jeremy Manning</em></p>
+<h1 id="Overview">Overview<a class="anchor-link" href="#Overview"> </a></h1><p><em>Written by Jeremy Manning</em></p>
 <p>The <a href="https://hypertools.readthedocs.io/en/latest/">HyperTools</a> Python toolbox provides tools for gaining "geometric insights" into high-dimensional multi-subject datasets.  The overarching idea of the toolbox is to use a series of data processing and visualization approaches to turn a dataset into a 2D or 3D shape or animation that reflects key properties of the original dataset.  This can be a useful way to gain intuitions about a dataset, since our visual systems are adept at identifying complex patterns in visual data.  In this tutorial we will use HyperTools to visualize some neural and behavioral data.</p>
 <h2 id="The-HyperTools-data-visualization-pipeline">The HyperTools data visualization pipeline<a class="anchor-link" href="#The-HyperTools-data-visualization-pipeline"> </a></h2><p>At its core, the HyperTools toolbox provides a suite of wrappers for myriad functions in the <a href="https://scikit-learn.org/stable/">scikit-learn</a>, <a href="http://www.pymvpa.org/">pymvpa</a>, <a href="https://brainiak.org/">braniak</a>, and <a href="https://seaborn.pydata.org/">seaborn</a> toolboxes, among others.  A short JMLR paper describing the HyperTools analysis pipeline may be found <a href="http://www.jmlr.org/papers/volume18/17-434/17-434.pdf">here</a>, and a long-form preprint with additional details may be found <a href="https://arxiv.org/pdf/1701.08290.pdf">here</a>.  <a href="https://github.com/ContextLab/hypertools-paper-notebooks">This repository</a> also contains additional example notebooks.  If you are looking for an alternative introduction to the toolbox with some additional demos, you may be interested in this video:</p>
 
@@ -102,7 +102,7 @@ hyp.plot(data)</code></pre>
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Download-Sherlock-and-Paranoia-datasets">Download Sherlock and Paranoia datasets<a class="anchor-link" href="#Download-Sherlock-and-Paranoia-datasets"> </a></h2><p>Follow the instructions <a href="http://naturalistic-data.org/features/notebooks/Download_Data.html">here</a> to download the Sherlock dataset using DataLad.  In brief, navigate to a directory where you want to save the datasets (let's refer to it as <code>datadir</code>) and run the following command in Terminal:</p>
+<h2 id="Download-Sherlock-dataset">Download Sherlock dataset<a class="anchor-link" href="#Download-Sherlock-dataset"> </a></h2><p>Follow the instructions <a href="http://naturalistic-data.org/features/notebooks/Download_Data.html">here</a> to download the Sherlock dataset using DataLad.  In brief, navigate to a directory where you want to save the datasets (let's refer to it as <code>datadir</code>) and run the following command in Terminal:</p>
 
 <pre><code>datalad install -g https://gin.g-node.org/ljchang/Sherlock</code></pre>
 <p>In the next cell, set the variable <code>datadir</code> to the actual path you chose (e.g. <code>~/data</code>)</p>
@@ -526,7 +526,7 @@ extracting data for ROI 9: sub-04_denoise_crop_smooth6mm_task-sherl...
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">plot_aligned_ROI_trajectories</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">reduce</span><span class="o">=</span><span class="s1">&#39;UMAP&#39;</span><span class="p">,</span> <span class="n">align</span><span class="o">=</span><span class="s1">&#39;hyper&#39;</span><span class="p">,</span> <span class="n">ndims</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">internal_reduce</span><span class="o">=</span><span class="s1">&#39;IncrementalPCA&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">plot_aligned_ROI_trajectories</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">reduce</span><span class="o">=</span><span class="s1">&#39;UMAP&#39;</span><span class="p">,</span> <span class="n">align</span><span class="o">=</span><span class="s1">&#39;hyper&#39;</span><span class="p">,</span> <span class="n">n_iter</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">ndims</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">internal_reduce</span><span class="o">=</span><span class="s1">&#39;IncrementalPCA&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">==</span> <span class="nb">dict</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span> <span class="c1">#roi</span>
             <span class="n">plot_aligned_ROI_trajectories</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">r</span><span class="p">],</span> <span class="n">reduce</span><span class="o">=</span><span class="n">reduce</span><span class="p">,</span> <span class="n">align</span><span class="o">=</span><span class="n">align</span><span class="p">,</span> <span class="n">ndims</span><span class="o">=</span><span class="n">ndims</span><span class="p">,</span> <span class="n">internal_reduce</span><span class="o">=</span><span class="n">internal_reduce</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">r</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
@@ -536,9 +536,14 @@ extracting data for ROI 9: sub-04_denoise_crop_smooth6mm_task-sherl...
 
         <span class="c1">#step 2: smooth trajectories so they look prettier</span>
         <span class="n">smoothed_data</span> <span class="o">=</span> <span class="n">tc</span><span class="o">.</span><span class="n">smooth</span><span class="p">(</span><span class="n">reduced_data</span><span class="p">,</span> <span class="n">kernel_fun</span><span class="o">=</span><span class="n">tc</span><span class="o">.</span><span class="n">helpers</span><span class="o">.</span><span class="n">gaussian_weights</span><span class="p">,</span> <span class="n">kernel_params</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;var&#39;</span><span class="p">:</span> <span class="mi">500</span><span class="p">})</span>
+        
+        <span class="c1">#step 3: align trajectories</span>
+        <span class="n">aligned_data</span> <span class="o">=</span> <span class="n">smoothed_data</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_iter</span><span class="p">):</span>
+            <span class="n">aligned_data</span> <span class="o">=</span> <span class="n">hyp</span><span class="o">.</span><span class="n">align</span><span class="p">(</span><span class="n">aligned_data</span><span class="p">,</span> <span class="n">align</span><span class="o">=</span><span class="n">align</span><span class="p">)</span>
 
         <span class="c1">#now generate a plot</span>
-        <span class="n">hyp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">smoothed_data</span><span class="p">,</span> <span class="n">reduce</span><span class="o">=</span><span class="n">reduce</span><span class="p">,</span> <span class="n">align</span><span class="o">=</span><span class="n">align</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">hyp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">aligned_data</span><span class="p">,</span> <span class="n">reduce</span><span class="o">=</span><span class="n">reduce</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -611,7 +616,7 @@ extracting data for ROI 9: sub-04_denoise_crop_smooth6mm_task-sherl...
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Now let's see if these patterns also hold for the second half of the dataset:</p>
+<p>We can see strong agreement across people in V1 and A1, whereas precentral gyrus responses are much more variable.  Now let's see if these patterns also hold for the second half of the dataset:</p>
 
 </div>
 </div>
@@ -681,7 +686,8 @@ extracting data for ROI 9: sub-04_denoise_crop_smooth6mm_task-sherl...
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>When we visualize high-dimensional data as 3D shapes, we necessarily lose information.  One strategy for getting a better sense of the "true shape" of the data is to use different projection algorithms for embedding the data into the 3D space (this may be done using the <code>reduce</code> keyword).</p>
+<p>It looks like this pattern holds!  To test this idea formally, we could develop a measure of trajectory consistency across people (e.g. mean squared error between the corresponding timepoints, across all pairs of participants' trajectories).  We could also explore the extent to which different brain regions exhibit consistent patterns across people.</p>
+<h3 id="Using-different-embedding-spaces-to-obtain-a-more-complete-sense-of-high-dimensional-space">Using different embedding spaces to obtain a more complete sense of high-dimensional space<a class="anchor-link" href="#Using-different-embedding-spaces-to-obtain-a-more-complete-sense-of-high-dimensional-space"> </a></h3><p>When we visualize high-dimensional data as 3D shapes, we necessarily lose information.  One strategy for getting a better sense of the "true shape" of the data is to use different projection algorithms for embedding the data into the 3D space (this may be done using the <code>reduce</code> keyword).</p>
 
 </div>
 </div>
@@ -741,7 +747,8 @@ extracting data for ROI 9: sub-04_denoise_crop_smooth6mm_task-sherl...
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The above examples use hyperalignment to map different participants' data into a common space.  HyperTools also supports alignment using the <a href="https://papers.nips.cc/paper/5855-a-reduced-dimension-fmri-shared-response-model">Shared Response Model (SRM)</a>:</p>
+<p>In both of these examples we can still see the high degree of consistency across people.  Each embedding approach amplifies preserves or emphasizes a different set of properties from the original high-dimensional feature space.</p>
+<h3 id="Aligning-using-the-shared-response-model">Aligning using the shared response model<a class="anchor-link" href="#Aligning-using-the-shared-response-model"> </a></h3><p>The above examples use hyperalignment to map different participants' data into a common space.  HyperTools also supports alignment using the <a href="https://papers.nips.cc/paper/5855-a-reduced-dimension-fmri-shared-response-model">Shared Response Model (SRM)</a>:</p>
 
 </div>
 </div>
@@ -811,7 +818,8 @@ extracting data for ROI 9: sub-04_denoise_crop_smooth6mm_task-sherl...
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="What-is-the-&quot;shape&quot;-of-the-Sherlock-episode?">What is the "shape" of the Sherlock episode?<a class="anchor-link" href="#What-is-the-&quot;shape&quot;-of-the-Sherlock-episode?"> </a></h2><p>Following an approach similar to the one used in <a href="https://www.biorxiv.org/content/10.1101/409987v1">this paper</a>, we can use HyperTools to examine how the content of the Sherlock episode unfolds.  First, let's download detailed annotations of the episode to get a sense of what they're like.</p>
+<h2 id="What-is-the-&quot;shape&quot;-of-the-Sherlock-episode?">What is the "shape" of the Sherlock episode?<a class="anchor-link" href="#What-is-the-&quot;shape&quot;-of-the-Sherlock-episode?"> </a></h2><p>Following an approach similar to the one used in <a href="https://www.biorxiv.org/content/10.1101/409987v1">this paper</a>, we can use also HyperTools to examine how the content of the Sherlock episode unfolds.  Whereas the analyses above show how HyperTools may be used to gain insight into dynamics in neural data, we can also use HyperTools to examine how the semantic content of the episode changes over time.  We'll fit a word embedding model to a set of detailed annotations of each scene in the episode.</p>
+<p>First, let's download the annotations to get a sense of what they're like.</p>
 
 </div>
 </div>
@@ -1078,7 +1086,7 @@ extracting data for ROI 9: sub-04_denoise_crop_smooth6mm_task-sherl...
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Next, we'll use HyperTools to train a topic model (<a href="http://www.jmlr.org/papers/volume3/blei03a/blei03a.pdf">Blei et al., 2003</a>) on the annotations, treating the text in each sliding window as a document.  We'll plot the result as a 3D shape.  (For an example of an alternative word embedding model, see the <a href="http://naturalistic-data.org/features/notebooks/Natural_Language_Processing.html">Natural Language Processing tutorial</a>.</p>
+<p>Next, we'll use HyperTools to train a topic model (<a href="http://www.jmlr.org/papers/volume3/blei03a/blei03a.pdf">Blei et al., 2003</a>) on the annotations, treating the text in each sliding window as a document.  We'll plot the result as a 3D shape.  (For an example of an alternative word embedding model, see the <a href="http://naturalistic-data.org/features/notebooks/Natural_Language_Processing.html">Natural Language Processing tutorial</a>.)</p>
 
 </div>
 </div>
@@ -1092,7 +1100,7 @@ extracting data for ROI 9: sub-04_denoise_crop_smooth6mm_task-sherl...
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">text_geometry</span> <span class="o">=</span> <span class="n">hyp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">reduce</span><span class="o">=</span><span class="s1">&#39;UMAP&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;lightgray&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Video content&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">text_geometry</span> <span class="o">=</span> <span class="n">hyp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">reduce</span><span class="o">=</span><span class="s1">&#39;UMAP&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Video content&#39;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -1158,243 +1166,6 @@ extracting data for ROI 9: sub-04_denoise_crop_smooth6mm_task-sherl...
 
 <div class="output_png output_subarea ">
 <img src="../../images/features/notebooks/hypertools_33_0.png"
->
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Which-regions'-response-trajectories-mirror-the-movie-content?">Which regions' response trajectories mirror the movie content?<a class="anchor-link" href="#Which-regions'-response-trajectories-mirror-the-movie-content?"> </a></h1><p>The brain data are separated into two parts.  We'll need to divide the movie's topic trajectory into the corresponding two parts of the show.</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">topics_part1</span> <span class="o">=</span> <span class="n">hyp</span><span class="o">.</span><span class="n">tools</span><span class="o">.</span><span class="n">format_data</span><span class="p">(</span><span class="n">text</span><span class="p">[:</span><span class="mi">481</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">topics_part2</span> <span class="o">=</span> <span class="n">hyp</span><span class="o">.</span><span class="n">tools</span><span class="o">.</span><span class="n">format_data</span><span class="p">(</span><span class="n">text</span><span class="p">[</span><span class="mi">482</span><span class="p">:])[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">hyp</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">topics</span><span class="p">,</span> <span class="n">topics_part1</span><span class="p">,</span> <span class="n">topics_part2</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="s1">&#39;:&#39;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;yellow&#39;</span><span class="p">,</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">],</span> <span class="n">legend</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Full&#39;</span><span class="p">,</span> <span class="s1">&#39;Part 1&#39;</span><span class="p">,</span> <span class="s1">&#39;Part 2&#39;</span><span class="p">],</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Video content&#39;</span><span class="p">,</span> <span class="n">reduce</span><span class="o">=</span><span class="s1">&#39;UMAP&#39;</span><span class="p">);</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/hypertools_35_0.png"
->
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>For the next set of analyses, we'll work with the <em>average</em> brain activity patterns (across participants) within each ROI.</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">average_data</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span> <span class="c1">#part</span>
-    <span class="n">average_data</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="n">p</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span> <span class="c1">#ROI</span>
-        <span class="n">average_data</span><span class="p">[</span><span class="n">p</span><span class="p">][</span><span class="n">r</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">x</span><span class="o">.</span><span class="n">data</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="n">p</span><span class="p">][</span><span class="n">r</span><span class="p">]],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>The brain data and annotation data now correspond to the same parts of the movie, but the rows of the two types of data matrices reflect different samplerates.  To simplify our analysis, let's re-sample each data matrix to have exactly 1000 rows.</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">resample</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
-    <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">n</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]])</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">num</span><span class="o">=</span><span class="n">a</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">endpoint</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="n">xx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">num</span><span class="o">=</span><span class="n">n</span><span class="p">,</span> <span class="n">endpoint</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
-        <span class="n">interp</span> <span class="o">=</span> <span class="n">pchip</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="p">[:,</span> <span class="n">i</span><span class="p">])</span>
-        <span class="n">b</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">interp</span><span class="p">(</span><span class="n">xx</span><span class="p">)</span>
-    
-    <span class="k">return</span> <span class="n">b</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">1000</span>
-
-<span class="c1">#resample topic trajectories for parts 1 and 2</span>
-<span class="n">topics_part1</span> <span class="o">=</span> <span class="n">resample</span><span class="p">(</span><span class="n">topics_part1</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
-<span class="n">topics_part2</span> <span class="o">=</span> <span class="n">resample</span><span class="p">(</span><span class="n">topics_part2</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
-
-<span class="c1">#resample brain data (in place)</span>
-<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">average_data</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span> <span class="c1">#part</span>
-    <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">average_data</span><span class="p">[</span><span class="n">p</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span> <span class="c1">#ROI</span>
-        <span class="n">average_data</span><span class="p">[</span><span class="n">p</span><span class="p">][</span><span class="n">r</span><span class="p">]</span> <span class="o">=</span> <span class="n">resample</span><span class="p">(</span><span class="n">average_data</span><span class="p">[</span><span class="n">p</span><span class="p">][</span><span class="n">r</span><span class="p">],</span> <span class="n">n</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Now we'll align the movie's topic trajectory and the average brain responses in each region.  We'll repeat the analysis independently for each half of the movie to get a sense of the reliability:</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">plot_aligned</span><span class="p">(</span><span class="n">movie</span><span class="p">,</span> <span class="n">brain_data</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">reduce</span><span class="o">=</span><span class="s1">&#39;UMAP&#39;</span><span class="p">,</span> <span class="n">align</span><span class="o">=</span><span class="s1">&#39;hyper&#39;</span><span class="p">,</span> <span class="n">ndims</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">internal_reduce</span><span class="o">=</span><span class="s1">&#39;IncrementalPCA&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>    
-    <span class="n">legend</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Movie topics&#39;</span><span class="p">]</span>
-    <span class="n">legend</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">brain_data</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
-    
-    <span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">movie</span><span class="p">]</span>
-    <span class="n">data</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">brain_data</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
-    
-    <span class="c1">#add zero padding</span>
-    <span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">([</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">data</span><span class="p">]),</span> <span class="n">ndims</span><span class="p">])</span>
-    <span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">c</span> <span class="o">-</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]])])</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">data</span><span class="p">]</span>
-    
-    <span class="c1">#step 1: reduce dataset before aligning (runs much faster)</span>
-    <span class="n">reduced_data</span> <span class="o">=</span> <span class="n">hyp</span><span class="o">.</span><span class="n">reduce</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">reduce</span><span class="o">=</span><span class="n">internal_reduce</span><span class="p">,</span> <span class="n">ndims</span><span class="o">=</span><span class="n">ndims</span><span class="p">)</span>
-
-    <span class="c1">#step 2: smooth brain trajectories so they look prettier</span>
-    <span class="n">smoothed_data</span> <span class="o">=</span> <span class="p">[</span><span class="n">reduced_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
-    <span class="n">smoothed_data</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">tc</span><span class="o">.</span><span class="n">smooth</span><span class="p">(</span><span class="n">reduced_data</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">kernel_fun</span><span class="o">=</span><span class="n">tc</span><span class="o">.</span><span class="n">helpers</span><span class="o">.</span><span class="n">gaussian_weights</span><span class="p">,</span> <span class="n">kernel_params</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;var&#39;</span><span class="p">:</span> <span class="mi">100</span><span class="p">}))</span>
-    
-    <span class="n">hyp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">smoothed_data</span><span class="p">,</span> <span class="n">reduce</span><span class="o">=</span><span class="n">reduce</span><span class="p">,</span> <span class="n">align</span><span class="o">=</span><span class="n">align</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="n">legend</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;-&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;:&#39;</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">brain_data</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plot_aligned</span><span class="p">(</span><span class="n">topics_part1</span><span class="p">,</span> <span class="n">average_data</span><span class="p">[</span><span class="s1">&#39;part 1&#39;</span><span class="p">],</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Part 1&#39;</span><span class="p">)</span>
-<span class="n">plot_aligned</span><span class="p">(</span><span class="n">topics_part2</span><span class="p">,</span> <span class="n">average_data</span><span class="p">[</span><span class="s1">&#39;part 2&#39;</span><span class="p">],</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Part 2&#39;</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/hypertools_43_0.png"
->
-</div>
-
-</div>
-</div>
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/hypertools_43_1.png"
 >
 </div>
 

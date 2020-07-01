@@ -74,6 +74,10 @@
   url: /features/notebooks/Natural_Language_Processing
   not_numbered: true
 
+- title: Dynamic Connectivity
+  url: /features/notebooks/timecorr
+  not_numbered: true
+
 - title: Hidden Semi-Markov Models
   url: /features/notebooks/HiddenSemiMarkovModel
   not_numbered: true
