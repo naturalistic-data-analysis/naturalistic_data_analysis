@@ -2,23 +2,23 @@
 <div class="row" id="faculty">
   <div>
     <a href="http://www.dpmlab.org/"><img src="../../images/speakers/baldassano.jpg" width="200"/></a>
-    <span class="card-title center"><a href="http://www.dpmlab.org/">Chris <span>Baldassano</span></a></span>
-    <p class="center card-affiliation">Columbia University</p>
+    <div class="card-content">
+      <span class="card-title center"><a href="http://www.dpmlab.org/">Chris <span>Baldassano</span></a></span>
+      <p class="center card-affiliation">Columbia University</p>
+    </div>
   </div>
   <div>
     <a href="http://www.cosanlab.com"><img src="../../images/speakers/chang.jpg" width="200"/></a>
-    <span class="card-title center"><a href="http://www.cosanlab.com">Luke <span>Chang</span></a></span>
-    <p class="center card-affiliation">Dartmouth College</p>
+    <div class="card-content">
+      <span class="card-title center"><a href="http://www.cosanlab.com">Luke <span>Chang</span></a></span>
+      <p class="center card-affiliation">Dartmouth College</p>
+     </div>
   </div>
-  <div class="col s12 m6 l4">
-    <div class="card hoverable" id="faculty">
-      <div class="card-image" id="faculty">
-        <a href="https://adelavega.github.io/"><img src="../../images/speakers/delavega.jpg" width="200"/></a>
-      </div>
-      <div class="card-content">
-        <span class="card-title center"><a href="https://adelavega.github.io/">Alejandro <span>de la Vega</span></a></span>
-        <p class="center card-affiliation">University of Texas Austin</p>
-      </div>
+  <div class="card hoverable" id="faculty">
+    <a href="https://adelavega.github.io/"><img src="../../images/speakers/delavega.jpg" width="200"/></a>
+    <div class="card-content">
+      <span class="card-title center"><a href="https://adelavega.github.io/">Alejandro <span>de la Vega</span></a></span>
+      <p class="center card-affiliation">University of Texas Austin</p>
     </div>
   </div>
   <div class="col s12 m6 l4">
