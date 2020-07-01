@@ -24,7 +24,7 @@
 # Top-level page
 # - search: true
 
-- title: Home
+- title: Introduction
   url: /intro
   not_numbered: true
 
