@@ -8,13 +8,13 @@
     </div>
   </div>
   <div>
-    <a href="http://www.cosanlab.com"><img src="../../images/speakers/chang.jpg" width="200"/></a>
+    <a href="http://www.cosanlab.com"><img src="../../images/speakers/chang.jpg" class="card-image"/></a>
     <div class="card-content">
       <span class="card-title"><a href="http://www.cosanlab.com">Luke <span>Chang</span></a></span>
       <p class="card-affiliation">Dartmouth College</p>
      </div>
   </div>
-  <div class="card hoverable" id="faculty">
+  <div class="card" id="faculty">
     <a href="https://adelavega.github.io/"><img src="../../images/speakers/delavega.jpg" class="card-image"/></a>
     <div class="card-content">
       <span class="card-title center"><a href="https://adelavega.github.io/">Alejandro <span>de la Vega</span></a></span>
@@ -22,9 +22,9 @@
     </div>
   </div>
   <div class="col s12 m6 l4">
-    <div class="card hoverable" id="faculty">
+    <div class="card" id="faculty">
       <div class="card-image" id="faculty">
-        <a href="https://esfinn.github.io/"><img src="../../images/speakers/finn.jpg" class="card-image"/></a>
+        <a href="https://esfinn.github.io/"><img src="../../images/speakers/finn.jpg"/></a>
       </div>
       <div class="card-content">
         <span class="card-title center"><a href="https://esfinn.github.io/">Emily <span>Finn</span></a></span>

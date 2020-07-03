@@ -7,9 +7,9 @@
 
 			}
 			.card {
-					min-height: 400px;
+					// min-height: 400px;
 					// height: 100%;
-					// width: 500px;
+					width: 200px;
 					// object-fit: contain;
 			}
 			.card-image {
@@ -42,10 +42,9 @@
 			}
 			.card-image img {
 					// padding: 10px;
-			    width: 300px;
-			    object-fit: contain;
+					width: 200px;
+					object-fit: contain;
 					margin-bottom: 0px;
-					
 			}
 }
 
