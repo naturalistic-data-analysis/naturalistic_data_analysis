@@ -14,7 +14,7 @@
 			}
 			.card-image {
 					// height: 400px;
-			    overflow: hidden;
+			    	overflow: hidden;
 					padding: 10px;
 					margin-bottom: 0px;
 			}
@@ -31,18 +31,21 @@
 					font-weight: 510;
 					text-transform: uppercase;
 					object-fit: contain;
+					text-align: center;
 			}
 			.card-affiliation {
 					font-size: 14pt;
 					line-height: 14pt;
 					text-transform: capitalize;
 					font-weight: 200;
+					text-align: center;
 			}
-			.card img {
+			.card-image img {
 					// padding: 10px;
-			    height: 300px;
+			    width: 300px;
 			    object-fit: contain;
 					margin-bottom: 0px;
+					
 			}
 }
 
