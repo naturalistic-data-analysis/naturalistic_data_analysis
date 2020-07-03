@@ -1,7 +1,7 @@
 
-<div class="row" >
+<div class="row">
   <div class="card" >
-    <div class="card-image" >
+    <div class="card-image">
       <a href="http://www.dpmlab.org/"><img src="../../images/speakers/baldassano.jpg"></a>
     </div>
     <div class="card-content">
@@ -16,11 +16,12 @@
     <div class="card-content">
       <span class="card-title"><a href="http://www.cosanlab.com">Luke <span>Chang</span></a></span>
       <p class="card-affiliation">Dartmouth College</p>
-     </div>
+    </div>
   </div>
   <div class="card" >
     <div class="card-image" >
       <a href="https://adelavega.github.io/"><img src="../../images/speakers/delavega.jpg"></a>
+    </div>
     <div class="card-content">
       <span class="card-title"><a href="https://adelavega.github.io/">Alejandro <span>de la Vega</span></a></span>
       <p class=" card-affiliation">University of Texas Austin</p>
