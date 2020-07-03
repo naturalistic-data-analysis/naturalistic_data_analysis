@@ -27,7 +27,7 @@
       <p class=" card-affiliation">University of Texas Austin</p>
     </div>
   </div>
-  <div class="col s12 m6 l4">
+
     <div class="card" >
       <div class="card-image" >
         <a href="https://esfinn.github.io/"><img src="../../images/speakers/finn.jpg"></a>
@@ -37,9 +37,8 @@
         <p class=" card-affiliation">Dartmouth College</p>
       </div>
     </div>
-  </div>
-  <div class="col s12 m6 l4">
-    <div class="card hoverable" id="faculty">
+
+    <div class="card " id="faculty">
       <div class="card-image" id="faculty">
         <a href="https://gfleetwood.netlify.app/"><img src="../../images/speakers/fleetwood.jpg"></a>
       </div>
@@ -48,9 +47,8 @@
         <p class=" card-affiliation">New Classrooms</p>
       </div>
     </div>
-  </div>
-  <div class="col s12 m6 l4">
-    <div class="card hoverable" id="faculty">
+
+    <div class="card " id="faculty">
       <div class="card-image" id="faculty">
         <a href="https://lindageerligs.com/"><img src="../../images/speakers/geerligs.png"></a>
       </div>
@@ -59,9 +57,8 @@
         <p class=" card-affiliation">Donders Institute for Brain, Cognition, and Behavior</p>
       </div>
     </div>
-  </div>
-  <div class="col s12 m6 l4">
-    <div class="card hoverable" id="faculty">
+
+    <div class="card " id="faculty">
       <div class="card-image" id="faculty">
         <a href="https://users.aalto.fi/~jlahnako/"><img src="../../images/speakers/lahnakoski.jpg"></a>
       </div>
@@ -70,9 +67,8 @@
         <p class=" card-affiliation">Forschungszentrum Jülich</p>
       </div>
     </div>
-  </div>
-  <div class="col s12 m6 l4">
-    <div class="card hoverable" id="faculty">
+
+    <div class="card " id="faculty">
       <div class="card-image" id="faculty">
         <a href="http://www.context-lab.com/"><img src="../../images/speakers/manning.png"></a>
       </div>
@@ -81,9 +77,8 @@
         <p class=" card-affiliation">Dartmouth College</p>
       </div>
     </div>
-  </div>
-  <div class="col s12 m6 l4">
-    <div class="card hoverable" id="faculty">
+
+    <div class="card " id="faculty">
       <div class="card-image" id="faculty">
         <a href="http://csnlab.org/"><img src="../../images/speakers/parkinson.jpg"></a>
       </div>
@@ -92,9 +87,8 @@
         <p class=" card-affiliation">University of California Los Angeles</p>
       </div>
     </div>
-  </div>
-  <div class="col s12 m6 l4">
-    <div class="card hoverable" id="faculty">
+
+    <div class="card " id="faculty">
       <div class="card-image" id="faculty">
         <a href="https://www.bu.edu/csmet/profile/heather-shappell/"><img src="../../images/speakers/shappell.jpg"></a>
       </div>
@@ -103,9 +97,8 @@
         <p class=" card-affiliation">Johns Hopkins University</p>
       </div>
     </div>
-  </div>
-  <div class="col s12 m6 l4">
-    <div class="card hoverable" id="faculty">
+
+    <div class="card " id="faculty">
       <div class="card-image" id="faculty">
         <a href="http://wshimlab.com/"><img src="../../images/speakers/shim.jpg"></a>
       </div>
@@ -114,9 +107,8 @@
         <p class=" card-affiliation">SungKyunKwan University</p>
       </div>
     </div>
-  </div>
-  <div class="col s12 m6 l4">
-    <div class="card hoverable" id="faculty">
+
+    <div class="card " id="faculty">
       <div class="card-image" id="faculty">
         <a href="https://sites.dartmouth.edu/canlab/"><img src="../../images/speakers/wager.jpg"></a>
       </div>
@@ -125,9 +117,8 @@
         <p class=" card-affiliation">Dartmouth College</p>
       </div>
     </div>
-  </div>
-  <div class="col s12 m6 l4">
-    <div class="card hoverable" id="faculty">
+
+    <div class="card " id="faculty">
       <div class="card-image" id="faculty">
         <a href="https://talyarkoni.org/"><img src="../../images/speakers/yarkoni.jpg"></a>
       </div>
@@ -136,9 +127,8 @@
         <p class=" card-affiliation">University of Texas at Austin</p>
       </div>
     </div>
-  </div>
-  <div class="col s12 m6 l4">
-    <div class="card hoverable" id="faculty">
+
+    <div class="card " id="faculty">
       <div class="card-image" id="faculty">
         <a href="https://people.socsci.tau.ac.il/mu/yaarayeshurun/"><img src="../../images/speakers/yeshurun.jpg"></a>
       </div>
@@ -147,5 +137,4 @@
         <p class=" card-affiliation">Tel-Aviv University</p>
       </div>
     </div>
-  </div>
 </div>
