@@ -2,7 +2,7 @@
 <div class="row" id="faculty">
   <div class="card" id="faculty">
     <div class="card-image" id="faculty">
-      <a href="http://www.dpmlab.org/"><img src="../../images/speakers/baldassano.jpg" class="card-image"/></a>
+      <a href="http://www.dpmlab.org/"><img src="../../images/speakers/baldassano.jpg" class="card-image"></a>
     </div>
     <div class="card-content">
       <span class="card-title"><a href="http://www.dpmlab.org/">Chris <span>Baldassano</span></a></span>
@@ -11,7 +11,7 @@
   </div>
   <div class="card" id="faculty">
     <div class="card-image" id="faculty">
-      <a href="http://www.cosanlab.com"><img src="../../images/speakers/chang.jpg" class="card-image"/></a>
+      <a href="http://www.cosanlab.com"><img src="../../images/speakers/chang.jpg" class="card-image"></a>
     </div>
     <div class="card-content">
       <span class="card-title"><a href="http://www.cosanlab.com">Luke <span>Chang</span></a></span>
@@ -20,7 +20,8 @@
   </div>
   <div class="card" id="faculty">
     <div class="card-image" id="faculty">
-      <a href="https://adelavega.github.io/"><img src="../../images/speakers/delavega.jpg" class="card-image"/></a>
+      <a href="https://adelavega.github.io/"><img src="../../images/speakers/delavega.jpg" class="card-image"></a>
+    </div>
     <div class="card-content">
       <span class="card-title center"><a href="https://adelavega.github.io/">Alejandro <span>de la Vega</span></a></span>
       <p class="center card-affiliation">University of Texas Austin</p>
@@ -40,7 +41,7 @@
   <div class="col s12 m6 l4">
     <div class="card hoverable" id="faculty">
       <div class="card-image" id="faculty">
-        <a href="https://gfleetwood.netlify.app/"><img src="../../images/speakers/fleetwood.jpg" /></a>
+        <a href="https://gfleetwood.netlify.app/"><img src="../../images/speakers/fleetwood.jpg"></a>
       </div>
       <div class="card-content">
         <span class="card-title center"><a href="https://gfleetwood.netlify.app/">Gordon <span>Fleetwood</span></a></span>
@@ -51,7 +52,7 @@
   <div class="col s12 m6 l4">
     <div class="card hoverable" id="faculty">
       <div class="card-image" id="faculty">
-        <a href="https://lindageerligs.com/"><img src="../../images/speakers/geerligs.png" /></a>
+        <a href="https://lindageerligs.com/"><img src="../../images/speakers/geerligs.png"></a>
       </div>
       <div class="card-content">
         <span class="card-title center"><a href="https://lindageerligs.com/">Linda <span>Geerligs</span></a></span>
@@ -62,7 +63,7 @@
   <div class="col s12 m6 l4">
     <div class="card hoverable" id="faculty">
       <div class="card-image" id="faculty">
-        <a href="https://users.aalto.fi/~jlahnako/"><img src="../../images/speakers/lahnakoski.jpg" /></a>
+        <a href="https://users.aalto.fi/~jlahnako/"><img src="../../images/speakers/lahnakoski.jpg"></a>
       </div>
       <div class="card-content">
         <span class="card-title center"><a href="https://users.aalto.fi/~jlahnako/">Juha <span>Lahnakoski</span></a></span>
@@ -73,7 +74,7 @@
   <div class="col s12 m6 l4">
     <div class="card hoverable" id="faculty">
       <div class="card-image" id="faculty">
-        <a href="http://www.context-lab.com/"><img src="../../images/speakers/manning.png" /></a>
+        <a href="http://www.context-lab.com/"><img src="../../images/speakers/manning.png"></a>
       </div>
       <div class="card-content">
         <span class="card-title center"><a href="http://www.context-lab.com/">Jeremy <span>Manning</span></a></span>
@@ -84,7 +85,7 @@
   <div class="col s12 m6 l4">
     <div class="card hoverable" id="faculty">
       <div class="card-image" id="faculty">
-        <a href="http://csnlab.org/"><img src="../../images/speakers/parkinson.jpg" /></a>
+        <a href="http://csnlab.org/"><img src="../../images/speakers/parkinson.jpg"></a>
       </div>
       <div class="card-content">
         <span class="card-title center"><a href="http://csnlab.org/">Carolyn <span>Parkinson</span></a></span>
@@ -95,7 +96,7 @@
   <div class="col s12 m6 l4">
     <div class="card hoverable" id="faculty">
       <div class="card-image" id="faculty">
-        <a href="https://www.bu.edu/csmet/profile/heather-shappell/"><img src="../../images/speakers/shappell.jpg" /></a>
+        <a href="https://www.bu.edu/csmet/profile/heather-shappell/"><img src="../../images/speakers/shappell.jpg"></a>
       </div>
       <div class="card-content">
         <span class="card-title center"><a href="https://www.bu.edu/csmet/profile/heather-shappell/">Heather <span>Shappell</span></a></span>
@@ -106,7 +107,7 @@
   <div class="col s12 m6 l4">
     <div class="card hoverable" id="faculty">
       <div class="card-image" id="faculty">
-        <a href="http://wshimlab.com/"><img src="../../images/speakers/shim.jpg" /></a>
+        <a href="http://wshimlab.com/"><img src="../../images/speakers/shim.jpg"></a>
       </div>
       <div class="card-content">
         <span class="card-title center"><a href="http://wshimlab.com/">Won Mok <span>Shim</span></a></span>
@@ -117,7 +118,7 @@
   <div class="col s12 m6 l4">
     <div class="card hoverable" id="faculty">
       <div class="card-image" id="faculty">
-        <a href="https://sites.dartmouth.edu/canlab/"><img src="../../images/speakers/wager.jpg" /></a>
+        <a href="https://sites.dartmouth.edu/canlab/"><img src="../../images/speakers/wager.jpg"></a>
       </div>
       <div class="card-content">
         <span class="card-title center"><a href="https://sites.dartmouth.edu/canlab/">Tor <span>Wager</span></a></span>
@@ -128,7 +129,7 @@
   <div class="col s12 m6 l4">
     <div class="card hoverable" id="faculty">
       <div class="card-image" id="faculty">
-        <a href="https://talyarkoni.org/"><img src="../../images/speakers/yarkoni.jpg" /></a>
+        <a href="https://talyarkoni.org/"><img src="../../images/speakers/yarkoni.jpg"></a>
       </div>
       <div class="card-content">
         <span class="card-title center"><a href="https://talyarkoni.org/">Tal <span>Yarkoni</span></a></span>
@@ -139,7 +140,7 @@
   <div class="col s12 m6 l4">
     <div class="card hoverable" id="faculty">
       <div class="card-image" id="faculty">
-        <a href="https://people.socsci.tau.ac.il/mu/yaarayeshurun/"><img src="../../images/speakers/yeshurun.jpg" /></a>
+        <a href="https://people.socsci.tau.ac.il/mu/yaarayeshurun/"><img src="../../images/speakers/yeshurun.jpg"></a>
       </div>
       <div class="card-content">
         <span class="card-title center"><a href="https://people.socsci.tau.ac.il/mu/yaarayeshurun/">Yaara <span>Yeshurun</span></a></span>
