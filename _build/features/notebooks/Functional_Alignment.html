@@ -13,7 +13,7 @@ prev_page:
 next_page:
   url: /features/notebooks/Intersubject_Correlation.html
 suffix: .ipynb
-search: data space hyperalignment common model into subject voxels using voxel dimensional shared functional org response et al j alignment also haxby cortical across project subjects based align isc information participants within s patterns activity overall tutorial plot part course e new article guntupalli n lower srm transformation latent same example models aligned www com high cortex perform sherlock lets components brain multivariate features dartmouth edu html idea d transformed different procrustes chen pymvpa load need braindata similar after here component algorithms not signal well classification g processing interest haxbylab ramadge pattern average roi v papers fmri pdf implemented toolbox brainiak
+search: data space hyperalignment common model into subject voxels using voxel org tutorial dimensional shared functional response et al j alignment information also haxby cortical across project subjects based align isc participants within s patterns activity overall plot part course features e new article guntupalli html n lower srm lets transformation latent same example models aligned www com high cortex perform sherlock need components brain multivariate dartmouth edu idea d transformed different procrustes chen pymvpa nltools before software datalad files braindata similar after here component algorithms not signal well classification g processing interest haxbylab ramadge pattern average roi v papers fmri
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -87,8 +87,17 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Load-Modules-&amp;-Data">Load Modules &amp; Data<a class="anchor-link" href="#Load-Modules-&amp;-Data"> </a></h2><p>The first thing we need to do in this tutorial is load the Python modules we will be using and the Sherlock data.</p>
-<p>You will want to change <code>data_dir</code> to wherever you have installed the Sherlock datalad repository.</p>
+<h1 id="Getting-Started">Getting Started<a class="anchor-link" href="#Getting-Started"> </a></h1><p>Before getting started with this tutorial, we need to make sure you have the necessary software installed and data downloaded.</p>
+<h2 id="Software">Software<a class="anchor-link" href="#Software"> </a></h2><p>This tutorial requires the following Python packages to be installed. See the <a href="http://naturalistic-data.org/features/notebooks/Software.html">Software Installation</a> tutorial for more information.</p>
+<ul>
+<li>seaborn</li>
+<li>matplotlib</li>
+<li>pandas</li>
+<li>nltools</li>
+<li>nilearn</li>
+<li>datalad</li>
+</ul>
+<p>Let's now load the modules we will be using for this tutorial.</p>
 
 </div>
 </div>
@@ -113,6 +122,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">matplotlib.gridspec</span> <span class="k">as</span> <span class="nn">gridspec</span>
 <span class="kn">from</span> <span class="nn">nilearn.plotting</span> <span class="kn">import</span> <span class="n">plot_stat_map</span>
+<span class="kn">import</span> <span class="nn">datalad.api</span> <span class="k">as</span> <span class="nn">dl</span>
 <span class="kn">import</span> <span class="nn">warnings</span>
 
 <span class="n">warnings</span><span class="o">.</span><span class="n">simplefilter</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
@@ -137,6 +147,45 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 </div>
 </div>
 </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Data">Data<a class="anchor-link" href="#Data"> </a></h2><p>This tutorial will be using the <strong>Sherlock</strong> dataset and will require downloading the cropped &amp; denoised <strong>.hdf5</strong> files.</p>
+<p>You will want to change <code>data_dir</code> to wherever you have installed the Sherlock datalad repository. We will initialize a datalad dataset instance and get the files we need for this tutorial. If you've already downloaded everything, you can skip this cell. See the <a href="http://naturalistic-data.org/features/notebooks/Download_Data.html">Download Data Tutorial</a> for more information about how to install and use datalad.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data_dir</span> <span class="o">=</span> <span class="s1">&#39;/Volumes/Engram/Data/Sherlock&#39;</span>
+
+<span class="c1"># If dataset hasn&#39;t been installed, clone from GIN repository</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">data_dir</span><span class="p">):</span>
+    <span class="n">dl</span><span class="o">.</span><span class="n">clone</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="s1">&#39;https://gin.g-node.org/ljchang/Sherlock&#39;</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="n">data_dir</span><span class="p">)</span>
+
+<span class="c1"># Initialize dataset</span>
+<span class="n">ds</span> <span class="o">=</span> <span class="n">dl</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="n">data_dir</span><span class="p">)</span>
+
+<span class="c1"># Get Cropped &amp; Denoised HDF5 Files</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="s1">&#39;fmriprep&#39;</span><span class="p">,</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="s1">&#39;func&#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;*crop*hdf5&#39;</span><span class="p">)))</span>
+</pre></div>
+
+    </div>
 </div>
 </div>
 
@@ -180,7 +229,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Functional_Alignment_5_0.png"
+<img src="../../images/features/notebooks/Functional_Alignment_7_0.png"
 >
 </div>
 
@@ -215,7 +264,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <span class="n">roi_mask</span> <span class="o">=</span> <span class="n">mask_x</span><span class="p">[</span><span class="n">roi</span><span class="p">]</span>
 
-<span class="n">file_list</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="s1">&#39;func&#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;*crop*</span><span class="si">{</span><span class="n">scan</span><span class="si">}</span><span class="s1">*hdf5&#39;</span><span class="p">))</span>
+<span class="n">file_list</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="s1">&#39;fmriprep&#39;</span><span class="p">,</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="s1">&#39;func&#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;*crop*</span><span class="si">{</span><span class="n">scan</span><span class="si">}</span><span class="s1">*hdf5&#39;</span><span class="p">))</span>
 <span class="n">all_data</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">file_list</span><span class="p">:</span>
     <span class="n">sub</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">f</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
@@ -284,7 +333,7 @@ sub-16
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Functional_Alignment_8_0.png"
+<img src="../../images/features/notebooks/Functional_Alignment_10_0.png"
 >
 </div>
 
@@ -300,7 +349,7 @@ sub-16
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Hyperalignment">Hyperalignment<a class="anchor-link" href="#Hyperalignment"> </a></h2><p>Now that the data is loaded and has been extracted within the mask, we can perform functional alignment.</p>
+<h1 id="Hyperalignment">Hyperalignment<a class="anchor-link" href="#Hyperalignment"> </a></h1><p>Now that the data is loaded and has been extracted within the mask, we can perform functional alignment.</p>
 <p>We will now align voxels with the same signal across participants. We will start using hyperalignment with the procrustes transform. The <code>align()</code> function takes a list of Brain_Data objects (or numpy matrices) and aligns voxels based on similar responses over time. We will extract the subject specific Brain_Data instances from the dictionary and cast as a list. We will exclude the last subject for now and will add them later in the tutorial.</p>
 <p>Functional alignment with the procrustes transformation can be a little slow. This example takes about 5-7 minutes.</p>
 
@@ -341,7 +390,7 @@ sub-16
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Plot-Aligned-Voxel-Time-course">Plot Aligned Voxel Time course<a class="anchor-link" href="#Plot-Aligned-Voxel-Time-course"> </a></h3><p>Let's pick a random voxel from early visual cortex and see how similar the activity is across participants using intersubject correlations (ISC). ISC is the average pairwise correlation between subject voxel time courses.</p>
+<h2 id="Plot-Aligned-Voxel-Time-course">Plot Aligned Voxel Time course<a class="anchor-link" href="#Plot-Aligned-Voxel-Time-course"> </a></h2><p>Let's pick a random voxel from early visual cortex and see how similar the activity is across participants using intersubject correlations (ISC). ISC is the average pairwise correlation between subject voxel time courses.</p>
 <p>Feel free to pick a different voxel by changing the <code>voxel_index</code> variable.</p>
 
 </div>
@@ -401,7 +450,7 @@ sub-16
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Functional_Alignment_13_1.png"
+<img src="../../images/features/notebooks/Functional_Alignment_15_1.png"
 >
 </div>
 
@@ -463,7 +512,7 @@ sub-16
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Functional_Alignment_15_1.png"
+<img src="../../images/features/notebooks/Functional_Alignment_17_1.png"
 >
 </div>
 
@@ -490,7 +539,7 @@ sub-16
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Plot-Transformed-Data">Plot Transformed Data<a class="anchor-link" href="#Plot-Transformed-Data"> </a></h3><p>We can also see the impact of hyperalignment on the spatial topography. We can grab any TR and see the spatial patterns of the voxel activity. Notice how the activity patterns of the aligned voxels are much more spatially similar after hyperaligment. The idea is that voxels are rearranged to maximize temporal synchrony. The hyperalignment algorithm picks a random subject and then projects every other subject into that space. This is averaged and then iteratively repeated.</p>
+<h2 id="Plot-Transformed-Data">Plot Transformed Data<a class="anchor-link" href="#Plot-Transformed-Data"> </a></h2><p>We can also see the impact of hyperalignment on the spatial topography. We can grab any TR and see the spatial patterns of the voxel activity. Notice how the activity patterns of the aligned voxels are much more spatially similar after hyperaligment. The idea is that voxels are rearranged to maximize temporal synchrony. The hyperalignment algorithm picks a random subject and then projects every other subject into that space. This is averaged and then iteratively repeated.</p>
 
 </div>
 </div>
@@ -535,7 +584,7 @@ sub-16
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Functional_Alignment_18_0.png"
+<img src="../../images/features/notebooks/Functional_Alignment_20_0.png"
 >
 </div>
 
@@ -551,7 +600,7 @@ sub-16
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Shared-Response-Model-(SRM)">Shared Response Model (SRM)<a class="anchor-link" href="#Shared-Response-Model-(SRM)"> </a></h2><p>Now let's try aligning the data using the shared response model. The shared response model allows for the possibility of aligning in a lower dimensional functional space. Here we provide an example of aligning to a 100 dimensional features space. Previous work has found that this can potentially improve generalizability of multivariate models trained on an ROI compared to using as many features as voxels. This feature is not yet implemented for procrustes transformation as dimensionality reduction would need to happen either before or after alignment. The processing time increases with the number of dimensions, 100 components takes about 15 seconds. We will zscore the data before training the model.</p>
+<h1 id="Shared-Response-Model-(SRM)">Shared Response Model (SRM)<a class="anchor-link" href="#Shared-Response-Model-(SRM)"> </a></h1><p>Now let's try aligning the data using the shared response model. The shared response model allows for the possibility of aligning in a lower dimensional functional space. Here we provide an example of aligning to a 100 dimensional features space. Previous work has found that this can potentially improve generalizability of multivariate models trained on an ROI compared to using as many features as voxels. This feature is not yet implemented for procrustes transformation as dimensionality reduction would need to happen either before or after alignment. The processing time increases with the number of dimensions, 100 components takes about 15 seconds. We will zscore the data before training the model.</p>
 
 </div>
 </div>
@@ -580,7 +629,7 @@ sub-16
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Plot-Aligned-Latent-Component-Time-Course">Plot Aligned Latent Component Time Course<a class="anchor-link" href="#Plot-Aligned-Latent-Component-Time-Course"> </a></h3><p>Unlike hyperalignment, which is providing a linear projection of all voxels, the shared response model is learning a common latent space and the overall dimensionality is limited to the number of observations. In this example, there are more voxels (n=2786) in the early visual anatomical mask relative to the number of observed TRs (n=1030). This means the maximum number of components we can estimate is 1030. We chose to train a model with a lower dimensional space with only 100 components.</p>
+<h2 id="Plot-Aligned-Latent-Component-Time-Course">Plot Aligned Latent Component Time Course<a class="anchor-link" href="#Plot-Aligned-Latent-Component-Time-Course"> </a></h2><p>Unlike hyperalignment, which is providing a linear projection of all voxels, the shared response model is learning a common latent space and the overall dimensionality is limited to the number of observations. In this example, there are more voxels (n=2786) in the early visual anatomical mask relative to the number of observed TRs (n=1030). This means the maximum number of components we can estimate is 1030. We chose to train a model with a lower dimensional space with only 100 components.</p>
 <p>This means we cannot directly compare the SRM with the original voxels. Here we are simply plotting the average time course of a single randomly selected component.</p>
 
 </div>
@@ -633,7 +682,7 @@ sub-16
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Functional_Alignment_22_1.png"
+<img src="../../images/features/notebooks/Functional_Alignment_24_1.png"
 >
 </div>
 
@@ -694,7 +743,7 @@ sub-16
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Functional_Alignment_24_1.png"
+<img src="../../images/features/notebooks/Functional_Alignment_26_1.png"
 >
 </div>
 
@@ -710,7 +759,7 @@ sub-16
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Plot-Subject-Spatial-Patterns-associated-with-each-latent-component">Plot Subject Spatial Patterns associated with each latent component<a class="anchor-link" href="#Plot-Subject-Spatial-Patterns-associated-with-each-latent-component"> </a></h3><p>SRM learns a unique projection for each subject into a common latent time course. The maximum number of latent timecourses that can be estimated is equal or less than the number of observations (i.e., TRs). Here we are reducing the voxel space into a lower dimensional 100 components. This may seem obvious, but a consequence of this lower dimensional projection is that we can no longer maintain a "voxel" level representation so we are unable to generate the same figure depicting how the cortical topographies change. Instead we will plot the weights that project each subject's data into a common latent time course. Feel free to change the component number to see how each subjects pattern that projects into the common time course.</p>
+<h2 id="Plot-Subject-Spatial-Patterns-associated-with-each-latent-component">Plot Subject Spatial Patterns associated with each latent component<a class="anchor-link" href="#Plot-Subject-Spatial-Patterns-associated-with-each-latent-component"> </a></h2><p>SRM learns a unique projection for each subject into a common latent time course. The maximum number of latent timecourses that can be estimated is equal or less than the number of observations (i.e., TRs). Here we are reducing the voxel space into a lower dimensional 100 components. This may seem obvious, but a consequence of this lower dimensional projection is that we can no longer maintain a "voxel" level representation so we are unable to generate the same figure depicting how the cortical topographies change. Instead we will plot the weights that project each subject's data into a common latent time course. Feel free to change the component number to see how each subjects pattern that projects into the common time course.</p>
 
 </div>
 </div>
@@ -758,7 +807,7 @@ sub-16
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Functional_Alignment_26_0.png"
+<img src="../../images/features/notebooks/Functional_Alignment_28_0.png"
 >
 </div>
 
@@ -806,7 +855,7 @@ sub-16
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Functional_Alignment_28_0.png"
+<img src="../../images/features/notebooks/Functional_Alignment_30_0.png"
 >
 </div>
 
@@ -843,7 +892,7 @@ sub-16
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Functional_Alignment_29_0.png"
+<img src="../../images/features/notebooks/Functional_Alignment_31_0.png"
 >
 </div>
 
@@ -907,7 +956,7 @@ sub-16
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Functional_Alignment_32_0.png"
+<img src="../../images/features/notebooks/Functional_Alignment_34_0.png"
 >
 </div>
 
@@ -945,7 +994,7 @@ sub-16
 
 <span class="n">roi_mask</span> <span class="o">=</span> <span class="n">mask_x</span><span class="p">[</span><span class="n">roi</span><span class="p">]</span>
 
-<span class="n">file_list</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="s1">&#39;func&#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;*crop*</span><span class="si">{</span><span class="n">scan</span><span class="si">}</span><span class="s1">*hdf5&#39;</span><span class="p">))</span>
+<span class="n">file_list</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="s1">&#39;fmriprep&#39;</span><span class="p">,</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="s1">&#39;func&#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;*crop*</span><span class="si">{</span><span class="n">scan</span><span class="si">}</span><span class="s1">*hdf5&#39;</span><span class="p">))</span>
 <span class="n">all_data</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">file_list</span><span class="p">:</span>
     <span class="n">sub</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">f</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>

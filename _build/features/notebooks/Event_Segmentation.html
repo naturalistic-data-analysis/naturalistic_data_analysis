@@ -7,13 +7,13 @@ kernel_path: content/features/notebooks
 has_widgets: false
 title: |-
   Event Segmentation
-pagenum: 10
+pagenum: 9
 prev_page:
   url: /features/notebooks/Intersubject_RSA.html
 next_page:
-  url: /features/notebooks/HiddenSemiMarkovModel.html
+  url: /features/notebooks/Natural_Language_Processing.html
 suffix: .ipynb
-search: event events boundaries hmm recall gsbs data model patterns movie both between segmentation activity timepoints fit states well used during using set human optimal distance voxel perception org here also baldassano geerligs show search subjects only finding correlation corresponding log likelihood measure timepoint similarity comparison determine t same chris linda greedy state boundary different load angular gyrus loading doi dataset applying plot models fitting need specify note test below since matrix being split merge fits labeled possible datasets variance fmri gordon fleetwood shows spatial across free watching methods performing dr phd assistant professor com et al subject recalled narrative nii
+search: event events boundaries data hmm recall gsbs model patterns movie tutorial both using between segmentation activity org timepoints fit states well used during set human optimal distance voxel perception need dataset here also baldassano geerligs show search software datalad load files subjects only finding correlation corresponding log likelihood measure timepoint similarity comparison determine t same chris linda greedy state boundary started different before installed sherlock want change angular gyrus loading doi applying plot models fitting specify note test below since matrix being split merge fits labeled possible datasets variance fmri gordon fleetwood shows spatial across free lets get watching methods
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -134,8 +134,20 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="0.-Load-Angular-Gyrus-data">0. Load Angular Gyrus data<a class="anchor-link" href="#0.-Load-Angular-Gyrus-data"> </a></h2><p>From the angular gyrus (area PG from (Eickhoff et al., 2005)), we'll load movie data from all subjects, and recall data from one subject. Subjects were watching the first hour of <a href="https://en.wikipedia.org/wiki/A_Study_in_Pink">A Study in Pink</a> (here we are loading only the first half of this data), and then freely recalled the narrative. Please refer to <a href="https://doi.org/10.1038/nn.4450">Chen et al. (2017)</a> to learn more about this dataset.</p>
-<p>We can load this data from the nii files by applying an angular gyrus mask, which we then cache into a numpy file to speed up loading in the future. If you'd like to skip this nii-loading step (which can be slow), you can download the npy files from <a href="https://figshare.com/articles/Sherlock_data_for_OHBM/12436955">figshare: Sherlock data for OHBM</a>.</p>
+<h1 id="Getting-Started">Getting Started<a class="anchor-link" href="#Getting-Started"> </a></h1><p>Before getting started with this tutorial, we need to make sure you have the necessary software installed and data downloaded.</p>
+<h2 id="Software">Software<a class="anchor-link" href="#Software"> </a></h2><p>This tutorial requires the following Python packages to be installed. See the <a href="http://naturalistic-data.org/features/notebooks/Software.html">Software Installation</a> tutorial for more information.</p>
+<ul>
+<li>matplotlib</li>
+<li>pandas</li>
+<li>nltools</li>
+<li>nilearn</li>
+<li>datalad</li>
+<li>statesegmentation</li>
+<li>brainiak</li>
+<li>nibabel</li>
+<li>scipy</li>
+</ul>
+<p>Now let's load the modules we will be using for this tutorial.</p>
 
 </div>
 </div>
@@ -159,6 +171,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <span class="kn">import</span> <span class="nn">nibabel</span> <span class="k">as</span> <span class="nn">nib</span>
 <span class="kn">from</span> <span class="nn">nilearn.masking</span> <span class="kn">import</span> <span class="n">apply_mask</span>
 <span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">zscore</span><span class="p">,</span> <span class="n">norm</span>
+<span class="kn">import</span> <span class="nn">datalad.api</span> <span class="k">as</span> <span class="nn">dl</span>
 
 <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 <span class="kn">import</span> <span class="nn">matplotlib.patches</span> <span class="k">as</span> <span class="nn">patches</span>
@@ -167,6 +180,48 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <span class="n">smallsize</span><span class="o">=</span><span class="mi">14</span><span class="p">;</span> <span class="n">mediumsize</span><span class="o">=</span><span class="mi">16</span><span class="p">;</span> <span class="n">largesize</span><span class="o">=</span><span class="mi">18</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;xtick&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="n">smallsize</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;ytick&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="n">smallsize</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;legend&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">mediumsize</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;figure&#39;</span><span class="p">,</span> <span class="n">titlesize</span><span class="o">=</span><span class="n">largesize</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;axes&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="n">mediumsize</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;axes&#39;</span><span class="p">,</span> <span class="n">titlesize</span><span class="o">=</span><span class="n">mediumsize</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Data">Data<a class="anchor-link" href="#Data"> </a></h2><p>This tutorial will be using the <strong>Sherlock</strong> dataset and will require downloading the cropped &amp; denoised <strong>.hdf5</strong> files.</p>
+<p>You will want to change <code>data_dir</code> to wherever you have installed the Sherlock datalad repository. We will initialize a datalad dataset instance and get the files we need for this tutorial. If you've already downloaded everything, you can skip this cell. See the <a href="http://naturalistic-data.org/features/notebooks/Download_Data.html">Download Data Tutorial</a> for more information about how to install and use datalad.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data_dir</span> <span class="o">=</span> <span class="s1">&#39;/Volumes/Engram/Data/Sherlock&#39;</span>
+
+<span class="c1"># If dataset hasn&#39;t been installed, clone from GIN repository</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">data_dir</span><span class="p">):</span>
+    <span class="n">dl</span><span class="o">.</span><span class="n">clone</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="s1">&#39;https://gin.g-node.org/ljchang/Sherlock&#39;</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="n">data_dir</span><span class="p">)</span>
+
+<span class="c1"># Initialize dataset</span>
+<span class="n">ds</span> <span class="o">=</span> <span class="n">dl</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="n">data_dir</span><span class="p">)</span>
+
+<span class="c1"># Get Cropped &amp; Denoised HDF5 Viewing Files</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="s1">&#39;fmriprep&#39;</span><span class="p">,</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="s1">&#39;func&#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;*crop*hdf5&#39;</span><span class="p">)))</span>
+
+<span class="c1"># Get Denoised nifti Recall Files</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="s1">&#39;fmriprep&#39;</span><span class="p">,</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="s1">&#39;func&#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;*denoise*freerecall*nii.gz&#39;</span><span class="p">)))</span>
 </pre></div>
 
     </div>
@@ -222,6 +277,18 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="0.-Load-Angular-Gyrus-data">0. Load Angular Gyrus data<a class="anchor-link" href="#0.-Load-Angular-Gyrus-data"> </a></h2><p>From the angular gyrus (area PG from (Eickhoff et al., 2005)), we'll load movie data from all subjects, and recall data from one subject. Subjects were watching the first hour of <a href="https://en.wikipedia.org/wiki/A_Study_in_Pink">A Study in Pink</a> (here we are loading only the first half of this data), and then freely recalled the narrative. Please refer to <a href="https://doi.org/10.1038/nn.4450">Chen et al. (2017)</a> to learn more about this dataset.</p>
+<p>We can load this data from the nii files by applying an angular gyrus mask, which we then cache into a numpy file to speed up loading in the future. If you'd like to skip this nii-loading step (which can be slow), you can download the npy files from <a href="https://figshare.com/articles/Sherlock_data_for_OHBM/12436955">figshare: Sherlock data for OHBM</a>.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="1.-Finding-event-boundaries-during-perception">1. Finding event boundaries during perception<a class="anchor-link" href="#1.-Finding-event-boundaries-during-perception"> </a></h2>
 </div>
 </div>
@@ -267,7 +334,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Event_Segmentation_9_0.png"
+<img src="../../images/features/notebooks/Event_Segmentation_12_0.png"
 >
 </div>
 
@@ -362,7 +429,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Event_Segmentation_13_1.png"
+<img src="../../images/features/notebooks/Event_Segmentation_16_1.png"
 >
 </div>
 
@@ -413,7 +480,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Event_Segmentation_14_1.png"
+<img src="../../images/features/notebooks/Event_Segmentation_17_1.png"
 >
 </div>
 
@@ -475,7 +542,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Event_Segmentation_15_2.png"
+<img src="../../images/features/notebooks/Event_Segmentation_18_2.png"
 >
 </div>
 
@@ -541,7 +608,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Event_Segmentation_16_0.png"
+<img src="../../images/features/notebooks/Event_Segmentation_19_0.png"
 >
 </div>
 
@@ -673,7 +740,7 @@ Trying 60 events
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Event_Segmentation_19_2.png"
+<img src="../../images/features/notebooks/Event_Segmentation_22_2.png"
 >
 </div>
 
@@ -834,7 +901,7 @@ Fitting split-merge HMM with 40 events...
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Event_Segmentation_25_2.png"
+<img src="../../images/features/notebooks/Event_Segmentation_28_2.png"
 >
 </div>
 
@@ -902,7 +969,7 @@ Fitting split-merge HMM with 40 events...
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Event_Segmentation_27_1.png"
+<img src="../../images/features/notebooks/Event_Segmentation_30_1.png"
 >
 </div>
 
@@ -954,7 +1021,7 @@ Fitting split-merge HMM with 40 events...
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Event_Segmentation_28_1.png"
+<img src="../../images/features/notebooks/Event_Segmentation_31_1.png"
 >
 </div>
 
@@ -1065,7 +1132,7 @@ Fitting split-merge HMM with 109 events...
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Event_Segmentation_31_1.png"
+<img src="../../images/features/notebooks/Event_Segmentation_34_1.png"
 >
 </div>
 
@@ -1183,7 +1250,7 @@ HMM40=0.001398, HMM_SM40=0.000275, GSBS40=0.019417, HMM109=0.020840, HMM_SM109=0
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Event_Segmentation_34_1.png"
+<img src="../../images/features/notebooks/Event_Segmentation_37_1.png"
 >
 </div>
 
@@ -1273,7 +1340,7 @@ HMM40=0.001398, HMM_SM40=0.000275, GSBS40=0.019417, HMM109=0.020840, HMM_SM109=0
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Event_Segmentation_39_0.png"
+<img src="../../images/features/notebooks/Event_Segmentation_42_0.png"
 >
 </div>
 
@@ -1383,7 +1450,7 @@ HMM40=0.001398, HMM_SM40=0.000275, GSBS40=0.019417, HMM109=0.020840, HMM_SM109=0
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Event_Segmentation_43_0.png"
+<img src="../../images/features/notebooks/Event_Segmentation_46_0.png"
 >
 </div>
 
