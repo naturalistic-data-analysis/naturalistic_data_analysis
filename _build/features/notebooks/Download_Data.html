@@ -13,7 +13,7 @@ prev_page:
 next_page:
   url: /features/notebooks/Software.html
 suffix: .ipynb
-search: datalad using dataset data org download annex get sherlock files file run downloaded g git lets datasets ds paranoia node install drop python only status repository specific need api not gin ljchang any openneuro might command clone filename removed tutorial en installing pip recommend space check want confound also course source narrative shared www branchable com line cloning full entire computer latest location nice actually example subjects fmriprep much internet connection take again glob load naturalistic written open original contains participants minutes across e part audio recording stimuli folder versions chen et al structure activity individuals nat doi ambiguous social
+search: datalad using dataset data org download sherlock files file annex get run downloaded g git install lets datasets ds paranoia node drop python also not specific repository only status tutorial need api location gin ljchang any included folder openneuro fmriprep details subjects shared might command clone filename removed en installing pip recommend space check want confound naturalistic course source part narrative access stimuli features html www branchable com line cloning full entire computer latest installed where nice actually example much internet connection take again glob load written open sure original contains participants minutes across e audio recording versions preprocessed preprocessing
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -27,7 +27,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Naturalistic-Datasets">Naturalistic Datasets<a class="anchor-link" href="#Naturalistic-Datasets"> </a></h1><p><em>Written by Luke Chang</em></p>
 <p>Throughout this course we will be using two open source naturalistic datasets to demonstrate how to use different analytic techniques. If you end up using any of this data in a paper, be sure to cite the original papers.</p>
-<p>The <strong>Sherlock</strong> dataset contains 16 participants that watched 50 minutes of Sherlock across 2 scanning run (i.e., Part1 &amp; Part2) and then verbally recalled the narrative in the scanner using a noise cancelling microphone. An audio recording of the show can be downloaded in the stimuli folder of this <a href="https://openneuro.org/datasets/ds002345/versions/1.0.1">openneuro</a> page.</p>
+<p>The <strong>Sherlock</strong> dataset contains 16 participants that watched 50 minutes of Sherlock across 2 scanning run (i.e., Part1 &amp; Part2) and then verbally recalled the narrative in the scanner using a noise cancelling microphone. If you would like to access the stimuli, we have included the video from Part1 (1st 25min) and an audio recording of the show can be downloaded in the stimuli folder of this <a href="https://openneuro.org/datasets/ds002345/versions/1.0.1">openneuro</a> page. We have preprocessed the data using fmriprep and performed denoising. See the <a href="http://naturalistic-data.org/features/notebooks/Preprocessing.html">Preprocessing</a> tutorial for more details. Note that we have also <em>cropped</em> the viewing files so that each subject has the same number of TRs and are aligned in time. The Recall data has not been cropped, but we have included the details of when the subjects recall specific scenes in the <code>Sherlock_Recall_Scene_n50_Onsets.csv</code> in the onset folder. Finally, we have also included some scene annotations shared by the authors in the <code>Sherlock_Segments_1000_NN_2017.xlsx</code> file in the onsets folder.</p>
 
 <pre><code>Chen, J., Leong, Y., Honey, C. et al. Shared memories reveal shared structure in neural activity across individuals. Nat Neurosci 20, 115–125 (2017). https://doi.org/10.1038/nn.4450
 
@@ -90,7 +90,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Download-Data-with-DataLad">Download Data with DataLad<a class="anchor-link" href="#Download-Data-with-DataLad"> </a></h2><h3 id="Download-Sherlock">Download Sherlock<a class="anchor-link" href="#Download-Sherlock"> </a></h3><p>The Sherlock dataset can be accessed at the following location <a href="https://gin.g-node.org/ljchang/Sherlock">https://gin.g-node.org/ljchang/Sherlock</a>. To download the Sherlock dataset run <code>datalad install https://gin.g-node.org/ljchang/Sherlock</code> in a terminal. The full dataset is approximately 111gb.</p>
+<h2 id="Download-Data-with-DataLad">Download Data with DataLad<a class="anchor-link" href="#Download-Data-with-DataLad"> </a></h2><h3 id="Download-Sherlock">Download Sherlock<a class="anchor-link" href="#Download-Sherlock"> </a></h3><p>The Sherlock dataset can be accessed at the following location <a href="https://gin.g-node.org/ljchang/Sherlock">https://gin.g-node.org/ljchang/Sherlock</a>. To download the Sherlock dataset run <code>datalad install https://gin.g-node.org/ljchang/Sherlock</code> in a terminal in the location where you would like to install the dataset. The full dataset is approximately 109gb.</p>
 <p>You can run this from the notebook using the <code>!</code> cell magic.</p>
 
 </div>
@@ -275,7 +275,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Datalad-has-a-Python-API!">Datalad has a Python API!<a class="anchor-link" href="#Datalad-has-a-Python-API!"> </a></h2><p>One particularly nice aspect of datalad is that it has a Python API, which means that anything you would like to do with datalad in the commandline, can also be run in Python. See the details of the datalad <a href="http://docs.datalad.org/en/latest/modref.html">Python API</a>.</p>
-<p>For example, suppose you would like to clone a data repository, such as the Sherlock dataset. You can run <code>dl.clone(source=url, path=location)</code>.</p>
+<p>For example, suppose you would like to clone a data repository, such as the Sherlock dataset. You can run <code>dl.clone(source=url, path=location)</code>. Make sure you set <code>sherlock_path</code> to the location where you would like the Sherlock repository installed.</p>
 
 </div>
 </div>
@@ -309,105 +309,6 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class="jb_output_wrapper }}">
 <div class="output_area">
 
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>[INFO] Cloning dataset to &lt;Dataset path=/Users/lukechang/Downloads/Sherlock&gt; 
-[INFO] Attempting to clone from https://gin.g-node.org/ljchang/Sherlock to /Users/lukechang/Downloads/Sherlock 
-</pre>
-</div>
-</div>
-</div>
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-
- 
- 
-<div id="d9ce1b38-0883-4fb3-ac5a-39b017df4f47"></div>
-<div class="output_subarea output_widget_view ">
-<script type="text/javascript">
-var element = $('#d9ce1b38-0883-4fb3-ac5a-39b017df4f47');
-</script>
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "", "version_major": 2, "version_minor": 0}
-</script>
-</div>
-
-</div>
-</div>
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-
- 
- 
-<div id="49e59a09-5471-4a2a-8b8e-3c01e761b9f7"></div>
-<div class="output_subarea output_widget_view ">
-<script type="text/javascript">
-var element = $('#49e59a09-5471-4a2a-8b8e-3c01e761b9f7');
-</script>
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "", "version_major": 2, "version_minor": 0}
-</script>
-</div>
-
-</div>
-</div>
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-
- 
- 
-<div id="fb1a2f43-072f-4f6b-8cc1-b545899ca9b8"></div>
-<div class="output_subarea output_widget_view ">
-<script type="text/javascript">
-var element = $('#fb1a2f43-072f-4f6b-8cc1-b545899ca9b8');
-</script>
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "", "version_major": 2, "version_minor": 0}
-</script>
-</div>
-
-</div>
-</div>
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-
- 
- 
-<div id="c8251308-bd33-4170-ad9a-28af9e60d1fa"></div>
-<div class="output_subarea output_widget_view ">
-<script type="text/javascript">
-var element = $('#c8251308-bd33-4170-ad9a-28af9e60d1fa');
-</script>
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "", "version_major": 2, "version_minor": 0}
-</script>
-</div>
-
-</div>
-</div>
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>[INFO] Completed clone attempts for &lt;Dataset path=/Users/lukechang/Downloads/Sherlock&gt; 
-</pre>
-</div>
-</div>
-</div>
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -416,24 +317,6 @@ var element = $('#c8251308-bd33-4170-ad9a-28af9e60d1fa');
 
 </div>
 </div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ds</span> <span class="o">=</span> <span class="n">dl</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="n">sherlock_path</span><span class="p">)</span>
-<span class="n">result</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">status</span><span class="p">(</span><span class="n">annex</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>
-</pre></div>
-
-    </div>
 </div>
 </div>
 
@@ -500,8 +383,8 @@ var element = $('#c8251308-bd33-4170-ad9a-28af9e60d1fa');
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>440 annex&#39;d files (0.0 B/33.0 GB present/total size)
-440 annex&#39;d files (0.0 B/33.0 GB present/total size)
+<pre>1349 annex&#39;d files (0.0 B/109.0 GB present/total size)
+1349 annex&#39;d files (0.0 B/109.0 GB present/total size)
 </pre>
 </div>
 </div>
@@ -550,22 +433,54 @@ var element = $('#c8251308-bd33-4170-ad9a-28af9e60d1fa');
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>[&#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-01/func/sub-01_task-sherlockPart1_desc-confounds_regressors.tsv&#39;,
+<pre>[&#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-01/func/sub-01_task-freerecall_desc-confounds_regressors.tsv&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-01/func/sub-01_task-sherlockPart1_desc-confounds_regressors.tsv&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-01/func/sub-01_task-sherlockPart2_desc-confounds_regressors.tsv&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-02/func/sub-02_task-freerecall_desc-confounds_regressors.tsv&#39;,
  &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-02/func/sub-02_task-sherlockPart1_desc-confounds_regressors.tsv&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-02/func/sub-02_task-sherlockPart2_desc-confounds_regressors.tsv&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-03/func/sub-03_task-freerecall_desc-confounds_regressors.tsv&#39;,
  &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-03/func/sub-03_task-sherlockPart1_desc-confounds_regressors.tsv&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-03/func/sub-03_task-sherlockPart2_desc-confounds_regressors.tsv&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-04/func/sub-04_task-freerecall_desc-confounds_regressors.tsv&#39;,
  &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-04/func/sub-04_task-sherlockPart1_desc-confounds_regressors.tsv&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-04/func/sub-04_task-sherlockPart2_desc-confounds_regressors.tsv&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-05/func/sub-05_task-freerecall_desc-confounds_regressors.tsv&#39;,
  &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-05/func/sub-05_task-sherlockPart1_desc-confounds_regressors.tsv&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-05/func/sub-05_task-sherlockPart2_desc-confounds_regressors.tsv&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-06/func/sub-06_task-freerecall_desc-confounds_regressors.tsv&#39;,
  &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-06/func/sub-06_task-sherlockPart1_desc-confounds_regressors.tsv&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-06/func/sub-06_task-sherlockPart2_desc-confounds_regressors.tsv&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-07/func/sub-07_task-freerecall_desc-confounds_regressors.tsv&#39;,
  &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-07/func/sub-07_task-sherlockPart1_desc-confounds_regressors.tsv&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-07/func/sub-07_task-sherlockPart2_desc-confounds_regressors.tsv&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-08/func/sub-08_task-freerecall_desc-confounds_regressors.tsv&#39;,
  &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-08/func/sub-08_task-sherlockPart1_desc-confounds_regressors.tsv&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-08/func/sub-08_task-sherlockPart2_desc-confounds_regressors.tsv&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-09/func/sub-09_task-freerecall_desc-confounds_regressors.tsv&#39;,
  &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-09/func/sub-09_task-sherlockPart1_desc-confounds_regressors.tsv&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-09/func/sub-09_task-sherlockPart2_desc-confounds_regressors.tsv&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-10/func/sub-10_task-freerecall_desc-confounds_regressors.tsv&#39;,
  &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-10/func/sub-10_task-sherlockPart1_desc-confounds_regressors.tsv&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-10/func/sub-10_task-sherlockPart2_desc-confounds_regressors.tsv&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-11/func/sub-11_task-freerecall_desc-confounds_regressors.tsv&#39;,
  &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-11/func/sub-11_task-sherlockPart1_desc-confounds_regressors.tsv&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-11/func/sub-11_task-sherlockPart2_desc-confounds_regressors.tsv&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-12/func/sub-12_task-freerecall_desc-confounds_regressors.tsv&#39;,
  &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-12/func/sub-12_task-sherlockPart1_desc-confounds_regressors.tsv&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-12/func/sub-12_task-sherlockPart2_desc-confounds_regressors.tsv&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-13/func/sub-13_task-freerecall_desc-confounds_regressors.tsv&#39;,
  &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-13/func/sub-13_task-sherlockPart1_desc-confounds_regressors.tsv&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-13/func/sub-13_task-sherlockPart2_desc-confounds_regressors.tsv&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-14/func/sub-14_task-freerecall_desc-confounds_regressors.tsv&#39;,
  &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-14/func/sub-14_task-sherlockPart1_desc-confounds_regressors.tsv&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-14/func/sub-14_task-sherlockPart2_desc-confounds_regressors.tsv&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-15/func/sub-15_task-freerecall_desc-confounds_regressors.tsv&#39;,
  &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-15/func/sub-15_task-sherlockPart1_desc-confounds_regressors.tsv&#39;,
- &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-16/func/sub-16_task-sherlockPart1_desc-confounds_regressors.tsv&#39;]</pre>
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-15/func/sub-15_task-sherlockPart2_desc-confounds_regressors.tsv&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-16/func/sub-16_task-freerecall_desc-confounds_regressors.tsv&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-16/func/sub-16_task-sherlockPart1_desc-confounds_regressors.tsv&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-16/func/sub-16_task-sherlockPart2_desc-confounds_regressors.tsv&#39;]</pre>
 </div>
 
 </div>
@@ -602,6 +517,207 @@ var element = $('#c8251308-bd33-4170-ad9a-28af9e60d1fa');
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="4bafe8ff-1d5b-4e12-a3ac-b3cb7fb42342"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#4bafe8ff-1d5b-4e12-a3ac-b3cb7fb42342');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>csf</th>
+      <th>csf_derivative1</th>
+      <th>csf_derivative1_power2</th>
+      <th>csf_power2</th>
+      <th>white_matter</th>
+      <th>white_matter_derivative1</th>
+      <th>white_matter_power2</th>
+      <th>white_matter_derivative1_power2</th>
+      <th>global_signal</th>
+      <th>global_signal_derivative1</th>
+      <th>...</th>
+      <th>motion_outlier127</th>
+      <th>motion_outlier128</th>
+      <th>motion_outlier129</th>
+      <th>motion_outlier130</th>
+      <th>motion_outlier131</th>
+      <th>motion_outlier132</th>
+      <th>motion_outlier133</th>
+      <th>motion_outlier134</th>
+      <th>motion_outlier135</th>
+      <th>motion_outlier136</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>897.394539</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>805316.958867</td>
+      <td>695.564895</td>
+      <td>NaN</td>
+      <td>483810.522970</td>
+      <td>NaN</td>
+      <td>635.368732</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>889.168301</td>
+      <td>-8.226238</td>
+      <td>67.670997</td>
+      <td>790620.267181</td>
+      <td>695.581487</td>
+      <td>0.016592</td>
+      <td>483833.605371</td>
+      <td>0.000275</td>
+      <td>633.147820</td>
+      <td>-2.220912</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>886.763733</td>
+      <td>-2.404568</td>
+      <td>5.781946</td>
+      <td>786349.918340</td>
+      <td>694.135813</td>
+      <td>-1.445674</td>
+      <td>481824.526707</td>
+      <td>2.089974</td>
+      <td>629.315476</td>
+      <td>-3.832344</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>879.587127</td>
+      <td>-7.176606</td>
+      <td>51.503680</td>
+      <td>773673.513408</td>
+      <td>693.405760</td>
+      <td>-0.730052</td>
+      <td>480811.548543</td>
+      <td>0.532977</td>
+      <td>626.664425</td>
+      <td>-2.651051</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>881.602440</td>
+      <td>2.015313</td>
+      <td>4.061486</td>
+      <td>777222.861394</td>
+      <td>692.787848</td>
+      <td>-0.617913</td>
+      <td>479955.002077</td>
+      <td>0.381816</td>
+      <td>628.319190</td>
+      <td>1.654765</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 389 columns</p>
+</div>
+</div>
+
+</div>
+</div>
 </div>
 </div>
 
@@ -671,7 +787,7 @@ var element = $('#c8251308-bd33-4170-ad9a-28af9e60d1fa');
 <pre>
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">FileNotFoundError</span>                         Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-46-58d68c1a1fbf&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-fg">&lt;ipython-input-16-58d68c1a1fbf&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
 <span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>confounds <span class="ansi-blue-fg">=</span> pd<span class="ansi-blue-fg">.</span>read_csv<span class="ansi-blue-fg">(</span>file_list<span class="ansi-blue-fg">[</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">,</span> sep<span class="ansi-blue-fg">=</span><span class="ansi-blue-fg">&#39;\t&#39;</span><span class="ansi-blue-fg">)</span>
 
 <span class="ansi-green-fg">~/anaconda3/lib/python3.7/site-packages/pandas/io/parsers.py</span> in <span class="ansi-cyan-fg">parser_f</span><span class="ansi-blue-fg">(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, squeeze, prefix, mangle_dupe_cols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, dialect, error_bad_lines, warn_bad_lines, delim_whitespace, low_memory, memory_map, float_precision)</span>
@@ -713,7 +829,7 @@ var element = $('#c8251308-bd33-4170-ad9a-28af9e60d1fa');
 
 <span class="ansi-green-fg">pandas/_libs/parsers.pyx</span> in <span class="ansi-cyan-fg">pandas._libs.parsers.TextReader._setup_parser_source</span><span class="ansi-blue-fg">()</span>
 
-<span class="ansi-red-fg">FileNotFoundError</span>: [Errno 2] File /Users/lukechang/Downloads/Sherlock/fmriprep/sub-01/func/sub-01_task-sherlockPart1_desc-confounds_regressors.tsv does not exist: &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-01/func/sub-01_task-sherlockPart1_desc-confounds_regressors.tsv&#39;</pre>
+<span class="ansi-red-fg">FileNotFoundError</span>: [Errno 2] File /Users/lukechang/Downloads/Sherlock/fmriprep/sub-01/func/sub-01_task-freerecall_desc-confounds_regressors.tsv does not exist: &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-01/func/sub-01_task-freerecall_desc-confounds_regressors.tsv&#39;</pre>
 </div>
 </div>
 </div>
@@ -761,22 +877,38 @@ var element = $('#c8251308-bd33-4170-ad9a-28af9e60d1fa');
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>[&#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-01/func/sub-01_denoised_smooth6mm_task-sherlockPart1_space-MNI152NLin2009cAsym_desc-preproc_bold.nii.gz&#39;,
- &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-02/func/sub-02_denoised_smooth6mm_task-sherlockPart1_space-MNI152NLin2009cAsym_desc-preproc_bold.nii.gz&#39;,
- &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-03/func/sub-03_denoised_smooth6mm_task-sherlockPart1_space-MNI152NLin2009cAsym_desc-preproc_bold.nii.gz&#39;,
- &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-04/func/sub-04_denoised_smooth6mm_task-sherlockPart1_space-MNI152NLin2009cAsym_desc-preproc_bold.nii.gz&#39;,
- &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-05/func/sub-05_denoised_smooth6mm_task-sherlockPart1_space-MNI152NLin2009cAsym_desc-preproc_bold.nii.gz&#39;,
- &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-06/func/sub-06_denoised_smooth6mm_task-sherlockPart1_space-MNI152NLin2009cAsym_desc-preproc_bold.nii.gz&#39;,
- &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-07/func/sub-07_denoised_smooth6mm_task-sherlockPart1_space-MNI152NLin2009cAsym_desc-preproc_bold.nii.gz&#39;,
- &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-08/func/sub-08_denoised_smooth6mm_task-sherlockPart1_space-MNI152NLin2009cAsym_desc-preproc_bold.nii.gz&#39;,
- &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-09/func/sub-09_denoised_smooth6mm_task-sherlockPart1_space-MNI152NLin2009cAsym_desc-preproc_bold.nii.gz&#39;,
- &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-10/func/sub-10_denoised_smooth6mm_task-sherlockPart1_space-MNI152NLin2009cAsym_desc-preproc_bold.nii.gz&#39;,
- &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-11/func/sub-11_denoised_smooth6mm_task-sherlockPart1_space-MNI152NLin2009cAsym_desc-preproc_bold.nii.gz&#39;,
- &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-12/func/sub-12_denoised_smooth6mm_task-sherlockPart1_space-MNI152NLin2009cAsym_desc-preproc_bold.nii.gz&#39;,
- &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-13/func/sub-13_denoised_smooth6mm_task-sherlockPart1_space-MNI152NLin2009cAsym_desc-preproc_bold.nii.gz&#39;,
- &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-14/func/sub-14_denoised_smooth6mm_task-sherlockPart1_space-MNI152NLin2009cAsym_desc-preproc_bold.nii.gz&#39;,
- &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-15/func/sub-15_denoised_smooth6mm_task-sherlockPart1_space-MNI152NLin2009cAsym_desc-preproc_bold.nii.gz&#39;,
- &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-16/func/sub-16_denoised_smooth6mm_task-sherlockPart1_space-MNI152NLin2009cAsym_desc-preproc_bold.nii.gz&#39;]</pre>
+<pre>[&#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-01/func/sub-01_denoise_crop_smooth6mm_task-sherlockPart1_space-MNI152NLin2009cAsym_desc-preproc_bold.nii.gz&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-01/func/sub-01_denoise_crop_smooth6mm_task-sherlockPart2_space-MNI152NLin2009cAsym_desc-preproc_bold.nii.gz&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-02/func/sub-02_denoise_crop_smooth6mm_task-sherlockPart1_space-MNI152NLin2009cAsym_desc-preproc_bold.nii.gz&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-02/func/sub-02_denoise_crop_smooth6mm_task-sherlockPart2_space-MNI152NLin2009cAsym_desc-preproc_bold.nii.gz&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-03/func/sub-03_denoise_crop_smooth6mm_task-sherlockPart1_space-MNI152NLin2009cAsym_desc-preproc_bold.nii.gz&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-03/func/sub-03_denoise_crop_smooth6mm_task-sherlockPart2_space-MNI152NLin2009cAsym_desc-preproc_bold.nii.gz&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-04/func/sub-04_denoise_crop_smooth6mm_task-sherlockPart1_space-MNI152NLin2009cAsym_desc-preproc_bold.nii.gz&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-04/func/sub-04_denoise_crop_smooth6mm_task-sherlockPart2_space-MNI152NLin2009cAsym_desc-preproc_bold.nii.gz&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-05/func/sub-05_denoise_crop_smooth6mm_task-sherlockPart1_space-MNI152NLin2009cAsym_desc-preproc_bold.nii.gz&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-05/func/sub-05_denoise_crop_smooth6mm_task-sherlockPart2_space-MNI152NLin2009cAsym_desc-preproc_bold.nii.gz&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-06/func/sub-06_denoise_crop_smooth6mm_task-sherlockPart1_space-MNI152NLin2009cAsym_desc-preproc_bold.nii.gz&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-06/func/sub-06_denoise_crop_smooth6mm_task-sherlockPart2_space-MNI152NLin2009cAsym_desc-preproc_bold.nii.gz&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-07/func/sub-07_denoise_crop_smooth6mm_task-sherlockPart1_space-MNI152NLin2009cAsym_desc-preproc_bold.nii.gz&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-07/func/sub-07_denoise_crop_smooth6mm_task-sherlockPart2_space-MNI152NLin2009cAsym_desc-preproc_bold.nii.gz&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-08/func/sub-08_denoise_crop_smooth6mm_task-sherlockPart1_space-MNI152NLin2009cAsym_desc-preproc_bold.nii.gz&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-08/func/sub-08_denoise_crop_smooth6mm_task-sherlockPart2_space-MNI152NLin2009cAsym_desc-preproc_bold.nii.gz&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-09/func/sub-09_denoise_crop_smooth6mm_task-sherlockPart1_space-MNI152NLin2009cAsym_desc-preproc_bold.nii.gz&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-09/func/sub-09_denoise_crop_smooth6mm_task-sherlockPart2_space-MNI152NLin2009cAsym_desc-preproc_bold.nii.gz&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-10/func/sub-10_denoise_crop_smooth6mm_task-sherlockPart1_space-MNI152NLin2009cAsym_desc-preproc_bold.nii.gz&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-10/func/sub-10_denoise_crop_smooth6mm_task-sherlockPart2_space-MNI152NLin2009cAsym_desc-preproc_bold.nii.gz&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-11/func/sub-11_denoise_crop_smooth6mm_task-sherlockPart1_space-MNI152NLin2009cAsym_desc-preproc_bold.nii.gz&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-11/func/sub-11_denoise_crop_smooth6mm_task-sherlockPart2_space-MNI152NLin2009cAsym_desc-preproc_bold.nii.gz&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-12/func/sub-12_denoise_crop_smooth6mm_task-sherlockPart1_space-MNI152NLin2009cAsym_desc-preproc_bold.nii.gz&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-12/func/sub-12_denoise_crop_smooth6mm_task-sherlockPart2_space-MNI152NLin2009cAsym_desc-preproc_bold.nii.gz&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-13/func/sub-13_denoise_crop_smooth6mm_task-sherlockPart1_space-MNI152NLin2009cAsym_desc-preproc_bold.nii.gz&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-13/func/sub-13_denoise_crop_smooth6mm_task-sherlockPart2_space-MNI152NLin2009cAsym_desc-preproc_bold.nii.gz&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-14/func/sub-14_denoise_crop_smooth6mm_task-sherlockPart1_space-MNI152NLin2009cAsym_desc-preproc_bold.nii.gz&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-14/func/sub-14_denoise_crop_smooth6mm_task-sherlockPart2_space-MNI152NLin2009cAsym_desc-preproc_bold.nii.gz&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-15/func/sub-15_denoise_crop_smooth6mm_task-sherlockPart1_space-MNI152NLin2009cAsym_desc-preproc_bold.nii.gz&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-15/func/sub-15_denoise_crop_smooth6mm_task-sherlockPart2_space-MNI152NLin2009cAsym_desc-preproc_bold.nii.gz&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-16/func/sub-16_denoise_crop_smooth6mm_task-sherlockPart1_space-MNI152NLin2009cAsym_desc-preproc_bold.nii.gz&#39;,
+ &#39;/Users/lukechang/Downloads/Sherlock/fmriprep/sub-16/func/sub-16_denoise_crop_smooth6mm_task-sherlockPart2_space-MNI152NLin2009cAsym_desc-preproc_bold.nii.gz&#39;]</pre>
 </div>
 
 </div>
@@ -823,10 +955,10 @@ var element = $('#c8251308-bd33-4170-ad9a-28af9e60d1fa');
 
  
  
-<div id="38d4616f-5056-4901-a7ef-c19ac55582c5"></div>
+<div id="e2d6dd24-3a90-46f6-9abd-0d736b5a403a"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#38d4616f-5056-4901-a7ef-c19ac55582c5');
+var element = $('#e2d6dd24-3a90-46f6-9abd-0d736b5a403a');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -859,10 +991,26 @@ var element = $('#38d4616f-5056-4901-a7ef-c19ac55582c5');
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ds</span><span class="o">.</span><span class="n">status</span><span class="p">(</span><span class="n">annex</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">status</span><span class="p">(</span><span class="n">annex</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>1349 annex&#39;d files (825.0 MB/109.0 GB present/total size)
+1349 annex&#39;d files (825.0 MB/109.0 GB present/total size)
+</pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 

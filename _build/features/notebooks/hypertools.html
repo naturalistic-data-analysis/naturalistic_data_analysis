@@ -11,7 +11,7 @@ prev_page:
 next_page:
   url: /features/notebooks/1_Introduction_to_Programming.html
 suffix: .ipynb
-search: hypertools data org sherlock into dataset d using also well model paper space dimensional visualization pipeline here notebooks participants embedding responses cortex different high visual patterns html text across readthedocs io en latest toolbox www pdf github com set used matrices topic shape visualize neural additional contextlab example generate following columns features dimension lets g examine auditory motor brain movie shared episode content window tools subject idea properties useful gain tutorial jmlr papers single rows timepoints feature note same reduce plot command download naturalistic next e roi primary regions show agreement v sense response annotations sliding code provides insights multi
+search: hypertools data org dataset into tutorial using sherlock d also well model notebooks space dimensional visualization pipeline paper here participants embedding html responses cortex different high visual patterns text across readthedocs io en latest toolbox www pdf github com used matrices features topic shape visualize neural additional contextlab example set generate following columns dimension note getting software naturalistic datalad lets roi examine auditory motor brain movie shared episode content window tools subject idea properties useful gain seaborn jmlr papers repository single rows timepoints feature same reduce plot installed information files e primary regions show agreement v sense response annotations sliding
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -40,6 +40,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">YouTubeVideo</span>
+
 <span class="n">YouTubeVideo</span><span class="p">(</span><span class="s1">&#39;hb_ER9RGtOM&#39;</span><span class="p">)</span>
 </pre></div>
 
@@ -102,10 +103,21 @@ hyp.plot(data)</code></pre>
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Download-Sherlock-dataset">Download Sherlock dataset<a class="anchor-link" href="#Download-Sherlock-dataset"> </a></h2><p>Follow the instructions <a href="http://naturalistic-data.org/features/notebooks/Download_Data.html">here</a> to download the Sherlock dataset using DataLad.  In brief, navigate to a directory where you want to save the datasets (let's refer to it as <code>datadir</code>) and run the following command in Terminal:</p>
-
-<pre><code>datalad install -g https://gin.g-node.org/ljchang/Sherlock</code></pre>
-<p>In the next cell, set the variable <code>datadir</code> to the actual path you chose (e.g. <code>~/data</code>)</p>
+<h1 id="Getting-Started">Getting Started<a class="anchor-link" href="#Getting-Started"> </a></h1><p>Before getting started with this tutorial, we need to make sure you have the necessary software installed and data downloaded.</p>
+<h2 id="Software">Software<a class="anchor-link" href="#Software"> </a></h2><p>This tutorial requires the following Python packages to be installed. See the <a href="http://naturalistic-data.org/features/notebooks/Software.html">Software Installation</a> tutorial for more information.</p>
+<ul>
+<li>hypertools</li>
+<li>timecorr</li>
+<li>seaborn</li>
+<li>matplotlib</li>
+<li>numpy</li>
+<li>pandas</li>
+<li>scipy</li>
+<li>nltools</li>
+<li>nilearn</li>
+<li>datalad</li>
+</ul>
+<p>Let's now load the modules we will be using for this tutorial.</p>
 
 </div>
 </div>
@@ -120,40 +132,14 @@ hyp.plot(data)</code></pre>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-<span class="n">datadir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;HOME&#39;</span><span class="p">),</span> <span class="s1">&#39;data&#39;</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Import-libraries">Import libraries<a class="anchor-link" href="#Import-libraries"> </a></h1>
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">glob</span> <span class="kn">import</span> <span class="n">glob</span> <span class="k">as</span> <span class="n">lsdir</span>
+<span class="kn">from</span> <span class="nn">glob</span> <span class="kn">import</span> <span class="n">glob</span> <span class="k">as</span> <span class="n">lsdir</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">from</span> <span class="nn">scipy.interpolate</span> <span class="kn">import</span> <span class="n">pchip</span>
 <span class="kn">from</span> <span class="nn">nltools.mask</span> <span class="kn">import</span> <span class="n">create_sphere</span><span class="p">,</span> <span class="n">expand_mask</span>
 <span class="kn">from</span> <span class="nn">nltools.data</span> <span class="kn">import</span> <span class="n">Brain_Data</span><span class="p">,</span> <span class="n">Adjacency</span>
 <span class="kn">from</span> <span class="nn">nilearn.plotting</span> <span class="kn">import</span> <span class="n">plot_stat_map</span>
+<span class="kn">import</span> <span class="nn">datalad.api</span> <span class="k">as</span> <span class="nn">dl</span>
 
 <span class="kn">import</span> <span class="nn">hypertools</span> <span class="k">as</span> <span class="nn">hyp</span>
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
@@ -176,7 +162,46 @@ hyp.plot(data)</code></pre>
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="ROI-responses-while-viewing-Sherlock">ROI responses while viewing Sherlock<a class="anchor-link" href="#ROI-responses-while-viewing-Sherlock"> </a></h1><p>Following the <a href="http://naturalistic-data.org/features/notebooks/Functional_Alignment.html">functional alignment tutorial</a>, we'll select out voxels in early visual cortex from the <em>Sherlock</em> dataset.  We'll also examine primary auditory cortex and motor cortex responses.  Then we'll apply the HyperTools pipeline to the dataset and visualize the responses within each ROI as a 3D image.</p>
+<h2 id="Data">Data<a class="anchor-link" href="#Data"> </a></h2><p>This tutorial will be using the <strong>Sherlock</strong> dataset and will require downloading the cropped and denoised <strong>hdf5</strong> files.</p>
+<p>You will want to change <code>datadir</code> to wherever you have installed the Sherlock datalad repository (e.g. <code>~/data</code>). We will initialize a datalad dataset instance and get the files we need for this tutorial. If you've already downloaded everything, you can skip this cell. See the <a href="http://naturalistic-data.org/features/notebooks/Download_Data.html">Download Data Tutorial</a> for more information about how to install and use datalad.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">datadir</span> <span class="o">=</span> <span class="s1">&#39;/Volumes/Engram/Data/Sherlock&#39;</span>
+
+<span class="c1"># If dataset hasn&#39;t been installed, clone from GIN repository</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">datadir</span><span class="p">):</span>
+    <span class="n">dl</span><span class="o">.</span><span class="n">clone</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="s1">&#39;https://gin.g-node.org/ljchang/Sherlock&#39;</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="n">datadir</span><span class="p">)</span>
+
+<span class="c1"># Initialize dataset</span>
+<span class="n">ds</span> <span class="o">=</span> <span class="n">dl</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="n">datadir</span><span class="p">)</span>
+
+<span class="c1"># Get Cropped &amp; Denoised CSV Files</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">lsdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">datadir</span><span class="p">,</span> <span class="s1">&#39;fmriprep&#39;</span><span class="p">,</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="s1">&#39;func&#39;</span><span class="p">,</span> <span class="s1">&#39;*crop*hdf5&#39;</span><span class="p">)))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="ROI-responses-while-viewing-Sherlock">ROI responses while viewing Sherlock<a class="anchor-link" href="#ROI-responses-while-viewing-Sherlock"> </a></h1><p>Following the <a href="http://naturalistic-data.org/features/notebooks/Functional_Alignment.html">functional alignment tutorial</a>, we'll select out voxels in early visual cortex from the <em>Sherlock</em> dataset.  We'll also examine primary auditory cortex and motor cortex responses.  Then we'll apply the HyperTools pipeline to the dataset and visualize the responses within each ROI as a 3D image. Note you could also work with the Average ROI csv files as we did with the Dynamic Correlation tutorial. Here, we will load the full dataset and manually extract ROIs.</p>
 
 </div>
 </div>
@@ -205,19 +230,10 @@ hyp.plot(data)</code></pre>
 <div class="jb_output_wrapper }}">
 <div class="output_area">
 
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>threshold is ignored for simple axial plots
-</pre>
-</div>
-</div>
-</div>
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/hypertools_8_1.png"
+<img src="../../images/features/notebooks/hypertools_8_0.png"
 >
 </div>
 
@@ -276,27 +292,27 @@ hyp.plot(data)</code></pre>
   </thead>
   <tbody>
     <tr>
-      <td>0</td>
+      <th>0</th>
       <td>0</td>
       <td>Anterior MPFC</td>
     </tr>
     <tr>
-      <td>1</td>
+      <th>1</th>
       <td>1</td>
       <td>Fusiform/parahippocampus</td>
     </tr>
     <tr>
-      <td>2</td>
+      <th>2</th>
       <td>2</td>
       <td>DMPFC</td>
     </tr>
     <tr>
-      <td>3</td>
+      <th>3</th>
       <td>3</td>
       <td>Sensorimotor/postcentral gyrus</td>
     </tr>
     <tr>
-      <td>4</td>
+      <th>4</th>
       <td>4</td>
       <td>V1</td>
     </tr>
@@ -363,8 +379,8 @@ hyp.plot(data)</code></pre>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># define filename templates</span>
-<span class="n">sherlock_part1</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">datadir</span><span class="p">,</span> <span class="s1">&#39;Sherlock&#39;</span><span class="p">,</span> <span class="s1">&#39;fmriprep&#39;</span><span class="p">,</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="s1">&#39;func&#39;</span><span class="p">,</span> <span class="s1">&#39;*crop*Part1*hdf5&#39;</span><span class="p">)</span>
-<span class="n">sherlock_part2</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">datadir</span><span class="p">,</span> <span class="s1">&#39;Sherlock&#39;</span><span class="p">,</span> <span class="s1">&#39;fmriprep&#39;</span><span class="p">,</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="s1">&#39;func&#39;</span><span class="p">,</span> <span class="s1">&#39;*crop*Part2*hdf5&#39;</span><span class="p">)</span>
+<span class="n">sherlock_part1</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">datadir</span><span class="p">,</span> <span class="s1">&#39;fmriprep&#39;</span><span class="p">,</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="s1">&#39;func&#39;</span><span class="p">,</span> <span class="s1">&#39;*crop*Part1*hdf5&#39;</span><span class="p">)</span>
+<span class="n">sherlock_part2</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">datadir</span><span class="p">,</span> <span class="s1">&#39;fmriprep&#39;</span><span class="p">,</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="s1">&#39;func&#39;</span><span class="p">,</span> <span class="s1">&#39;*crop*Part2*hdf5&#39;</span><span class="p">)</span>
 <span class="n">parts</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;part 1&#39;</span><span class="p">:</span> <span class="n">sherlock_part1</span><span class="p">,</span> <span class="s1">&#39;part 2&#39;</span><span class="p">:</span> <span class="n">sherlock_part2</span><span class="p">}</span>
 </pre></div>
 
@@ -401,104 +417,139 @@ hyp.plot(data)</code></pre>
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>extracting data for ROI 4: sub-13_denoise_crop_smooth6mm_task-sherl...
-extracting data for ROI 4: sub-14_denoise_crop_smooth6mm_task-sherl...
-extracting data for ROI 4: sub-15_denoise_crop_smooth6mm_task-sherl...
-extracting data for ROI 4: sub-12_denoise_crop_smooth6mm_task-sherl...
-extracting data for ROI 4: sub-08_denoise_crop_smooth6mm_task-sherl...
-extracting data for ROI 4: sub-01_denoise_crop_smooth6mm_task-sherl...
-extracting data for ROI 4: sub-06_denoise_crop_smooth6mm_task-sherl...
-extracting data for ROI 4: sub-07_denoise_crop_smooth6mm_task-sherl...
-extracting data for ROI 4: sub-09_denoise_crop_smooth6mm_task-sherl...
-extracting data for ROI 4: sub-10_denoise_crop_smooth6mm_task-sherl...
-extracting data for ROI 4: sub-11_denoise_crop_smooth6mm_task-sherl...
-extracting data for ROI 4: sub-16_denoise_crop_smooth6mm_task-sherl...
-extracting data for ROI 4: sub-05_denoise_crop_smooth6mm_task-sherl...
+<pre>extracting data for ROI 4: sub-01_denoise_crop_smooth6mm_task-sherl...
 extracting data for ROI 4: sub-02_denoise_crop_smooth6mm_task-sherl...
 extracting data for ROI 4: sub-03_denoise_crop_smooth6mm_task-sherl...
 extracting data for ROI 4: sub-04_denoise_crop_smooth6mm_task-sherl...
-extracting data for ROI 35: sub-13_denoise_crop_smooth6mm_task-sherl...
-extracting data for ROI 35: sub-14_denoise_crop_smooth6mm_task-sherl...
-extracting data for ROI 35: sub-15_denoise_crop_smooth6mm_task-sherl...
-extracting data for ROI 35: sub-12_denoise_crop_smooth6mm_task-sherl...
-extracting data for ROI 35: sub-08_denoise_crop_smooth6mm_task-sherl...
-extracting data for ROI 35: sub-01_denoise_crop_smooth6mm_task-sherl...
-extracting data for ROI 35: sub-06_denoise_crop_smooth6mm_task-sherl...
-extracting data for ROI 35: sub-07_denoise_crop_smooth6mm_task-sherl...
-extracting data for ROI 35: sub-09_denoise_crop_smooth6mm_task-sherl...
-extracting data for ROI 35: sub-10_denoise_crop_smooth6mm_task-sherl...
-extracting data for ROI 35: sub-11_denoise_crop_smooth6mm_task-sherl...
-extracting data for ROI 35: sub-16_denoise_crop_smooth6mm_task-sherl...
-extracting data for ROI 35: sub-05_denoise_crop_smooth6mm_task-sherl...
-extracting data for ROI 35: sub-02_denoise_crop_smooth6mm_task-sherl...
-extracting data for ROI 35: sub-03_denoise_crop_smooth6mm_task-sherl...
-extracting data for ROI 35: sub-04_denoise_crop_smooth6mm_task-sherl...
-extracting data for ROI 9: sub-13_denoise_crop_smooth6mm_task-sherl...
-extracting data for ROI 9: sub-14_denoise_crop_smooth6mm_task-sherl...
-extracting data for ROI 9: sub-15_denoise_crop_smooth6mm_task-sherl...
-extracting data for ROI 9: sub-12_denoise_crop_smooth6mm_task-sherl...
-extracting data for ROI 9: sub-08_denoise_crop_smooth6mm_task-sherl...
-extracting data for ROI 9: sub-01_denoise_crop_smooth6mm_task-sherl...
-extracting data for ROI 9: sub-06_denoise_crop_smooth6mm_task-sherl...
-extracting data for ROI 9: sub-07_denoise_crop_smooth6mm_task-sherl...
-extracting data for ROI 9: sub-09_denoise_crop_smooth6mm_task-sherl...
-extracting data for ROI 9: sub-10_denoise_crop_smooth6mm_task-sherl...
-extracting data for ROI 9: sub-11_denoise_crop_smooth6mm_task-sherl...
-extracting data for ROI 9: sub-16_denoise_crop_smooth6mm_task-sherl...
-extracting data for ROI 9: sub-05_denoise_crop_smooth6mm_task-sherl...
-extracting data for ROI 9: sub-02_denoise_crop_smooth6mm_task-sherl...
-extracting data for ROI 9: sub-03_denoise_crop_smooth6mm_task-sherl...
-extracting data for ROI 9: sub-04_denoise_crop_smooth6mm_task-sherl...
+extracting data for ROI 4: sub-05_denoise_crop_smooth6mm_task-sherl...
+extracting data for ROI 4: sub-06_denoise_crop_smooth6mm_task-sherl...
+extracting data for ROI 4: sub-07_denoise_crop_smooth6mm_task-sherl...
+extracting data for ROI 4: sub-08_denoise_crop_smooth6mm_task-sherl...
+extracting data for ROI 4: sub-09_denoise_crop_smooth6mm_task-sherl...
+extracting data for ROI 4: sub-10_denoise_crop_smooth6mm_task-sherl...
+extracting data for ROI 4: sub-11_denoise_crop_smooth6mm_task-sherl...
+extracting data for ROI 4: sub-12_denoise_crop_smooth6mm_task-sherl...
 extracting data for ROI 4: sub-13_denoise_crop_smooth6mm_task-sherl...
 extracting data for ROI 4: sub-14_denoise_crop_smooth6mm_task-sherl...
 extracting data for ROI 4: sub-15_denoise_crop_smooth6mm_task-sherl...
-extracting data for ROI 4: sub-12_denoise_crop_smooth6mm_task-sherl...
-extracting data for ROI 4: sub-08_denoise_crop_smooth6mm_task-sherl...
-extracting data for ROI 4: sub-01_denoise_crop_smooth6mm_task-sherl...
-extracting data for ROI 4: sub-06_denoise_crop_smooth6mm_task-sherl...
-extracting data for ROI 4: sub-07_denoise_crop_smooth6mm_task-sherl...
-extracting data for ROI 4: sub-09_denoise_crop_smooth6mm_task-sherl...
-extracting data for ROI 4: sub-10_denoise_crop_smooth6mm_task-sherl...
-extracting data for ROI 4: sub-11_denoise_crop_smooth6mm_task-sherl...
 extracting data for ROI 4: sub-16_denoise_crop_smooth6mm_task-sherl...
-extracting data for ROI 4: sub-05_denoise_crop_smooth6mm_task-sherl...
-extracting data for ROI 4: sub-02_denoise_crop_smooth6mm_task-sherl...
-extracting data for ROI 4: sub-03_denoise_crop_smooth6mm_task-sherl...
-extracting data for ROI 4: sub-04_denoise_crop_smooth6mm_task-sherl...
-extracting data for ROI 35: sub-13_denoise_crop_smooth6mm_task-sherl...
-extracting data for ROI 35: sub-14_denoise_crop_smooth6mm_task-sherl...
-extracting data for ROI 35: sub-15_denoise_crop_smooth6mm_task-sherl...
-extracting data for ROI 35: sub-12_denoise_crop_smooth6mm_task-sherl...
-extracting data for ROI 35: sub-08_denoise_crop_smooth6mm_task-sherl...
 extracting data for ROI 35: sub-01_denoise_crop_smooth6mm_task-sherl...
-extracting data for ROI 35: sub-06_denoise_crop_smooth6mm_task-sherl...
-extracting data for ROI 35: sub-07_denoise_crop_smooth6mm_task-sherl...
-extracting data for ROI 35: sub-09_denoise_crop_smooth6mm_task-sherl...
-extracting data for ROI 35: sub-10_denoise_crop_smooth6mm_task-sherl...
-extracting data for ROI 35: sub-11_denoise_crop_smooth6mm_task-sherl...
-extracting data for ROI 35: sub-16_denoise_crop_smooth6mm_task-sherl...
-extracting data for ROI 35: sub-05_denoise_crop_smooth6mm_task-sherl...
 extracting data for ROI 35: sub-02_denoise_crop_smooth6mm_task-sherl...
 extracting data for ROI 35: sub-03_denoise_crop_smooth6mm_task-sherl...
 extracting data for ROI 35: sub-04_denoise_crop_smooth6mm_task-sherl...
-extracting data for ROI 9: sub-13_denoise_crop_smooth6mm_task-sherl...
-extracting data for ROI 9: sub-14_denoise_crop_smooth6mm_task-sherl...
-extracting data for ROI 9: sub-15_denoise_crop_smooth6mm_task-sherl...
-extracting data for ROI 9: sub-12_denoise_crop_smooth6mm_task-sherl...
-extracting data for ROI 9: sub-08_denoise_crop_smooth6mm_task-sherl...
+extracting data for ROI 35: sub-05_denoise_crop_smooth6mm_task-sherl...
+extracting data for ROI 35: sub-06_denoise_crop_smooth6mm_task-sherl...
+extracting data for ROI 35: sub-07_denoise_crop_smooth6mm_task-sherl...
+extracting data for ROI 35: sub-08_denoise_crop_smooth6mm_task-sherl...
+extracting data for ROI 35: sub-09_denoise_crop_smooth6mm_task-sherl...
+extracting data for ROI 35: sub-10_denoise_crop_smooth6mm_task-sherl...
+extracting data for ROI 35: sub-11_denoise_crop_smooth6mm_task-sherl...
+extracting data for ROI 35: sub-12_denoise_crop_smooth6mm_task-sherl...
+extracting data for ROI 35: sub-13_denoise_crop_smooth6mm_task-sherl...
+extracting data for ROI 35: sub-14_denoise_crop_smooth6mm_task-sherl...
+extracting data for ROI 35: sub-15_denoise_crop_smooth6mm_task-sherl...
+extracting data for ROI 35: sub-16_denoise_crop_smooth6mm_task-sherl...
 extracting data for ROI 9: sub-01_denoise_crop_smooth6mm_task-sherl...
-extracting data for ROI 9: sub-06_denoise_crop_smooth6mm_task-sherl...
-extracting data for ROI 9: sub-07_denoise_crop_smooth6mm_task-sherl...
-extracting data for ROI 9: sub-09_denoise_crop_smooth6mm_task-sherl...
-extracting data for ROI 9: sub-10_denoise_crop_smooth6mm_task-sherl...
-extracting data for ROI 9: sub-11_denoise_crop_smooth6mm_task-sherl...
-extracting data for ROI 9: sub-16_denoise_crop_smooth6mm_task-sherl...
-extracting data for ROI 9: sub-05_denoise_crop_smooth6mm_task-sherl...
 extracting data for ROI 9: sub-02_denoise_crop_smooth6mm_task-sherl...
 extracting data for ROI 9: sub-03_denoise_crop_smooth6mm_task-sherl...
 extracting data for ROI 9: sub-04_denoise_crop_smooth6mm_task-sherl...
+extracting data for ROI 9: sub-05_denoise_crop_smooth6mm_task-sherl...
+extracting data for ROI 9: sub-06_denoise_crop_smooth6mm_task-sherl...
+extracting data for ROI 9: sub-07_denoise_crop_smooth6mm_task-sherl...
+extracting data for ROI 9: sub-08_denoise_crop_smooth6mm_task-sherl...
+extracting data for ROI 9: sub-09_denoise_crop_smooth6mm_task-sherl...
+extracting data for ROI 9: sub-10_denoise_crop_smooth6mm_task-sherl...
+extracting data for ROI 9: sub-11_denoise_crop_smooth6mm_task-sherl...
+extracting data for ROI 9: sub-12_denoise_crop_smooth6mm_task-sherl...
+extracting data for ROI 9: sub-13_denoise_crop_smooth6mm_task-sherl...
+extracting data for ROI 9: sub-14_denoise_crop_smooth6mm_task-sherl...
+extracting data for ROI 9: sub-15_denoise_crop_smooth6mm_task-sherl...
+extracting data for ROI 9: sub-16_denoise_crop_smooth6mm_task-sherl...
+extracting data for ROI 4: sub-01_denoise_crop_smooth6mm_task-sherl...
+extracting data for ROI 4: sub-02_denoise_crop_smooth6mm_task-sherl...
+extracting data for ROI 4: sub-03_denoise_crop_smooth6mm_task-sherl...
+extracting data for ROI 4: sub-04_denoise_crop_smooth6mm_task-sherl...
+extracting data for ROI 4: sub-05_denoise_crop_smooth6mm_task-sherl...
+extracting data for ROI 4: sub-06_denoise_crop_smooth6mm_task-sherl...
+extracting data for ROI 4: sub-07_denoise_crop_smooth6mm_task-sherl...
+extracting data for ROI 4: sub-08_denoise_crop_smooth6mm_task-sherl...
+extracting data for ROI 4: sub-09_denoise_crop_smooth6mm_task-sherl...
+extracting data for ROI 4: sub-10_denoise_crop_smooth6mm_task-sherl...
+extracting data for ROI 4: sub-11_denoise_crop_smooth6mm_task-sherl...
+extracting data for ROI 4: sub-12_denoise_crop_smooth6mm_task-sherl...
+extracting data for ROI 4: sub-13_denoise_crop_smooth6mm_task-sherl...
+extracting data for ROI 4: sub-14_denoise_crop_smooth6mm_task-sherl...
+extracting data for ROI 4: sub-15_denoise_crop_smooth6mm_task-sherl...
+extracting data for ROI 4: sub-16_denoise_crop_smooth6mm_task-sherl...
+extracting data for ROI 35: sub-01_denoise_crop_smooth6mm_task-sherl...
+extracting data for ROI 35: sub-02_denoise_crop_smooth6mm_task-sherl...
+extracting data for ROI 35: sub-03_denoise_crop_smooth6mm_task-sherl...
+extracting data for ROI 35: sub-04_denoise_crop_smooth6mm_task-sherl...
+extracting data for ROI 35: sub-05_denoise_crop_smooth6mm_task-sherl...
+extracting data for ROI 35: sub-06_denoise_crop_smooth6mm_task-sherl...
+extracting data for ROI 35: sub-07_denoise_crop_smooth6mm_task-sherl...
+extracting data for ROI 35: sub-08_denoise_crop_smooth6mm_task-sherl...
+extracting data for ROI 35: sub-09_denoise_crop_smooth6mm_task-sherl...
+extracting data for ROI 35: sub-10_denoise_crop_smooth6mm_task-sherl...
+extracting data for ROI 35: sub-11_denoise_crop_smooth6mm_task-sherl...
+extracting data for ROI 35: sub-12_denoise_crop_smooth6mm_task-sherl...
+extracting data for ROI 35: sub-13_denoise_crop_smooth6mm_task-sherl...
+extracting data for ROI 35: sub-14_denoise_crop_smooth6mm_task-sherl...
+extracting data for ROI 35: sub-15_denoise_crop_smooth6mm_task-sherl...
+extracting data for ROI 35: sub-16_denoise_crop_smooth6mm_task-sherl...
+extracting data for ROI 9: sub-01_denoise_crop_smooth6mm_task-sherl...
+extracting data for ROI 9: sub-02_denoise_crop_smooth6mm_task-sherl...
+extracting data for ROI 9: sub-03_denoise_crop_smooth6mm_task-sherl...
+extracting data for ROI 9: sub-04_denoise_crop_smooth6mm_task-sherl...
+extracting data for ROI 9: sub-05_denoise_crop_smooth6mm_task-sherl...
+extracting data for ROI 9: sub-06_denoise_crop_smooth6mm_task-sherl...
+extracting data for ROI 9: sub-07_denoise_crop_smooth6mm_task-sherl...
+extracting data for ROI 9: sub-08_denoise_crop_smooth6mm_task-sherl...
+extracting data for ROI 9: sub-09_denoise_crop_smooth6mm_task-sherl...
+extracting data for ROI 9: sub-10_denoise_crop_smooth6mm_task-sherl...
+extracting data for ROI 9: sub-11_denoise_crop_smooth6mm_task-sherl...
+extracting data for ROI 9: sub-12_denoise_crop_smooth6mm_task-sherl...
+extracting data for ROI 9: sub-13_denoise_crop_smooth6mm_task-sherl...
+extracting data for ROI 9: sub-14_denoise_crop_smooth6mm_task-sherl...
+extracting data for ROI 9: sub-15_denoise_crop_smooth6mm_task-sherl...
+extracting data for ROI 9: sub-16_denoise_crop_smooth6mm_task-sherl...
 </pre>
 </div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{&#39;part 1&#39;: {&#39;V1&#39;: [], &#39;A1&#39;: [], &#39;Precentral gyrus&#39;: []},
+ &#39;part 2&#39;: {&#39;V1&#39;: [], &#39;A1&#39;: [], &#39;Precentral gyrus&#39;: []}}</pre>
+</div>
+
 </div>
 </div>
 </div>
@@ -576,7 +627,7 @@ extracting data for ROI 9: sub-04_denoise_crop_smooth6mm_task-sherl...
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/hypertools_16_0.png"
+<img src="../../images/features/notebooks/hypertools_17_0.png"
 >
 </div>
 
@@ -588,7 +639,7 @@ extracting data for ROI 9: sub-04_denoise_crop_smooth6mm_task-sherl...
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/hypertools_16_1.png"
+<img src="../../images/features/notebooks/hypertools_17_1.png"
 >
 </div>
 
@@ -600,7 +651,7 @@ extracting data for ROI 9: sub-04_denoise_crop_smooth6mm_task-sherl...
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/hypertools_16_2.png"
+<img src="../../images/features/notebooks/hypertools_17_2.png"
 >
 </div>
 
@@ -646,7 +697,7 @@ extracting data for ROI 9: sub-04_denoise_crop_smooth6mm_task-sherl...
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/hypertools_18_0.png"
+<img src="../../images/features/notebooks/hypertools_19_0.png"
 >
 </div>
 
@@ -658,7 +709,7 @@ extracting data for ROI 9: sub-04_denoise_crop_smooth6mm_task-sherl...
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/hypertools_18_1.png"
+<img src="../../images/features/notebooks/hypertools_19_1.png"
 >
 </div>
 
@@ -670,7 +721,7 @@ extracting data for ROI 9: sub-04_denoise_crop_smooth6mm_task-sherl...
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/hypertools_18_2.png"
+<img src="../../images/features/notebooks/hypertools_19_2.png"
 >
 </div>
 
@@ -719,7 +770,7 @@ extracting data for ROI 9: sub-04_denoise_crop_smooth6mm_task-sherl...
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/hypertools_20_0.png"
+<img src="../../images/features/notebooks/hypertools_21_0.png"
 >
 </div>
 
@@ -731,7 +782,7 @@ extracting data for ROI 9: sub-04_denoise_crop_smooth6mm_task-sherl...
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/hypertools_20_1.png"
+<img src="../../images/features/notebooks/hypertools_21_1.png"
 >
 </div>
 
@@ -778,7 +829,7 @@ extracting data for ROI 9: sub-04_denoise_crop_smooth6mm_task-sherl...
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/hypertools_22_0.png"
+<img src="../../images/features/notebooks/hypertools_23_0.png"
 >
 </div>
 
@@ -790,7 +841,7 @@ extracting data for ROI 9: sub-04_denoise_crop_smooth6mm_task-sherl...
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/hypertools_22_1.png"
+<img src="../../images/features/notebooks/hypertools_23_1.png"
 >
 </div>
 
@@ -802,7 +853,7 @@ extracting data for ROI 9: sub-04_denoise_crop_smooth6mm_task-sherl...
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/hypertools_22_2.png"
+<img src="../../images/features/notebooks/hypertools_23_2.png"
 >
 </div>
 
@@ -818,7 +869,7 @@ extracting data for ROI 9: sub-04_denoise_crop_smooth6mm_task-sherl...
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="What-is-the-&quot;shape&quot;-of-the-Sherlock-episode?">What is the "shape" of the Sherlock episode?<a class="anchor-link" href="#What-is-the-&quot;shape&quot;-of-the-Sherlock-episode?"> </a></h2><p>Following an approach similar to the one used in <a href="https://www.biorxiv.org/content/10.1101/409987v1">this paper</a>, we can use also HyperTools to examine how the content of the Sherlock episode unfolds.  Whereas the analyses above show how HyperTools may be used to gain insight into dynamics in neural data, we can also use HyperTools to examine how the semantic content of the episode changes over time.  We'll fit a word embedding model to a set of detailed annotations of each scene in the episode.</p>
+<h2 id="What-is-the-&quot;shape&quot;-of-the-Sherlock-episode?">What is the "shape" of the Sherlock episode?<a class="anchor-link" href="#What-is-the-&quot;shape&quot;-of-the-Sherlock-episode?"> </a></h2><p>Following an approach similar to the one used in <a href="https://www.biorxiv.org/content/10.1101/409987v1">Heusser et al., 2018</a>, we can use also HyperTools to examine how the content of the Sherlock episode unfolds.  Whereas the analyses above show how HyperTools may be used to gain insight into dynamics in neural data, we can also use HyperTools to examine how the semantic content of the episode changes over time.  We'll fit a word embedding model to a set of detailed annotations of each scene in the episode.</p>
 <p>First, let's download the annotations to get a sense of what they're like.</p>
 
 </div>
@@ -874,128 +925,19 @@ extracting data for ROI 9: sub-04_denoise_crop_smooth6mm_task-sherl...
 <div class="jb_output_wrapper }}">
 <div class="output_area">
 
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-7-8c1e1504c1f8&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-intense-fg ansi-bold">      1</span> <span class="ansi-red-fg"># raw annotations</span>
+<span class="ansi-green-intense-fg ansi-bold">      2</span> annotations_source <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">&#39;https://github.com/ContextLab/sherlock-topic-model-paper/raw/revision-1/data/raw/Sherlock_Segments_1000_NN_2017.xlsx&#39;</span>
+<span class="ansi-green-fg">----&gt; 3</span><span class="ansi-red-fg"> </span>annotations_dest <span class="ansi-blue-fg">=</span> os<span class="ansi-blue-fg">.</span>path<span class="ansi-blue-fg">.</span>join<span class="ansi-blue-fg">(</span>datadir<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">&#39;Sherlock&#39;</span><span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">&#39;stimuli&#39;</span><span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">&#39;annotations.xlsx&#39;</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">      4</span> download<span class="ansi-blue-fg">(</span>annotations_source<span class="ansi-blue-fg">,</span> annotations_dest<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">      5</span> annotations <span class="ansi-blue-fg">=</span> pd<span class="ansi-blue-fg">.</span>read_excel<span class="ansi-blue-fg">(</span>annotations_dest<span class="ansi-blue-fg">)</span>
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Segment Number</th>
-      <th>Start Time (s)</th>
-      <th>End Time (s)</th>
-      <th>Start Time (TRs, 1.5s)</th>
-      <th>End Time (TRs, 1.5s)</th>
-      <th>Scene Segments</th>
-      <th>Scene Details - A Level</th>
-      <th>Space-In/Outdoor</th>
-      <th>Name - All</th>
-      <th>Name - Focus</th>
-      <th>...</th>
-      <th>Music Presence</th>
-      <th>Words on Screen</th>
-      <th>Arousal - Rater 1</th>
-      <th>Valence - Rater 1</th>
-      <th>Arousal - Rater 2</th>
-      <th>Valence - Rater 2</th>
-      <th>Arousal - Rater 3</th>
-      <th>Valence - Rater 3</th>
-      <th>Arousal - Rater 4</th>
-      <th>Valence - Rater 4</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>12</td>
-      <td>1.0</td>
-      <td>8.0</td>
-      <td>1. Cartoon</td>
-      <td>People in popcorn, candy, and soft drink costu...</td>
-      <td>Indoor</td>
-      <td>Cartoon People in Costumes</td>
-      <td>Cartoon People in Costumes</td>
-      <td>...</td>
-      <td>Yes</td>
-      <td>NaN</td>
-      <td>3</td>
-      <td>+</td>
-      <td>1</td>
-      <td>+</td>
-      <td>2</td>
-      <td>+</td>
-      <td>3</td>
-      <td>+</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>2</td>
-      <td>12</td>
-      <td>15</td>
-      <td>9.0</td>
-      <td>10.0</td>
-      <td>NaN</td>
-      <td>Popcorn is being popped in a large popcorn mac...</td>
-      <td>Indoor</td>
-      <td>Female Singer</td>
-      <td>NaN</td>
-      <td>...</td>
-      <td>Yes</td>
-      <td>NaN</td>
-      <td>3</td>
-      <td>+</td>
-      <td>1</td>
-      <td>+</td>
-      <td>2</td>
-      <td>+</td>
-      <td>2</td>
-      <td>+</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>3</td>
-      <td>15</td>
-      <td>17</td>
-      <td>11.0</td>
-      <td>11.0</td>
-      <td>NaN</td>
-      <td>Men sing in reply: "the popcorn can't be beat!"</td>
-      <td>Indoor</td>
-      <td>Male Singers</td>
-      <td>NaN</td>
-      <td>...</td>
-      <td>Yes</td>
-      <td>NaN</td>
-      <td>3</td>
-      <td>+</td>
-      <td>1</td>
-      <td>+</td>
-      <td>2</td>
-      <td>+</td>
-      <td>2</td>
-      <td>+</td>
-    </tr>
-  </tbody>
-</table>
-<p>3 rows × 23 columns</p>
+<span class="ansi-red-fg">NameError</span>: name &#39;os&#39; is not defined</pre>
 </div>
-</div>
-
 </div>
 </div>
 </div>
@@ -1116,7 +1058,7 @@ extracting data for ROI 9: sub-04_denoise_crop_smooth6mm_task-sherl...
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/hypertools_31_0.png"
+<img src="../../images/features/notebooks/hypertools_32_0.png"
 >
 </div>
 
@@ -1165,7 +1107,7 @@ extracting data for ROI 9: sub-04_denoise_crop_smooth6mm_task-sherl...
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/hypertools_33_0.png"
+<img src="../../images/features/notebooks/hypertools_34_0.png"
 >
 </div>
 

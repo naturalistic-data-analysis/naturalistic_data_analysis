@@ -13,7 +13,7 @@ prev_page:
 next_page:
   url: /features/notebooks/Natural_Language_Processing.html
 suffix: .ipynb
-search: event events boundaries data hmm recall gsbs model patterns movie tutorial both using between segmentation activity org timepoints fit states well used during set human optimal distance voxel perception need dataset here also baldassano geerligs show search software datalad load files subjects only finding correlation corresponding log likelihood measure timepoint similarity comparison determine t same chris linda greedy state boundary started different before installed sherlock want change angular gyrus loading doi applying plot models fitting specify note test below since matrix being split merge fits labeled possible datasets variance fmri gordon fleetwood shows spatial across free lets get watching methods
+search: event events data boundaries hmm recall gsbs model patterns tutorial movie both using between segmentation activity org timepoints fit states well used during set human optimal distance voxel perception need load dataset files here also baldassano geerligs show search started software datalad sherlock angular gyrus figshare subjects only finding correlation corresponding log likelihood measure timepoint similarity comparison determine t same chris linda spatial greedy state boundary get different com before installed nii download want change loading doi applying plot models fitting specify note test below since matrix being split merge fits labeled possible datasets variance fmri gordon fleetwood shows across
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -186,6 +186,30 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">ModuleNotFoundError</span>                       Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-5-d34c73579304&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-intense-fg ansi-bold">      5</span> <span class="ansi-green-fg">from</span> functools <span class="ansi-green-fg">import</span> reduce
+<span class="ansi-green-intense-fg ansi-bold">      6</span> <span class="ansi-green-fg">import</span> numpy <span class="ansi-green-fg">as</span> np
+<span class="ansi-green-fg">----&gt; 7</span><span class="ansi-red-fg"> </span><span class="ansi-green-fg">from</span> brainiak<span class="ansi-blue-fg">.</span>eventseg<span class="ansi-blue-fg">.</span>event <span class="ansi-green-fg">import</span> EventSegment
+<span class="ansi-green-intense-fg ansi-bold">      8</span> <span class="ansi-green-fg">import</span> nibabel <span class="ansi-green-fg">as</span> nib
+<span class="ansi-green-intense-fg ansi-bold">      9</span> <span class="ansi-green-fg">from</span> nilearn<span class="ansi-blue-fg">.</span>masking <span class="ansi-green-fg">import</span> apply_mask
+
+<span class="ansi-red-fg">ModuleNotFoundError</span>: No module named &#39;brainiak&#39;</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -193,7 +217,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Data">Data<a class="anchor-link" href="#Data"> </a></h2><p>This tutorial will be using the <strong>Sherlock</strong> dataset and will require downloading the cropped &amp; denoised <strong>.hdf5</strong> files.</p>
+<h2 id="Data">Data<a class="anchor-link" href="#Data"> </a></h2><p>This tutorial will be using the <strong>Sherlock</strong> dataset and will require downloading the cropped &amp; denoised <strong>.nii.gz</strong> files. The tutorial will be mostly working with spatial patterns within the angular gyrus, so if you would like to get started with the tutorial right away without waiting for all of the nifti files to load, you can download the masked data as a <code>.npy</code> file from <a href="https://figshare.com/articles/Sherlock_data_for_OHBM/12436955">figshare: Sherlock data for OHBM</a>.</p>
 <p>You will want to change <code>data_dir</code> to wherever you have installed the Sherlock datalad repository. We will initialize a datalad dataset instance and get the files we need for this tutorial. If you've already downloaded everything, you can skip this cell. See the <a href="http://naturalistic-data.org/features/notebooks/Download_Data.html">Download Data Tutorial</a> for more information about how to install and use datalad.</p>
 
 </div>
@@ -217,17 +241,50 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <span class="c1"># Initialize dataset</span>
 <span class="n">ds</span> <span class="o">=</span> <span class="n">dl</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="n">data_dir</span><span class="p">)</span>
 
-<span class="c1"># Get Cropped &amp; Denoised HDF5 Viewing Files</span>
-<span class="n">result</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="s1">&#39;fmriprep&#39;</span><span class="p">,</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="s1">&#39;func&#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;*crop*hdf5&#39;</span><span class="p">)))</span>
-
-<span class="c1"># Get Denoised nifti Recall Files</span>
-<span class="n">result</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="s1">&#39;fmriprep&#39;</span><span class="p">,</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="s1">&#39;func&#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;*denoise*freerecall*nii.gz&#39;</span><span class="p">)))</span>
+<span class="c1"># Get Denoised nifti Files</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="s1">&#39;fmriprep&#39;</span><span class="p">,</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="s1">&#39;func&#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;*denoise*nii.gz&#39;</span><span class="p">)))</span>
 </pre></div>
 
     </div>
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-4-4fb418d4942e&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-intense-fg ansi-bold">      6</span> 
+<span class="ansi-green-intense-fg ansi-bold">      7</span> <span class="ansi-red-fg"># Initialize dataset</span>
+<span class="ansi-green-fg">----&gt; 8</span><span class="ansi-red-fg"> </span>ds <span class="ansi-blue-fg">=</span> dl<span class="ansi-blue-fg">.</span>Dataset<span class="ansi-blue-fg">(</span>data_dir<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">      9</span> 
+<span class="ansi-green-intense-fg ansi-bold">     10</span> <span class="ansi-red-fg"># Get Denoised nifti Files</span>
+
+<span class="ansi-red-fg">NameError</span>: name &#39;dl&#39; is not defined</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="0.-Load-Angular-Gyrus-data">0. Load Angular Gyrus data<a class="anchor-link" href="#0.-Load-Angular-Gyrus-data"> </a></h2><p>From the angular gyrus (area PG from (Eickhoff et al., 2005)), we'll load movie data from all subjects, and recall data from one subject. Subjects were watching the first hour of <a href="https://en.wikipedia.org/wiki/A_Study_in_Pink">A Study in Pink</a> (here we are loading only the first half of this data), and then freely recalled the narrative. Please refer to <a href="https://doi.org/10.1038/nn.4450">Chen et al. (2017)</a> to learn more about this dataset.</p>
+<p>We can load this data from the nii files by applying an angular gyrus mask, which we then cache into a numpy file to speed up loading in the future. If you'd like to skip this nii-loading step (which can be slow), you can download the npy files from <a href="https://figshare.com/articles/Sherlock_data_for_OHBM/12436955">figshare: Sherlock data for OHBM</a>.</p>
+
+</div>
+</div>
 </div>
 </div>
 
@@ -270,18 +327,6 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 </div>
 </div>
 
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="0.-Load-Angular-Gyrus-data">0. Load Angular Gyrus data<a class="anchor-link" href="#0.-Load-Angular-Gyrus-data"> </a></h2><p>From the angular gyrus (area PG from (Eickhoff et al., 2005)), we'll load movie data from all subjects, and recall data from one subject. Subjects were watching the first hour of <a href="https://en.wikipedia.org/wiki/A_Study_in_Pink">A Study in Pink</a> (here we are loading only the first half of this data), and then freely recalled the narrative. Please refer to <a href="https://doi.org/10.1038/nn.4450">Chen et al. (2017)</a> to learn more about this dataset.</p>
-<p>We can load this data from the nii files by applying an angular gyrus mask, which we then cache into a numpy file to speed up loading in the future. If you'd like to skip this nii-loading step (which can be slow), you can download the npy files from <a href="https://figshare.com/articles/Sherlock_data_for_OHBM/12436955">figshare: Sherlock data for OHBM</a>.</p>
-
-</div>
-</div>
 </div>
 </div>
 
