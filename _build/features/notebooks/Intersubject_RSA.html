@@ -13,7 +13,7 @@ prev_page:
 next_page:
   url: /features/notebooks/Event_Segmentation.html
 suffix: .ipynb
-search: similarity subjects data brain our subject www rsa com nodes isc matrix behavioral s et al well representational also behavior using run similar org values across j node article e matrices low model science naturalistic same where lets not high scorers its want score between distance case r while sciencedirect pii since annak paranoia value p inter sure structure scale both into voxels calculate x analysis correlation activity level different take below should nn space t participants higher m nature tutorial metric articles results line based us parcellation looks g any during individual regions social euclidean another scores scoring need
+search: similarity subjects data brain our subject www rsa com nodes isc matrix behavioral s using et al well representational org also behavior run similar values across naturalistic tutorial e j node article matrices lets low want model science same where not high scorers its paranoia score between distance case r sure while sciencedirect pii since annak value p inter structure scale both into voxels calculate x analysis correlation activity level different take below should nn need dataset space t participants higher m nature g metric articles results line datalad based us parcellation looks any html during individual regions social get
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -103,6 +103,31 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="jb_cell">
 
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Getting-Started">Getting Started<a class="anchor-link" href="#Getting-Started"> </a></h1><p>Before getting started with this tutorial, we need to make sure you have the necessary software installed and data downloaded.</p>
+<h2 id="Software">Software<a class="anchor-link" href="#Software"> </a></h2><p>This tutorial requires the following Python packages to be installed. See the <a href="http://naturalistic-data.org/features/notebooks/Software.html">Software Installation</a> tutorial for more information.</p>
+<ul>
+<li>seaborn</li>
+<li>matplotlib</li>
+<li>numpy</li>
+<li>scipy</li>
+<li>pandas</li>
+<li>sklearn</li>
+<li>nltools</li>
+<li>nibabel</li>
+<li>nilearn</li>
+<li>datalad</li>
+</ul>
+<p>Let's now load the modules we will be using for this tutorial.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
@@ -128,8 +153,12 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <span class="kn">from</span> <span class="nn">nilearn.input_data</span> <span class="kn">import</span> <span class="n">NiftiLabelsMasker</span>
 <span class="kn">from</span> <span class="nn">nilearn</span> <span class="kn">import</span> <span class="n">plotting</span>
 
+<span class="kn">from</span> <span class="nn">nltools.data</span> <span class="kn">import</span> <span class="n">Brain_Data</span><span class="p">,</span> <span class="n">Adjacency</span>
+
 <span class="kn">from</span> <span class="nn">sklearn.utils</span> <span class="kn">import</span> <span class="n">check_random_state</span>
 <span class="kn">from</span> <span class="nn">sklearn.manifold</span> <span class="kn">import</span> <span class="n">TSNE</span>
+
+<span class="kn">import</span> <span class="nn">datalad.api</span> <span class="k">as</span> <span class="nn">dl</span>
 
 <span class="o">%</span><span class="k">matplotlib</span> inline
 </pre></div>
@@ -138,19 +167,42 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
+</div>
+</div>
 
-<div class="jb_output_wrapper }}">
-<div class="output_area">
+<div class="jb_cell">
 
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>/Users/finnes/anaconda3/lib/python3.6/site-packages/sklearn/externals/joblib/__init__.py:15: DeprecationWarning: sklearn.externals.joblib is deprecated in 0.21 and will be removed in 0.23. Please import this functionality directly from joblib, which can be installed with: pip install joblib. If this warning is raised when loading pickled models, you may need to re-serialize those models with scikit-learn 0.21+.
-  warnings.warn(msg, category=DeprecationWarning)
-</pre>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Data">Data<a class="anchor-link" href="#Data"> </a></h2><p>This tutorial will be using the <strong>Paranoia</strong> dataset and will require downloading the cropped and denoised <strong>nii.gz</strong> files.</p>
+<p>You will want to change <code>data_dir</code> to wherever you have installed the Paranoia datalad repository (e.g. <code>~/data</code>). We will initialize a datalad dataset instance and get the files we need for this tutorial. If you've already downloaded everything, you can skip this cell. See the <a href="http://naturalistic-data.org/features/notebooks/Download_Data.html">Download Data Tutorial</a> for more information about how to install and use datalad.</p>
+
 </div>
 </div>
 </div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data_dir</span> <span class="o">=</span> <span class="s1">&#39;/Volumes/Engram/Data/Paranoia&#39;</span>
+
+<span class="c1"># If dataset hasn&#39;t been installed, clone from GIN repository</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">datadir</span><span class="p">):</span>
+    <span class="n">dl</span><span class="o">.</span><span class="n">clone</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="s1">&#39;https://gin.g-node.org/ljchang/Paranoia&#39;</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="n">datadir</span><span class="p">)</span>
+
+<span class="c1"># Initialize dataset</span>
+<span class="n">ds</span> <span class="o">=</span> <span class="n">dl</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="n">datadir</span><span class="p">)</span>
+
+<span class="c1"># Get Cropped &amp; Denoised Run 1 Nift Files</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">datadir</span><span class="p">,</span> <span class="s1">&#39;fmriprep&#39;</span><span class="p">,</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="s1">&#39;func&#39;</span><span class="p">,</span> <span class="s1">&#39;*denoise_smooth6mm_task-story_run-1*nii.gz&#39;</span><span class="p">)))</span>
+</pre></div>
+
+    </div>
 </div>
 </div>
 
@@ -267,7 +319,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Intersubject_RSA_7_0.png"
+<img src="../../images/features/notebooks/Intersubject_RSA_10_0.png"
 >
 </div>
 
@@ -331,7 +383,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Intersubject_RSA_9_0.png"
+<img src="../../images/features/notebooks/Intersubject_RSA_12_0.png"
 >
 </div>
 
@@ -414,7 +466,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Intersubject_RSA_11_0.png"
+<img src="../../images/features/notebooks/Intersubject_RSA_14_0.png"
 >
 </div>
 
@@ -617,7 +669,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Intersubject_RSA_18_1.png"
+<img src="../../images/features/notebooks/Intersubject_RSA_21_1.png"
 >
 </div>
 
@@ -676,7 +728,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Intersubject_RSA_20_1.png"
+<img src="../../images/features/notebooks/Intersubject_RSA_23_1.png"
 >
 </div>
 
@@ -799,7 +851,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Intersubject_RSA_27_1.png"
+<img src="../../images/features/notebooks/Intersubject_RSA_30_1.png"
 >
 </div>
 
@@ -1194,7 +1246,7 @@ Node time series for subject 22, run 3 already exists!
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Intersubject_RSA_43_0.png"
+<img src="../../images/features/notebooks/Intersubject_RSA_46_0.png"
 >
 </div>
 
@@ -1294,7 +1346,7 @@ Node time series for subject 22, run 3 already exists!
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Intersubject_RSA_47_0.png"
+<img src="../../images/features/notebooks/Intersubject_RSA_50_0.png"
 >
 </div>
 
@@ -1418,7 +1470,7 @@ Node time series for subject 22, run 3 already exists!
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Intersubject_RSA_54_0.png"
+<img src="../../images/features/notebooks/Intersubject_RSA_57_0.png"
 >
 </div>
 
@@ -1481,7 +1533,7 @@ Node time series for subject 22, run 3 already exists!
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Intersubject_RSA_56_0.png"
+<img src="../../images/features/notebooks/Intersubject_RSA_59_0.png"
 >
 </div>
 
@@ -1840,7 +1892,7 @@ Node time series for subject 22, run 3 already exists!
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Intersubject_RSA_68_0.png"
+<img src="../../images/features/notebooks/Intersubject_RSA_71_0.png"
 >
 </div>
 
@@ -1942,7 +1994,7 @@ Node time series for subject 22, run 3 already exists!
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Intersubject_RSA_72_1.png"
+<img src="../../images/features/notebooks/Intersubject_RSA_75_1.png"
 >
 </div>
 
@@ -1977,7 +2029,7 @@ Node time series for subject 22, run 3 already exists!
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Intersubject_RSA_73_0.png"
+<img src="../../images/features/notebooks/Intersubject_RSA_76_0.png"
 >
 </div>
 
@@ -2166,7 +2218,7 @@ Node time series for subject 22, run 3 already exists!
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Intersubject_RSA_78_0.png"
+<img src="../../images/features/notebooks/Intersubject_RSA_81_0.png"
 >
 </div>
 
@@ -2257,7 +2309,7 @@ Node time series for subject 22, run 3 already exists!
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Intersubject_RSA_81_1.png"
+<img src="../../images/features/notebooks/Intersubject_RSA_84_1.png"
 >
 </div>
 
@@ -2327,7 +2379,7 @@ Node time series for subject 22, run 3 already exists!
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Intersubject_RSA_85_0.png"
+<img src="../../images/features/notebooks/Intersubject_RSA_88_0.png"
 >
 </div>
 
@@ -2460,7 +2512,7 @@ Node time series for subject 22, run 3 already exists!
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Intersubject_RSA_90_0.png"
+<img src="../../images/features/notebooks/Intersubject_RSA_93_0.png"
 >
 </div>
 
@@ -2513,7 +2565,7 @@ Node time series for subject 22, run 3 already exists!
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Intersubject_RSA_92_0.png"
+<img src="../../images/features/notebooks/Intersubject_RSA_95_0.png"
 >
 </div>
 
@@ -2525,7 +2577,7 @@ Node time series for subject 22, run 3 already exists!
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Intersubject_RSA_92_1.png"
+<img src="../../images/features/notebooks/Intersubject_RSA_95_1.png"
 >
 </div>
 
@@ -2656,7 +2708,7 @@ Node time series for subject 22, run 3 already exists!
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Intersubject_RSA_98_1.png"
+<img src="../../images/features/notebooks/Intersubject_RSA_101_1.png"
 >
 </div>
 
@@ -2764,7 +2816,7 @@ Node time series for subject 22, run 3 already exists!
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Intersubject_RSA_102_1.png"
+<img src="../../images/features/notebooks/Intersubject_RSA_105_1.png"
 >
 </div>
 
