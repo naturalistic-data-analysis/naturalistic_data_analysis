@@ -6,20 +6,20 @@ kernel_name: python3
 kernel_path: content/features/notebooks
 has_widgets: false
 title: |-
-  Annotations
+  Automated Annotations
 pagenum: 13
 prev_page:
   url: /features/notebooks/HiddenSemiMarkovModel.html
 next_page:
   url: /features/notebooks/hypertools.html
 suffix: .ipynb
-search: pliers audio example stimuli using features stimulus video text conversion github extraction extractors speech extractor sherlock transformers stim frames feature tyarkoni extract transform api paranoiastory run io html videostim graph however lets take rmsextractor convert want input faces complex analysis simply note track transcript naturalistic manually based not automatically extracted code easy import object data objects frame framesamplingfilter rev ai predefineddictionaryextractor sentiment dozens installation extracting converters apis manual range just into rms need pandas documentation here our audiostim results face also provides python interface services models algorithms well visual apply returns easily dataframe same result learn transformer load e g
+search: pliers audio example stimuli using features github stimulus extraction text conversion video feature extractors speech extractor sherlock tyarkoni transformers stim frames run extract transform api paranoiastory take io html videostim graph however lets rmsextractor convert want input faces complex analysis simply code track data s transcript naturalistic manually based not automatically extracted easy import object objects frame framesamplingfilter rev ai predefineddictionaryextractor sentiment dozens installation extracting converters apis manual range just into rms need pandas documentation our audiostim results face note also words com tutorial provides python interface services models algorithms well visual apply returns easily dataframe same result learn transformer
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 
     <main class="jupyter-page">
-    <div id="page-info"><div id="page-title">Annotations</div>
+    <div id="page-info"><div id="page-title">Automated Annotations</div>
 </div>
     <div class="jb_cell">
 
@@ -110,7 +110,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Naturalistic fMRI paradigms have gained popularity due to their potential to more closely resemble the complex, dynamic nature of real-world perception. Due to their very <em>nature</em>, however, these complex stimuli pose serious practical challenges to analyze. Manual annotation is effortful and timeconsuming, and does not scale to capture the wide range of perceptual dynamics present in these stimuli.</p>
+<p>Naturalistic fMRI paradigms have gained popularity due to their potential to more closely resemble the complex, dynamic nature of real-world perception. Due to their very <em>nature</em>, however, these complex stimuli pose serious practical challenges to analyze. Manual annotation is effortful and time consuming, and does not scale to capture the wide range of perceptual dynamics present in these stimuli.</p>
 <p>Fortunately, recent advancements in machine learning have made it possible to rapidly and automatically annotate multi-modal stimuli with a wide range of algorithms. Extracted features range from low-level perceptual features (such as brightness and loudness), to complex, psychological relevant features such as predictions from state-of-the-art language comprehension models. The timecourses of these extracted features can then be used as regressors in task-based fMRI analysis.</p>
 <p>A consequence of the variety of potential features available, however, is that the interfaces to these various algorithms, and content analysis APIs are highly heterogenous. Simply installing and writing the code necessary to interface and harmonize these algorithms can be a substantial endeavour. <em>Pliers</em> aims to facilitate the process by providing a uniform interface to a wide range of tools under an easy to use and unified Python framework.</p>
 
@@ -135,13 +135,19 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Installating the base <em>pliers</em> package is simple, just use pip:</p>
 
-<pre><code>pip install -U pliers
+<pre><code>pip install -U pliers</code></pre>
 
-</code></pre>
+</div>
+</div>
+</div>
+</div>
 
-<pre><code>{note}
-As pliers interfaces with dozens of external libraries, there are many __optional dependencies__ that are not installed by default to keep the installation light.
-Pliers will prompt you with installation instructions if you try to use an extractor that is not yet installed.</code></pre>
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>As <em>pliers</em> interfaces with dozens of external libraries, there are many <strong>optional dependencies</strong> that are not installed by default to keep the installation light.
+<em>Pliers</em> will prompt you with installation instructions if you try to use an extractor that is not yet installed.</p>
 
 </div>
 </div>
@@ -179,8 +185,11 @@ Pliers will prompt you with installation instructions if you try to use an extra
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># First set up stimuli paths</span>
-<span class="n">paranoia_audio</span> <span class="o">=</span> <span class="s1">&#39;story1_audio.wav&#39;</span>
-<span class="n">sherlock_video</span> <span class="o">=</span> <span class="s1">&#39;Sherlock.m4v&#39;</span>
+<span class="n">data_dir_paranoia</span> <span class="o">=</span> <span class="s1">&#39;/Volumes/Emily_MyPassport2TB/Paranoia/&#39;</span>
+<span class="n">data_dir_sherlock</span> <span class="o">=</span> <span class="s1">&#39;/Volumes/Emily_MyPassport2TB/Sherlock/&#39;</span>
+
+<span class="n">paranoia_audio</span> <span class="o">=</span> <span class="n">data_dir_paranoia</span> <span class="o">+</span> <span class="s1">&#39;/stimuli/stimuli_story1_audio.wav&#39;</span>
+<span class="n">sherlock_video</span> <span class="o">=</span> <span class="n">data_dir_sherlock</span> <span class="o">+</span> <span class="s1">&#39;/stimuli/stimuli_Sherlock.m4v&#39;</span>
 </pre></div>
 
     </div>
@@ -220,22 +229,6 @@ Pliers will prompt you with installation instructions if you try to use an extra
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>/home/zorro/anaconda3/envs/pliers/lib/python3.8/site-packages/moviepy/audio/AudioClip.py:113: FutureWarning: arrays to stack must be passed as a &#34;sequence&#34; type such as list or tuple. Support for non-sequence iterables such as generators is deprecated as of NumPy 1.16 and will raise an error in the future.
-  return stacker(self.iter_chunks(fps=fps, quantize=quantize,
-</pre>
-</div>
-</div>
-</div>
 </div>
 </div>
 
@@ -357,7 +350,7 @@ Pliers will prompt you with installation instructions if you try to use an extra
       <td>0.01161</td>
       <td>523.888617</td>
       <td>0</td>
-      <td>0.001724</td>
+      <td>0.001723</td>
     </tr>
     <tr>
       <th>45125</th>
@@ -365,7 +358,7 @@ Pliers will prompt you with installation instructions if you try to use an extra
       <td>0.01161</td>
       <td>523.900227</td>
       <td>0</td>
-      <td>0.001554</td>
+      <td>0.001555</td>
     </tr>
     <tr>
       <th>45126</th>
@@ -373,7 +366,7 @@ Pliers will prompt you with installation instructions if you try to use an extra
       <td>0.01161</td>
       <td>523.911837</td>
       <td>0</td>
-      <td>0.001431</td>
+      <td>0.001433</td>
     </tr>
     <tr>
       <th>45127</th>
@@ -381,7 +374,7 @@ Pliers will prompt you with installation instructions if you try to use an extra
       <td>0.01161</td>
       <td>523.923447</td>
       <td>0</td>
-      <td>0.001311</td>
+      <td>0.001312</td>
     </tr>
     <tr>
       <th>45128</th>
@@ -389,7 +382,7 @@ Pliers will prompt you with installation instructions if you try to use an extra
       <td>0.01161</td>
       <td>523.935057</td>
       <td>0</td>
-      <td>0.001172</td>
+      <td>0.001174</td>
     </tr>
   </tbody>
 </table>
@@ -423,7 +416,8 @@ Pliers will prompt you with installation instructions if you try to use an extra
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">rms_df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s1">&#39;onset&#39;</span><span class="p">,</span> <span class="s1">&#39;rms&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="n">rms_df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s1">&#39;onset&#39;</span><span class="p">,</span> <span class="s1">&#39;rms&#39;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -439,7 +433,7 @@ Pliers will prompt you with installation instructions if you try to use an extra
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f22ce8c4c10&gt;</pre>
+<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x14520c5c0&gt;</pre>
 </div>
 
 </div>
@@ -450,7 +444,7 @@ Pliers will prompt you with installation instructions if you try to use an extra
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Pliers_Tutorial_15_1.png"
+<img src="../../images/features/notebooks/Pliers_Tutorial_16_1.png"
 >
 </div>
 
@@ -496,7 +490,7 @@ Pliers will prompt you with installation instructions if you try to use an extra
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f0b232df340&gt;</pre>
+<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x148066898&gt;</pre>
 </div>
 
 </div>
@@ -507,7 +501,7 @@ Pliers will prompt you with installation instructions if you try to use an extra
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Pliers_Tutorial_17_1.png"
+<img src="../../images/features/notebooks/Pliers_Tutorial_18_1.png"
 >
 </div>
 
@@ -537,7 +531,6 @@ Pliers will prompt you with installation instructions if you try to use an extra
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Fundumentals-of-Pliers">Fundumentals of Pliers<a class="anchor-link" href="#Fundumentals-of-Pliers"> </a></h1><p>This section is adapted from the <a href="http://tyarkoni.github.io/pliers/basic-concepts.html"><em>pliers</em> documentation</a>. For a more in-depth dive, see the official documentation.</p>
-<p>[Insert Video Here]</p>
 
 </div>
 </div>
@@ -551,9 +544,7 @@ Pliers will prompt you with installation instructions if you try to use an extra
 <h2 id="Stims-and-Transformers">Stims and Transformers<a class="anchor-link" href="#Stims-and-Transformers"> </a></h2><p><em>Pliers</em> is deliberately designed with simplicity in mind, and loosely modeled after usage patterns in <em>scikit-learn</em>.</p>
 <p>At its core, <em>pliers</em> is based around two kinds of objects: the <code>Stim</code>, and the <code>Transformer</code>.</p>
 <p>A <code>Stim</code> is a container for a data object we want to extract features from-- for example, the <code>Sherlock</code> video clip or the <code>ParanoiaStory</code> audio clip.</p>
-
-<pre><code>{note}
-If you pass a string path to the `transform` method of an `Extractor`, *pliers* will attempt to automatically load the stimulus. This automatical detection is not fool proof, however, so explicilty loading the stimuli can be useful.</code></pre>
+<p>If you pass a string path to the <code>transform</code> method of an <code>Extractor</code>, <em>pliers</em> will attempt to automatically load the stimulus. This automatical detection is not fool proof, however, so explicilty loading the stimuli can be useful.</p>
 <p>A <code>Transformer</code> provides functionality to <em>do something with</em> <code>Stims</code>–either to change the input Stim in some way (e.g., converting a <code>Stim</code> from video to audio), or to extract feature data from it (such as extracting <code>rms</code> from an audio stimulus).</p>
 <p>Let's modify the previous example to explicitly load our stimuli:</p>
 
@@ -626,9 +617,7 @@ If you pass a string path to the `transform` method of an `Extractor`, *pliers* 
 <p>For example, the <code>ImageCroppingFilter</code> takes an <code>ImageStim</code> as input, and returns another <code>ImageStim</code> as output, where the image data stored in the <code>Stim</code> has been cropped by a bounding box specified by the user.</p>
 </li>
 </ul>
-
-<pre><code>{note}
-A [complete listing](http://tyarkoni.github.io/pliers/transformers.html#) of all `Transformers` is available in the offical *pliers* documentation</code></pre>
+<p>A <a href="http://tyarkoni.github.io/pliers/transformers.html#">complete listing</a> of all <code>Transformers</code> is available in the offical <em>pliers</em> documentation.</p>
 
 </div>
 </div>
@@ -704,7 +693,7 @@ A [complete listing](http://tyarkoni.github.io/pliers/transformers.html#) of all
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f0b234e3ee0&gt;</pre>
+<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x14920f7b8&gt;</pre>
 </div>
 
 </div>
@@ -715,7 +704,7 @@ A [complete listing](http://tyarkoni.github.io/pliers/transformers.html#) of all
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Pliers_Tutorial_28_1.png"
+<img src="../../images/features/notebooks/Pliers_Tutorial_29_1.png"
 >
 </div>
 
@@ -752,7 +741,7 @@ A [complete listing](http://tyarkoni.github.io/pliers/transformers.html#) of all
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>There are times when we need to specify the conversion parameters, and thus prefer not to rely in Pliers's automatic conversion. We can accomplish this by manually chaining a <code>Converter</code> to an <code>Extractor</code></p>
+<p>There are times when we need to specify the conversion parameters, and thus prefer not to rely on Pliers's automatic conversion. We can accomplish this by manually chaining a <code>Converter</code> to an <code>Extractor</code></p>
 <p>In this example, we'll be using the <code>FaceRecognitionFaceLocationsExtractor</code> to detect faces in the <code>Sherlock</code> video stimulus. 
 This extractor provides an interface to the <code>face_recognition</code> python package.</p>
 
@@ -874,9 +863,8 @@ This is too fine grained, as we want to save ourselves the computation, and only
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-
-<pre><code>{note}
-`FrameSamplingFilter` expects a *collection* of `ImageStims` as input, and returns a subsampled collection of `ImageStims`. However, here it can take `VideoStim` as input, as *pliers* will *impliclty* convert `VideoStim` -&gt; `ImageStim`. Since there are no important parameters to modify in this step, we can let *pliers* handle it for us, instead of doing it explicitly.</code></pre>
+<p>Note:
+<code>FrameSamplingFilter</code> expects a <em>collection</em> of <code>ImageStims</code> as input, and returns a subsampled collection of <code>ImageStims</code>. However, here it can take <code>VideoStim</code> as input, as <em>pliers</em> will <em>impliclty</em> convert <code>VideoStim</code> -&gt; <code>ImageStim</code>. Since there are no important parameters to modify in this step, we can let <em>pliers</em> handle it for us, instead of doing it explicitly.</p>
 
 </div>
 </div>
@@ -889,7 +877,8 @@ This is too fine grained, as we want to save ourselves the computation, and only
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Next, we can use the <code>FaceRecognitionFaceLocationsExtractor</code> to detect and label face locations in the subset of frames</p>
 <p>Note that since we transformed a collection of frames, the result of this operation is a <em>list</em> of <code>ExtractedResult</code> objects.</p>
-<p>To merge these objects into a single pandas DataFrame, we can use the helper function <code>merge_results</code></p>
+<p>To merge these objects into a single pandas DataFrame, we can use the helper function <code>merge_results</code>.</p>
+<p>Note that the following cell will take a few minutes to run (~4min, depending on your computer specs).</p>
 
 </div>
 </div>
@@ -907,7 +896,6 @@ This is too fine grained, as we want to save ourselves the computation, and only
 <span class="kn">from</span> <span class="nn">pliers</span> <span class="kn">import</span> <span class="n">config</span>
 <span class="c1"># Disable progress bar for Jupyter Book</span>
 <span class="n">config</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;progress_bar&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
-
 
 <span class="c1"># Detect faces in selected frames</span>
 <span class="n">face_features</span> <span class="o">=</span> <span class="n">face_ext</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">selected_frames</span><span class="p">)</span>
@@ -927,19 +915,135 @@ This is too fine grained, as we want to save ourselves the computation, and only
 <div class="jb_output_wrapper }}">
 <div class="output_area">
 
-<div class="output_subarea output_text output_error">
-<pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-32-24dd308aa2e6&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-intense-fg ansi-bold">      6</span> 
-<span class="ansi-green-intense-fg ansi-bold">      7</span> <span class="ansi-red-fg"># Detect faces in selected frames</span>
-<span class="ansi-green-fg">----&gt; 8</span><span class="ansi-red-fg"> </span>face_features <span class="ansi-blue-fg">=</span> face_ext<span class="ansi-blue-fg">.</span>transform<span class="ansi-blue-fg">(</span>selected_frames<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">      9</span> merged_faces <span class="ansi-blue-fg">=</span> merge_results<span class="ansi-blue-fg">(</span>face_features<span class="ansi-blue-fg">,</span> metadata<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">False</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">     10</span> 
 
-<span class="ansi-red-fg">NameError</span>: name &#39;face_ext&#39; is not defined</pre>
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>order</th>
+      <th>object_id</th>
+      <th>onset</th>
+      <th>duration</th>
+      <th>FaceRecognitionFaceLocationsExtractor#face_locations</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>NaN</td>
+      <td>0</td>
+      <td>60.0</td>
+      <td>10.0</td>
+      <td>(37, 415, 207, 245)</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>NaN</td>
+      <td>0</td>
+      <td>90.0</td>
+      <td>10.0</td>
+      <td>(57, 516, 97, 477)</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>NaN</td>
+      <td>0</td>
+      <td>100.0</td>
+      <td>10.0</td>
+      <td>(72, 570, 241, 400)</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>NaN</td>
+      <td>0</td>
+      <td>120.0</td>
+      <td>10.0</td>
+      <td>(49, 167, 117, 99)</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>NaN</td>
+      <td>0</td>
+      <td>130.0</td>
+      <td>10.0</td>
+      <td>(144, 466, 191, 419)</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>NaN</td>
+      <td>0</td>
+      <td>140.0</td>
+      <td>10.0</td>
+      <td>(102, 185, 159, 128)</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>NaN</td>
+      <td>0</td>
+      <td>150.0</td>
+      <td>10.0</td>
+      <td>(37, 260, 207, 90)</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>NaN</td>
+      <td>0</td>
+      <td>160.0</td>
+      <td>10.0</td>
+      <td>(8, 565, 252, 320)</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>NaN</td>
+      <td>0</td>
+      <td>210.0</td>
+      <td>10.0</td>
+      <td>(68, 433, 125, 376)</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>NaN</td>
+      <td>0</td>
+      <td>240.0</td>
+      <td>10.0</td>
+      <td>(125, 119, 193, 51)</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>NaN</td>
+      <td>1</td>
+      <td>240.0</td>
+      <td>10.0</td>
+      <td>(137, 341, 194, 284)</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>NaN</td>
+      <td>2</td>
+      <td>240.0</td>
+      <td>10.0</td>
+      <td>(125, 519, 182, 462)</td>
+    </tr>
+  </tbody>
+</table>
 </div>
+</div>
+
 </div>
 </div>
 </div>
@@ -988,9 +1092,7 @@ This is too fine grained, as we want to save ourselves the computation, and only
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>There are 89 unique onsets, which indicates that faces were found in 89/143 frames.</p>
 <p>The <code>FaceRecognitionFaceLocationsExtractor#face_locations</code> column also indicates the location of each face in CSS order (i.e., top, right, bottom, left).</p>
-
-<pre><code>{tip}
-In some frames (e.g. 240s), multiple faces were found, and there are multiple rows for a given `onset`. To disambiguate these rows, *pliers* assigns each occurace a unique `object_id` column vale. Read more](http://tyarkoni.github.io/pliers/results.html#understanding-object-ids) about *object_id*.</code></pre>
+<p><strong>Tip:</strong> In some frames (e.g. 240s), multiple faces were found, and there are multiple rows for a given <code>onset</code>. To disambiguate these rows, <em>pliers</em> assigns each occurace a unique <code>object_id</code> column value. Read more](<a href="http://tyarkoni.github.io/pliers/results.html#understanding-object-ids">http://tyarkoni.github.io/pliers/results.html#understanding-object-ids</a>) about <em>object_id</em>.</p>
 
 </div>
 </div>
@@ -1078,7 +1180,7 @@ In some frames (e.g. 240s), multiple faces were found, and there are multiple ro
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Pliers_Tutorial_44_0.png"
+<img src="../../images/features/notebooks/Pliers_Tutorial_45_0.png"
 >
 </div>
 
@@ -1094,7 +1196,7 @@ In some frames (e.g. 240s), multiple faces were found, and there are multiple ro
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Now, let's take a look at the frames <em>without</em> a detected face</p>
+<p>Now, let's take a look at the frames <em>without</em> a detected face:</p>
 
 </div>
 </div>
@@ -1141,7 +1243,7 @@ In some frames (e.g. 240s), multiple faces were found, and there are multiple ro
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Pliers_Tutorial_47_0.png"
+<img src="../../images/features/notebooks/Pliers_Tutorial_48_0.png"
 >
 </div>
 
@@ -1259,9 +1361,8 @@ In some frames (e.g. 240s), multiple faces were found, and there are multiple ro
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-
-<pre><code>{note}
-You can learn more about Transformation history in the [pliers docs](http://tyarkoni.github.io/pliers/stimuli.html#transformation-history)</code></pre>
+<p><strong>Note:</strong>
+You can learn more about Transformation history in the <a href="http://tyarkoni.github.io/pliers/stimuli.html#transformation-history">pliers docs</a>.</p>
 
 </div>
 </div>
@@ -1296,7 +1397,7 @@ You can learn more about Transformation history in the [pliers docs](http://tyar
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>So far, we have experimented with extracting features from <code>AudioStim</code> and <code>VideoStim</code>s. However, many naturalistic datasets feature extensive human speech, which likely drives a substantial amount of brain activity.</p>
 <p>However, to analyze the speech language, we need a precisely aligned transcript of speech.</p>
-<p>Recent advancements in deep convolutional networks have spawned dozens of <code>speech-to-text</code> language models, that promise accurate, time-locked transcripts of speech. The best available models are currently paid services that can be accessed remotely using APIs. <em>pliers</em> has implemented support for several <code>speech-to-text</code> services (as well as image analysis APIs). For this example, we'll be using a service called <code>Rev.ai</code> to transcript run 1 of Paranoia Story to text.</p>
+<p>Recent advancements in deep convolutional networks have spawned dozens of <code>speech-to-text</code> language models, that promise accurate, time-locked transcripts of speech. The best available models are currently paid services that can be accessed remotely using APIs. <em>Pliers</em> has implemented support for several <code>speech-to-text</code> services (as well as image analysis APIs). For this example, we'll be using a service called <code>Rev.ai</code> to transcript run 1 of Paranoia Story to text.</p>
 
 </div>
 </div>
@@ -1334,7 +1435,7 @@ You can learn more about Transformation history in the [pliers docs](http://tyar
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;REVAI_ACCESS_TOKEN&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;PRIVATE_KEY&#39;</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;REVAI_ACCESS_TOKEN&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;PRIVATE_KEY&#39;</span> <span class="c1"># replace PRIVATE_KEY with your own key!</span>
 </pre></div>
 
     </div>
@@ -1348,9 +1449,9 @@ You can learn more about Transformation history in the [pliers docs](http://tyar
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-
-<pre><code>{warning}
- Never share this token or push to GitHub!</code></pre>
+<p><strong>Warning!</strong>
+ Never share this token or push to GitHub!
+```</p>
 
 </div>
 </div>
@@ -1379,9 +1480,9 @@ You can learn more about Transformation history in the [pliers docs](http://tyar
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pliers.converters</span> <span class="kn">import</span> <span class="n">RevAISpeechAPIConverter</span>
 <span class="n">ext</span> <span class="o">=</span> <span class="n">RevAISpeechAPIConverter</span><span class="p">()</span>
 
-<span class="c1"># Uncomment this line if you have set up the Rev.AI keys</span>
+<span class="c1"># Uncomment the next two lines if you have set up the Rev.AI keys</span>
 <span class="c1"># transcript = ext.transform(paranoia_audio)</span>
-<span class="c1"># transcript.save(&#39;paranoia_story1_transcript.txt&#39;)</span>
+<span class="c1"># transcript.save(data_dir_paranoia + &#39;stimuli/paranoia_story1_transcript.txt&#39;)</span>
 </pre></div>
 
     </div>
@@ -1394,18 +1495,9 @@ You can learn more about Transformation history in the [pliers docs](http://tyar
 <div class="jb_output_wrapper }}">
 <div class="output_area">
 
-<div class="output_subarea output_text output_error">
-<pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">ModuleNotFoundError</span>                       Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-30-198c7db4afba&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span><span class="ansi-green-fg">from</span> pliers<span class="ansi-blue-fg">.</span>converters <span class="ansi-green-fg">import</span> RevAISpeechAPIConverter
-<span class="ansi-green-intense-fg ansi-bold">      2</span> ext <span class="ansi-blue-fg">=</span> RevAISpeechAPIConverter<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">      3</span> 
-<span class="ansi-green-intense-fg ansi-bold">      4</span> <span class="ansi-red-fg"># Uncomment this line if you have set up the Rev.AI keys</span>
-<span class="ansi-green-intense-fg ansi-bold">      5</span> <span class="ansi-red-fg"># transcript = ext.transform(paranoia_audio)</span>
-
-<span class="ansi-red-fg">ModuleNotFoundError</span>: No module named &#39;pliers.converters&#39;</pre>
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>WARNING:root:Beginning audio transcription with a timeout of 1000.000000s. Even for small audios, full transcription may take awhile.
+</pre>
 </div>
 </div>
 </div>
@@ -1424,7 +1516,8 @@ You can learn more about Transformation history in the [pliers docs](http://tyar
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># For the sake of the demonstration, let&#39;s load an pre-existing transcript</span>
 <span class="kn">from</span> <span class="nn">pliers.stimuli</span> <span class="kn">import</span> <span class="n">ComplexTextStim</span>
-<span class="n">transcript</span> <span class="o">=</span> <span class="n">ComplexTextStim</span><span class="p">(</span><span class="s1">&#39;paranoia_story1_transcript.txt&#39;</span><span class="p">)</span>
+<span class="n">transcript_file</span> <span class="o">=</span> <span class="n">data_dir_paranoia</span> <span class="o">+</span> <span class="s1">&#39;stimuli/paranoia_story1_transcript.txt&#39;</span>
+<span class="n">transcript</span> <span class="o">=</span> <span class="n">ComplexTextStim</span><span class="p">(</span><span class="n">transcript_file</span><span class="p">)</span>
 <span class="n">transcript</span>
 </pre></div>
 
@@ -1441,7 +1534,7 @@ You can learn more about Transformation history in the [pliers docs](http://tyar
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;pliers.stimuli.text.ComplexTextStim at 0x7f22ce8a7be0&gt;</pre>
+<pre>&lt;pliers.stimuli.text.ComplexTextStim at 0x1478a1cc0&gt;</pre>
 </div>
 
 </div>
@@ -1487,11 +1580,11 @@ You can learn more about Transformation history in the [pliers docs](http://tyar
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>[&lt;pliers.stimuli.text.TextStim at 0x7f22d0c8f730&gt;,
- &lt;pliers.stimuli.text.TextStim at 0x7f22d0c8f760&gt;,
- &lt;pliers.stimuli.text.TextStim at 0x7f22d0c8f7c0&gt;,
- &lt;pliers.stimuli.text.TextStim at 0x7f22d0c8f790&gt;,
- &lt;pliers.stimuli.text.TextStim at 0x7f22d0c8f7f0&gt;]</pre>
+<pre>[&lt;pliers.stimuli.text.TextStim at 0x1478a1710&gt;,
+ &lt;pliers.stimuli.text.TextStim at 0x1478a1ac8&gt;,
+ &lt;pliers.stimuli.text.TextStim at 0x1478a1588&gt;,
+ &lt;pliers.stimuli.text.TextStim at 0x1478a1c18&gt;,
+ &lt;pliers.stimuli.text.TextStim at 0x1478a1ba8&gt;]</pre>
 </div>
 
 </div>
@@ -1604,7 +1697,7 @@ You can learn more about Transformation history in the [pliers docs](http://tyar
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="n">pd</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="s1">&#39;paranoia_story1_transcript.txt&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="n">transcript_file</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -1772,11 +1865,11 @@ You can learn more about Transformation history in the [pliers docs](http://tyar
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><em>pliers</em> offers support for dozens of <code>Extractors</code> that operate on <code>TextStims</code>.</p>
-<p>A light-weight and surprsingly useful approach is simply to annotate words using Dictionaries of established word norms. <em>pliers</em> makes this is easy using the <code>DictionaryExtractor</code>.</p>
-<p>A <code>DictionaryExtractor</code> simply maps words to arbitrary features encoded in a user-provided look up table. <em>pliers</em> comes with built-in support for several word-norm mappings using the <a href="http://tyarkoni.github.io/pliers/generated/pliers.extractors.PredefinedDictionaryExtractor.html#pliers.extractors.PredefinedDictionaryExtractor">PredefinedDictionaryExtractor</a>.</p>
+<p><em>Pliers</em> offers support for dozens of <code>Extractors</code> that operate on <code>TextStims</code>.</p>
+<p>A light-weight and surprsingly useful approach is simply to annotate words using Dictionaries of established word norms. <em>Pliers</em> makes this is easy using the <code>DictionaryExtractor</code>.</p>
+<p>A <code>DictionaryExtractor</code> simply maps words to arbitrary features encoded in a user-provided look up table. <em>Pliers</em> comes with built-in support for several word-norm mappings using the <a href="http://tyarkoni.github.io/pliers/generated/pliers.extractors.PredefinedDictionaryExtractor.html#pliers.extractors.PredefinedDictionaryExtractor">PredefinedDictionaryExtractor</a>.</p>
 <p>The predefined dictionaries built-in to <em>pliers</em> can be seen in the <a href="https://github.com/tyarkoni/pliers/blob/master/pliers/datasets/dictionaries.json">repository</a>.</p>
-<p>In this example, we're going to extract values for Age-of-aquisition (Kuperman, et al., 2012) and affective valence (Warriner,et al., 2013).</p>
+<p>In this example, we're going to extract values for age-of-acquisition <a href="https://link.springer.com/article/10.3758/s13428-012-0210-4">(Kuperman et al., 2012)</a> and affective valence <a href="https://link.springer.com/article/10.3758/s13428-012-0314-x">(Warriner et al., 2013)</a>.</p>
 
 </div>
 </div>
@@ -1805,18 +1898,20 @@ You can learn more about Transformation history in the [pliers docs](http://tyar
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
+</div>
+</div>
 
-<div class="jb_output_wrapper }}">
-<div class="output_area">
+<div class="jb_cell">
 
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>Stim: 1376it [00:00, 1721.13it/s]
-</pre>
-</div>
-</div>
-</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pliers.extractors</span> <span class="kn">import</span> <span class="n">merge_results</span>
+</pre></div>
+
+    </div>
 </div>
 </div>
 
@@ -2029,9 +2124,9 @@ If a Dictionary does not include the requested word, it will be encoded as `NaN`
 <li>Extract the audio track from the video;</li>
 <li>Transcribe the audio track to text;</li>
 <li>Run a sentiment analysis model (in this case, using the Vander sentiment extractor) on the transcribed text.</li>
-<li>Run a Predefined dictionary extractor on the transcribed text</li>
+<li>Run a predefined dictionary extractor on the transcribed text</li>
 </ul>
-<p>Using the normal pliers API, the code to run these steps would look like this</p>
+<p>Using the normal <em>pliers</em> API, the code to run these steps would look like this:</p>
 
 </div>
 </div>
@@ -2090,7 +2185,7 @@ df = merge_results(results)</code></pre>
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The above code really isn’t that bad–it already features a high level of abstraction (each Transformer is initialized and applied in just two lines of code!), and has the advantage of being explicit about every step. Nonetheless, if we want to save ourselves a few dozen keystrokes, we can use pliers’ Graph API to abbreviate the listing down to just this:</p>
+<p>The above code really isn’t that bad -- it already features a high level of abstraction (each <code>Transformer</code> is initialized and applied in just two lines of code!), and has the advantage of being explicit about every step. Nonetheless, if we want to save ourselves a few dozen keystrokes, we can use <em>pliers’</em> <code>Graph</code> API to abbreviate the listing down to just this:</p>
 
 </div>
 </div>
@@ -2130,7 +2225,7 @@ df = g.transform(sherlock_video)</code></pre>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>This short example demostrates a powerful way to express complex extraction workflows in <em>pliers</em>.</p>
-<p>If you'd like to learn more about the Graph API, you can head over to the <a href="http://tyarkoni.github.io/pliers/graphs.html">documentation</a>.</p>
+<p>If you'd like to learn more about the <code>Graph</code> API, you can head over to the <a href="http://tyarkoni.github.io/pliers/graphs.html">documentation</a>.</p>
 
 </div>
 </div>
@@ -2155,6 +2250,57 @@ df = g.transform(sherlock_video)</code></pre>
 <p>To see the full range of <code>Transformers</code> implemented in <em>pliers</em>, <a href="http://tyarkoni.github.io/pliers/transformers.html">refer to this listing</a></p>
 <p>What's most exciting about <em>pliers</em>, and the quickly evolving landscape of feature algorithms is that they are constantly evolving. New developments promise to allows to extract ever more psychologically relevant features from naturalistic stimuli, automatically.</p>
 <p>To that end, <em>pliers</em> is designed to be easily expanded by open-source contributions. If you have any ideas for future extractors, or simply find a bug to report, head over to our GitHub repository and <a href="https://github.com/tyarkoni/pliers/issues">file and issue</a>.</p>
+<p>If you use pliers in your work, please cite both the <a href="http://github.com/tyarkoni/pliers">pliers GitHub repository</a> and the following paper:</p>
+<ul>
+<li>McNamara, Q., De La Vega, A., &amp; Yarkoni, T. (2017, August). Developing a comprehensive framework for multimodal feature extraction. In Proceedings of the 23rd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining (pp. 1567-1574). ACM. <a href="https://dl.acm.org/doi/abs/10.1145/3097983.3098075?casa_token=iXf9sdY9XdQAAAAA%3Abu4w3Um9wJr3_c4eEtJ8nCdLzWYSGQ7Fmg4KM6N0uCQ3u-Jryvk3lK0JLvQJFcReIEqiUksZWBAl">link</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="References">References<a class="anchor-link" href="#References"> </a></h1>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><p>Kuperman, V., Stadthagen-Gonzalez, H. &amp; Brysbaert, M. Age-of-acquisition ratings for 30,000 English words. Behav Res 44, 978–990 (2012). <a href="https://doi.org/10.3758/s13428-012-0210-4">https://doi.org/10.3758/s13428-012-0210-4</a></p>
+</li>
+<li><p>Warriner, A.B., Kuperman, V. &amp; Brysbaert, M. Norms of valence, arousal, and dominance for 13,915 English lemmas. Behav Res 45, 1191–1207 (2013). <a href="https://doi.org/10.3758/s13428-012-0314-x">https://doi.org/10.3758/s13428-012-0314-x</a></p>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Contributions">Contributions<a class="anchor-link" href="#Contributions"> </a></h1>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Alejandro de la Vega wrote the tutorial and code in this notebook. Emily Finn tested and lightly edited the notebook.</p>
 
 </div>
 </div>
