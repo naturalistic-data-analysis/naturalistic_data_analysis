@@ -13,7 +13,7 @@ prev_page:
 next_page:
   url: /features/notebooks/hypertools.html
 suffix: .ipynb
-search: pliers audio example stimuli using features github stimulus extraction text conversion video feature extractors speech extractor sherlock tyarkoni transformers stim frames run extract transform api paranoiastory take io html videostim graph however lets rmsextractor convert want input faces complex analysis simply code track data s transcript naturalistic manually based not automatically extracted easy import object objects frame framesamplingfilter rev ai predefineddictionaryextractor sentiment dozens installation extracting converters apis manual range just into rms need pandas documentation our audiostim results face note also words com tutorial provides python interface services models algorithms well visual apply returns easily dataframe same result learn transformer
+search: pliers audio example stimuli using features github stimulus extraction text conversion sherlock video feature extractors speech extractor tyarkoni transformers stim frames run extract transform api paranoiastory take io html videostim graph however lets rmsextractor convert want input faces complex analysis simply code track data s transcript naturalistic manually based not automatically extracted easy import object objects frame framesamplingfilter rev ai predefineddictionaryextractor sentiment dozens installation extracting converters apis manual range just into rms need pandas documentation our audiostim results face note also words com tutorial provides python interface services models algorithms well datasets visual where apply returns easily dataframe same result
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -170,7 +170,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We'll be working with the first run stimuli from the <code>ParanoiaStory</code> and the <code>Sherlock</code> datasets.</p>
 <p><code>ParanoiaStory</code> is an audio narrative, while <code>Sherlock</code> is a an audio-visual episode from a TV show.</p>
-<p>Let's set up the paths of these stimuli and take a quick look at what we're dealing with.</p>
+<p>Let's set up the paths of these stimuli and take a quick look at what we're dealing with. Make sure you change the two <code>data_dir</code> paths to where you have install the Paranoia and Sherlock datasets.</p>
 
 </div>
 </div>
@@ -184,12 +184,31 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># First set up stimuli paths</span>
-<span class="n">data_dir_paranoia</span> <span class="o">=</span> <span class="s1">&#39;/Volumes/Emily_MyPassport2TB/Paranoia/&#39;</span>
-<span class="n">data_dir_sherlock</span> <span class="o">=</span> <span class="s1">&#39;/Volumes/Emily_MyPassport2TB/Sherlock/&#39;</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">datalad.api</span> <span class="k">as</span> <span class="nn">dl</span>
 
-<span class="n">paranoia_audio</span> <span class="o">=</span> <span class="n">data_dir_paranoia</span> <span class="o">+</span> <span class="s1">&#39;/stimuli/stimuli_story1_audio.wav&#39;</span>
-<span class="n">sherlock_video</span> <span class="o">=</span> <span class="n">data_dir_sherlock</span> <span class="o">+</span> <span class="s1">&#39;/stimuli/stimuli_Sherlock.m4v&#39;</span>
+<span class="n">data_dir_paranoia</span> <span class="o">=</span> <span class="s1">&#39;/Volumes/Engram/Data/Paranoia/&#39;</span>
+<span class="n">data_dir_sherlock</span> <span class="o">=</span> <span class="s1">&#39;/Volumes/Engram/Data/Sherlock/&#39;</span>
+
+<span class="n">paranoia_audio</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_dir_paranoia</span><span class="p">,</span> <span class="s1">&#39;stimuli&#39;</span><span class="p">,</span> <span class="s1">&#39;stimuli_story1_audio.wav&#39;</span><span class="p">)</span>
+<span class="n">sherlock_video</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_dir_sherlock</span><span class="p">,</span> <span class="s1">&#39;stimuli&#39;</span><span class="p">,</span><span class="s1">&#39;stimuli_Sherlock.m4v&#39;</span><span class="p">)</span>
+
+<span class="c1"># If datasets haven&#39;t been installed, clone from GIN repository</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">data_dir_paranoia</span><span class="p">):</span>
+    <span class="n">dl</span><span class="o">.</span><span class="n">clone</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="s1">&#39;https://gin.g-node.org/ljchang/Paranoia&#39;</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="n">data_dir_paranoia</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">data_dir_sherlock</span><span class="p">):</span>
+    <span class="n">dl</span><span class="o">.</span><span class="n">clone</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="s1">&#39;https://gin.g-node.org/ljchang/Sherlock&#39;</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="n">data_dir_sherlock</span><span class="p">)</span>
+
+<span class="c1"># Initialize dataset</span>
+<span class="n">ds_paranoia</span> <span class="o">=</span> <span class="n">dl</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="n">data_dir_paranoia</span><span class="p">)</span>
+<span class="n">ds_sherlock</span> <span class="o">=</span> <span class="n">dl</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="n">data_dir_sherlock</span><span class="p">)</span>
+
+<span class="c1"># Get Paranoia story</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">ds_paranoia</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">paranoia_audio</span><span class="p">)</span>
+
+<span class="c1"># Get Sherlock video</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">ds_sherlock</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">sherlock_video</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -530,7 +549,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Fundumentals-of-Pliers">Fundumentals of Pliers<a class="anchor-link" href="#Fundumentals-of-Pliers"> </a></h1><p>This section is adapted from the <a href="http://tyarkoni.github.io/pliers/basic-concepts.html"><em>pliers</em> documentation</a>. For a more in-depth dive, see the official documentation.</p>
+<h1 id="Fundamentals-of-Pliers">Fundamentals of Pliers<a class="anchor-link" href="#Fundamentals-of-Pliers"> </a></h1><p>This section is adapted from the <a href="http://tyarkoni.github.io/pliers/basic-concepts.html"><em>pliers</em> documentation</a>. For a more in-depth dive, see the official documentation.</p>
 
 </div>
 </div>
