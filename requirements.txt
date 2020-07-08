@@ -1,19 +1,24 @@
 # Requirements for the demo notebooks
 # Useful for MyBinder configuration
 
-pandas
 numpy
 scipy
+scikit-learn
+pandas
 matplotlib
 seaborn
+nltk
 nibabel
+brainiak
 nilearn
-nltools
-nipype
+nltools >= 0.4.2
 hypertools
+timecorr
+pliers
+statesegmentation
+nltk
 networkx
-scikit-learn
-pynv
-nipype
-fmriprep
-pybids
+datalad >= 0.12.6
+requests
+urllib3
+
