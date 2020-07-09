@@ -56,6 +56,15 @@
   </div>
   <div class="card " id="faculty">
     <div class="card-image" id="faculty">
+      <a href="http://haxbylab.dartmouth.edu/"><img src="../../images/speakers/haxby.jpg"></a>
+    </div>
+    <div class="card-content">
+      <span class="card-title "><a href="http://haxbylab.dartmouth.edu/">James <span>Haxby</span></a></span>
+      <p class=" card-affiliation">Dartmouth College</p>
+    </div>
+  </div>
+  <div class="card " id="faculty">
+    <div class="card-image" id="faculty">
       <a href="https://users.aalto.fi/~jlahnako/"><img src="../../images/speakers/lahnakoski.jpg"></a>
     </div>
     <div class="card-content">
