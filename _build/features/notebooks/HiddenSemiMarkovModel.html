@@ -7,13 +7,13 @@ kernel_path: content/features/notebooks
 has_widgets: false
 title: |-
   Hidden Semi-Markov Models
-pagenum: 8
+pagenum: 12
 prev_page:
-  url: /features/notebooks/Event_Segmentation.html
+  url: /features/notebooks/timecorr.html
 next_page:
-  url: /features/notebooks/1_Introduction_to_Programming.html
+  url: /features/notebooks/Pliers_Tutorial.html
 suffix: .ipynb
-search: state data sojourn model fit subject states distribution connectivity where r analysis using series matrix files part lets hidden into tutorial package functional markov models brain probability take parameters p semi nodes fc fmri rois correlation mean also hsmms hsmm please need etc transition mhsmm jared oconnell times results dynamic shappell regions between interest estimate length covariance structure consecutive points subjects same similar specify poisson sherlock should x read before folder above written heather networks created relationship individual pre analyses patterns groups studies approach context via standard hmm given not suggests switching very explicitly differ form parametric such gamma refer
+search: state data model r states sojourn subject distribution fit tutorial need using lets connectivity where package part series mean into analysis matrix parameters files hidden covariance probability run functional markov models brain also take please p read transition semi nodes fc fmri rois correlation estimate length similar hsmms hsmm sherlock software code packages etc mhsmm jared oconnell times initialize results plot dynamic shappell regions between interest structure standard consecutive points subjects same specify gamma next install installed should x before folder initial matrices above want written heather networks system created relationship individual pre analyses patterns groups studies approach context via
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -26,27 +26,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Dynamic-Functional-Connectivity-Analysis-Using-Hidden-Semi-Markov--Models">Dynamic Functional Connectivity Analysis Using Hidden Semi-Markov  Models<a class="anchor-link" href="#Dynamic-Functional-Connectivity-Analysis-Using-Hidden-Semi-Markov--Models"> </a></h1><p><em>Written by Heather Shappell</em></p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Overview">Overview<a class="anchor-link" href="#Overview"> </a></h1>
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>The study of functional brain networks, where the brain is viewed as a system of interacting regions (nodes/vertices) that produce complex behaviors, has grown rapidly over the past decade. Brain networks can be created by performing a functional connectivity (FC) analysis, where the strength of the relationship between nodes is evaluated using the fMRI time series associated with each node. The nodes can consist of individual voxels, pre-specified regions of interest (ROIs), or sets of regions estimated using independent component analysis (ICA). The relationship between nodes is quantified using a variety of metrics, with the most common being Pearon or partial correlation coefficients.</p>
+<h1 id="Overview">Overview<a class="anchor-link" href="#Overview"> </a></h1><p>The study of functional brain networks, where the brain is viewed as a system of interacting regions (nodes/vertices) that produce complex behaviors, has grown rapidly over the past decade. Brain networks can be created by performing a functional connectivity (FC) analysis, where the strength of the relationship between nodes is evaluated using the fMRI time series associated with each node. The nodes can consist of individual voxels, pre-specified regions of interest (ROIs), or sets of regions estimated using independent component analysis (ICA). The relationship between nodes is quantified using a variety of metrics, with the most common being Pearon or partial correlation coefficients.</p>
 <p>While most FC analyses estimate one static, average network for the entire length of the fMRI time series, there is increased interest in studying time-varying changes in FC. In other words, researchers are interested in investigating the patterns of state traversal in individuals and comparing these patterns across subject groups in both resting-state fMRI studies and task-based fMRI studies.</p>
 <p>In recent years, Hidden Markov models (HMMs) have proven to be a useful modeling approach towards assessing FC. In this context, it is assumed that the time series data at each brain region can be described via a series of a fixed number of hidden/unknown brain states. Each state is characterized by a multivariate Gaussian distribution, which is parameterized by the mean and covariance. Of particular interest is the unique connectivity structure of each state, encapsulated within the covariance matrix.</p>
 <p>A limitation of the standard HMM approach is that the sojourn time, the number of consecutive time points spent in a specific state, is geometrically distributed. A property of the geometric distribution is that the probability decreases as the sojourn time increases. Therefore, more weight is placed on shorter consecutive time points in a given state. This may not be appropriate in the context of functional connectivity analysis, as it suggests subjects are switching states very often, as opposed to potentially spending longer periods of time in the same state. It also suggests that the sojourn time for all states follow a very similar pattern, which may not be the case in practice.</p>
@@ -62,19 +42,9 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Data-Preparation">Data Preparation<a class="anchor-link" href="#Data-Preparation"> </a></h1>
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Prior to running the HSMM analysis, your data should be pre-processed and organized into subject files where the data is organized as a T x P matrix, where T is the length of the time series and P is the number of ROIs you wish to include in the connectivity analysis. All subject files should contain the same number of ROIs, but the time series lengths may differ by subject.</p>
-<p>This tutorial will utilize the Sherlock data subject files, where each participant has two files - part 1 and part 2. There are 16 participants.</p>
-<p>Let's read the files into R, but before we get started with reading in the data, we need to install and load the R packages we will need for this tutorial.</p>
+<h1 id="Software">Software<a class="anchor-link" href="#Software"> </a></h1><p>This tutorial is slightly different from the previous tutorials in that it uses R instead of Python. This tutorial will use an R kernel, so make sure you select this or you will be unable to run the code. Please follow the instructions for installing R and connecting it to a Jupyter Notebook in the <a href="http://naturalistic-data.org/features/notebooks/Software.html#R">Software Installation</a> tutorial.</p>
+<p>Next we need to install the R packages we will need to run this tutorial.</p>
+<p>Note: you only need to run this cell once. No need to run it again after the packages are installed.</p>
 
 </div>
 </div>
@@ -88,20 +58,90 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span><span class="c1">#The following code will install the R packages we will need.</span>
-<span class="c1">#install.packages(&quot;MASS&quot;)</span>
-<span class="c1">#install.packages(&quot;distr&quot;)</span>
-<span class="c1">#install.packages(&quot;mvtnorm&quot;)</span>
-<span class="c1">#install.packages(&quot;mhsmm&quot;)</span>
-<span class="c1">#install.packages(&quot;gplots&quot;)</span>
-<span class="c1">#install.packages(&quot;rasterVis&quot;)</span>
-<span class="c1">#install.packages(&quot;lattice&quot;)</span>
-<span class="c1">#install.packages(&quot;shapes&quot;)</span>
+<div class=" highlight hl-r"><pre><span></span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;MASS&quot;</span><span class="p">)</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;distr&quot;</span><span class="p">)</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;mvtnorm&quot;</span><span class="p">)</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;mhsmm&quot;</span><span class="p">)</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;gplots&quot;</span><span class="p">)</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;rasterVis&quot;</span><span class="p">)</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;lattice&quot;</span><span class="p">)</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;shapes&quot;</span><span class="p">)</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;remotes&quot;</span><span class="p">)</span>
+</pre></div>
 
-<span class="c1">#The following code will load the R packages we will need.</span>
-<span class="nf">library</span><span class="p">(</span><span class="n">MASS</span><span class="p">)</span>
-<span class="nf">library</span><span class="p">(</span><span class="n">mvnmle</span><span class="p">)</span>
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Note that the package <code>mvnmle</code> is no longer maintained and cannot be installed using the normal package management system. We can install older versions or <em>orphaned</em> libraries using the <code>remotes</code> package.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-r"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">remotes</span><span class="p">)</span>
+<span class="nf">install_version</span><span class="p">(</span><span class="s">&quot;mvnmle&quot;</span><span class="p">,</span> <span class="s">&quot;0.1-11.1&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>Downloading package from url: https://cran.r-project.org/src/contrib/Archive/mvnmle/mvnmle_0.1-11.1.tar.gz
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Ok, now that we have installed the packages we will be using, we now need to import them into our environment. This is conceptually similar to loading the Python modules we use in each tutorial.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-r"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">MASS</span><span class="p">)</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">distr</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">mvnmle</span><span class="p">)</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">mvtnorm</span><span class="p">)</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">mhsmm</span><span class="p">)</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">gplots</span><span class="p">)</span>
@@ -122,57 +162,61 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="output_subarea output_stream output_stderr output_text">
 <pre>Loading required package: startupmsg
+
 Utilities for Start-Up Messages (version 0.9.6)
+
 For more information see ?&#34;startupmsg&#34;, NEWS(&#34;startupmsg&#34;)
 
+
 Loading required package: sfsmisc
+
 Object Oriented Implementation of Distributions (version 2.8.0)
+
 Attention: Arithmetics on distribution objects are understood as operations on corresponding random variables (r.v.s); see distrARITH().
 Some functions from package &#39;stats&#39; are intentionally masked ---see distrMASK().
 Note that global options are controlled by distroptions() ---c.f. ?&#34;distroptions&#34;.
+
 For more information see ?&#34;distr&#34;, NEWS(&#34;distr&#34;), as well as
   http://distr.r-forge.r-project.org/
 Package &#34;distrDoc&#34; provides a vignette to this package as well as to several extension packages; try vignette(&#34;distr&#34;).
 
 
-Attaching package: &#39;distr&#39;
 
-The following objects are masked from &#39;package:stats&#39;:
+Attaching package: ‘distr’
+
+
+The following objects are masked from ‘package:stats’:
 
     df, qqplot, sd
 
-Warning message:
-&#34;package &#39;gplots&#39; was built under R version 3.6.3&#34;
-Attaching package: &#39;gplots&#39;
 
-The following object is masked from &#39;package:stats&#39;:
+
+Attaching package: ‘gplots’
+
+
+The following object is masked from ‘package:stats’:
 
     lowess
 
-Warning message:
-&#34;package &#39;rasterVis&#39; was built under R version 3.6.3&#34;Loading required package: raster
+
+Loading required package: raster
+
 Loading required package: sp
-code for methods in class &#34;Rcpp_SpExtent&#34; was not checked for suspicious field assignments (recommended package &#39;codetools&#39; not available?)
-code for methods in class &#34;Rcpp_SpExtent&#34; was not checked for suspicious field assignments (recommended package &#39;codetools&#39; not available?)
-code for methods in class &#34;Rcpp_SpPoly&#34; was not checked for suspicious field assignments (recommended package &#39;codetools&#39; not available?)
-code for methods in class &#34;Rcpp_SpPoly&#34; was not checked for suspicious field assignments (recommended package &#39;codetools&#39; not available?)
-code for methods in class &#34;Rcpp_SpPolyPart&#34; was not checked for suspicious field assignments (recommended package &#39;codetools&#39; not available?)
-code for methods in class &#34;Rcpp_SpPolyPart&#34; was not checked for suspicious field assignments (recommended package &#39;codetools&#39; not available?)
-code for methods in class &#34;Rcpp_SpPolygons&#34; was not checked for suspicious field assignments (recommended package &#39;codetools&#39; not available?)
-code for methods in class &#34;Rcpp_SpPolygons&#34; was not checked for suspicious field assignments (recommended package &#39;codetools&#39; not available?)
 
-Attaching package: &#39;raster&#39;
 
-The following objects are masked from &#39;package:MASS&#39;:
+Attaching package: ‘raster’
+
+
+The following objects are masked from ‘package:MASS’:
 
     area, select
 
+
 Loading required package: lattice
-Warning message:
-&#34;package &#39;lattice&#39; was built under R version 3.6.3&#34;Loading required package: latticeExtra
-Loading required package: RColorBrewer
-Warning message:
-&#34;package &#39;shapes&#39; was built under R version 3.6.3&#34;</pre>
+
+Loading required package: latticeExtra
+
+</pre>
 </div>
 </div>
 </div>
@@ -186,7 +230,21 @@ Warning message:
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Data-Preparation">Data Preparation<a class="anchor-link" href="#Data-Preparation"> </a></h1><p>Prior to running the HSMM analysis, your data should be pre-processed and organized into subject files where the data is organized as a T x P matrix, where T is the length of the time series and P is the number of ROIs you wish to include in the connectivity analysis. All subject files should contain the same number of ROIs, but the time series lengths may differ by subject.</p>
+<p>This tutorial will utilize the Sherlock data subject files, where each participant has two files - part 1 and part 2. There are 16 participants.</p>
+<p>Let's read the files into R, but before we get started with reading in the data, we need to install and load the R packages we will need for this tutorial.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <p>Next, we will read the data into R. The Sherlock subject files should be saved to their own folder, with no other files in the folder. Specify the current directory of the folder, and read in the data as follows. This code will concatenate the subject data into one data frame, where the data from subject one (part 1 and 2) will appear first, followed by subject two (part 1 and 2), etc...</p>
+<p>First, we need to set the path, so that R knows where to search for the data. Change <code>setwd("&lt;to path of Sherlock dataset&gt;")</code>.</p>
 
 </div>
 </div>
@@ -201,10 +259,10 @@ Warning message:
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-r"><pre><span></span><span class="c1">#Set the working directory.</span>
-<span class="nf">setwd</span><span class="p">(</span><span class="s">&quot;C:\\Users\\heath\\Downloads\\AverageROI\\AverageROI&quot;</span><span class="p">)</span>
+<span class="nf">setwd</span><span class="p">(</span><span class="s">&quot;/Volumes/Engram/Data/Sherlock&quot;</span><span class="p">)</span>
 
 <span class="c1">#Get names of subject files in the folder.</span>
-<span class="n">filenames</span><span class="o">&lt;-</span> <span class="nf">list.files</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="nf">getwd</span><span class="p">())</span>  
+<span class="n">filenames</span> <span class="o">&lt;-</span> <span class="nf">Sys.glob</span><span class="p">(</span><span class="nf">file.path</span><span class="p">(</span><span class="nf">getwd</span><span class="p">(),</span> <span class="s">&#39;fmriprep&#39;</span><span class="p">,</span><span class="s">&#39;*&#39;</span><span class="p">,</span><span class="s">&#39;func&#39;</span><span class="p">,</span><span class="s">&#39;sub*Average_ROI_n50.csv&#39;</span><span class="p">))</span>
 
 <span class="c1">#View the subject file names to ensure they have read in correctly.</span>
 <span class="n">filenames</span>
@@ -222,40 +280,12 @@ Warning message:
 
 
 <div class="output_html rendered_html output_subarea ">
-<ol class=list-inline>
-	<li>'sub-01_Part1_Average_ROI_n50.csv'</li>
-	<li>'sub-01_Part2_Average_ROI_n50.csv'</li>
-	<li>'sub-02_Part1_Average_ROI_n50.csv'</li>
-	<li>'sub-02_Part2_Average_ROI_n50.csv'</li>
-	<li>'sub-03_Part1_Average_ROI_n50.csv'</li>
-	<li>'sub-03_Part2_Average_ROI_n50.csv'</li>
-	<li>'sub-04_Part1_Average_ROI_n50.csv'</li>
-	<li>'sub-04_Part2_Average_ROI_n50.csv'</li>
-	<li>'sub-05_Part1_Average_ROI_n50.csv'</li>
-	<li>'sub-05_Part2_Average_ROI_n50.csv'</li>
-	<li>'sub-06_Part1_Average_ROI_n50.csv'</li>
-	<li>'sub-06_Part2_Average_ROI_n50.csv'</li>
-	<li>'sub-07_Part1_Average_ROI_n50.csv'</li>
-	<li>'sub-07_Part2_Average_ROI_n50.csv'</li>
-	<li>'sub-08_Part1_Average_ROI_n50.csv'</li>
-	<li>'sub-08_Part2_Average_ROI_n50.csv'</li>
-	<li>'sub-09_Part1_Average_ROI_n50.csv'</li>
-	<li>'sub-09_Part2_Average_ROI_n50.csv'</li>
-	<li>'sub-10_Part1_Average_ROI_n50.csv'</li>
-	<li>'sub-10_Part2_Average_ROI_n50.csv'</li>
-	<li>'sub-11_Part1_Average_ROI_n50.csv'</li>
-	<li>'sub-11_Part2_Average_ROI_n50.csv'</li>
-	<li>'sub-12_Part1_Average_ROI_n50.csv'</li>
-	<li>'sub-12_Part2_Average_ROI_n50.csv'</li>
-	<li>'sub-13_Part1_Average_ROI_n50.csv'</li>
-	<li>'sub-13_Part2_Average_ROI_n50.csv'</li>
-	<li>'sub-14_Part1_Average_ROI_n50.csv'</li>
-	<li>'sub-14_Part2_Average_ROI_n50.csv'</li>
-	<li>'sub-15_Part1_Average_ROI_n50.csv'</li>
-	<li>'sub-15_Part2_Average_ROI_n50.csv'</li>
-	<li>'sub-16_Part1_Average_ROI_n50.csv'</li>
-	<li>'sub-16_Part2_Average_ROI_n50.csv'</li>
-</ol>
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>'/Volumes/Engram/Data/Sherlock/fmriprep/sub-01/func/sub-01_Part1_Average_ROI_n50.csv'</li><li>'/Volumes/Engram/Data/Sherlock/fmriprep/sub-01/func/sub-01_Part2_Average_ROI_n50.csv'</li><li>'/Volumes/Engram/Data/Sherlock/fmriprep/sub-02/func/sub-02_Part1_Average_ROI_n50.csv'</li><li>'/Volumes/Engram/Data/Sherlock/fmriprep/sub-02/func/sub-02_Part2_Average_ROI_n50.csv'</li><li>'/Volumes/Engram/Data/Sherlock/fmriprep/sub-03/func/sub-03_Part1_Average_ROI_n50.csv'</li><li>'/Volumes/Engram/Data/Sherlock/fmriprep/sub-03/func/sub-03_Part2_Average_ROI_n50.csv'</li><li>'/Volumes/Engram/Data/Sherlock/fmriprep/sub-04/func/sub-04_Part1_Average_ROI_n50.csv'</li><li>'/Volumes/Engram/Data/Sherlock/fmriprep/sub-04/func/sub-04_Part2_Average_ROI_n50.csv'</li><li>'/Volumes/Engram/Data/Sherlock/fmriprep/sub-05/func/sub-05_Part1_Average_ROI_n50.csv'</li><li>'/Volumes/Engram/Data/Sherlock/fmriprep/sub-05/func/sub-05_Part2_Average_ROI_n50.csv'</li><li>'/Volumes/Engram/Data/Sherlock/fmriprep/sub-06/func/sub-06_Part1_Average_ROI_n50.csv'</li><li>'/Volumes/Engram/Data/Sherlock/fmriprep/sub-06/func/sub-06_Part2_Average_ROI_n50.csv'</li><li>'/Volumes/Engram/Data/Sherlock/fmriprep/sub-07/func/sub-07_Part1_Average_ROI_n50.csv'</li><li>'/Volumes/Engram/Data/Sherlock/fmriprep/sub-07/func/sub-07_Part2_Average_ROI_n50.csv'</li><li>'/Volumes/Engram/Data/Sherlock/fmriprep/sub-08/func/sub-08_Part1_Average_ROI_n50.csv'</li><li>'/Volumes/Engram/Data/Sherlock/fmriprep/sub-08/func/sub-08_Part2_Average_ROI_n50.csv'</li><li>'/Volumes/Engram/Data/Sherlock/fmriprep/sub-09/func/sub-09_Part1_Average_ROI_n50.csv'</li><li>'/Volumes/Engram/Data/Sherlock/fmriprep/sub-09/func/sub-09_Part2_Average_ROI_n50.csv'</li><li>'/Volumes/Engram/Data/Sherlock/fmriprep/sub-10/func/sub-10_Part1_Average_ROI_n50.csv'</li><li>'/Volumes/Engram/Data/Sherlock/fmriprep/sub-10/func/sub-10_Part2_Average_ROI_n50.csv'</li><li>'/Volumes/Engram/Data/Sherlock/fmriprep/sub-11/func/sub-11_Part1_Average_ROI_n50.csv'</li><li>'/Volumes/Engram/Data/Sherlock/fmriprep/sub-11/func/sub-11_Part2_Average_ROI_n50.csv'</li><li>'/Volumes/Engram/Data/Sherlock/fmriprep/sub-12/func/sub-12_Part1_Average_ROI_n50.csv'</li><li>'/Volumes/Engram/Data/Sherlock/fmriprep/sub-12/func/sub-12_Part2_Average_ROI_n50.csv'</li><li>'/Volumes/Engram/Data/Sherlock/fmriprep/sub-13/func/sub-13_Part1_Average_ROI_n50.csv'</li><li>'/Volumes/Engram/Data/Sherlock/fmriprep/sub-13/func/sub-13_Part2_Average_ROI_n50.csv'</li><li>'/Volumes/Engram/Data/Sherlock/fmriprep/sub-14/func/sub-14_Part1_Average_ROI_n50.csv'</li><li>'/Volumes/Engram/Data/Sherlock/fmriprep/sub-14/func/sub-14_Part2_Average_ROI_n50.csv'</li><li>'/Volumes/Engram/Data/Sherlock/fmriprep/sub-15/func/sub-15_Part1_Average_ROI_n50.csv'</li><li>'/Volumes/Engram/Data/Sherlock/fmriprep/sub-15/func/sub-15_Part2_Average_ROI_n50.csv'</li><li>'/Volumes/Engram/Data/Sherlock/fmriprep/sub-16/func/sub-16_Part1_Average_ROI_n50.csv'</li><li>'/Volumes/Engram/Data/Sherlock/fmriprep/sub-16/func/sub-16_Part2_Average_ROI_n50.csv'</li></ol>
 
 </div>
 
@@ -269,15 +299,23 @@ Warning message:
 
 <div class="jb_cell">
 
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Loop through each file name to read it in, and center and scale data so that each column (ROI) has a mean of 0 and a standard deviation of 1.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span><span class="c1">#Loop through each file name to read it in, and center and scale data so that each column (ROI) has a mean of 0 and a </span>
-<span class="c1">#standard deviation of 1.</span>
-
-<span class="n">DataReadIn</span> <span class="o">&lt;-</span> <span class="nf">lapply</span><span class="p">(</span><span class="n">filenames</span><span class="p">,</span><span class="nf">function</span><span class="p">(</span><span class="n">i</span><span class="p">){</span>
+<div class=" highlight hl-r"><pre><span></span><span class="n">DataReadIn</span> <span class="o">&lt;-</span> <span class="nf">lapply</span><span class="p">(</span><span class="n">filenames</span><span class="p">,</span><span class="nf">function</span><span class="p">(</span><span class="n">i</span><span class="p">){</span>
   <span class="n">table</span><span class="o">&lt;-</span><span class="nf">read.csv</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">header</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span> <span class="n">row.names</span><span class="o">=</span><span class="kc">NULL</span><span class="p">)</span>
   <span class="n">table</span><span class="o">&lt;-</span><span class="nf">scale</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
   <span class="nf">return</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
@@ -296,14 +334,23 @@ Warning message:
 
 <div class="jb_cell">
 
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let's also grab the time series length for every file we have read in and save this informatiom.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span><span class="c1">#Let&#39;s also grab the time series length for every file we have read in and save this informatiom. </span>
-
-<span class="n">TimeSerLen</span> <span class="o">&lt;-</span> <span class="nf">lapply</span><span class="p">(</span><span class="n">filenames</span><span class="p">,</span><span class="nf">function</span><span class="p">(</span><span class="n">i</span><span class="p">){</span>
+<div class=" highlight hl-r"><pre><span></span><span class="n">TimeSerLen</span> <span class="o">&lt;-</span> <span class="nf">lapply</span><span class="p">(</span><span class="n">filenames</span><span class="p">,</span><span class="nf">function</span><span class="p">(</span><span class="n">i</span><span class="p">){</span>
   <span class="n">table</span><span class="o">&lt;-</span><span class="nf">read.csv</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">header</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span> <span class="n">row.names</span><span class="o">=</span><span class="kc">NULL</span><span class="p">)</span>
   <span class="n">Nrows</span><span class="o">&lt;-</span><span class="nf">nrow</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
   <span class="nf">return</span><span class="p">(</span><span class="n">Nrows</span><span class="p">)</span>
@@ -323,17 +370,7 @@ Warning message:
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Model-Parameter-Initialization-and-Model-Specification">Model Parameter Initialization and Model Specification<a class="anchor-link" href="#Model-Parameter-Initialization-and-Model-Specification"> </a></h1>
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Now, we need to initiliaze the HSMM model parameters. These parameters are</p>
+<h1 id="Model-Parameter-Initialization-and-Model-Specification">Model Parameter Initialization and Model Specification<a class="anchor-link" href="#Model-Parameter-Initialization-and-Model-Specification"> </a></h1><p>Now, we need to initilize the HSMM model parameters. These parameters are</p>
 <ul>
 <li>One P x P covariance matrix and a  1 x P  mean vector for each state.</li>
 <li>A state transition probability matrix.</li>
@@ -341,20 +378,16 @@ Warning message:
 <li>Sojourn distribution parameters for each state (this will depend on which sojourn distribution you would like to fit).</li>
 </ul>
 <p>The R package that we are using to fit the model is the MHSMM R package, created by Jared O’Connell, et al. For a more in debt review of this package, please see:</p>
-<p>O’Connell, Jared, and Søren Højsgaard. "Hidden semi markov models for multiple observation sequences: The mhsmm package for R." Journal of Statistical Software 39.4 (2011): 1-22.</p>
+
+<pre><code>O’Connell, Jared, and Søren Højsgaard. "Hidden semi markov models for multiple observation sequences: The mhsmm package for R." Journal of Statistical Software 39.4 (2011): 1-22.
+
+</code></pre>
 <p>and</p>
-<p>O'Connell, Jared, Søren Højsgaard, and Maintainer Jared O'Connell. "Package ‘mhsmm’." CRAN (2017): 16.</p>
 
-</div>
-</div>
-</div>
-</div>
+<pre><code>O'Connell, Jared, Søren Højsgaard, and Maintainer Jared O'Connell. "Package ‘mhsmm’." CRAN (2017): 16.
 
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Before fitting the model, one needs to decide how many states to fit. The model can ultimately be fit several times, for several numbers of states. The number of states you choose to fit is largely driven by the number of subjects you have, the length of the time series, the number of ROIs you are working with, etc. For the purpose of this tutorial, we will fit the data to 4 states.</p>
+</code></pre>
+<h2 id="Number-of-states">Number of states<a class="anchor-link" href="#Number-of-states"> </a></h2><p>Before fitting the model, one needs to decide how many states to fit. The model can ultimately be fit several times, for several numbers of states. The number of states you choose to fit is largely driven by the number of subjects you have, the length of the time series, the number of ROIs you are working with, etc. For the purpose of this tutorial, we will fit the data to 4 states.</p>
 
 </div>
 </div>
@@ -368,44 +401,64 @@ Warning message:
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span><span class="c1">###########################################################################################################</span>
-<span class="c1">#Initialize mean and covariance matrices for each state because the model needs a starting point.</span>
-<span class="c1">##########################################################################################################</span>
-
-<span class="c1">#To do this, we will divide most of the data into sections that equal the number of states the model is fitting </span>
-<span class="c1">#and then, we will find the mean and covariance for each state. Again, this is just a rough estimate for the estimation </span>
-<span class="c1">#routine to have a place to begin, so there are many options for how you choose to initialize your model parameters.</span>
-
-<span class="c1">#Let&#39;s specify the number of states we wish to fit</span>
+<div class=" highlight hl-r"><pre><span></span><span class="c1">#Let&#39;s specify the number of states we wish to fit</span>
 <span class="n">number_states</span> <span class="o">=</span> <span class="m">4</span>
 
 <span class="c1">#Let&#39;s also create a variable for the number of scans (i.e. two for each subject) and the number of ROIs</span>
-<span class="n">number_runs</span><span class="o">&lt;-</span><span class="nf">nrow</span><span class="p">(</span><span class="n">Lengths</span><span class="p">)</span>
-<span class="n">number_regions</span><span class="o">&lt;-</span><span class="nf">ncol</span><span class="p">(</span><span class="n">DataFinal</span><span class="p">)</span>
+<span class="n">number_runs</span> <span class="o">&lt;-</span> <span class="nf">nrow</span><span class="p">(</span><span class="n">Lengths</span><span class="p">)</span>
+<span class="n">number_regions</span> <span class="o">&lt;-</span> <span class="nf">ncol</span><span class="p">(</span><span class="n">DataFinal</span><span class="p">)</span>
+</pre></div>
 
-<span class="c1">#First, let&#39;s divide the data into sections. </span>
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Mean-and-Covariance">Mean and Covariance<a class="anchor-link" href="#Mean-and-Covariance"> </a></h2><p>We need to initialize mean and covariance matrices for <em>each</em> state because the model needs a starting point.</p>
+<p>To do this, we will divide most of the data into sections that equal the number of states the model is fitting 
+and then, we will find the mean and covariance for each state. Again, this is just a rough estimate for the estimation 
+routine to have a place to begin, so there are many options for how you choose to initialize your model parameters.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-r"><pre><span></span><span class="c1">#First, let&#39;s divide the data into sections. </span>
 <span class="n">output_array</span> <span class="o">=</span> <span class="nf">list</span><span class="p">()</span>
-<span class="n">seglength</span><span class="o">&lt;-</span><span class="nf">ceiling</span><span class="p">(</span><span class="nf">min</span><span class="p">(</span><span class="n">Lengths</span><span class="p">[,</span><span class="m">1</span><span class="p">])</span><span class="o">/</span><span class="n">number_states</span><span class="p">)</span>
+<span class="n">seglength</span> <span class="o">&lt;-</span> <span class="nf">ceiling</span><span class="p">(</span><span class="nf">min</span><span class="p">(</span><span class="n">Lengths</span><span class="p">[,</span><span class="m">1</span><span class="p">])</span><span class="o">/</span><span class="n">number_states</span><span class="p">)</span>
 
 <span class="nf">for</span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="n">number_states</span><span class="p">)</span>
 <span class="p">{</span>
-  <span class="n">output_array</span><span class="p">[[</span><span class="n">i</span><span class="p">]]</span><span class="o">&lt;-</span><span class="nf">matrix</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span><span class="n">nrow</span><span class="o">=</span><span class="m">1</span><span class="p">,</span><span class="n">ncol</span><span class="o">=</span><span class="n">number_regions</span><span class="p">)</span>
-  <span class="nf">colnames</span><span class="p">(</span><span class="n">output_array</span><span class="p">[[</span><span class="n">i</span><span class="p">]])</span><span class="o">&lt;-</span><span class="nf">colnames</span><span class="p">(</span><span class="n">DataFinal</span><span class="p">)</span>
+  <span class="n">output_array</span><span class="p">[[</span><span class="n">i</span><span class="p">]]</span> <span class="o">&lt;-</span> <span class="nf">matrix</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span><span class="n">nrow</span><span class="o">=</span><span class="m">1</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="n">number_regions</span><span class="p">)</span>
+  <span class="nf">colnames</span><span class="p">(</span><span class="n">output_array</span><span class="p">[[</span><span class="n">i</span><span class="p">]])</span> <span class="o">&lt;-</span> <span class="nf">colnames</span><span class="p">(</span><span class="n">DataFinal</span><span class="p">)</span>
   <span class="nf">for</span><span class="p">(</span><span class="n">j</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="n">number_runs</span><span class="p">){</span>
-    <span class="n">output_array</span><span class="p">[[</span><span class="n">i</span><span class="p">]]</span><span class="o">&lt;-</span><span class="nf">rbind</span><span class="p">(</span><span class="n">output_array</span><span class="p">[[</span><span class="n">i</span><span class="p">]],</span><span class="n">DataFinal</span><span class="p">[(</span><span class="m">1</span><span class="o">+</span><span class="nf">sum</span><span class="p">(</span><span class="n">Lengths</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="p">(</span><span class="n">j</span><span class="m">-1</span><span class="p">),</span><span class="m">1</span><span class="p">])</span> <span class="o">+</span> <span class="n">seglength</span><span class="o">*</span><span class="p">(</span><span class="n">i</span><span class="m">-1</span><span class="p">))</span><span class="o">:</span><span class="p">(</span><span class="nf">sum</span><span class="p">(</span><span class="n">Lengths</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="p">(</span><span class="n">j</span><span class="m">-1</span><span class="p">),</span><span class="m">1</span><span class="p">])</span><span class="o">+</span><span class="n">seglength</span><span class="o">*</span><span class="n">i</span><span class="p">),])</span>
+    <span class="n">output_array</span><span class="p">[[</span><span class="n">i</span><span class="p">]]</span> <span class="o">&lt;-</span> <span class="nf">rbind</span><span class="p">(</span><span class="n">output_array</span><span class="p">[[</span><span class="n">i</span><span class="p">]],</span><span class="n">DataFinal</span><span class="p">[(</span><span class="m">1</span><span class="o">+</span><span class="nf">sum</span><span class="p">(</span><span class="n">Lengths</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="p">(</span><span class="n">j</span><span class="m">-1</span><span class="p">),</span><span class="m">1</span><span class="p">])</span> <span class="o">+</span> <span class="n">seglength</span><span class="o">*</span><span class="p">(</span><span class="n">i</span><span class="m">-1</span><span class="p">))</span><span class="o">:</span><span class="p">(</span><span class="nf">sum</span><span class="p">(</span><span class="n">Lengths</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="p">(</span><span class="n">j</span><span class="m">-1</span><span class="p">),</span> <span class="m">1</span><span class="p">])</span> <span class="o">+</span> <span class="n">seglength</span><span class="o">*</span><span class="n">i</span><span class="p">),])</span>
   <span class="p">}</span>
-  <span class="n">output_array</span><span class="p">[[</span><span class="n">i</span><span class="p">]]</span><span class="o">&lt;-</span><span class="n">output_array</span><span class="p">[[</span><span class="n">i</span><span class="p">]][</span><span class="m">-1</span><span class="p">,]</span>
+  <span class="n">output_array</span><span class="p">[[</span><span class="n">i</span><span class="p">]]</span> <span class="o">&lt;-</span> <span class="n">output_array</span><span class="p">[[</span><span class="n">i</span><span class="p">]][</span><span class="m">-1</span><span class="p">,]</span>
 <span class="p">}</span>
 
 <span class="c1">#Now find mean and covariance for each section.</span>
-
 <span class="n">MeanEst</span> <span class="o">&lt;-</span> <span class="nf">lapply</span><span class="p">(</span><span class="n">output_array</span><span class="p">,</span><span class="nf">function</span><span class="p">(</span><span class="n">i</span><span class="p">){</span>
-  <span class="n">means</span><span class="o">&lt;-</span><span class="nf">mlest</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">$</span><span class="n">muhat</span>
+  <span class="n">means</span> <span class="o">&lt;-</span> <span class="nf">mlest</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">$</span><span class="n">muhat</span>
   <span class="nf">return</span><span class="p">(</span><span class="n">means</span><span class="p">)</span>
 <span class="p">})</span>
 
 <span class="n">CovEst</span> <span class="o">&lt;-</span> <span class="nf">lapply</span><span class="p">(</span><span class="n">output_array</span><span class="p">,</span><span class="nf">function</span><span class="p">(</span><span class="n">i</span><span class="p">){</span>
-  <span class="n">covs</span><span class="o">&lt;-</span><span class="nf">mlest</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">$</span><span class="n">sigmahat</span>
+  <span class="n">covs</span> <span class="o">&lt;-</span> <span class="nf">mlest</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">$</span><span class="n">sigmahat</span>
   <span class="nf">return</span><span class="p">(</span><span class="n">covs</span><span class="p">)</span>
 <span class="p">})</span>
 </pre></div>
@@ -422,14 +475,22 @@ Warning message:
 
 <div class="output_subarea output_stream output_stderr output_text">
 <pre>Warning message in mysort(data):
-&#34;NAs introduced by coercion to integer range&#34;Warning message in mysort(data):
-&#34;NAs introduced by coercion to integer range&#34;Warning message in mysort(data):
-&#34;NAs introduced by coercion to integer range&#34;Warning message in mysort(data):
-&#34;NAs introduced by coercion to integer range&#34;Warning message in mysort(data):
-&#34;NAs introduced by coercion to integer range&#34;Warning message in mysort(data):
-&#34;NAs introduced by coercion to integer range&#34;Warning message in mysort(data):
-&#34;NAs introduced by coercion to integer range&#34;Warning message in mysort(data):
-&#34;NAs introduced by coercion to integer range&#34;</pre>
+“NAs introduced by coercion to integer range”
+Warning message in mysort(data):
+“NAs introduced by coercion to integer range”
+Warning message in mysort(data):
+“NAs introduced by coercion to integer range”
+Warning message in mysort(data):
+“NAs introduced by coercion to integer range”
+Warning message in mysort(data):
+“NAs introduced by coercion to integer range”
+Warning message in mysort(data):
+“NAs introduced by coercion to integer range”
+Warning message in mysort(data):
+“NAs introduced by coercion to integer range”
+Warning message in mysort(data):
+“NAs introduced by coercion to integer range”
+</pre>
 </div>
 </div>
 </div>
@@ -441,27 +502,34 @@ Warning message:
 
 <div class="jb_cell">
 
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Now-we-will-initialize-the-transition-probability-parameters.">Now we will initialize the transition probability parameters.<a class="anchor-link" href="#Now-we-will-initialize-the-transition-probability-parameters."> </a></h2><p>These are initial state probabilities for the algorithm. We will make them all uniform unless we have prior beliefs for what they may be.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span><span class="c1">#Now we will initialize the remaining model parameters.</span>
-
-<span class="c1">#These are initial state probabilities for the algorithm. We will make them all uniform unless we have prior beliefs</span>
-<span class="c1">#for what they may be.</span>
-<span class="n">initial</span> <span class="o">&lt;-</span> <span class="nf">rep</span><span class="p">(</span><span class="m">1</span><span class="o">/</span><span class="n">number_states</span><span class="p">,</span> <span class="n">number_states</span><span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span><span class="n">initial</span> <span class="o">&lt;-</span> <span class="nf">rep</span><span class="p">(</span><span class="m">1</span><span class="o">/</span><span class="n">number_states</span><span class="p">,</span> <span class="n">number_states</span><span class="p">)</span>
 
 <span class="c1">#This initializes a state transition probability matrix. Again, we will make these uniform.</span>
-<span class="n">TransMatrix</span><span class="o">&lt;-</span><span class="nf">matrix</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span> <span class="n">nrow</span><span class="o">=</span><span class="n">number_states</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="n">number_states</span><span class="p">)</span>
-<span class="nf">diag</span><span class="p">(</span><span class="n">TransMatrix</span><span class="p">)</span><span class="o">&lt;-</span><span class="m">0</span>
+<span class="n">TransMatrix</span> <span class="o">&lt;-</span> <span class="nf">matrix</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span> <span class="n">nrow</span><span class="o">=</span><span class="n">number_states</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="n">number_states</span><span class="p">)</span>
+<span class="nf">diag</span><span class="p">(</span><span class="n">TransMatrix</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="m">0</span>
 <span class="n">TransMatrix</span><span class="p">[</span><span class="nf">is.na</span><span class="p">(</span><span class="n">TransMatrix</span><span class="p">)]</span> <span class="o">&lt;-</span> <span class="p">(</span><span class="m">1</span><span class="o">/</span><span class="p">(</span><span class="n">number_states</span><span class="m">-1</span><span class="p">))</span>
 
 <span class="c1">##This saves the initial mean and covariances to a list, which is what will be needed to fit the model.</span>
 <span class="n">b</span> <span class="o">&lt;-</span> <span class="nf">list</span><span class="p">(</span><span class="n">mu</span> <span class="o">=</span> <span class="n">MeanEst</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="n">CovEst</span><span class="p">)</span>
 
 <span class="c1">##This puts the data into a list to fit the model.</span>
-<span class="n">Datanew</span><span class="o">&lt;-</span><span class="nf">list</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">DataFinal</span><span class="p">,</span> <span class="n">N</span> <span class="o">=</span> <span class="n">Lengths</span><span class="p">[,</span><span class="m">1</span><span class="p">])</span>
+<span class="n">Datanew</span> <span class="o">&lt;-</span> <span class="nf">list</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">DataFinal</span><span class="p">,</span> <span class="n">N</span> <span class="o">=</span> <span class="n">Lengths</span><span class="p">[,</span><span class="m">1</span><span class="p">])</span>
 <span class="nf">class</span><span class="p">(</span><span class="n">Datanew</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="s">&quot;hmm.data&quot;</span>
 </pre></div>
 
@@ -476,7 +544,7 @@ Warning message:
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Lastly, we need to specify a sojourn distribution family (Gamma, Poisson, non-parametric, etc.) that we would like to fit, along with some initial estimates for the distribution parameters. Please refer to the above MHSMM package references for a complete list of sojourn distributions one may fit. For this tutorial, we will fit a Poisson sojourn distribution.</p>
+<p>Lastly, we need to specify a sojourn distribution family (Gamma, Poisson, non-parametric, etc.) that we would like to fit, along with some initial estimates for the distribution parameters. Please refer to the above MHSMM package references for a complete list of sojourn distributions one may fit. For this tutorial, we will fit a Gamma distribution to each state. We randomly sample a shape and size parameter for each state to initialize the distribution.</p>
 
 </div>
 </div>
@@ -490,9 +558,7 @@ Warning message:
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span><span class="c1">#This initializes the sojourn distribution. This is an example for fitting a Gamma distribution to each state.</span>
-<span class="c1">#We randomly sample a shape and size parameter for each state to initialize the distribution.</span>
-<span class="n">d</span> <span class="o">&lt;-</span> <span class="nf">list</span><span class="p">(</span><span class="n">shape</span> <span class="o">=</span> <span class="nf">sample</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">number_states</span><span class="p">),</span> <span class="n">scale</span> <span class="o">=</span> <span class="nf">sample</span><span class="p">(</span><span class="m">10</span><span class="o">:</span><span class="m">50</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">number_states</span><span class="p">),</span> <span class="n">type</span> <span class="o">=</span> <span class="s">&quot;gamma&quot;</span><span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span><span class="n">d</span> <span class="o">&lt;-</span> <span class="nf">list</span><span class="p">(</span><span class="n">shape</span> <span class="o">=</span> <span class="nf">sample</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">number_states</span><span class="p">),</span> <span class="n">scale</span> <span class="o">=</span> <span class="nf">sample</span><span class="p">(</span><span class="m">10</span><span class="o">:</span><span class="m">50</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">number_states</span><span class="p">),</span> <span class="n">type</span> <span class="o">=</span> <span class="s">&quot;gamma&quot;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -520,267 +586,12 @@ Warning message:
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span><span class="c1">##Now we combine everything into a model specification for the HSMM R package.</span>
-<span class="n">model1</span> <span class="o">&lt;-</span> <span class="nf">hsmmspec</span><span class="p">(</span><span class="n">init</span> <span class="o">=</span> <span class="n">initial</span><span class="p">,</span> <span class="n">trans</span> <span class="o">=</span> <span class="n">TransMatrix</span><span class="p">,</span> <span class="n">parms.emis</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">dens.emis</span> <span class="o">=</span> <span class="n">dmvnorm.hsmm</span><span class="p">,</span> 
-                   <span class="n">sojourn</span> <span class="o">=</span> <span class="n">d</span><span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span><span class="n">model1</span> <span class="o">&lt;-</span> <span class="nf">hsmmspec</span><span class="p">(</span><span class="n">init</span> <span class="o">=</span> <span class="n">initial</span><span class="p">,</span> <span class="n">trans</span> <span class="o">=</span> <span class="n">TransMatrix</span><span class="p">,</span> <span class="n">parms.emis</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">dens.emis</span> <span class="o">=</span> <span class="n">dmvnorm.hsmm</span><span class="p">,</span> <span class="n">sojourn</span> <span class="o">=</span> <span class="n">d</span><span class="p">)</span>
 
-<span class="c1">##Now we run the model. This will take a few minutes to run.</span>
-<span class="n">testrun</span><span class="o">&lt;-</span><span class="nf">hsmmfit</span><span class="p">(</span><span class="n">Datanew</span><span class="p">,</span> <span class="n">model1</span><span class="p">,</span> <span class="n">mstep</span><span class="o">=</span><span class="n">mstep.mvnorm</span><span class="p">,</span> <span class="n">lock.transition</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">,</span> <span class="n">maxit</span><span class="o">=</span><span class="m">1000</span><span class="p">,</span> <span class="n">lock.d</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span>
+<span class="n">testrun</span> <span class="o">&lt;-</span> <span class="nf">hsmmfit</span><span class="p">(</span><span class="n">Datanew</span><span class="p">,</span> <span class="n">model1</span><span class="p">,</span> <span class="n">mstep</span><span class="o">=</span><span class="n">mstep.mvnorm</span><span class="p">,</span> <span class="n">lock.transition</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">,</span> <span class="n">maxit</span><span class="o">=</span><span class="m">1000</span><span class="p">,</span> <span class="n">lock.d</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span>
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>[1] 3.967762e-141  6.343814e-09
-[1] 1.869280e-168  4.144979e-08
-[1] 8.813897e-191  8.109241e-07
-[1] 1.269818e-200  4.659947e-06
-[1] 8.350049e-202  9.890380e-06
-[1] 1.256697e-201  1.712156e-05
-[1] 1.060702e-201  2.701871e-05
-[1] 1.175951e-202  3.918128e-05
-[1] 3.704175e-204  5.338990e-05
-[1] 3.335943e-206  7.049855e-05
-[1] 1.436810e-208  9.124688e-05
-[1] 4.813983e-210  1.145812e-04
-[1] 9.277992e-211  1.390331e-04
-[1] 2.346788e-211  1.646909e-04
-[1] 1.529255e-211  1.894122e-04
-[1] 1.530951e-211  2.150711e-04
-[1] 8.428315e-212  2.454989e-04
-[1] 4.040785e-212  2.806942e-04
-[1] 1.483601e-212  3.207696e-04
-[1] 4.180541e-213  3.649052e-04
-[1] 1.044585e-213  4.159342e-04
-[1] 1.469732e-214  4.678955e-04
-[1] 1.989016e-215  5.151305e-04
-[1] 4.060597e-216  5.566405e-04
-[1] 1.239802e-216  5.932163e-04
-[1] 4.966446e-217  6.282586e-04
-[1] 1.740785e-217  6.644735e-04
-[1] 4.261341e-218  7.024722e-04
-[1] 7.158466e-219  7.451353e-04
-[1] 1.084124e-219  7.921957e-04
-[1] 1.819336e-220  8.430769e-04
-[1] 3.402669e-221  8.984153e-04
-[1] 8.069601e-222  9.577097e-04
-[1] 2.294378e-222  1.016510e-03
-[1] 6.847828e-223  1.075117e-03
-[1] 9.600390e-224  1.138794e-03
-[1] 6.217553e-225  1.215599e-03
-[1] 2.254508e-226  1.302809e-03
-[1] 2.706865e-227  1.393793e-03
-[1] 6.599287e-228  1.473847e-03
-[1] 1.713596e-228  1.556923e-03
-[1] 2.939162e-229  1.659720e-03
-[1] 4.672182e-230  1.779742e-03
-[1] 7.281125e-231  1.914871e-03
-[1] 1.009472e-231  2.059069e-03
-[1] 1.736571e-232  2.198424e-03
-[1] 5.473913e-233  2.320608e-03
-[1] 2.221573e-233  2.430438e-03
-[1] 9.217067e-234  2.540394e-03
-[1] 4.115885e-234  2.648666e-03
-[1] 1.811607e-234  2.758233e-03
-[1] 9.449279e-235  2.868282e-03
-[1] 5.408161e-235  2.974783e-03
-[1] 1.333581e-235  3.082607e-03
-[1] 3.755877e-236  3.193328e-03
-[1] 9.905505e-237  3.314154e-03
-[1] 2.097639e-237  3.446421e-03
-[1] 6.290834e-238  3.561162e-03
-[1] 2.683813e-238  3.659446e-03
-[1] 1.214851e-238  3.756821e-03
-[1] 4.940403e-239  3.868558e-03
-[1] 1.686306e-239  4.013110e-03
-[1] 4.803786e-240  4.186331e-03
-[1] 1.341269e-240  4.363135e-03
-[1] 5.307249e-241  4.516259e-03
-[1] 2.901197e-241  4.643647e-03
-[1] 1.916646e-241  4.755512e-03
-[1] 1.434095e-241  4.860683e-03
-[1] 1.182889e-241  4.965639e-03
-[1] 1.039591e-241  5.073202e-03
-[1] 9.139466e-242  5.178393e-03
-[1] 7.880334e-242  5.277605e-03
-[1] 6.827442e-242  5.378014e-03
-[1] 5.903380e-242  5.493387e-03
-[1] 4.829736e-242  5.636520e-03
-[1] 3.248602e-242  5.797497e-03
-[1] 1.698174e-242  5.972898e-03
-[1] 8.451934e-243  6.162534e-03
-[1] 4.004561e-243  6.381398e-03
-[1] 1.635556e-243  6.611150e-03
-[1] 5.224025e-244  6.849589e-03
-[1] 1.287098e-244  7.113850e-03
-[1] 2.700417e-245  7.419408e-03
-[1] 4.68933e-246  7.80755e-03
-[1] 3.847606e-247  8.325009e-03
-[1] 1.154294e-248  9.013669e-03
-[1] 6.935007e-250  9.858616e-03
-[1] 7.114909e-251  1.088728e-02
-[1] 6.428443e-252  1.217747e-02
-[1] 2.305983e-253  1.421716e-02
-[1] 8.872063e-255  1.727525e-02
-[1] 1.682416e-256  2.169079e-02
-[1] 4.129424e-259  2.940968e-02
-[1] 4.512527e-264  4.574920e-02
-[1] 4.707551e-268  7.785334e-02
-[1] 5.897008e-273  1.405625e-01
-[1] 7.042092e-278  2.374934e-01
-[1] 1.565782e-283  3.623616e-01
-[1] 3.734300e-291  5.587041e-01
-[1] 4.167992e-301  8.440161e-01
-[1] 1.532707e-309  1.268759e+00
-[1] 1.876354e-316  1.855408e+00
-[1] 4.940656e-324  2.726212e+00
-[1] 0.000000 4.425298
-[1] 0.000000 7.403832
-[1]  0.0000 11.2721
-[1]  0.0000 16.9217
-[1]  0.00000 23.17918
-[1]  0.00000 32.35524
-[1]  0.00000 45.30327
-[1]  0.00000 63.69956
-[1]  0.00000 96.05037
-[1]   0.0000 169.7305
-[1]   0.0000 311.1369
-[1]   0.0000 545.9863
-[1]   0.0000 826.3417
-[1]    0.000 1093.624
-[1]    0.000 1225.287
-[1]    0.000 1359.386
-[1]    0.000 1424.417
-[1]    0.000 1486.022
-[1]    0.000 1553.918
-[1]    0.000 1597.296
-[1]    0.000 1630.712
-[1]    0.000 1668.197
-[1]    0.000 1728.018
-[1]    0.000 1780.326
-[1]    0.000 1828.427
-[1]    0.000 1884.769
-[1]    0.00 1998.88
-[1]    0.000 2066.243
-[1]    0.000 2125.129
-[1]    0.000 2186.748
-[1]    0.000 2237.237
-[1]    0.000 2285.329
-[1]    0.000 2315.919
-[1]    0.000 2327.703
-[1]    0.000 2337.046
-[1]    0.000 2346.167
-[1]    0.000 2357.188
-[1]    0.000 2375.931
-[1]    0.000 2415.603
-[1]    0.000 2465.694
-[1]    0.000 2502.043
-[1]    0.000 2536.889
-[1]    0.000 2576.159
-[1]    0.000 2603.125
-[1]    0.000 2624.212
-[1]    0.000 2644.255
-[1]    0.000 2664.816
-[1]    0.000 2686.621
-[1]    0.000 2712.307
-[1]    0.000 2743.273
-[1]    0.000 2766.779
-[1]    0.000 2780.349
-[1]    0.000 2791.024
-[1]    0.000 2802.082
-[1]    0.0 2815.7
-[1]    0.000 2834.067
-[1]    0.000 2853.156
-[1]    0.000 2871.191
-[1]    0.000 2907.706
-[1]    0.000 2976.756
-[1]    0.000 2998.326
-[1]    0.000 3012.178
-[1]    0.000 3024.121
-[1]    0.00 3034.97
-[1]    0.000 3044.791
-[1]    0.00 3053.44
-[1]    0.000 3060.822
-[1]    0.000 3067.066
-[1]    0.000 3072.486
-[1]    0.000 3077.462
-[1]    0.000 3082.433
-[1]    0.000 3088.024
-[1]    0.000 3095.454
-[1]    0.000 3107.765
-[1]    0.000 3132.683
-[1]    0.000 3167.728
-[1]    0.000 3183.292
-[1]    0.000 3192.033
-[1]    0.00 3199.17
-[1]    0.000 3205.425
-[1]    0.000 3211.086
-[1]    0.000 3216.274
-[1]    0.000 3221.032
-[1]    0.000 3225.356
-[1]    0.000 3229.216
-[1]    0.000 3232.624
-[1]    0.000 3235.742
-[1]    0.000 3238.773
-[1]    0.000 3241.821
-[1]    0.000 3244.926
-[1]    0.000 3248.105
-[1]    0.000 3251.359
-[1]    0.000 3254.673
-[1]    0.000 3258.022
-[1]    0.000 3261.391
-[1]    0.0 3264.8
-[1]    0.000 3268.346
-[1]    0.000 3272.165
-[1]    0.00 3276.36
-[1]    0.000 3281.007
-[1]    0.000 3286.183
-[1]    0.000 3291.978
-[1]    0.000 3298.517
-[1]    0.000 3305.974
-[1]    0.000 3314.609
-[1]    0.000 3324.827
-[1]    0.000 3337.242
-[1]    0.000 3352.654
-[1]    0.000 3371.503
-[1]    0.000 3392.353
-[1]    0.0 3411.6
-[1]    0.000 3427.015
-[1]    0.00 3438.86
-[1]    0 3448
-[1]    0.000 3455.129
-[1]    0.000 3460.745
-[1]    0.000 3465.203
-[1]    0.000 3468.761
-[1]    0.000 3471.616
-[1]    0.000 3473.919
-[1]    0.000 3475.785
-[1]    0.000 3477.307
-[1]    0.000 3478.557
-[1]    0.000 3479.591
-[1]    0.000 3480.452
-[1]    0.000 3481.176
-[1]    0.000 3481.789
-[1]    0.000 3482.312
-[1]    0.000 3482.761
-[1]    0.000 3483.148
-[1]    0.000 3483.484
-[1]    0.000 3483.775
-[1]    0.000 3484.028
-[1]    0.000 3484.249
-[1]    0.000 3484.441
-</pre>
-</div>
-</div>
-</div>
 </div>
 </div>
 
@@ -852,7 +663,9 @@ Warning message:
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/HiddenSemiMarkovModel_21_0.png"
+<img src="../../images/features/notebooks/HiddenSemiMarkovModel_26_0.png"
+width=420
+height=420
 >
 </div>
 
@@ -864,7 +677,9 @@ Warning message:
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/HiddenSemiMarkovModel_21_1.png"
+<img src="../../images/features/notebooks/HiddenSemiMarkovModel_26_1.png"
+width=420
+height=420
 >
 </div>
 
@@ -876,7 +691,9 @@ Warning message:
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/HiddenSemiMarkovModel_21_2.png"
+<img src="../../images/features/notebooks/HiddenSemiMarkovModel_26_2.png"
+width=420
+height=420
 >
 </div>
 
@@ -888,7 +705,9 @@ Warning message:
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/HiddenSemiMarkovModel_21_3.png"
+<img src="../../images/features/notebooks/HiddenSemiMarkovModel_26_3.png"
+width=420
+height=420
 >
 </div>
 
@@ -946,7 +765,9 @@ Warning message:
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/HiddenSemiMarkovModel_23_0.png"
+<img src="../../images/features/notebooks/HiddenSemiMarkovModel_28_0.png"
+width=420
+height=420
 >
 </div>
 
@@ -1003,14 +824,11 @@ Warning message:
 <div class="output_html rendered_html output_subarea ">
 <table>
 <caption>A matrix: 4 × 4 of type dbl</caption>
-<thead>
-	<tr><th scope=col>1</th><th scope=col>2</th><th scope=col>3</th><th scope=col>4</th></tr>
-</thead>
 <tbody>
-	<tr><td>0.0000000</td><td>0.1598209</td><td>0.5689773</td><td>0.2712017</td></tr>
-	<tr><td>0.1178016</td><td>0.0000000</td><td>0.7177272</td><td>0.1644712</td></tr>
-	<tr><td>0.3905013</td><td>0.1772401</td><td>0.0000000</td><td>0.4322586</td></tr>
-	<tr><td>0.2389578</td><td>0.1327684</td><td>0.6282739</td><td>0.0000000</td></tr>
+	<tr><td>0.0000000</td><td>0.1235182</td><td>0.6336164</td><td>0.2428654</td></tr>
+	<tr><td>0.1555160</td><td>0.0000000</td><td>0.7213489</td><td>0.1231350</td></tr>
+	<tr><td>0.4338284</td><td>0.1785566</td><td>0.0000000</td><td>0.3876149</td></tr>
+	<tr><td>0.2722770</td><td>0.1598567</td><td>0.5678663</td><td>0.0000000</td></tr>
 </tbody>
 </table>
 
@@ -1024,7 +842,9 @@ Warning message:
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/HiddenSemiMarkovModel_25_1.png"
+<img src="../../images/features/notebooks/HiddenSemiMarkovModel_30_1.png"
+width=420
+height=420
 >
 </div>
 
@@ -1059,7 +879,7 @@ Warning message:
 
 <span class="nf">plot</span><span class="p">(</span><span class="n">testrun</span><span class="p">,</span> <span class="n">xlim</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">100</span><span class="p">),</span> <span class="n">main</span><span class="o">=</span><span class="s">&quot;State Sojourn Distributions&quot;</span><span class="p">)</span>
 
-<span class="c1">#To get actual sojourn distribution parameter estimations, you can run the following lien of code. It will give a vector</span>
+<span class="c1">#To get actual sojourn distribution parameter estimations, you can run the following line of code. It will give a vector</span>
 <span class="c1">#estimated shape parameters and a vector of estimated scale parameters. The first number in each corresponds to the state 1</span>
 <span class="c1">#estimate, the second the state 2 estimate, and so on...</span>
 
@@ -1080,20 +900,20 @@ Warning message:
 <div class="output_html rendered_html output_subarea ">
 <dl>
 	<dt>$shape</dt>
-		<dd><ol class=list-inline>
-	<li>0.685770320021773</li>
-	<li>0.285770390529298</li>
-	<li>1.55492277117273</li>
-	<li>0.559756177453354</li>
-</ol>
+		<dd><style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>0.613402605885514</li><li>0.230861390416741</li><li>1.55915353659582</li><li>0.687594619498318</li></ol>
 </dd>
 	<dt>$scale</dt>
-		<dd><ol class=list-inline>
-	<li>29.1733264597214</li>
-	<li>18.9606117847165</li>
-	<li>3.90479754332895</li>
-	<li>26.0700945028941</li>
-</ol>
+		<dd><style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>23.9088720745628</li><li>24.5487492507665</li><li>3.91149035797376</li><li>29.1435561060956</li></ol>
 </dd>
 	<dt>$type</dt>
 		<dd>'gamma'</dd>
@@ -1109,7 +929,9 @@ Warning message:
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/HiddenSemiMarkovModel_27_1.png"
+<img src="../../images/features/notebooks/HiddenSemiMarkovModel_32_1.png"
+width=420
+height=420
 >
 </div>
 
@@ -1125,7 +947,7 @@ Warning message:
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>You may want to visualize the distance between the state correlation matrices in 2-D space. A multi-dimensional scaling plot will do this. It'll allow you to see how similar/disimilar your state correlation matrices are. If you are finding that some states appear to be overlapping, you may want to re-run your model and fit less states.</p>
+<p>You may want to visualize the distance between the state correlation matrices in 2-D space. A multi-dimensional scaling plot will do this. It'll allow you to see how similar/disimilar your state correlation matrices are. If you are finding that some states appear to be overlapping, you may want to re-run your model and fit less states. In this example, we will use Euclidean distance.</p>
 
 </div>
 </div>
@@ -1139,9 +961,7 @@ Warning message:
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span><span class="c1">##Here is a way to calculate and visualize the Eucliden distance between each state in a 2D format.</span>
-
-<span class="n">dist</span><span class="o">&lt;-</span><span class="nf">matrix</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span> <span class="n">nrow</span><span class="o">=</span><span class="n">number_states</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="n">number_states</span><span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span><span class="n">dist</span><span class="o">&lt;-</span><span class="nf">matrix</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span> <span class="n">nrow</span><span class="o">=</span><span class="n">number_states</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="n">number_states</span><span class="p">)</span>
 
 <span class="nf">for</span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="n">number_states</span><span class="p">)</span>
 <span class="p">{</span>
@@ -1175,7 +995,9 @@ Warning message:
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/HiddenSemiMarkovModel_29_0.png"
+<img src="../../images/features/notebooks/HiddenSemiMarkovModel_34_0.png"
+width=420
+height=420
 >
 </div>
 
@@ -1192,16 +1014,6 @@ Warning message:
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>As the above plot shows, states 1 and 2 are most disimilar, where as states 1 and 4 are most similar (with regards to connectivity structure).</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
 <p>We can also look at the state sequence for each individual. The most likely state sequence, for each subject, is stored in the testrun object. Since this data consists of two parts for each subject, let's separate the results into part 1 vs. part 2.</p>
 
 </div>
@@ -1216,15 +1028,14 @@ Warning message:
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span><span class="c1">#Let&#39;s create a data frame for the state sequence for all subjects for part 1.</span>
-<span class="n">number_timepoints_part1</span> <span class="o">&lt;-</span> <span class="m">946</span>
+<div class=" highlight hl-r"><pre><span></span><span class="n">number_timepoints_part1</span> <span class="o">&lt;-</span> <span class="m">946</span>
 
 <span class="n">predfun</span><span class="o">&lt;-</span><span class="nf">function</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 <span class="p">{</span>
   <span class="n">subject</span> <span class="o">&lt;-</span> <span class="nf">rep</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span> <span class="n">number_timepoints_part1</span><span class="p">)</span>
   <span class="n">time</span> <span class="o">&lt;-</span> <span class="nf">rep</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span> <span class="n">number_timepoints_part1</span><span class="p">)</span>
   <span class="n">state</span> <span class="o">&lt;-</span> <span class="nf">rep</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span> <span class="n">number_timepoints_part1</span><span class="p">)</span>
-  <span class="n">Predict</span><span class="o">&lt;-</span><span class="nf">data.frame</span><span class="p">(</span><span class="n">subject</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">state</span><span class="p">)</span>
+  <span class="n">Predict</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">subject</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">state</span><span class="p">)</span>
   
   <span class="nf">for</span><span class="p">(</span><span class="n">z</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="n">number_timepoints_part1</span><span class="p">)</span>
   <span class="p">{</span>
@@ -1236,8 +1047,8 @@ Warning message:
   <span class="nf">return</span><span class="p">(</span><span class="n">Predict</span><span class="p">)</span>
 <span class="p">}</span>
 
-<span class="n">Together</span><span class="o">&lt;-</span><span class="nf">lapply</span><span class="p">(</span><span class="nf">seq</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="nf">nrow</span><span class="p">(</span><span class="n">Lengths</span><span class="p">),</span><span class="n">by</span><span class="o">=</span><span class="m">2</span><span class="p">),</span> <span class="n">predfun</span><span class="p">)</span>
-<span class="n">Predict_part1</span><span class="o">&lt;-</span><span class="nf">do.call</span><span class="p">(</span><span class="n">rbind</span><span class="p">,</span> <span class="n">Together</span><span class="p">)</span>
+<span class="n">Together</span> <span class="o">&lt;-</span> <span class="nf">lapply</span><span class="p">(</span><span class="nf">seq</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="nf">nrow</span><span class="p">(</span><span class="n">Lengths</span><span class="p">),</span><span class="n">by</span><span class="o">=</span><span class="m">2</span><span class="p">),</span> <span class="n">predfun</span><span class="p">)</span>
+<span class="n">Predict_part1</span> <span class="o">&lt;-</span> <span class="nf">do.call</span><span class="p">(</span><span class="n">rbind</span><span class="p">,</span> <span class="n">Together</span><span class="p">)</span>
 <span class="n">Predict_part1</span>
 </pre></div>
 
@@ -1266,61 +1077,61 @@ Warning message:
 	<tr><td>1</td><td> 4</td><td>3</td></tr>
 	<tr><td>1</td><td> 5</td><td>3</td></tr>
 	<tr><td>1</td><td> 6</td><td>3</td></tr>
-	<tr><td>1</td><td> 7</td><td>1</td></tr>
-	<tr><td>1</td><td> 8</td><td>1</td></tr>
+	<tr><td>1</td><td> 7</td><td>4</td></tr>
+	<tr><td>1</td><td> 8</td><td>4</td></tr>
 	<tr><td>1</td><td> 9</td><td>3</td></tr>
 	<tr><td>1</td><td>10</td><td>3</td></tr>
 	<tr><td>1</td><td>11</td><td>3</td></tr>
 	<tr><td>1</td><td>12</td><td>3</td></tr>
-	<tr><td>1</td><td>13</td><td>4</td></tr>
-	<tr><td>1</td><td>14</td><td>4</td></tr>
-	<tr><td>1</td><td>15</td><td>4</td></tr>
-	<tr><td>1</td><td>16</td><td>4</td></tr>
-	<tr><td>1</td><td>17</td><td>4</td></tr>
-	<tr><td>1</td><td>18</td><td>4</td></tr>
-	<tr><td>1</td><td>19</td><td>4</td></tr>
-	<tr><td>1</td><td>20</td><td>4</td></tr>
-	<tr><td>1</td><td>21</td><td>1</td></tr>
-	<tr><td>1</td><td>22</td><td>1</td></tr>
-	<tr><td>1</td><td>23</td><td>1</td></tr>
-	<tr><td>1</td><td>24</td><td>1</td></tr>
+	<tr><td>1</td><td>13</td><td>1</td></tr>
+	<tr><td>1</td><td>14</td><td>1</td></tr>
+	<tr><td>1</td><td>15</td><td>1</td></tr>
+	<tr><td>1</td><td>16</td><td>1</td></tr>
+	<tr><td>1</td><td>17</td><td>1</td></tr>
+	<tr><td>1</td><td>18</td><td>1</td></tr>
+	<tr><td>1</td><td>19</td><td>1</td></tr>
+	<tr><td>1</td><td>20</td><td>1</td></tr>
+	<tr><td>1</td><td>21</td><td>4</td></tr>
+	<tr><td>1</td><td>22</td><td>4</td></tr>
+	<tr><td>1</td><td>23</td><td>4</td></tr>
+	<tr><td>1</td><td>24</td><td>4</td></tr>
 	<tr><td>1</td><td>25</td><td>2</td></tr>
 	<tr><td>1</td><td>26</td><td>2</td></tr>
 	<tr><td>1</td><td>27</td><td>2</td></tr>
 	<tr><td>1</td><td>28</td><td>2</td></tr>
 	<tr><td>1</td><td>29</td><td>2</td></tr>
 	<tr><td>1</td><td>30</td><td>2</td></tr>
-	<tr><td>...</td><td>...</td><td>...</td></tr>
-	<tr><td>16</td><td>917</td><td>1</td></tr>
-	<tr><td>16</td><td>918</td><td>1</td></tr>
-	<tr><td>16</td><td>919</td><td>1</td></tr>
-	<tr><td>16</td><td>920</td><td>1</td></tr>
-	<tr><td>16</td><td>921</td><td>1</td></tr>
-	<tr><td>16</td><td>922</td><td>1</td></tr>
-	<tr><td>16</td><td>923</td><td>1</td></tr>
-	<tr><td>16</td><td>924</td><td>1</td></tr>
-	<tr><td>16</td><td>925</td><td>1</td></tr>
-	<tr><td>16</td><td>926</td><td>1</td></tr>
-	<tr><td>16</td><td>927</td><td>1</td></tr>
-	<tr><td>16</td><td>928</td><td>1</td></tr>
-	<tr><td>16</td><td>929</td><td>1</td></tr>
-	<tr><td>16</td><td>930</td><td>1</td></tr>
-	<tr><td>16</td><td>931</td><td>1</td></tr>
-	<tr><td>16</td><td>932</td><td>1</td></tr>
-	<tr><td>16</td><td>933</td><td>1</td></tr>
-	<tr><td>16</td><td>934</td><td>1</td></tr>
-	<tr><td>16</td><td>935</td><td>1</td></tr>
-	<tr><td>16</td><td>936</td><td>1</td></tr>
-	<tr><td>16</td><td>937</td><td>1</td></tr>
-	<tr><td>16</td><td>938</td><td>1</td></tr>
-	<tr><td>16</td><td>939</td><td>1</td></tr>
-	<tr><td>16</td><td>940</td><td>1</td></tr>
-	<tr><td>16</td><td>941</td><td>1</td></tr>
-	<tr><td>16</td><td>942</td><td>1</td></tr>
-	<tr><td>16</td><td>943</td><td>1</td></tr>
-	<tr><td>16</td><td>944</td><td>1</td></tr>
-	<tr><td>16</td><td>945</td><td>1</td></tr>
-	<tr><td>16</td><td>946</td><td>1</td></tr>
+	<tr><td>⋮</td><td>⋮</td><td>⋮</td></tr>
+	<tr><td>16</td><td>917</td><td>4</td></tr>
+	<tr><td>16</td><td>918</td><td>4</td></tr>
+	<tr><td>16</td><td>919</td><td>4</td></tr>
+	<tr><td>16</td><td>920</td><td>4</td></tr>
+	<tr><td>16</td><td>921</td><td>4</td></tr>
+	<tr><td>16</td><td>922</td><td>4</td></tr>
+	<tr><td>16</td><td>923</td><td>4</td></tr>
+	<tr><td>16</td><td>924</td><td>4</td></tr>
+	<tr><td>16</td><td>925</td><td>4</td></tr>
+	<tr><td>16</td><td>926</td><td>4</td></tr>
+	<tr><td>16</td><td>927</td><td>4</td></tr>
+	<tr><td>16</td><td>928</td><td>4</td></tr>
+	<tr><td>16</td><td>929</td><td>4</td></tr>
+	<tr><td>16</td><td>930</td><td>4</td></tr>
+	<tr><td>16</td><td>931</td><td>4</td></tr>
+	<tr><td>16</td><td>932</td><td>4</td></tr>
+	<tr><td>16</td><td>933</td><td>4</td></tr>
+	<tr><td>16</td><td>934</td><td>4</td></tr>
+	<tr><td>16</td><td>935</td><td>4</td></tr>
+	<tr><td>16</td><td>936</td><td>4</td></tr>
+	<tr><td>16</td><td>937</td><td>4</td></tr>
+	<tr><td>16</td><td>938</td><td>4</td></tr>
+	<tr><td>16</td><td>939</td><td>4</td></tr>
+	<tr><td>16</td><td>940</td><td>4</td></tr>
+	<tr><td>16</td><td>941</td><td>4</td></tr>
+	<tr><td>16</td><td>942</td><td>4</td></tr>
+	<tr><td>16</td><td>943</td><td>4</td></tr>
+	<tr><td>16</td><td>944</td><td>4</td></tr>
+	<tr><td>16</td><td>945</td><td>4</td></tr>
+	<tr><td>16</td><td>946</td><td>4</td></tr>
 </tbody>
 </table>
 
@@ -1402,61 +1213,61 @@ Warning message:
 	<tr><td>1</td><td> 4</td><td>3</td></tr>
 	<tr><td>1</td><td> 5</td><td>3</td></tr>
 	<tr><td>1</td><td> 6</td><td>3</td></tr>
-	<tr><td>1</td><td> 7</td><td>1</td></tr>
-	<tr><td>1</td><td> 8</td><td>1</td></tr>
+	<tr><td>1</td><td> 7</td><td>4</td></tr>
+	<tr><td>1</td><td> 8</td><td>4</td></tr>
 	<tr><td>1</td><td> 9</td><td>3</td></tr>
 	<tr><td>1</td><td>10</td><td>3</td></tr>
 	<tr><td>1</td><td>11</td><td>3</td></tr>
 	<tr><td>1</td><td>12</td><td>3</td></tr>
-	<tr><td>1</td><td>13</td><td>4</td></tr>
-	<tr><td>1</td><td>14</td><td>4</td></tr>
-	<tr><td>1</td><td>15</td><td>4</td></tr>
-	<tr><td>1</td><td>16</td><td>4</td></tr>
-	<tr><td>1</td><td>17</td><td>4</td></tr>
-	<tr><td>1</td><td>18</td><td>4</td></tr>
-	<tr><td>1</td><td>19</td><td>4</td></tr>
-	<tr><td>1</td><td>20</td><td>4</td></tr>
-	<tr><td>1</td><td>21</td><td>1</td></tr>
-	<tr><td>1</td><td>22</td><td>1</td></tr>
-	<tr><td>1</td><td>23</td><td>1</td></tr>
-	<tr><td>1</td><td>24</td><td>1</td></tr>
+	<tr><td>1</td><td>13</td><td>1</td></tr>
+	<tr><td>1</td><td>14</td><td>1</td></tr>
+	<tr><td>1</td><td>15</td><td>1</td></tr>
+	<tr><td>1</td><td>16</td><td>1</td></tr>
+	<tr><td>1</td><td>17</td><td>1</td></tr>
+	<tr><td>1</td><td>18</td><td>1</td></tr>
+	<tr><td>1</td><td>19</td><td>1</td></tr>
+	<tr><td>1</td><td>20</td><td>1</td></tr>
+	<tr><td>1</td><td>21</td><td>4</td></tr>
+	<tr><td>1</td><td>22</td><td>4</td></tr>
+	<tr><td>1</td><td>23</td><td>4</td></tr>
+	<tr><td>1</td><td>24</td><td>4</td></tr>
 	<tr><td>1</td><td>25</td><td>2</td></tr>
 	<tr><td>1</td><td>26</td><td>2</td></tr>
 	<tr><td>1</td><td>27</td><td>2</td></tr>
 	<tr><td>1</td><td>28</td><td>2</td></tr>
 	<tr><td>1</td><td>29</td><td>2</td></tr>
 	<tr><td>1</td><td>30</td><td>2</td></tr>
-	<tr><td>...</td><td>...</td><td>...</td></tr>
-	<tr><td>16</td><td>1001</td><td>1</td></tr>
-	<tr><td>16</td><td>1002</td><td>1</td></tr>
-	<tr><td>16</td><td>1003</td><td>1</td></tr>
-	<tr><td>16</td><td>1004</td><td>1</td></tr>
-	<tr><td>16</td><td>1005</td><td>1</td></tr>
-	<tr><td>16</td><td>1006</td><td>1</td></tr>
-	<tr><td>16</td><td>1007</td><td>1</td></tr>
-	<tr><td>16</td><td>1008</td><td>1</td></tr>
-	<tr><td>16</td><td>1009</td><td>1</td></tr>
-	<tr><td>16</td><td>1010</td><td>1</td></tr>
-	<tr><td>16</td><td>1011</td><td>1</td></tr>
-	<tr><td>16</td><td>1012</td><td>1</td></tr>
-	<tr><td>16</td><td>1013</td><td>1</td></tr>
-	<tr><td>16</td><td>1014</td><td>1</td></tr>
-	<tr><td>16</td><td>1015</td><td>1</td></tr>
-	<tr><td>16</td><td>1016</td><td>1</td></tr>
-	<tr><td>16</td><td>1017</td><td>1</td></tr>
-	<tr><td>16</td><td>1018</td><td>1</td></tr>
-	<tr><td>16</td><td>1019</td><td>1</td></tr>
+	<tr><td>⋮</td><td>⋮</td><td>⋮</td></tr>
+	<tr><td>16</td><td>1001</td><td>4</td></tr>
+	<tr><td>16</td><td>1002</td><td>4</td></tr>
+	<tr><td>16</td><td>1003</td><td>4</td></tr>
+	<tr><td>16</td><td>1004</td><td>4</td></tr>
+	<tr><td>16</td><td>1005</td><td>4</td></tr>
+	<tr><td>16</td><td>1006</td><td>4</td></tr>
+	<tr><td>16</td><td>1007</td><td>4</td></tr>
+	<tr><td>16</td><td>1008</td><td>4</td></tr>
+	<tr><td>16</td><td>1009</td><td>4</td></tr>
+	<tr><td>16</td><td>1010</td><td>4</td></tr>
+	<tr><td>16</td><td>1011</td><td>4</td></tr>
+	<tr><td>16</td><td>1012</td><td>4</td></tr>
+	<tr><td>16</td><td>1013</td><td>4</td></tr>
+	<tr><td>16</td><td>1014</td><td>4</td></tr>
+	<tr><td>16</td><td>1015</td><td>4</td></tr>
+	<tr><td>16</td><td>1016</td><td>4</td></tr>
+	<tr><td>16</td><td>1017</td><td>4</td></tr>
+	<tr><td>16</td><td>1018</td><td>4</td></tr>
+	<tr><td>16</td><td>1019</td><td>4</td></tr>
 	<tr><td>16</td><td>1020</td><td>3</td></tr>
 	<tr><td>16</td><td>1021</td><td>3</td></tr>
 	<tr><td>16</td><td>1022</td><td>3</td></tr>
 	<tr><td>16</td><td>1023</td><td>3</td></tr>
 	<tr><td>16</td><td>1024</td><td>3</td></tr>
-	<tr><td>16</td><td>1025</td><td>1</td></tr>
-	<tr><td>16</td><td>1026</td><td>1</td></tr>
-	<tr><td>16</td><td>1027</td><td>1</td></tr>
-	<tr><td>16</td><td>1028</td><td>1</td></tr>
-	<tr><td>16</td><td>1029</td><td>1</td></tr>
-	<tr><td>16</td><td>1030</td><td>1</td></tr>
+	<tr><td>16</td><td>1025</td><td>4</td></tr>
+	<tr><td>16</td><td>1026</td><td>4</td></tr>
+	<tr><td>16</td><td>1027</td><td>4</td></tr>
+	<tr><td>16</td><td>1028</td><td>4</td></tr>
+	<tr><td>16</td><td>1029</td><td>4</td></tr>
+	<tr><td>16</td><td>1030</td><td>4</td></tr>
 </tbody>
 </table>
 
@@ -1472,16 +1283,25 @@ Warning message:
 
 <div class="jb_cell">
 
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now you have the state information for each subject in a data frame. If you want, you can make visual summaries of the state dynamics.</p>
+<p>Let's plot Part 1 first.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span><span class="c1">#Now you have the state information for each subject in a data frame. If you want, you can make</span>
-<span class="c1">#visual summaries such as the one below.</span>
-
-<span class="n">forheat</span><span class="o">&lt;-</span><span class="nf">matrix</span><span class="p">(</span><span class="n">Predict_part1</span><span class="p">[,</span><span class="m">3</span><span class="p">],</span> <span class="n">nrow</span><span class="o">=</span><span class="n">number_timepoints_part1</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="m">16</span><span class="p">,</span> <span class="n">byrow</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span>
-<span class="n">forheat2</span><span class="o">&lt;-</span><span class="nf">t</span><span class="p">(</span><span class="n">forheat</span><span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span><span class="n">forheat</span> <span class="o">&lt;-</span> <span class="nf">matrix</span><span class="p">(</span><span class="n">Predict_part1</span><span class="p">[,</span><span class="m">3</span><span class="p">],</span> <span class="n">nrow</span><span class="o">=</span><span class="n">number_timepoints_part1</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="m">16</span><span class="p">,</span> <span class="n">byrow</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span>
+<span class="n">forheat2</span> <span class="o">&lt;-</span> <span class="nf">t</span><span class="p">(</span><span class="n">forheat</span><span class="p">)</span>
 
 <span class="nf">heatmap.2</span><span class="p">(</span><span class="n">forheat2</span><span class="p">,</span>  <span class="c1"># same data set for cell labels</span>
           <span class="n">main</span><span class="o">=</span><span class="s">&quot;States Over Time - Part 1&quot;</span><span class="p">,</span>
@@ -1508,7 +1328,9 @@ Warning message:
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/HiddenSemiMarkovModel_35_0.png"
+<img src="../../images/features/notebooks/HiddenSemiMarkovModel_40_0.png"
+width=420
+height=420
 >
 </div>
 
@@ -1522,16 +1344,24 @@ Warning message:
 
 <div class="jb_cell">
 
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now, let's plot Part 2.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span><span class="c1">#Now you have the state information for each subject in a data frame. If you want, you can make</span>
-<span class="c1">#visual summaries such as the one below.</span>
-
-<span class="n">forheat</span><span class="o">&lt;-</span><span class="nf">matrix</span><span class="p">(</span><span class="n">Predict_part2</span><span class="p">[,</span><span class="m">3</span><span class="p">],</span> <span class="n">nrow</span><span class="o">=</span><span class="n">number_timepoints_part2</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="m">16</span><span class="p">,</span> <span class="n">byrow</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span>
-<span class="n">forheat2</span><span class="o">&lt;-</span><span class="nf">t</span><span class="p">(</span><span class="n">forheat</span><span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span><span class="n">forheat</span> <span class="o">&lt;-</span> <span class="nf">matrix</span><span class="p">(</span><span class="n">Predict_part2</span><span class="p">[,</span><span class="m">3</span><span class="p">],</span> <span class="n">nrow</span><span class="o">=</span><span class="n">number_timepoints_part2</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="m">16</span><span class="p">,</span> <span class="n">byrow</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span>
+<span class="n">forheat2</span> <span class="o">&lt;-</span> <span class="nf">t</span><span class="p">(</span><span class="n">forheat</span><span class="p">)</span>
 
 <span class="nf">heatmap.2</span><span class="p">(</span><span class="n">forheat2</span><span class="p">,</span>  <span class="c1"># same data set for cell labels</span>
           <span class="n">main</span><span class="o">=</span><span class="s">&quot;States Over Time - Part 2&quot;</span><span class="p">,</span>
@@ -1558,7 +1388,9 @@ Warning message:
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/HiddenSemiMarkovModel_36_0.png"
+<img src="../../images/features/notebooks/HiddenSemiMarkovModel_42_0.png"
+width=420
+height=420
 >
 </div>
 
@@ -1608,7 +1440,7 @@ Warning message:
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Contributions">Contributions<a class="anchor-link" href="#Contributions"> </a></h1><p>Tutorial written by Heather Shappell. Edited by Luke Chang.</p>
+<h1 id="Contributions">Contributions<a class="anchor-link" href="#Contributions"> </a></h1><p>Tutorial written by Heather Shappell. Text and code edited by Luke Chang.</p>
 
 </div>
 </div>

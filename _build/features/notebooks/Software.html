@@ -13,7 +13,7 @@ prev_page:
 next_page:
   url: /features/notebooks/Preprocessing.html
 suffix: .ipynb
-search: conda org packages python jupyter install notebooks data using html anaconda r toolbox installing package via www brainiak github com course features work neuroimaging run io en latest pip also installed software tutorials dartbrains notebook readthedocs timecorr projects environment included get file performing called usually pypi repository done different create specific naturalistic need nbviewer dropbox written our provided following datalad installation overview nibabel library analyses hypertools pliers recommend distribution products individual includes scientific sure system precompiled conflicts isnt main through command terminal helpful user environments same such dependencies activate ipykernel lets not must code results writing program talk project rstudio
+search: conda org packages install r jupyter python notebooks data using html anaconda toolbox installing package work via run www brainiak github com course features neuroimaging io en latest pip also installed software tutorials get dartbrains notebook readthedocs timecorr projects environment need irkernel included following installation file performing called usually pypi repository done different create specific naturalistic nbviewer dropbox written our provided downloaded datalad overview nibabel library analyses hypertools pliers recommend distribution products individual includes scientific sure system precompiled conflicts start isnt main easiest through command terminal commands helpful user environments same such dependencies within activate kernel ipykernel lets not must
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -194,7 +194,13 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="R">R<a class="anchor-link" href="#R"> </a></h1><p>You can also connect notebooks not just to Python kernels, but also to other languages such as <a href="https://www.r-project.org/">R</a>.</p>
-<p>We can install R and the r-irkernel package using <code>conda</code>. Alternatively, you can also install R from their <a href="https://cran.r-project.org/mirrors.html">website</a>. If you end up using R in your work, you will likely also find <a href="https://rstudio.com/">RStudio</a> as well as packages from the <a href="https://www.tidyverse.org/">tidyverse</a> to be helpful.</p>
+<p>The easiest way to get started is to install <code>R</code> and the <code>r-irkernel</code> package using <code>conda</code>.</p>
+<p>Alternatively, if this doesn't work you can also install R directly from their <a href="https://cran.r-project.org/mirrors.html">website</a>. To connect this version of R to jupyter, we need to manually install the <code>IRkernel</code> from within the version of <code>R</code> that you downloaded.</p>
+<p>Start R, then run the following commands:</p>
+<div class="highlight"><pre><span></span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&#39;IRkernel&#39;</span><span class="p">)</span>
+<span class="n">IRkernel</span><span class="o">::</span><span class="nf">installspec</span><span class="p">()</span>  <span class="c1"># to register the kernel in the current R installation</span>
+</pre></div>
+<p>If you end up using R in your work, you will likely also find <a href="https://rstudio.com/">RStudio</a> as well as packages from the <a href="https://www.tidyverse.org/">tidyverse</a> to be helpful.</p>
 
 </div>
 </div>

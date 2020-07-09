@@ -13,7 +13,7 @@ prev_page:
 next_page:
   url: /features/notebooks/Natural_Language_Processing.html
 suffix: .ipynb
-search: event events data boundaries hmm recall gsbs model patterns tutorial movie both using between segmentation activity org timepoints fit states well used during set human optimal distance voxel perception need load dataset files here also baldassano geerligs show search started software datalad sherlock angular gyrus figshare subjects only finding correlation corresponding log likelihood measure timepoint similarity comparison determine t same chris linda spatial greedy state boundary get different com before installed nii download want change loading doi applying plot models fitting specify note test below since matrix being split merge fits labeled possible datasets variance fmri gordon fleetwood shows across
+search: event events data boundaries hmm recall gsbs model patterns tutorial movie both using between segmentation activity org timepoints fit states well used during set human optimal distance voxel perception need load dataset files here also baldassano geerligs show search started software datalad sherlock angular gyrus figshare subjects only finding correlation corresponding log likelihood measure timepoint similarity comparison determine t same chris linda spatial greedy state boundary get different com before installed nii download want change loading doi applying plot models fitting specify note test below since matrix being run split merge fits labeled while possible datasets variance fmri gordon fleetwood
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -164,12 +164,14 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
 <span class="kn">import</span> <span class="nn">sys</span> 
 <span class="kn">import</span> <span class="nn">os</span>    
+<span class="kn">import</span> <span class="nn">glob</span>
 <span class="kn">from</span> <span class="nn">statesegmentation</span> <span class="kn">import</span> <span class="n">GSBS</span>
 <span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">reduce</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">brainiak.eventseg.event</span> <span class="kn">import</span> <span class="n">EventSegment</span>
 <span class="kn">import</span> <span class="nn">nibabel</span> <span class="k">as</span> <span class="nn">nib</span>
 <span class="kn">from</span> <span class="nn">nilearn.masking</span> <span class="kn">import</span> <span class="n">apply_mask</span>
+<span class="kn">from</span> <span class="nn">nltools.data</span> <span class="kn">import</span> <span class="n">Brain_Data</span>
 <span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">zscore</span><span class="p">,</span> <span class="n">norm</span>
 <span class="kn">import</span> <span class="nn">datalad.api</span> <span class="k">as</span> <span class="nn">dl</span>
 
@@ -183,30 +185,6 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-<div class="output_subarea output_text output_error">
-<pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">ModuleNotFoundError</span>                       Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-5-d34c73579304&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-intense-fg ansi-bold">      5</span> <span class="ansi-green-fg">from</span> functools <span class="ansi-green-fg">import</span> reduce
-<span class="ansi-green-intense-fg ansi-bold">      6</span> <span class="ansi-green-fg">import</span> numpy <span class="ansi-green-fg">as</span> np
-<span class="ansi-green-fg">----&gt; 7</span><span class="ansi-red-fg"> </span><span class="ansi-green-fg">from</span> brainiak<span class="ansi-blue-fg">.</span>eventseg<span class="ansi-blue-fg">.</span>event <span class="ansi-green-fg">import</span> EventSegment
-<span class="ansi-green-intense-fg ansi-bold">      8</span> <span class="ansi-green-fg">import</span> nibabel <span class="ansi-green-fg">as</span> nib
-<span class="ansi-green-intense-fg ansi-bold">      9</span> <span class="ansi-green-fg">from</span> nilearn<span class="ansi-blue-fg">.</span>masking <span class="ansi-green-fg">import</span> apply_mask
-
-<span class="ansi-red-fg">ModuleNotFoundError</span>: No module named &#39;brainiak&#39;</pre>
-</div>
-</div>
-</div>
 </div>
 </div>
 
@@ -232,7 +210,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data_dir</span> <span class="o">=</span> <span class="s1">&#39;/Volumes/Engram/Data/Sherlock&#39;</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data_dir</span> <span class="o">=</span> <span class="s1">&#39;/Volumes/Emily_MyPassport2TB/Sherlock/&#39;</span>
 
 <span class="c1"># If dataset hasn&#39;t been installed, clone from GIN repository</span>
 <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">data_dir</span><span class="p">):</span>
@@ -246,30 +224,6 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-<div class="output_subarea output_text output_error">
-<pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-4-4fb418d4942e&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-intense-fg ansi-bold">      6</span> 
-<span class="ansi-green-intense-fg ansi-bold">      7</span> <span class="ansi-red-fg"># Initialize dataset</span>
-<span class="ansi-green-fg">----&gt; 8</span><span class="ansi-red-fg"> </span>ds <span class="ansi-blue-fg">=</span> dl<span class="ansi-blue-fg">.</span>Dataset<span class="ansi-blue-fg">(</span>data_dir<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">      9</span> 
-<span class="ansi-green-intense-fg ansi-bold">     10</span> <span class="ansi-red-fg"># Get Denoised nifti Files</span>
-
-<span class="ansi-red-fg">NameError</span>: name &#39;dl&#39; is not defined</pre>
-</div>
-</div>
-</div>
 </div>
 </div>
 
@@ -295,21 +249,23 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s1">&#39;Sherlock_AG_movie.npy&#39;</span><span class="p">)</span> <span class="ow">or</span>
-    <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s1">&#39;Sherlock_AG_recall.npy&#39;</span><span class="p">)):</span>
-    <span class="n">Sherlock_path</span> <span class="o">=</span> <span class="s1">&#39;../../Sherlock/&#39;</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">mask</span> <span class="o">=</span> <span class="n">Brain_Data</span><span class="p">(</span><span class="s1">&#39;https://neurovault.org/media/images/8423/AG_mask.nii.gz&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">to_nifti</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">data_dir</span> <span class="o">+</span> <span class="s1">&#39;Sherlock_AG_movie.npy&#39;</span><span class="p">)</span> <span class="ow">or</span>
+    <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">data_dir</span> <span class="o">+</span> <span class="s1">&#39;Sherlock_AG_recall.npy&#39;</span><span class="p">)):</span>
+    <span class="n">data_dir</span> <span class="o">=</span> <span class="s1">&#39;../../Sherlock/&#39;</span>
     <span class="n">movie</span> <span class="o">=</span> <span class="p">[]</span>
 
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Cached data not found, loading from nii files&#39;</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">sub</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">17</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;   Loading sub-</span><span class="si">%02d</span><span class="s1">...&#39;</span> <span class="o">%</span> <span class="n">sub</span><span class="p">)</span>
-        <span class="n">movie</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">apply_mask</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">Sherlock_path</span><span class="p">,</span> <span class="s1">&#39;fmriprep&#39;</span><span class="p">,</span><span class="s1">&#39;sub-</span><span class="si">%02d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">sub</span><span class="p">,</span> <span class="s1">&#39;func&#39;</span><span class="p">,</span> \
+        <span class="n">movie</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">apply_mask</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="s1">&#39;fmriprep&#39;</span><span class="p">,</span><span class="s1">&#39;sub-</span><span class="si">%02d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">sub</span><span class="p">,</span> <span class="s1">&#39;func&#39;</span><span class="p">,</span> \
                                <span class="s1">&#39;sub-</span><span class="si">%02d</span><span class="s1">_denoise_smooth6mm_task-sherlockPart1_space-MNI152NLin2009cAsym_desc-preproc_bold.nii.gz&#39;</span> <span class="o">%</span> <span class="n">sub</span><span class="p">),</span>
-                               <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">Sherlock_path</span><span class="p">,</span> <span class="s1">&#39;AG_mask.nii.gz&#39;</span><span class="p">)))</span>
+                               <span class="n">mask</span><span class="p">))</span>
         <span class="k">if</span> <span class="n">sub</span> <span class="o">==</span> <span class="mi">7</span><span class="p">:</span>
-            <span class="n">recall</span> <span class="o">=</span> <span class="n">apply_mask</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">Sherlock_path</span><span class="p">,</span> <span class="s1">&#39;fmriprep&#39;</span><span class="p">,</span><span class="s1">&#39;sub-</span><span class="si">%02d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">sub</span><span class="p">,</span> <span class="s1">&#39;func&#39;</span><span class="p">,</span> \
+            <span class="n">recall</span> <span class="o">=</span> <span class="n">apply_mask</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="s1">&#39;fmriprep&#39;</span><span class="p">,</span><span class="s1">&#39;sub-</span><span class="si">%02d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">sub</span><span class="p">,</span> <span class="s1">&#39;func&#39;</span><span class="p">,</span> \
                                <span class="s1">&#39;sub-</span><span class="si">%02d</span><span class="s1">_denoise_smooth6mm_task-freerecall_space-MNI152NLin2009cAsym_desc-preproc_bold.nii.gz&#39;</span> <span class="o">%</span> <span class="n">sub</span><span class="p">),</span>
-                               <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">Sherlock_path</span><span class="p">,</span> <span class="s1">&#39;AG_mask.nii.gz&#39;</span><span class="p">))</span>
+                               <span class="n">mask</span><span class="p">)</span>
 
     <span class="n">valid_vox</span> <span class="o">=</span> <span class="n">reduce</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">union1d</span><span class="p">,</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">movie</span><span class="p">])</span>
     <span class="n">movie</span> <span class="o">=</span> <span class="p">[</span><span class="n">m</span><span class="p">[:,</span><span class="n">valid_vox</span><span class="p">]</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">movie</span><span class="p">]</span>
@@ -318,8 +274,8 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
     <span class="n">np</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;Sherlock_AG_recall.npy&#39;</span><span class="p">,</span> <span class="n">recall</span><span class="p">)</span>
 
     
-<span class="n">movie</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;Sherlock_AG_movie.npy&#39;</span><span class="p">)</span>
-<span class="n">recall</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;Sherlock_AG_recall.npy&#39;</span><span class="p">)</span>
+<span class="n">movie</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="s1">&#39;Sherlock_AG_movie.npy&#39;</span><span class="p">))</span>
+<span class="n">recall</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="s1">&#39;Sherlock_AG_recall.npy&#39;</span><span class="p">))</span>
 <span class="n">movie_group</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">movie</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 
@@ -761,22 +717,22 @@ Trying 60 events
 <div class="jb_output_wrapper }}">
 <div class="output_area">
 
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>/Users/finnes/anaconda3/lib/python3.6/site-packages/ipykernel_launcher.py:6: RuntimeWarning: divide by zero encountered in true_divide
+  
+</pre>
+</div>
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
 
 
 <div class="output_text output_subarea output_execute_result">
 <pre>Text(0.5, 0, &#39;Average event length (sec)&#39;)</pre>
 </div>
 
-</div>
-</div>
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>/Users/chrisb/anaconda3/envs/OHBM/lib/python3.7/site-packages/ipykernel_launcher.py:6: RuntimeWarning: divide by zero encountered in true_divide
-  
-</pre>
-</div>
 </div>
 </div>
 <div class="jb_output_wrapper }}">
@@ -855,6 +811,7 @@ Fitting split-merge HMM with 40 events...
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="1.4-Finding-event-boundaries-with-GSBS">1.4 Finding event boundaries with GSBS<a class="anchor-link" href="#1.4-Finding-event-boundaries-with-GSBS"> </a></h3><p>GSBS is an alternative approach to finding both the event timings and the patterns corresponding to each event. The approach relies on a greedy search algorithm. To apply this algorithm, we can use the GSBS class from the statesegmentation toolbox. To determine the optimal number of event boundaries, GSBS uses the t-distance metric. T-distance relies on maximizing the similarity between timepoints that are part of the same event, while also minimizing the similarity between timepoints that are part of distinct but neighboring events. While t-distance can be optimized using cross-validation, like we did before for the log-likelihood, simulations showed that it performs best when the data are averaged across participants.</p>
 <p>To run GSBS and find the optimal number of states, we need to specify the maximal number of events, which here we set to 140 to reduce computational time, but could be set equal to the number of timepoints for a complete search through all possible number of states.</p>
+<p>The following cell will take a little while to run (~15min, depending on your computer specs).</p>
 
 </div>
 </div>
@@ -935,7 +892,7 @@ Fitting split-merge HMM with 40 events...
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.legend.Legend at 0x7fdbb005ac10&gt;</pre>
+<pre>&lt;matplotlib.legend.Legend at 0x130803438&gt;</pre>
 </div>
 
 </div>
@@ -1166,7 +1123,7 @@ Fitting split-merge HMM with 109 events...
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>(0.0, 200.0, 0.0, 200.0)</pre>
+<pre>[0, 200, 0, 200]</pre>
 </div>
 
 </div>
@@ -1540,6 +1497,7 @@ HMM40=0.001398, HMM_SM40=0.000275, GSBS40=0.019417, HMM109=0.020840, HMM_SM109=0
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Contributions">Contributions<a class="anchor-link" href="#Contributions"> </a></h1><p>Chris Baldassano and Gordon Fleetwood developed the initial notebook.</p>
 <p>Linda Geerligs added the GSBS method and edited section descriptions.</p>
+<p>Emily Finn tested and lightly edited the notebook.</p>
 
 </div>
 </div>
