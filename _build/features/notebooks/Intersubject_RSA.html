@@ -13,7 +13,7 @@ prev_page:
 next_page:
   url: /features/notebooks/Event_Segmentation.html
 suffix: .ipynb
-search: similarity subjects data brain using com subject isc www et al our matrix behavioral rsa nodes values s run representational org also behavior similar across tutorial e distance j article matrices lets model science high low well naturalistic different where between not scorers correlation sciencedirect pii score its analysis structure p same while should results scale both voxels calculate x nature activity articles scores since into participants r node m inter any sure html level individual take paranoia want metric euclidean case t models higher compute g shared responses during regions another scoring subj method above chang analyses features notebooks
+search: similarity subjects data brain using subject com isc www et al our matrix rsa behavioral nodes values s org also run representational behavior similar across tutorial e lets distance j article matrices well model science naturalistic between high low different where not scorers correlation sciencedirect pii score its analysis structure p same while should results scale both voxels calculate x inter nature activity articles scores since into participants r node m any sure html level individual take another paranoia want metric euclidean case t models higher compute g shared responses during regions scoring subj method above finn chang analyses approaches
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -36,8 +36,8 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <p><img src="../../images/isrsa/Fig1_multilayer_figure_R1.jpg" alt="isrsa"></p>
 <p><strong>Fig. 1. Schematic of inter-subject representational similarity analysis.</strong>
 <em>From <a href="https://www.sciencedirect.com/science/article/pii/S1053811920303153">Finn et al., 2020</a></em>. Each subject (bottom layer) is associated with a behavioral score (middle layer) and a pattern of brain activity (top layer, e.g., a time series from a given brain region during naturalistic stimulation). The middle and upper layers depict weighted graphs obtained using the similarity matrices as adjacency matrices, where thicker lines indicate increased similarity between nodes (subjects). In IS-RSA, we construct pairwise (i.e, subject-by-subject) similarity matrices for the behavioral data and the brain data, then compare these matrices using a Mantel test. Thus, we can leverage inter-subject analysis methods such as ISC to detect shared structure between brain data and behavioral data. This figure is a modified version of Fig. 1 in <a href="https://onlinelibrary.wiley.com/doi/full/10.1002/hbm.23084">Glerean et al. (2016)</a>.</p>
-<p>Let's watch a short video demonstrating an application of ISRSA using social network information.</p>
-<p><a href="https://people.socsci.tau.ac.il/mu/yaarayeshurun/">Dr. Carolyn Parkinson, PhD</a> is an Assistant Professor at University of California Los Angeles and will discuss practical considerations for analyzing naturalistic data.</p>
+<p>Let's watch a short video showing how inter-subject approaches can be more sensitive to phenotypic differences between individuals than other approaches for analyzing naturalistic data. We'll also see the motivation behind the IS-RSA approach.</p>
+<p><a href="https://esfinn.github.io">Emily Finn, PhD</a> is an Assistant Professor at Dartmouth College.</p>
 
 </div>
 </div>
@@ -53,7 +53,60 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">YouTubeVideo</span>
 
-<span class="n">YouTubeVideo</span><span class="p">(</span><span class="s1">&#39;roG9gkTOx_U&#39;</span><span class="p">)</span>
+<span class="n">YouTubeVideo</span><span class="p">(</span><span class="s1">&#39;vDrMuFJfsv8&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+
+<iframe
+    width="400"
+    height="300"
+    src="https://www.youtube.com/embed/vDrMuFJfsv8"
+    frameborder="0"
+    allowfullscreen
+></iframe>
+
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Next, let's watch another short video demonstrating an application of ISRSA using social network information.</p>
+<p><a href="http://csnlab.org/">Carolyn Parkinson, PhD</a> is an Assistant Professor at University of California Los Angeles and will discuss practical considerations for analyzing naturalistic data.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">YouTubeVideo</span><span class="p">(</span><span class="s1">&#39;roG9gkTOx_U&#39;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -155,22 +208,6 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>/Users/lukechang/anaconda3/lib/python3.7/site-packages/sklearn/utils/deprecation.py:143: FutureWarning: The sklearn.linear_model.base module is  deprecated in version 0.22 and will be removed in version 0.24. The corresponding classes / functions should instead be imported from sklearn.linear_model. Anything that cannot be imported from sklearn.linear_model is now part of the private API.
-  warnings.warn(message, FutureWarning)
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -194,7 +231,8 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data_dir</span> <span class="o">=</span> <span class="s1">&#39;/Volumes/Engram/Data/Paranoia&#39;</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># data_dir = &#39;/Volumes/Engram/Data/Paranoia&#39;</span>
+<span class="n">data_dir</span> <span class="o">=</span> <span class="s1">&#39;/Volumes/Emily_MyPassport2TB/Paranoia/&#39;</span>
 
 <span class="c1"># If dataset hasn&#39;t been installed, clone from GIN repository</span>
 <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">data_dir</span><span class="p">):</span>
@@ -203,17 +241,1383 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <span class="c1"># Initialize dataset</span>
 <span class="n">ds</span> <span class="o">=</span> <span class="n">dl</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="n">data_dir</span><span class="p">)</span>
 
-<span class="c1"># Get Cropped &amp; Denoised 1 subject&#39;s Run 1 Nifti Files</span>
+<span class="c1"># Get cropped &amp; denoised nifti files for subject&#39;s 1&#39;s run 1 </span>
 <span class="n">result</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="s1">&#39;fmriprep&#39;</span><span class="p">,</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="s1">&#39;func&#39;</span><span class="p">,</span> <span class="s1">&#39;sub-tb2994*denoise_smooth6mm_task-story_run-1*nii.gz&#39;</span><span class="p">)))</span>
 
-<span class="c1"># Get Cropped &amp; Denoised 1 subject&#39;s Run 1 Nifti Files</span>
+<span class="c1"># Get cropped &amp; denoised node timeseries data for all subjects for all runs</span>
 <span class="n">result</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="s1">&#39;fmriprep&#39;</span><span class="p">,</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="s1">&#39;func&#39;</span><span class="p">,</span> <span class="s1">&#39;*_nodeTimeSeries.csv&#39;</span><span class="p">)))</span>
 
-<span class="c1"># Get Participant File</span>
+<span class="c1"># Get participant demographic/behavioral file</span>
 <span class="n">result</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="s1">&#39;participants.tsv&#39;</span><span class="p">))</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="260e1f7b-a80e-4b33-a554-8101ff0df7fd"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#260e1f7b-a80e-4b33-a554-8101ff0df7fd');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="cb2b54f6-9d51-45bd-8f98-a53b8b751252"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#cb2b54f6-9d51-45bd-8f98-a53b8b751252');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="202059de-47b3-4ef1-8cc5-8208125fe432"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#202059de-47b3-4ef1-8cc5-8208125fe432');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="2ff3fde9-d04e-4a4d-999d-4ab3f804c777"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#2ff3fde9-d04e-4a4d-999d-4ab3f804c777');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="33744885-4b5e-4749-ab8f-04e26aa71835"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#33744885-4b5e-4749-ab8f-04e26aa71835');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="b3ab9c53-178e-4824-a073-3953ae844870"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#b3ab9c53-178e-4824-a073-3953ae844870');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="e45165a0-c728-4dcb-b1d7-1502e3f44162"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#e45165a0-c728-4dcb-b1d7-1502e3f44162');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="6777910e-1e2e-4c1c-888b-2c6078251e34"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#6777910e-1e2e-4c1c-888b-2c6078251e34');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="fa69014f-6fbf-4fc5-a897-ae3e70fd76d4"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#fa69014f-6fbf-4fc5-a897-ae3e70fd76d4');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="075fd7a7-e653-4b0a-9d66-931081acc619"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#075fd7a7-e653-4b0a-9d66-931081acc619');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="1144d54b-c014-4977-a64f-7c4e38f86720"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#1144d54b-c014-4977-a64f-7c4e38f86720');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="c8a5b153-b8c6-480a-9fcf-c026e80cb68f"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#c8a5b153-b8c6-480a-9fcf-c026e80cb68f');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="021b938b-0f66-40cc-a52d-07598b16a34d"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#021b938b-0f66-40cc-a52d-07598b16a34d');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="2b801eae-04be-4547-8690-4ce86cb1d595"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#2b801eae-04be-4547-8690-4ce86cb1d595');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="a0f74c08-cf26-483c-a1fa-d99e5225ecaf"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#a0f74c08-cf26-483c-a1fa-d99e5225ecaf');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="fe411ef3-08e1-4520-9e5f-95562dd0913f"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#fe411ef3-08e1-4520-9e5f-95562dd0913f');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="2f63b4eb-c690-4f41-b4ab-67b074dfeb20"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#2f63b4eb-c690-4f41-b4ab-67b074dfeb20');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="690e6360-2032-4086-a5b1-efee43677a65"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#690e6360-2032-4086-a5b1-efee43677a65');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="5b185437-ea93-4921-9125-009a6c21387a"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#5b185437-ea93-4921-9125-009a6c21387a');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="c4f1bf9e-297d-42fd-ab10-f84158420f0d"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#c4f1bf9e-297d-42fd-ab10-f84158420f0d');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="22083382-d228-44d0-91e7-ed75a78b0c88"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#22083382-d228-44d0-91e7-ed75a78b0c88');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="00ba5919-622e-4e2c-bfc8-8d86f50d9cee"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#00ba5919-622e-4e2c-bfc8-8d86f50d9cee');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="1b4038ea-cf6f-4ffc-b22f-ccbc8bc1f8fb"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#1b4038ea-cf6f-4ffc-b22f-ccbc8bc1f8fb');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="d3a60ccd-ed20-4709-90d0-2eec79cd849d"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#d3a60ccd-ed20-4709-90d0-2eec79cd849d');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="a81d2c1f-d970-4db6-a62d-3ca1287dcbc0"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#a81d2c1f-d970-4db6-a62d-3ca1287dcbc0');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="e631d515-d573-4815-9a0c-e164843cd79a"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#e631d515-d573-4815-9a0c-e164843cd79a');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="21790401-6d0f-41b1-aa78-04d792335d47"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#21790401-6d0f-41b1-aa78-04d792335d47');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="5b28e9ae-bf5d-4e50-882c-cd5fbc430d1e"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#5b28e9ae-bf5d-4e50-882c-cd5fbc430d1e');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="0b4b32c9-2ed4-4eae-89ee-e29300ea2e19"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#0b4b32c9-2ed4-4eae-89ee-e29300ea2e19');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="e5efe7df-388f-47bb-bd6b-f065949578f5"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#e5efe7df-388f-47bb-bd6b-f065949578f5');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="e5eba206-70ba-4d14-87dd-edabfec6ec9d"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#e5eba206-70ba-4d14-87dd-edabfec6ec9d');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="4ddcb5f9-aafc-4bdf-a5b8-dd3aa3c6ddd7"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#4ddcb5f9-aafc-4bdf-a5b8-dd3aa3c6ddd7');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="37471580-e532-464b-8b7b-77596c639bdb"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#37471580-e532-464b-8b7b-77596c639bdb');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="0cd6c1f4-ef9f-4f76-a01b-0f20657575f4"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#0cd6c1f4-ef9f-4f76-a01b-0f20657575f4');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="99689fe5-2317-4d83-a74b-69f9ca2164e2"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#99689fe5-2317-4d83-a74b-69f9ca2164e2');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="9e2c10dc-f7b8-4a99-9a32-3426f209550c"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#9e2c10dc-f7b8-4a99-9a32-3426f209550c');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="d93bf03a-ebe0-4cf9-b10c-1b77dd24fd4b"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#d93bf03a-ebe0-4cf9-b10c-1b77dd24fd4b');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="6f60697f-b31f-4975-a3ee-7c5b77cf8f2a"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#6f60697f-b31f-4975-a3ee-7c5b77cf8f2a');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="d733fa43-bc7e-4f95-a486-b9a6f825e48f"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#d733fa43-bc7e-4f95-a486-b9a6f825e48f');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="ae7fa255-a183-4a62-b910-e5f79bde5dd8"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#ae7fa255-a183-4a62-b910-e5f79bde5dd8');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="01568cd6-d5f8-4044-98c5-90143d37196d"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#01568cd6-d5f8-4044-98c5-90143d37196d');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="b606eb43-0592-4dda-8971-1c15735fe235"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#b606eb43-0592-4dda-8971-1c15735fe235');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="5e44da01-5afb-4215-9544-09ff2accaff6"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#5e44da01-5afb-4215-9544-09ff2accaff6');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="9b6f9db1-9e94-4608-a750-2f8b71454be0"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#9b6f9db1-9e94-4608-a750-2f8b71454be0');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="0eb6a3fc-1c3d-4093-aeb5-e0a40389d930"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#0eb6a3fc-1c3d-4093-aeb5-e0a40389d930');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="765c9b68-7b17-4452-9eb0-7ecc68bc8518"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#765c9b68-7b17-4452-9eb0-7ecc68bc8518');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="297eb7c9-9d83-4490-905f-ec40cf726c58"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#297eb7c9-9d83-4490-905f-ec40cf726c58');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="28f919d7-3106-49cf-b14f-358a55455e41"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#28f919d7-3106-49cf-b14f-358a55455e41');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="45a7723f-62de-40b2-b1c7-10b92fc2b12d"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#45a7723f-62de-40b2-b1c7-10b92fc2b12d');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="6dadc951-4514-4a3c-925a-b4ae18daad24"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#6dadc951-4514-4a3c-925a-b4ae18daad24');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="b03e4a63-399f-40b0-9eab-c58bca52a103"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#b03e4a63-399f-40b0-9eab-c58bca52a103');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="b5bdd1cb-fa3c-4e3f-ab33-1fd2d89458f2"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#b5bdd1cb-fa3c-4e3f-ab33-1fd2d89458f2');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="c69c2789-3b78-45b8-aa39-da5852e33b1b"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#c69c2789-3b78-45b8-aa39-da5852e33b1b');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="a7da0bb3-d230-425a-ba15-794ef19c1b0e"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#a7da0bb3-d230-425a-ba15-794ef19c1b0e');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="b78ccbd2-dc3b-4592-9e30-80897964413b"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#b78ccbd2-dc3b-4592-9e30-80897964413b');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="841c980e-051e-4e98-b81c-f29013a3a47e"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#841c980e-051e-4e98-b81c-f29013a3a47e');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="f8ddd0bf-2917-401a-8c04-8b38f718f32c"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#f8ddd0bf-2917-401a-8c04-8b38f718f32c');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="526dfa72-acc4-493f-95d4-70f1d030e7be"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#526dfa72-acc4-493f-95d4-70f1d030e7be');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="f08b39a9-509c-47ac-a656-8a45d0d10596"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#f08b39a9-509c-47ac-a656-8a45d0d10596');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="93d7c847-9a52-430f-808f-4198adfeab95"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#93d7c847-9a52-430f-808f-4198adfeab95');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="42969dab-cc5f-41fa-8921-170f335b29db"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#42969dab-cc5f-41fa-8921-170f335b29db');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="d14a538a-eff6-45ed-a051-e5d020b66d12"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#d14a538a-eff6-45ed-a051-e5d020b66d12');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="31e161de-df17-4cad-a9e6-f0166180a331"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#31e161de-df17-4cad-a9e6-f0166180a331');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="85505b03-9fb4-4ed1-a35c-1e3fc20f8fab"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#85505b03-9fb4-4ed1-a35c-1e3fc20f8fab');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="b66505e8-5179-415b-be38-74eaff673f82"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#b66505e8-5179-415b-be38-74eaff673f82');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="6332a2de-80cd-4426-82be-02111efa2120"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#6332a2de-80cd-4426-82be-02111efa2120');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="9f27a0da-7d83-4049-bf07-3cdd27fc0536"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#9f27a0da-7d83-4049-bf07-3cdd27fc0536');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="7230b035-5cd4-427b-95c0-085a16a281e3"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#7230b035-5cd4-427b-95c0-085a16a281e3');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
 </div>
 </div>
 
@@ -326,7 +1730,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>Text(0.5, 1.0, &#39;Nearest neighbor\n(model: Euclidean distance(i,j))&#39;)</pre>
+<pre>Text(0.5, 1, &#39;Nearest neighbor\n(model: Euclidean distance(i,j))&#39;)</pre>
 </div>
 
 </div>
@@ -337,7 +1741,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Intersubject_RSA_9_1.png"
+<img src="../../images/features/notebooks/Intersubject_RSA_11_1.png"
 >
 </div>
 
@@ -402,7 +1806,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>Text(0.5, 1.0, &#39;Anna Karenina\n(model: Euclidean distance(i,j))&#39;)</pre>
+<pre>Text(0.5, 1, &#39;Anna Karenina\n(model: Euclidean distance(i,j))&#39;)</pre>
 </div>
 
 </div>
@@ -413,7 +1817,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Intersubject_RSA_11_1.png"
+<img src="../../images/features/notebooks/Intersubject_RSA_13_1.png"
 >
 </div>
 
@@ -498,7 +1902,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Intersubject_RSA_13_0.png"
+<img src="../../images/features/notebooks/Intersubject_RSA_15_0.png"
 >
 </div>
 
@@ -679,7 +2083,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fda805a1e50&gt;</pre>
+<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x12cb16128&gt;</pre>
 </div>
 
 </div>
@@ -690,7 +2094,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Intersubject_RSA_19_1.png"
+<img src="../../images/features/notebooks/Intersubject_RSA_21_1.png"
 >
 </div>
 
@@ -738,7 +2142,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fda914c3750&gt;</pre>
+<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x12f0eb978&gt;</pre>
 </div>
 
 </div>
@@ -749,7 +2153,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Intersubject_RSA_21_1.png"
+<img src="../../images/features/notebooks/Intersubject_RSA_23_1.png"
 >
 </div>
 
@@ -831,7 +2235,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Intersubject_RSA_26_0.png"
+<img src="../../images/features/notebooks/Intersubject_RSA_28_0.png"
 >
 </div>
 
@@ -892,7 +2296,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f8135769ad0&gt;</pre>
+<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x131014e80&gt;</pre>
 </div>
 
 </div>
@@ -903,7 +2307,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Intersubject_RSA_28_2.png"
+<img src="../../images/features/notebooks/Intersubject_RSA_30_2.png"
 >
 </div>
 
@@ -1137,7 +2541,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Intersubject_RSA_41_0.png"
+<img src="../../images/features/notebooks/Intersubject_RSA_43_0.png"
 >
 </div>
 
@@ -1214,7 +2618,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;nilearn.plotting.displays.OrthoProjector at 0x7fdab0962cd0&gt;</pre>
+<pre>&lt;nilearn.plotting.displays.OrthoProjector at 0x1310a1898&gt;</pre>
 </div>
 
 </div>
@@ -1225,7 +2629,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Intersubject_RSA_45_1.png"
+<img src="../../images/features/notebooks/Intersubject_RSA_47_1.png"
 >
 </div>
 
@@ -1332,7 +2736,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>Text(0.5, 1.0, &#39;Behavioral similarity matrix after sorting&#39;)</pre>
+<pre>Text(0.5, 1, &#39;Behavioral similarity matrix after sorting&#39;)</pre>
 </div>
 
 </div>
@@ -1343,7 +2747,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Intersubject_RSA_51_1.png"
+<img src="../../images/features/notebooks/Intersubject_RSA_53_1.png"
 >
 </div>
 
@@ -1408,7 +2812,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>Text(0.5, 1.0, &#39;Behavioral similarity matrix after sorting&#39;)</pre>
+<pre>Text(0.5, 1, &#39;Behavioral similarity matrix after sorting&#39;)</pre>
 </div>
 
 </div>
@@ -1419,7 +2823,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Intersubject_RSA_53_1.png"
+<img src="../../images/features/notebooks/Intersubject_RSA_55_1.png"
 >
 </div>
 
@@ -1518,7 +2922,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;nilearn.plotting.displays.ZSlicer at 0x7fae35277750&gt;</pre>
+<pre>&lt;nilearn.plotting.displays.ZSlicer at 0x1320925c0&gt;</pre>
 </div>
 
 </div>
@@ -1529,7 +2933,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Intersubject_RSA_58_1.png"
+<img src="../../images/features/notebooks/Intersubject_RSA_60_1.png"
 >
 </div>
 
@@ -1541,7 +2945,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Intersubject_RSA_58_2.png"
+<img src="../../images/features/notebooks/Intersubject_RSA_60_2.png"
 >
 </div>
 
@@ -1614,7 +3018,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Intersubject_RSA_60_1.png"
+<img src="../../images/features/notebooks/Intersubject_RSA_62_1.png"
 >
 </div>
 
@@ -1677,7 +3081,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Intersubject_RSA_62_1.png"
+<img src="../../images/features/notebooks/Intersubject_RSA_64_1.png"
 >
 </div>
 
@@ -1760,7 +3164,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 <div class="output_png output_subarea ">
-<img src="../../images/features/notebooks/Intersubject_RSA_64_1.png"
+<img src="../../images/features/notebooks/Intersubject_RSA_66_1.png"
 >
 </div>
 
@@ -1779,7 +3183,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <h2 id="Hypothesis-Tests">Hypothesis Tests<a class="anchor-link" href="#Hypothesis-Tests"> </a></h2><p>It's easy enough to calculate a correlation coefficient between the upper triangles of two similarity matrices, but we need to be careful when assessing the statistical significance of this correlation. Parametric p-values won't work here, since the values in each matrix are not independent: each value is associated with two subjects, meaning that any two values that share a row or column are not independent. In other words, the value for (<em>i,j</em>) is not independent from the value for (<em>i,k</em>), since they share subject <em>i</em>.</p>
 <p>This means that we need to calculate significance non-parametrically, by randomly shuffling one of the matrices in a way that respects this complicated dependence structure. We can do this by simply making sure we permute rows and columns at the same time. One easy way to think about this is, in the case of the behavioral similarity matrix, it's as if we shuffled behavior scores across subjects and recalculated the behavioral similarity matrix. (Or, in the case of the brain similarity matrix, it's as if we shuffled node timeseries across subjects and recalculated the ISC matrix.) Then we correlate this shuffled matrix with the second matrix, and we do this a large number of times to build up a distribution for the correlation we might expect by chance.</p>
 <p>We will use the <code>Adjacency.similarity</code> method again, but now we will specify the number of permutation with <code>n_permute=5000</code> and the number of CPUs to use with <code>n_jobs</code>. If <code>n_job=-1</code>, the function will parallieze the permutations using all available CPUs.</p>
-<p>Note: running these permutation tests over all nodes for both models will take approximately 30 min as it requires running over 2.6 million correlations (2 models X 268 nodes X 5000 permutation).</p>
+<p>Note: running these permutation tests over all nodes for both models will take approximately 30 min as it requires running over 2.6 million correlations (2 models X 268 nodes X 5000 permutations).</p>
 
 </div>
 </div>
@@ -1796,6 +3200,10 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">isrsa_nn_r</span><span class="p">,</span> <span class="n">isrsa_nn_p</span> <span class="o">=</span> <span class="p">{},</span> <span class="p">{}</span>
 <span class="n">isrsa_annak_r</span><span class="p">,</span> <span class="n">isrsa_annak_p</span> <span class="o">=</span> <span class="p">{},</span> <span class="p">{}</span>
 <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">similarity_matrices</span><span class="p">)):</span>
+    <span class="k">if</span> <span class="n">node</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Doing node </span><span class="si">{}</span><span class="s2"> of </span><span class="si">{}</span><span class="s2">...&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">node</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">similarity_matrices</span><span class="p">)),</span> <span class="n">end</span> <span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">..&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">node</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="n">end</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="p">)</span>
     <span class="n">stats_nn</span> <span class="o">=</span> <span class="n">similarity_matrices</span><span class="p">[</span><span class="n">node</span><span class="p">]</span><span class="o">.</span><span class="n">similarity</span><span class="p">(</span><span class="n">behav_sim_nn</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;spearman&#39;</span><span class="p">,</span> <span class="n">n_permute</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span> <span class="p">)</span>
     <span class="n">isrsa_nn_r</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">=</span> <span class="n">stats_nn</span><span class="p">[</span><span class="s1">&#39;correlation&#39;</span><span class="p">]</span>
     <span class="n">isrsa_nn_p</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">=</span> <span class="n">stats_nn</span><span class="p">[</span><span class="s1">&#39;p&#39;</span><span class="p">]</span>
@@ -1812,6 +3220,20 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Doing node 1 of 268... 2. 3. 4. 5. 6. 7. 8. 9. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 20. 21. 22. 23. 24. 25. 26. 27. 28. 29. 30. 31. 32. 33. 34. 35. 36. 37. 38. 39. 40. 41. 42. 43. 44. 45. 46. 47. 48. 49. 50. 51. 52. 53. 54. 55. 56. 57. 58. 59. 60. 61. 62. 63. 64. 65. 66. 67. 68. 69. 70. 71. 72. 73. 74. 75. 76. 77. 78. 79. 80. 81. 82. 83. 84. 85. 86. 87. 88. 89. 90. 91. 92. 93. 94. 95. 96. 97. 98. 99. 100. 101. 102. 103. 104. 105. 106. 107. 108. 109. 110. 111. 112. 113. 114. 115. 116. 117. 118. 119. 120. 121. 122. 123. 124. 125. 126. 127. 128. 129. 130. 131. 132. 133. 134. 135. 136. 137. 138. 139. 140. 141. 142. 143. 144. 145. 146. 147. 148. 149. 150. 151. 152. 153. 154. 155. 156. 157. 158. 159. 160. 161. 162. 163. 164. 165. 166. 167. 168. 169. 170. 171. 172. 173. 174. 175. 176. 177. 178. 179. 180. 181. 182. 183. 184. 185. 186. 187. 188. 189. 190. 191. 192. 193. 194. 195. 196. 197. 198. 199. 200. 201. 202. 203. 204. 205. 206. 207. 208. 209. 210. 211. 212. 213. 214. 215. 216. 217. 218. 219. 220. 221. 222. 223. 224. 225. 226. 227. 228. 229. 230. 231. 232. 233. 234. 235. 236. 237. 238. 239. 240. 241. 242. 243. 244. 245. 246. 247. 248. 249. 250. 251. 252. 253. 254. 255. 256. 257. 258. 259. 260. 261. 262. 263. 264. 265. 266. 267. 268. </pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 
@@ -2150,7 +3572,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
     &lt;!-- the colormap --&gt;
     &lt;img id=&quot;colorMap&quot; class=&quot;hidden&quot; src=&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAABCAYAAAAxWXB3AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAPYQAAD2EBqD+naQAAAFFJREFUOI1j/P////8fDAwM+PBPGsv/+8PAwPAbin8hsanBp4WZGHb8p6Nl1OXzMnxmYGVggGM2JPZg5zOy0tlyapvJwsTAwMCBB7PTWJ6DAQBRAoX+RFTJXQAAAABJRU5ErkJggg==&quot; alt=&quot;colormap&quot;&gt;
     &lt;!-- another sprite image, with an overlay--&gt;
-    &lt;img id=&quot;overlayImg&quot; class=&quot;hidden&quot; src=&quot;data:image/png;base64,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AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHiBcfQF8H1/L8s8+hoAAACgo4+jLwAAAADgVYQQAAAAIIYQAgAAAMQQQgAAAIAYQggAAAAQQwgBAAAAYgghAAAAQAwhBAAAAIghhAAAAAAxhBAAAAAghhACAAAAxBBCAAAAgBhCCAAAABBDCAEAAABiCCEAAABADCEEAAAAiCGEAAAAADGEEAAAACCGEAIAAADEEEIAAACAGEIIAAAAEEMIAQAAAGIIIQAAAEAMIQQAAACIIYQAAAAAMYQQAAAAIIYQAgAAAMQQQgAAAIAYQggAAAAQQwgBAAAAYgghAAAAQAwhBAAAAIghhAAAAAAxhBAAAAAghhACAAAAxBBCAAAAgBhCCAAAABBDCAEAAABiCCEAAABADCEEAAAAiCGEAAAAADGEEAAAACCGEAIAAADEEEIAAACAGEIIAAAAEEMIAQAAAGIIIQAAAEAMIQQAAACIIYQAAAAAMYQQAAAAIIYQAgAAAMQQQgAAAIAYQggAAAAQQwgBAAAAYgghAAAAQAwhBAAAAIghhAAAAAAxhBAAAAAghhACAAAAxBBCAAAAgBhCCAAAABBDCAEAAABiCCEAAABADCEEAAAAiCGEAAAAADGEEAAAACCGEAIAAADEEEIAAACAGEIIAAAAEEMIAQAAAGIIIQAAAEAMIQQAAACIIYQAAAAAMYQQAAAAIIYQAgAAAMQQQgAAAIAYQggAAAAQQwgBAAAAYgghAAAAQAwhBAAAAIghhAAAAAAxhBAAAAAghhACAAAAxBBCAAAAgBhCCAAAABBDCAEAAABiCCEAAABADCEEAAAAiCGEAAAAADGEEAAAACDGv/n3XdhsrnnRAAAAAElFTkSuQmCC&quot; alt=&quot;overlay&quot;&gt;
+    &lt;img id=&quot;overlayImg&quot; class=&quot;hidden&quot; src=&quot;data:image/png;base64,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AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgGRj9QF43e9tm6vPAAAAAB1dVh8AAAAA4KcIIQAAAEAMIQQAAACIIYQAAAAAMYQQAAAAIIYQAgAAAMQQQgAAAIAYQggAAAAQQwgBAAAAYgghAAAAQAwhBAAAAIghhAAAAAAxhBAAAAAghhACAAAAxBBCAAAAgBhCCAAAABBDCAEAAABiCCEAAABADCEEAAAAiCGEAAAAADGEEAAAACCGEAIAAADEEEIAAACAGEIIAAAAEEMIAQAAAGIIIQAAAEAMIQQAAACIIYQAAAAAMYQQAAAAIIYQAgAAAMQQQgAAAIAYQggAAAAQQwgBAAAAYgghAAAAQAwhBAAAAIghhAAAAAAxhBAAAAAghhACAAAAxBBCAAAAgBhCCAAAABBDCAEAAABiCCEAAABADCEEAAAAiCGEAAAAADGEEAAAACCGEAIAAADEEEIAAACAGEIIAAAAEEMIAQAAAGIIIQAAAEAMIQQAAACIIYQAAAAAMYQQAAAAIIYQAgAAAMQQQgAAAIAYQggAAAAQQwgBAAAAYgghAAAAQAwhBAAAAIghhAAAAAAxhBAAAAAghhACAAAAxBBCAAAAgBhCCAAAABBDCAEAAABiCCEAAABADCEEAAAAiCGEAAAAADGEEAAAACCGEAIAAADEEEIAAACAGEIIAAAAEEMIAQAAAGIIIQAAAEAMIQQAAACIIYQAAAAAMYQQAAAAIIYQAgAAAMQQQgAAAIAYQggAAAAQQwgBAAAAYgghAAAAQAwhBAAAAIghhAAAAAAxhBAAAAAghhACAAAAxBBCAAAAgBhCCAAAABBDCAEAAABiCCEAAABAjD81ceHEfPKERwAAAABJRU5ErkJggg==&quot; alt=&quot;overlay&quot;&gt;
     &lt;/canvas&gt;
   &lt;/div&gt;
 
@@ -2168,7 +3590,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
   $( window ).on(&#x27;load&#x27;,function() {
     // Create brain slices
     var brain = brainsprite(
-    {&quot;canvas&quot;: &quot;3Dviewer&quot;, &quot;sprite&quot;: &quot;spriteImg&quot;, &quot;nbSlice&quot;: {&quot;X&quot;: 91, &quot;Y&quot;: 109, &quot;Z&quot;: 91}, &quot;overlay&quot;: {&quot;sprite&quot;: &quot;overlayImg&quot;, &quot;nbSlice&quot;: {&quot;X&quot;: 91, &quot;Y&quot;: 109, &quot;Z&quot;: 91}, &quot;opacity&quot;: 1}, &quot;colorBackground&quot;: &quot;#000000&quot;, &quot;colorFont&quot;: &quot;#FFFFFF&quot;, &quot;crosshair&quot;: true, &quot;affine&quot;: [[2.0, 0.0, 0.0, -90.0], [0.0, 2.0, 0.0, -126.0], [0.0, 0.0, 2.0, -72.0], [0.0, 0.0, 0.0, 1.0]], &quot;flagCoordinates&quot;: true, &quot;title&quot;: null, &quot;flagValue&quot;: false, &quot;numSlice&quot;: {&quot;X&quot;: 19.476973622015294, &quot;Y&quot;: 67.18092095287244, &quot;Z&quot;: 19.90789464087591}, &quot;colorMap&quot;: {&quot;img&quot;: &quot;colorMap&quot;, &quot;min&quot;: -0.45163118839263916, &quot;max&quot;: 0.45163118839263916}}
+    {&quot;canvas&quot;: &quot;3Dviewer&quot;, &quot;sprite&quot;: &quot;spriteImg&quot;, &quot;nbSlice&quot;: {&quot;X&quot;: 91, &quot;Y&quot;: 109, &quot;Z&quot;: 91}, &quot;overlay&quot;: {&quot;sprite&quot;: &quot;overlayImg&quot;, &quot;nbSlice&quot;: {&quot;X&quot;: 91, &quot;Y&quot;: 109, &quot;Z&quot;: 91}, &quot;opacity&quot;: 1}, &quot;colorBackground&quot;: &quot;#000000&quot;, &quot;colorFont&quot;: &quot;#FFFFFF&quot;, &quot;crosshair&quot;: true, &quot;affine&quot;: [[2.0, 0.0, 0.0, -90.0], [0.0, 2.0, 0.0, -126.0], [0.0, 0.0, 2.0, -72.0], [0.0, 0.0, 0.0, 1.0]], &quot;flagCoordinates&quot;: true, &quot;title&quot;: null, &quot;flagValue&quot;: false, &quot;numSlice&quot;: {&quot;X&quot;: 19.476974119577214, &quot;Y&quot;: 67.1809214592084, &quot;Z&quot;: 19.90789521411404}, &quot;colorMap&quot;: {&quot;img&quot;: &quot;colorMap&quot;, &quot;min&quot;: -0.45163118839263916, &quot;max&quot;: 0.45163118839263916}}
     );
   });
   &lt;/script&gt;
