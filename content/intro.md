@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/258305449.svg#left)](https://zenodo.org/badge/latestdoi/258305449)
+
 # Neuroimaging Analysis Methods For Naturalistic Data
 *Written by Luke Chang, Emily Finn, Jeremy Manning*
 
