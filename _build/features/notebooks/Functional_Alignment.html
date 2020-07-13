@@ -126,27 +126,9 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <span class="kn">import</span> <span class="nn">warnings</span>
 
 <span class="n">warnings</span><span class="o">.</span><span class="n">simplefilter</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
-
-<span class="n">data_dir</span> <span class="o">=</span> <span class="s1">&#39;/Volumes/Engram/Data/Sherlock/fmriprep&#39;</span>
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>/Users/lukechang/anaconda3/lib/python3.7/site-packages/sklearn/utils/deprecation.py:143: FutureWarning: The sklearn.linear_model.base module is  deprecated in version 0.22 and will be removed in version 0.24. The corresponding classes / functions should instead be imported from sklearn.linear_model. Anything that cannot be imported from sklearn.linear_model is now part of the private API.
-  warnings.warn(message, FutureWarning)
-</pre>
-</div>
-</div>
-</div>
 </div>
 </div>
 
@@ -439,7 +421,7 @@ sub-16
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>Text(0.5, 1.0, &#39;Aligned Voxel ISC: r=0.47&#39;)</pre>
+<pre>Text(0.5, 1.0, &#39;Aligned Voxel ISC: r=0.43&#39;)</pre>
 </div>
 
 </div>
@@ -501,7 +483,7 @@ sub-16
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Mean ISC: 0.42
+<pre>Mean ISC: 0.36
 </pre>
 </div>
 </div>
@@ -655,7 +637,7 @@ sub-16
 <span class="n">a</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_ticks</span><span class="p">([])</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Component Time Course (TRs)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
-<span class="n">a</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Aligned Component ISC: r=</span><span class="si">{</span><span class="n">Adjacency</span><span class="p">(</span><span class="n">voxel_aligned</span><span class="o">.</span><span class="n">corr</span><span class="p">(),</span> <span class="n">matrix_type</span><span class="o">=</span><span class="s1">&#39;similarity&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.02</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">a</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Aligned Component ISC: r=</span><span class="si">{</span><span class="n">Adjacency</span><span class="p">(</span><span class="n">component_aligned</span><span class="o">.</span><span class="n">corr</span><span class="p">(),</span> <span class="n">matrix_type</span><span class="o">=</span><span class="s1">&#39;similarity&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.02</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -668,17 +650,12 @@ sub-16
 <div class="jb_output_wrapper }}">
 <div class="output_area">
 
-<div class="output_subarea output_text output_error">
-<pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-6-01f3d8b85478&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-intense-fg ansi-bold">     10</span> 
-<span class="ansi-green-intense-fg ansi-bold">     11</span> plt<span class="ansi-blue-fg">.</span>xlabel<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#39;Component Time Course (TRs)&#39;</span><span class="ansi-blue-fg">,</span> fontsize<span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">16</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-fg">---&gt; 12</span><span class="ansi-red-fg"> </span>a<span class="ansi-blue-fg">.</span>set_title<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">f&#34;Aligned Component ISC: r={Adjacency(voxel_aligned.corr(), matrix_type=&#39;similarity&#39;).mean():.02}&#34;</span><span class="ansi-blue-fg">,</span> fontsize<span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">18</span><span class="ansi-blue-fg">)</span>
 
-<span class="ansi-red-fg">NameError</span>: name &#39;voxel_aligned&#39; is not defined</pre>
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Text(0.5, 1.0, &#39;Aligned Component ISC: r=0.45&#39;)</pre>
 </div>
+
 </div>
 </div>
 <div class="jb_output_wrapper }}">
@@ -728,6 +705,35 @@ sub-16
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Text(0.5, 1.0, &#39;Shared Response Model ISC&#39;)</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/features/notebooks/Functional_Alignment_26_1.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -771,6 +777,24 @@ sub-16
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/features/notebooks/Functional_Alignment_28_0.png"
+>
+</div>
+
+</div>
+</div>
 </div>
 </div>
 
@@ -1177,169 +1201,6 @@ sub-16
 
 </div>
 </div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">srm</span><span class="p">[</span><span class="s1">&#39;transformed&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>(1030, 100)</pre>
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">aligned_sub_srm</span><span class="p">[</span><span class="s1">&#39;transformed&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>(1030, 100)</pre>
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">nltools.simulator</span> <span class="kn">import</span> <span class="n">Simulator</span>
-
-<span class="n">sim</span> <span class="o">=</span> <span class="n">Simulator</span><span class="p">()</span>
-<span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
-<span class="n">n_reps</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="n">s1</span> <span class="o">=</span> <span class="n">create_sphere</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">radius</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">d1</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">create_data</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">reps</span><span class="o">=</span><span class="n">n_reps</span><span class="p">,</span> <span class="n">output_dir</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span><span class="o">.</span><span class="n">apply_mask</span><span class="p">(</span><span class="n">s1</span><span class="p">)</span>
-<span class="n">d2</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">create_data</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">reps</span><span class="o">=</span><span class="n">n_reps</span><span class="p">,</span> <span class="n">output_dir</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span><span class="o">.</span><span class="n">apply_mask</span><span class="p">(</span><span class="n">s1</span><span class="p">)</span>
-<span class="n">d3</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">create_data</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">reps</span><span class="o">=</span><span class="n">n_reps</span><span class="p">,</span> <span class="n">output_dir</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span><span class="o">.</span><span class="n">apply_mask</span><span class="p">(</span><span class="n">s1</span><span class="p">)</span>
-<span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">d1</span><span class="p">,</span> <span class="n">d2</span><span class="p">,</span> <span class="n">d3</span><span class="p">]</span>
-
-<span class="c1"># Test deterministic brain_data</span>
-<span class="n">out</span> <span class="o">=</span> <span class="n">align</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;deterministic_srm&#39;</span><span class="p">)</span>
-
-<span class="n">bout</span> <span class="o">=</span> <span class="n">d1</span><span class="o">.</span><span class="n">align</span><span class="p">(</span><span class="n">out</span><span class="p">[</span><span class="s1">&#39;common_model&#39;</span><span class="p">],</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;deterministic_srm&#39;</span><span class="p">)</span>
-<span class="k">assert</span> <span class="n">d1</span><span class="o">.</span><span class="n">shape</span><span class="p">()</span> <span class="o">==</span> <span class="n">bout</span><span class="p">[</span><span class="s1">&#39;transformed&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span>
-<span class="k">assert</span> <span class="n">d1</span><span class="o">.</span><span class="n">shape</span><span class="p">()</span> <span class="o">==</span> <span class="n">bout</span><span class="p">[</span><span class="s1">&#39;common_model&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span>
-<span class="k">assert</span> <span class="n">d1</span><span class="o">.</span><span class="n">shape</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">bout</span><span class="p">[</span><span class="s1">&#39;transformation_matrix&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">btransformed</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">d1</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">bout</span><span class="p">[</span><span class="s1">&#39;transformation_matrix&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
-<span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_almost_equal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">bout</span><span class="p">[</span><span class="s1">&#39;transformed&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span> <span class="o">-</span> <span class="n">btransformed</span><span class="p">))</span>
-
-<span class="c1"># Test probabilistic brain_data</span>
-<span class="n">bout</span> <span class="o">=</span> <span class="n">d1</span><span class="o">.</span><span class="n">align</span><span class="p">(</span><span class="n">out</span><span class="p">[</span><span class="s1">&#39;common_model&#39;</span><span class="p">],</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;probabilistic_srm&#39;</span><span class="p">)</span>
-<span class="k">assert</span> <span class="n">d1</span><span class="o">.</span><span class="n">shape</span><span class="p">()</span> <span class="o">==</span> <span class="n">bout</span><span class="p">[</span><span class="s1">&#39;transformed&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span>
-<span class="k">assert</span> <span class="n">d1</span><span class="o">.</span><span class="n">shape</span><span class="p">()</span> <span class="o">==</span> <span class="n">bout</span><span class="p">[</span><span class="s1">&#39;common_model&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span>
-<span class="k">assert</span> <span class="n">d1</span><span class="o">.</span><span class="n">shape</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">bout</span><span class="p">[</span><span class="s1">&#39;transformation_matrix&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">btransformed</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">d1</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">bout</span><span class="p">[</span><span class="s1">&#39;transformation_matrix&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
-<span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_almost_equal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">bout</span><span class="p">[</span><span class="s1">&#39;transformed&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="o">-</span><span class="n">btransformed</span><span class="p">))</span>
-
-<span class="c1"># Test procrustes brain_data</span>
-<span class="n">out</span> <span class="o">=</span> <span class="n">align</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;procrustes&#39;</span><span class="p">)</span>
-<span class="n">centered</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-<span class="n">transformed</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">centered</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">centered</span><span class="p">),</span> <span class="n">out</span><span class="p">[</span><span class="s1">&#39;transformation_matrix&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">)</span><span class="o">*</span><span class="n">out</span><span class="p">[</span><span class="s1">&#39;scale&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
-
-<span class="n">bout</span> <span class="o">=</span> <span class="n">d1</span><span class="o">.</span><span class="n">align</span><span class="p">(</span><span class="n">out</span><span class="p">[</span><span class="s1">&#39;common_model&#39;</span><span class="p">],</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;procrustes&#39;</span><span class="p">)</span>
-<span class="k">assert</span> <span class="n">d1</span><span class="o">.</span><span class="n">shape</span><span class="p">()</span> <span class="o">==</span> <span class="n">bout</span><span class="p">[</span><span class="s1">&#39;transformed&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">()</span>
-<span class="k">assert</span> <span class="n">d1</span><span class="o">.</span><span class="n">shape</span><span class="p">()</span> <span class="o">==</span> <span class="n">bout</span><span class="p">[</span><span class="s1">&#39;common_model&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">()</span>
-<span class="k">assert</span> <span class="n">d1</span><span class="o">.</span><span class="n">shape</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">bout</span><span class="p">[</span><span class="s1">&#39;transformation_matrix&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">centered</span> <span class="o">=</span> <span class="n">d1</span><span class="o">.</span><span class="n">data</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">d1</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-<span class="n">btransformed</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">centered</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">centered</span><span class="p">),</span> <span class="n">bout</span><span class="p">[</span><span class="s1">&#39;transformation_matrix&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">)</span><span class="o">*</span><span class="n">bout</span><span class="p">[</span><span class="s1">&#39;scale&#39;</span><span class="p">])</span>
-<span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_almost_equal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">bout</span><span class="p">[</span><span class="s1">&#39;transformed&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="o">-</span><span class="n">btransformed</span><span class="p">),</span> <span class="n">decimal</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
-<span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_almost_equal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">out</span><span class="p">[</span><span class="s1">&#39;transformed&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">data</span> <span class="o">-</span> <span class="n">bout</span><span class="p">[</span><span class="s1">&#39;transformed&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">))</span>
-
-
-<span class="c1"># Test over time</span>
-<span class="n">sim</span> <span class="o">=</span> <span class="n">Simulator</span><span class="p">()</span>
-<span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
-<span class="n">n_reps</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="n">s1</span> <span class="o">=</span> <span class="n">create_sphere</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">radius</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
-<span class="n">d1</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">create_data</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">reps</span><span class="o">=</span><span class="n">n_reps</span><span class="p">,</span> <span class="n">output_dir</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span><span class="o">.</span><span class="n">apply_mask</span><span class="p">(</span><span class="n">s1</span><span class="p">)</span>
-<span class="n">d2</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">create_data</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">reps</span><span class="o">=</span><span class="n">n_reps</span><span class="p">,</span> <span class="n">output_dir</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span><span class="o">.</span><span class="n">apply_mask</span><span class="p">(</span><span class="n">s1</span><span class="p">)</span>
-<span class="n">d3</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">create_data</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">reps</span><span class="o">=</span><span class="n">n_reps</span><span class="p">,</span> <span class="n">output_dir</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span><span class="o">.</span><span class="n">apply_mask</span><span class="p">(</span><span class="n">s1</span><span class="p">)</span>
-<span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">d1</span><span class="p">,</span> <span class="n">d2</span><span class="p">,</span> <span class="n">d3</span><span class="p">]</span>
-
-<span class="n">out</span> <span class="o">=</span> <span class="n">align</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;deterministic_srm&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">bout</span> <span class="o">=</span> <span class="n">d1</span><span class="o">.</span><span class="n">align</span><span class="p">(</span><span class="n">out</span><span class="p">[</span><span class="s1">&#39;common_model&#39;</span><span class="p">],</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;deterministic_srm&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="k">assert</span> <span class="n">d1</span><span class="o">.</span><span class="n">shape</span><span class="p">()</span> <span class="o">==</span> <span class="n">bout</span><span class="p">[</span><span class="s1">&#39;transformed&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span>
-<span class="k">assert</span> <span class="n">d1</span><span class="o">.</span><span class="n">shape</span><span class="p">()</span> <span class="o">==</span> <span class="n">bout</span><span class="p">[</span><span class="s1">&#39;common_model&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span>
-<span class="k">assert</span> <span class="n">d1</span><span class="o">.</span><span class="n">shape</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">bout</span><span class="p">[</span><span class="s1">&#39;transformation_matrix&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">btransformed</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">d1</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">bout</span><span class="p">[</span><span class="s1">&#39;transformation_matrix&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
-<span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_almost_equal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">bout</span><span class="p">[</span><span class="s1">&#39;transformed&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="o">-</span><span class="n">btransformed</span><span class="o">.</span><span class="n">T</span><span class="p">))</span>
-
-<span class="n">out</span> <span class="o">=</span> <span class="n">align</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;probabilistic_srm&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">bout</span> <span class="o">=</span> <span class="n">d1</span><span class="o">.</span><span class="n">align</span><span class="p">(</span><span class="n">out</span><span class="p">[</span><span class="s1">&#39;common_model&#39;</span><span class="p">],</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;probabilistic_srm&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="k">assert</span> <span class="n">d1</span><span class="o">.</span><span class="n">shape</span><span class="p">()</span> <span class="o">==</span> <span class="n">bout</span><span class="p">[</span><span class="s1">&#39;transformed&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span>
-<span class="k">assert</span> <span class="n">d1</span><span class="o">.</span><span class="n">shape</span><span class="p">()</span> <span class="o">==</span> <span class="n">bout</span><span class="p">[</span><span class="s1">&#39;common_model&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span>
-<span class="k">assert</span> <span class="n">d1</span><span class="o">.</span><span class="n">shape</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">bout</span><span class="p">[</span><span class="s1">&#39;transformation_matrix&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">btransformed</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">d1</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">bout</span><span class="p">[</span><span class="s1">&#39;transformation_matrix&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
-<span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_almost_equal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">bout</span><span class="p">[</span><span class="s1">&#39;transformed&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="o">-</span><span class="n">btransformed</span><span class="o">.</span><span class="n">T</span><span class="p">))</span>
-
-<span class="n">out</span> <span class="o">=</span> <span class="n">align</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;procrustes&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">bout</span> <span class="o">=</span> <span class="n">d1</span><span class="o">.</span><span class="n">align</span><span class="p">(</span><span class="n">out</span><span class="p">[</span><span class="s1">&#39;common_model&#39;</span><span class="p">],</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;procrustes&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="k">assert</span> <span class="n">d1</span><span class="o">.</span><span class="n">shape</span><span class="p">()</span> <span class="o">==</span> <span class="n">bout</span><span class="p">[</span><span class="s1">&#39;transformed&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">()</span>
-<span class="k">assert</span> <span class="n">d1</span><span class="o">.</span><span class="n">shape</span><span class="p">()</span> <span class="o">==</span> <span class="n">bout</span><span class="p">[</span><span class="s1">&#39;common_model&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">()</span>
-<span class="k">assert</span> <span class="n">d1</span><span class="o">.</span><span class="n">shape</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">bout</span><span class="p">[</span><span class="s1">&#39;transformation_matrix&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">centered</span> <span class="o">=</span> <span class="n">d1</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">T</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">d1</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-<span class="n">btransformed</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">centered</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">centered</span><span class="p">),</span> <span class="n">bout</span><span class="p">[</span><span class="s1">&#39;transformation_matrix&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">)</span><span class="o">*</span><span class="n">bout</span><span class="p">[</span><span class="s1">&#39;scale&#39;</span><span class="p">])</span>
-<span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_almost_equal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">bout</span><span class="p">[</span><span class="s1">&#39;transformed&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="o">-</span><span class="n">btransformed</span><span class="o">.</span><span class="n">T</span><span class="p">),</span> <span class="n">decimal</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
-<span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_almost_equal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">out</span><span class="p">[</span><span class="s1">&#39;transformed&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="o">-</span><span class="n">bout</span><span class="p">[</span><span class="s1">&#39;transformed&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">))</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
 </div>
 </div>
 
