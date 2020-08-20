@@ -13,7 +13,7 @@ prev_page:
 next_page:
   url: /features/notebooks/Event_Segmentation.html
 suffix: .ipynb
-search: similarity subjects data brain using subject com isc www et al our matrix rsa behavioral nodes values s org also run representational behavior similar across tutorial e lets distance j article matrices well model science naturalistic between high low different where not scorers correlation sciencedirect pii score its analysis structure p same while should results scale both voxels calculate x inter nature activity articles scores since into participants r node m any sure html level individual take another paranoia want metric euclidean case t models higher compute g shared responses during regions scoring subj method above finn chang analyses approaches
+search: similarity subjects data brain using com subject www isc our et al rsa matrix org behavioral s nodes values also run representational across behavior tutorial similar article e lets distance j science naturalistic matrices well model between high low different where sciencedirect pii not scorers correlation score its analysis while individual structure scale p same should results both voxels calculate x inter nature activity html another articles scores since into participants r node m approaches any sure level take paranoia want metric euclidean case t models higher spatial functional compute g shared features notebooks responses during regions approach scoring subj
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -21,7 +21,8 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
     <main class="jupyter-page">
     <div id="page-info"><div id="page-title">Intersubject Representational Similarity Analysis</div>
 </div>
-    <div class="jb_cell">
+    
+<div class="jb_cell">
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -51,12 +52,12 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">YouTubeVideo</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="k">import</span> <span class="n">YouTubeVideo</span>
 
 <span class="n">YouTubeVideo</span><span class="p">(</span><span class="s1">&#39;vDrMuFJfsv8&#39;</span><span class="p">)</span>
 </pre></div>
 
-    </div>
+</div>
 </div>
 </div>
 
@@ -69,14 +70,14 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 
-<iframe
-    width="400"
-    height="300"
-    src="https://www.youtube.com/embed/vDrMuFJfsv8"
-    frameborder="0"
-    allowfullscreen
-></iframe>
-
+        <iframe
+            width="400"
+            height="300"
+            src="https://www.youtube.com/embed/vDrMuFJfsv8"
+            frameborder="0"
+            allowfullscreen
+        ></iframe>
+        
 </div>
 
 </div>
@@ -109,7 +110,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">YouTubeVideo</span><span class="p">(</span><span class="s1">&#39;roG9gkTOx_U&#39;</span><span class="p">)</span>
 </pre></div>
 
-    </div>
+</div>
 </div>
 </div>
 
@@ -122,14 +123,14 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 
-<iframe
-    width="400"
-    height="300"
-    src="https://www.youtube.com/embed/roG9gkTOx_U"
-    frameborder="0"
-    allowfullscreen
-></iframe>
-
+        <iframe
+            width="400"
+            height="300"
+            src="https://www.youtube.com/embed/roG9gkTOx_U"
+            frameborder="0"
+            allowfullscreen
+        ></iframe>
+        
 </div>
 
 </div>
@@ -175,12 +176,12 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">glob</span>
-<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="k">import</span> <span class="n">Path</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">rankdata</span><span class="p">,</span> <span class="n">ttest_rel</span><span class="p">,</span> <span class="n">ttest_1samp</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="k">import</span> <span class="n">rankdata</span><span class="p">,</span> <span class="n">ttest_rel</span><span class="p">,</span> <span class="n">ttest_1samp</span>
 
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="k">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 <span class="kn">import</span> <span class="nn">matplotlib.lines</span> <span class="k">as</span> <span class="nn">mlines</span>
 <span class="kn">import</span> <span class="nn">matplotlib.transforms</span> <span class="k">as</span> <span class="nn">mtransforms</span>
 
@@ -188,23 +189,23 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 
 <span class="kn">import</span> <span class="nn">nibabel</span> <span class="k">as</span> <span class="nn">nib</span>
-<span class="kn">from</span> <span class="nn">nilearn.input_data</span> <span class="kn">import</span> <span class="n">NiftiLabelsMasker</span>
-<span class="kn">from</span> <span class="nn">nilearn.plotting</span> <span class="kn">import</span> <span class="n">plot_glass_brain</span><span class="p">,</span> <span class="n">plot_stat_map</span><span class="p">,</span> <span class="n">view_img</span><span class="p">,</span> <span class="n">view_img_on_surf</span>
+<span class="kn">from</span> <span class="nn">nilearn.input_data</span> <span class="k">import</span> <span class="n">NiftiLabelsMasker</span>
+<span class="kn">from</span> <span class="nn">nilearn.plotting</span> <span class="k">import</span> <span class="n">plot_glass_brain</span><span class="p">,</span> <span class="n">plot_stat_map</span><span class="p">,</span> <span class="n">view_img</span><span class="p">,</span> <span class="n">view_img_on_surf</span>
 
-<span class="kn">from</span> <span class="nn">nltools.data</span> <span class="kn">import</span> <span class="n">Brain_Data</span><span class="p">,</span> <span class="n">Adjacency</span>
-<span class="kn">from</span> <span class="nn">nltools.mask</span> <span class="kn">import</span> <span class="n">roi_to_brain</span><span class="p">,</span> <span class="n">expand_mask</span>
-<span class="kn">from</span> <span class="nn">nltools.stats</span> <span class="kn">import</span> <span class="n">fdr</span><span class="p">,</span> <span class="n">threshold</span>
+<span class="kn">from</span> <span class="nn">nltools.data</span> <span class="k">import</span> <span class="n">Brain_Data</span><span class="p">,</span> <span class="n">Adjacency</span>
+<span class="kn">from</span> <span class="nn">nltools.mask</span> <span class="k">import</span> <span class="n">roi_to_brain</span><span class="p">,</span> <span class="n">expand_mask</span>
+<span class="kn">from</span> <span class="nn">nltools.stats</span> <span class="k">import</span> <span class="n">fdr</span><span class="p">,</span> <span class="n">threshold</span>
 
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">pairwise_distances</span>
-<span class="kn">from</span> <span class="nn">sklearn.utils</span> <span class="kn">import</span> <span class="n">check_random_state</span>
-<span class="kn">from</span> <span class="nn">sklearn.manifold</span> <span class="kn">import</span> <span class="n">TSNE</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="k">import</span> <span class="n">pairwise_distances</span>
+<span class="kn">from</span> <span class="nn">sklearn.utils</span> <span class="k">import</span> <span class="n">check_random_state</span>
+<span class="kn">from</span> <span class="nn">sklearn.manifold</span> <span class="k">import</span> <span class="n">TSNE</span>
 
 <span class="kn">import</span> <span class="nn">datalad.api</span> <span class="k">as</span> <span class="nn">dl</span>
 
 <span class="o">%</span><span class="k">matplotlib</span> inline
 </pre></div>
 
-    </div>
+</div>
 </div>
 </div>
 
@@ -251,7 +252,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <span class="n">result</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="s1">&#39;participants.tsv&#39;</span><span class="p">))</span>
 </pre></div>
 
-    </div>
+</div>
 </div>
 </div>
 
@@ -266,10 +267,10 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
  
  
-<div id="260e1f7b-a80e-4b33-a554-8101ff0df7fd"></div>
+<div id="9e696b04-f399-46b5-a026-13d69760ebe8"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#260e1f7b-a80e-4b33-a554-8101ff0df7fd');
+var element = $('#9e696b04-f399-46b5-a026-13d69760ebe8');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -286,10 +287,10 @@ var element = $('#260e1f7b-a80e-4b33-a554-8101ff0df7fd');
 
  
  
-<div id="cb2b54f6-9d51-45bd-8f98-a53b8b751252"></div>
+<div id="2e7ca9ea-e493-4ab2-a22b-329e8f048adf"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#cb2b54f6-9d51-45bd-8f98-a53b8b751252');
+var element = $('#2e7ca9ea-e493-4ab2-a22b-329e8f048adf');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -306,10 +307,10 @@ var element = $('#cb2b54f6-9d51-45bd-8f98-a53b8b751252');
 
  
  
-<div id="202059de-47b3-4ef1-8cc5-8208125fe432"></div>
+<div id="aca7beed-3cab-40c0-bb7e-c4aa33ff3949"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#202059de-47b3-4ef1-8cc5-8208125fe432');
+var element = $('#aca7beed-3cab-40c0-bb7e-c4aa33ff3949');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -326,10 +327,10 @@ var element = $('#202059de-47b3-4ef1-8cc5-8208125fe432');
 
  
  
-<div id="2ff3fde9-d04e-4a4d-999d-4ab3f804c777"></div>
+<div id="0ef193d1-e86c-4b77-80ef-e4424064d9af"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#2ff3fde9-d04e-4a4d-999d-4ab3f804c777');
+var element = $('#0ef193d1-e86c-4b77-80ef-e4424064d9af');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -346,10 +347,10 @@ var element = $('#2ff3fde9-d04e-4a4d-999d-4ab3f804c777');
 
  
  
-<div id="33744885-4b5e-4749-ab8f-04e26aa71835"></div>
+<div id="b20d9dd6-faa5-4446-b2f0-73acee14cd50"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#33744885-4b5e-4749-ab8f-04e26aa71835');
+var element = $('#b20d9dd6-faa5-4446-b2f0-73acee14cd50');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -366,10 +367,10 @@ var element = $('#33744885-4b5e-4749-ab8f-04e26aa71835');
 
  
  
-<div id="b3ab9c53-178e-4824-a073-3953ae844870"></div>
+<div id="7d4186eb-e8da-4c00-b938-84dfafcf19e4"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#b3ab9c53-178e-4824-a073-3953ae844870');
+var element = $('#7d4186eb-e8da-4c00-b938-84dfafcf19e4');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -386,10 +387,10 @@ var element = $('#b3ab9c53-178e-4824-a073-3953ae844870');
 
  
  
-<div id="e45165a0-c728-4dcb-b1d7-1502e3f44162"></div>
+<div id="b111495c-d03c-4974-9f83-2977664efbed"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#e45165a0-c728-4dcb-b1d7-1502e3f44162');
+var element = $('#b111495c-d03c-4974-9f83-2977664efbed');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -406,10 +407,10 @@ var element = $('#e45165a0-c728-4dcb-b1d7-1502e3f44162');
 
  
  
-<div id="6777910e-1e2e-4c1c-888b-2c6078251e34"></div>
+<div id="a2298a74-99fa-4df4-83e1-051f21f3042b"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#6777910e-1e2e-4c1c-888b-2c6078251e34');
+var element = $('#a2298a74-99fa-4df4-83e1-051f21f3042b');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -426,10 +427,10 @@ var element = $('#6777910e-1e2e-4c1c-888b-2c6078251e34');
 
  
  
-<div id="fa69014f-6fbf-4fc5-a897-ae3e70fd76d4"></div>
+<div id="cb826aa3-efbb-4c0b-8cf8-02222a1395ab"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#fa69014f-6fbf-4fc5-a897-ae3e70fd76d4');
+var element = $('#cb826aa3-efbb-4c0b-8cf8-02222a1395ab');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -446,10 +447,10 @@ var element = $('#fa69014f-6fbf-4fc5-a897-ae3e70fd76d4');
 
  
  
-<div id="075fd7a7-e653-4b0a-9d66-931081acc619"></div>
+<div id="3b48f1ea-6fb4-46f9-a5bf-8d8b6ee88d1d"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#075fd7a7-e653-4b0a-9d66-931081acc619');
+var element = $('#3b48f1ea-6fb4-46f9-a5bf-8d8b6ee88d1d');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -466,10 +467,10 @@ var element = $('#075fd7a7-e653-4b0a-9d66-931081acc619');
 
  
  
-<div id="1144d54b-c014-4977-a64f-7c4e38f86720"></div>
+<div id="f3de0115-cf8a-45ca-ac2c-4cd7c8e8ca8a"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#1144d54b-c014-4977-a64f-7c4e38f86720');
+var element = $('#f3de0115-cf8a-45ca-ac2c-4cd7c8e8ca8a');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -486,10 +487,10 @@ var element = $('#1144d54b-c014-4977-a64f-7c4e38f86720');
 
  
  
-<div id="c8a5b153-b8c6-480a-9fcf-c026e80cb68f"></div>
+<div id="c4175a57-545d-4fac-ae58-928b34d72370"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#c8a5b153-b8c6-480a-9fcf-c026e80cb68f');
+var element = $('#c4175a57-545d-4fac-ae58-928b34d72370');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -506,10 +507,10 @@ var element = $('#c8a5b153-b8c6-480a-9fcf-c026e80cb68f');
 
  
  
-<div id="021b938b-0f66-40cc-a52d-07598b16a34d"></div>
+<div id="0b541e7e-ca02-45ac-9011-29ce78d743b2"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#021b938b-0f66-40cc-a52d-07598b16a34d');
+var element = $('#0b541e7e-ca02-45ac-9011-29ce78d743b2');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -526,10 +527,10 @@ var element = $('#021b938b-0f66-40cc-a52d-07598b16a34d');
 
  
  
-<div id="2b801eae-04be-4547-8690-4ce86cb1d595"></div>
+<div id="abdabea6-234d-475b-a53a-e7fd4fa60002"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#2b801eae-04be-4547-8690-4ce86cb1d595');
+var element = $('#abdabea6-234d-475b-a53a-e7fd4fa60002');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -546,10 +547,10 @@ var element = $('#2b801eae-04be-4547-8690-4ce86cb1d595');
 
  
  
-<div id="a0f74c08-cf26-483c-a1fa-d99e5225ecaf"></div>
+<div id="10bb442d-ba0c-4a44-a904-57112a909297"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#a0f74c08-cf26-483c-a1fa-d99e5225ecaf');
+var element = $('#10bb442d-ba0c-4a44-a904-57112a909297');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -566,10 +567,10 @@ var element = $('#a0f74c08-cf26-483c-a1fa-d99e5225ecaf');
 
  
  
-<div id="fe411ef3-08e1-4520-9e5f-95562dd0913f"></div>
+<div id="72ee420f-30da-46eb-92dd-9a0db45142dc"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#fe411ef3-08e1-4520-9e5f-95562dd0913f');
+var element = $('#72ee420f-30da-46eb-92dd-9a0db45142dc');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -586,10 +587,10 @@ var element = $('#fe411ef3-08e1-4520-9e5f-95562dd0913f');
 
  
  
-<div id="2f63b4eb-c690-4f41-b4ab-67b074dfeb20"></div>
+<div id="e587c053-94d9-4e70-a0a4-7dee4890bc16"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#2f63b4eb-c690-4f41-b4ab-67b074dfeb20');
+var element = $('#e587c053-94d9-4e70-a0a4-7dee4890bc16');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -606,10 +607,10 @@ var element = $('#2f63b4eb-c690-4f41-b4ab-67b074dfeb20');
 
  
  
-<div id="690e6360-2032-4086-a5b1-efee43677a65"></div>
+<div id="96bf36c0-a16e-4e66-864f-4c541830070f"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#690e6360-2032-4086-a5b1-efee43677a65');
+var element = $('#96bf36c0-a16e-4e66-864f-4c541830070f');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -626,10 +627,10 @@ var element = $('#690e6360-2032-4086-a5b1-efee43677a65');
 
  
  
-<div id="5b185437-ea93-4921-9125-009a6c21387a"></div>
+<div id="64929838-c9a0-4619-8e2f-36bec92b0f2f"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#5b185437-ea93-4921-9125-009a6c21387a');
+var element = $('#64929838-c9a0-4619-8e2f-36bec92b0f2f');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -646,10 +647,10 @@ var element = $('#5b185437-ea93-4921-9125-009a6c21387a');
 
  
  
-<div id="c4f1bf9e-297d-42fd-ab10-f84158420f0d"></div>
+<div id="4a172ff5-837d-44a9-ba2d-ec26db054868"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#c4f1bf9e-297d-42fd-ab10-f84158420f0d');
+var element = $('#4a172ff5-837d-44a9-ba2d-ec26db054868');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -666,10 +667,10 @@ var element = $('#c4f1bf9e-297d-42fd-ab10-f84158420f0d');
 
  
  
-<div id="22083382-d228-44d0-91e7-ed75a78b0c88"></div>
+<div id="77f9c0fc-6291-4ae6-9901-73a54269e539"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#22083382-d228-44d0-91e7-ed75a78b0c88');
+var element = $('#77f9c0fc-6291-4ae6-9901-73a54269e539');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -686,10 +687,10 @@ var element = $('#22083382-d228-44d0-91e7-ed75a78b0c88');
 
  
  
-<div id="00ba5919-622e-4e2c-bfc8-8d86f50d9cee"></div>
+<div id="73d87f30-8779-4e19-b722-284984a0405f"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#00ba5919-622e-4e2c-bfc8-8d86f50d9cee');
+var element = $('#73d87f30-8779-4e19-b722-284984a0405f');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -706,10 +707,10 @@ var element = $('#00ba5919-622e-4e2c-bfc8-8d86f50d9cee');
 
  
  
-<div id="1b4038ea-cf6f-4ffc-b22f-ccbc8bc1f8fb"></div>
+<div id="7264f523-20e6-4386-8dd9-d35059dad014"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#1b4038ea-cf6f-4ffc-b22f-ccbc8bc1f8fb');
+var element = $('#7264f523-20e6-4386-8dd9-d35059dad014');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -726,10 +727,10 @@ var element = $('#1b4038ea-cf6f-4ffc-b22f-ccbc8bc1f8fb');
 
  
  
-<div id="d3a60ccd-ed20-4709-90d0-2eec79cd849d"></div>
+<div id="4d38def7-b6aa-4375-b2bf-fdf4e1b0dc83"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#d3a60ccd-ed20-4709-90d0-2eec79cd849d');
+var element = $('#4d38def7-b6aa-4375-b2bf-fdf4e1b0dc83');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -746,10 +747,10 @@ var element = $('#d3a60ccd-ed20-4709-90d0-2eec79cd849d');
 
  
  
-<div id="a81d2c1f-d970-4db6-a62d-3ca1287dcbc0"></div>
+<div id="9434174b-622a-48b3-a632-11a6402d849c"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#a81d2c1f-d970-4db6-a62d-3ca1287dcbc0');
+var element = $('#9434174b-622a-48b3-a632-11a6402d849c');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -766,10 +767,10 @@ var element = $('#a81d2c1f-d970-4db6-a62d-3ca1287dcbc0');
 
  
  
-<div id="e631d515-d573-4815-9a0c-e164843cd79a"></div>
+<div id="2e8864c2-617b-4a12-b6c8-ecfa991b1543"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#e631d515-d573-4815-9a0c-e164843cd79a');
+var element = $('#2e8864c2-617b-4a12-b6c8-ecfa991b1543');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -786,10 +787,10 @@ var element = $('#e631d515-d573-4815-9a0c-e164843cd79a');
 
  
  
-<div id="21790401-6d0f-41b1-aa78-04d792335d47"></div>
+<div id="1943ab6d-c1e7-417d-90f8-0af9245330af"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#21790401-6d0f-41b1-aa78-04d792335d47');
+var element = $('#1943ab6d-c1e7-417d-90f8-0af9245330af');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -806,10 +807,10 @@ var element = $('#21790401-6d0f-41b1-aa78-04d792335d47');
 
  
  
-<div id="5b28e9ae-bf5d-4e50-882c-cd5fbc430d1e"></div>
+<div id="bff7362a-c1d4-4ec0-8c92-949f3f1a4d98"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#5b28e9ae-bf5d-4e50-882c-cd5fbc430d1e');
+var element = $('#bff7362a-c1d4-4ec0-8c92-949f3f1a4d98');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -826,10 +827,10 @@ var element = $('#5b28e9ae-bf5d-4e50-882c-cd5fbc430d1e');
 
  
  
-<div id="0b4b32c9-2ed4-4eae-89ee-e29300ea2e19"></div>
+<div id="00cb97de-833f-4f6a-a4dc-3748c867db5e"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#0b4b32c9-2ed4-4eae-89ee-e29300ea2e19');
+var element = $('#00cb97de-833f-4f6a-a4dc-3748c867db5e');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -846,10 +847,10 @@ var element = $('#0b4b32c9-2ed4-4eae-89ee-e29300ea2e19');
 
  
  
-<div id="e5efe7df-388f-47bb-bd6b-f065949578f5"></div>
+<div id="396de8b2-f500-4eee-9122-a4658472625e"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#e5efe7df-388f-47bb-bd6b-f065949578f5');
+var element = $('#396de8b2-f500-4eee-9122-a4658472625e');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -866,10 +867,10 @@ var element = $('#e5efe7df-388f-47bb-bd6b-f065949578f5');
 
  
  
-<div id="e5eba206-70ba-4d14-87dd-edabfec6ec9d"></div>
+<div id="63812bfb-6e16-4753-b215-f4fa40572f52"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#e5eba206-70ba-4d14-87dd-edabfec6ec9d');
+var element = $('#63812bfb-6e16-4753-b215-f4fa40572f52');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -886,10 +887,10 @@ var element = $('#e5eba206-70ba-4d14-87dd-edabfec6ec9d');
 
  
  
-<div id="4ddcb5f9-aafc-4bdf-a5b8-dd3aa3c6ddd7"></div>
+<div id="f284b7bd-7283-400c-984b-9a093bfe2066"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#4ddcb5f9-aafc-4bdf-a5b8-dd3aa3c6ddd7');
+var element = $('#f284b7bd-7283-400c-984b-9a093bfe2066');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -906,10 +907,10 @@ var element = $('#4ddcb5f9-aafc-4bdf-a5b8-dd3aa3c6ddd7');
 
  
  
-<div id="37471580-e532-464b-8b7b-77596c639bdb"></div>
+<div id="05ef5608-e860-4df3-98d1-28d74d647317"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#37471580-e532-464b-8b7b-77596c639bdb');
+var element = $('#05ef5608-e860-4df3-98d1-28d74d647317');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -926,10 +927,10 @@ var element = $('#37471580-e532-464b-8b7b-77596c639bdb');
 
  
  
-<div id="0cd6c1f4-ef9f-4f76-a01b-0f20657575f4"></div>
+<div id="39a59411-9f5d-4938-86fe-1030e63f0e95"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#0cd6c1f4-ef9f-4f76-a01b-0f20657575f4');
+var element = $('#39a59411-9f5d-4938-86fe-1030e63f0e95');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -946,10 +947,10 @@ var element = $('#0cd6c1f4-ef9f-4f76-a01b-0f20657575f4');
 
  
  
-<div id="99689fe5-2317-4d83-a74b-69f9ca2164e2"></div>
+<div id="3dbacdc0-7958-44c7-97e3-7ba54df58423"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#99689fe5-2317-4d83-a74b-69f9ca2164e2');
+var element = $('#3dbacdc0-7958-44c7-97e3-7ba54df58423');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -966,10 +967,10 @@ var element = $('#99689fe5-2317-4d83-a74b-69f9ca2164e2');
 
  
  
-<div id="9e2c10dc-f7b8-4a99-9a32-3426f209550c"></div>
+<div id="9d96cf7b-6dd2-4ddb-a102-2c875cb2c5d6"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#9e2c10dc-f7b8-4a99-9a32-3426f209550c');
+var element = $('#9d96cf7b-6dd2-4ddb-a102-2c875cb2c5d6');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -986,10 +987,10 @@ var element = $('#9e2c10dc-f7b8-4a99-9a32-3426f209550c');
 
  
  
-<div id="d93bf03a-ebe0-4cf9-b10c-1b77dd24fd4b"></div>
+<div id="797f982c-3344-473b-be44-118a457e7e84"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#d93bf03a-ebe0-4cf9-b10c-1b77dd24fd4b');
+var element = $('#797f982c-3344-473b-be44-118a457e7e84');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -1006,10 +1007,10 @@ var element = $('#d93bf03a-ebe0-4cf9-b10c-1b77dd24fd4b');
 
  
  
-<div id="6f60697f-b31f-4975-a3ee-7c5b77cf8f2a"></div>
+<div id="b07ab770-f690-4030-adf2-c83a4b1da4bb"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#6f60697f-b31f-4975-a3ee-7c5b77cf8f2a');
+var element = $('#b07ab770-f690-4030-adf2-c83a4b1da4bb');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -1026,10 +1027,10 @@ var element = $('#6f60697f-b31f-4975-a3ee-7c5b77cf8f2a');
 
  
  
-<div id="d733fa43-bc7e-4f95-a486-b9a6f825e48f"></div>
+<div id="7564d683-d9c9-4a61-9f9e-770068e0627e"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#d733fa43-bc7e-4f95-a486-b9a6f825e48f');
+var element = $('#7564d683-d9c9-4a61-9f9e-770068e0627e');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -1046,10 +1047,10 @@ var element = $('#d733fa43-bc7e-4f95-a486-b9a6f825e48f');
 
  
  
-<div id="ae7fa255-a183-4a62-b910-e5f79bde5dd8"></div>
+<div id="99d9a16c-6ced-48d7-a57a-f7dc86dfe73d"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#ae7fa255-a183-4a62-b910-e5f79bde5dd8');
+var element = $('#99d9a16c-6ced-48d7-a57a-f7dc86dfe73d');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -1066,10 +1067,10 @@ var element = $('#ae7fa255-a183-4a62-b910-e5f79bde5dd8');
 
  
  
-<div id="01568cd6-d5f8-4044-98c5-90143d37196d"></div>
+<div id="e790fe50-7290-4a11-89c0-9926d0406fc0"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#01568cd6-d5f8-4044-98c5-90143d37196d');
+var element = $('#e790fe50-7290-4a11-89c0-9926d0406fc0');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -1086,10 +1087,10 @@ var element = $('#01568cd6-d5f8-4044-98c5-90143d37196d');
 
  
  
-<div id="b606eb43-0592-4dda-8971-1c15735fe235"></div>
+<div id="4095656b-ced7-4c46-8339-f6c560490439"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#b606eb43-0592-4dda-8971-1c15735fe235');
+var element = $('#4095656b-ced7-4c46-8339-f6c560490439');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -1106,10 +1107,10 @@ var element = $('#b606eb43-0592-4dda-8971-1c15735fe235');
 
  
  
-<div id="5e44da01-5afb-4215-9544-09ff2accaff6"></div>
+<div id="2d828e69-5e63-4581-95f0-6695b185a62d"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#5e44da01-5afb-4215-9544-09ff2accaff6');
+var element = $('#2d828e69-5e63-4581-95f0-6695b185a62d');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -1126,10 +1127,10 @@ var element = $('#5e44da01-5afb-4215-9544-09ff2accaff6');
 
  
  
-<div id="9b6f9db1-9e94-4608-a750-2f8b71454be0"></div>
+<div id="6c77f909-7a69-4052-92cd-d7f5d9a1bc97"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#9b6f9db1-9e94-4608-a750-2f8b71454be0');
+var element = $('#6c77f909-7a69-4052-92cd-d7f5d9a1bc97');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -1146,10 +1147,10 @@ var element = $('#9b6f9db1-9e94-4608-a750-2f8b71454be0');
 
  
  
-<div id="0eb6a3fc-1c3d-4093-aeb5-e0a40389d930"></div>
+<div id="6a0afd7c-6be3-449e-8166-39de67cc6c38"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#0eb6a3fc-1c3d-4093-aeb5-e0a40389d930');
+var element = $('#6a0afd7c-6be3-449e-8166-39de67cc6c38');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -1166,10 +1167,10 @@ var element = $('#0eb6a3fc-1c3d-4093-aeb5-e0a40389d930');
 
  
  
-<div id="765c9b68-7b17-4452-9eb0-7ecc68bc8518"></div>
+<div id="1c58f6f9-97eb-455b-b9a8-97545f5efed7"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#765c9b68-7b17-4452-9eb0-7ecc68bc8518');
+var element = $('#1c58f6f9-97eb-455b-b9a8-97545f5efed7');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -1186,10 +1187,10 @@ var element = $('#765c9b68-7b17-4452-9eb0-7ecc68bc8518');
 
  
  
-<div id="297eb7c9-9d83-4490-905f-ec40cf726c58"></div>
+<div id="71c0768e-3d52-4b6b-bba3-888a3df73e67"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#297eb7c9-9d83-4490-905f-ec40cf726c58');
+var element = $('#71c0768e-3d52-4b6b-bba3-888a3df73e67');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -1206,10 +1207,10 @@ var element = $('#297eb7c9-9d83-4490-905f-ec40cf726c58');
 
  
  
-<div id="28f919d7-3106-49cf-b14f-358a55455e41"></div>
+<div id="23becf7c-44ae-4bf7-bfb9-3c65e213e0bc"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#28f919d7-3106-49cf-b14f-358a55455e41');
+var element = $('#23becf7c-44ae-4bf7-bfb9-3c65e213e0bc');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -1226,10 +1227,10 @@ var element = $('#28f919d7-3106-49cf-b14f-358a55455e41');
 
  
  
-<div id="45a7723f-62de-40b2-b1c7-10b92fc2b12d"></div>
+<div id="e53ba1b2-1ca5-40ef-9364-c68a7ad59052"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#45a7723f-62de-40b2-b1c7-10b92fc2b12d');
+var element = $('#e53ba1b2-1ca5-40ef-9364-c68a7ad59052');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -1246,10 +1247,10 @@ var element = $('#45a7723f-62de-40b2-b1c7-10b92fc2b12d');
 
  
  
-<div id="6dadc951-4514-4a3c-925a-b4ae18daad24"></div>
+<div id="a40a509a-7309-4256-8891-8e13161680db"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#6dadc951-4514-4a3c-925a-b4ae18daad24');
+var element = $('#a40a509a-7309-4256-8891-8e13161680db');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -1266,10 +1267,10 @@ var element = $('#6dadc951-4514-4a3c-925a-b4ae18daad24');
 
  
  
-<div id="b03e4a63-399f-40b0-9eab-c58bca52a103"></div>
+<div id="800a878d-f22e-46bf-bb5d-98adfe873b08"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#b03e4a63-399f-40b0-9eab-c58bca52a103');
+var element = $('#800a878d-f22e-46bf-bb5d-98adfe873b08');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -1286,10 +1287,10 @@ var element = $('#b03e4a63-399f-40b0-9eab-c58bca52a103');
 
  
  
-<div id="b5bdd1cb-fa3c-4e3f-ab33-1fd2d89458f2"></div>
+<div id="34ab68fb-c685-460f-989c-1f178095d93a"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#b5bdd1cb-fa3c-4e3f-ab33-1fd2d89458f2');
+var element = $('#34ab68fb-c685-460f-989c-1f178095d93a');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -1306,10 +1307,10 @@ var element = $('#b5bdd1cb-fa3c-4e3f-ab33-1fd2d89458f2');
 
  
  
-<div id="c69c2789-3b78-45b8-aa39-da5852e33b1b"></div>
+<div id="7e3fafbe-2a80-436e-9fa6-7889e9e724f8"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#c69c2789-3b78-45b8-aa39-da5852e33b1b');
+var element = $('#7e3fafbe-2a80-436e-9fa6-7889e9e724f8');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -1326,10 +1327,10 @@ var element = $('#c69c2789-3b78-45b8-aa39-da5852e33b1b');
 
  
  
-<div id="a7da0bb3-d230-425a-ba15-794ef19c1b0e"></div>
+<div id="b9eed731-02bc-4f8f-959b-ccc4fd4b1fb8"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#a7da0bb3-d230-425a-ba15-794ef19c1b0e');
+var element = $('#b9eed731-02bc-4f8f-959b-ccc4fd4b1fb8');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -1346,10 +1347,10 @@ var element = $('#a7da0bb3-d230-425a-ba15-794ef19c1b0e');
 
  
  
-<div id="b78ccbd2-dc3b-4592-9e30-80897964413b"></div>
+<div id="bb8e0a90-624d-4f1f-a685-4c98d9d677a1"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#b78ccbd2-dc3b-4592-9e30-80897964413b');
+var element = $('#bb8e0a90-624d-4f1f-a685-4c98d9d677a1');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -1366,10 +1367,10 @@ var element = $('#b78ccbd2-dc3b-4592-9e30-80897964413b');
 
  
  
-<div id="841c980e-051e-4e98-b81c-f29013a3a47e"></div>
+<div id="0accd58e-beb2-49b3-9651-f4fe91b032e6"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#841c980e-051e-4e98-b81c-f29013a3a47e');
+var element = $('#0accd58e-beb2-49b3-9651-f4fe91b032e6');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -1386,10 +1387,10 @@ var element = $('#841c980e-051e-4e98-b81c-f29013a3a47e');
 
  
  
-<div id="f8ddd0bf-2917-401a-8c04-8b38f718f32c"></div>
+<div id="900c72c8-2215-47f1-aa88-df3bc6cda6d1"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#f8ddd0bf-2917-401a-8c04-8b38f718f32c');
+var element = $('#900c72c8-2215-47f1-aa88-df3bc6cda6d1');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -1406,10 +1407,10 @@ var element = $('#f8ddd0bf-2917-401a-8c04-8b38f718f32c');
 
  
  
-<div id="526dfa72-acc4-493f-95d4-70f1d030e7be"></div>
+<div id="52d57964-0540-49e0-bffb-76e3da5e9303"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#526dfa72-acc4-493f-95d4-70f1d030e7be');
+var element = $('#52d57964-0540-49e0-bffb-76e3da5e9303');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -1426,10 +1427,10 @@ var element = $('#526dfa72-acc4-493f-95d4-70f1d030e7be');
 
  
  
-<div id="f08b39a9-509c-47ac-a656-8a45d0d10596"></div>
+<div id="b8baa61a-c5b0-4275-8747-640fa50da715"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#f08b39a9-509c-47ac-a656-8a45d0d10596');
+var element = $('#b8baa61a-c5b0-4275-8747-640fa50da715');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -1446,10 +1447,10 @@ var element = $('#f08b39a9-509c-47ac-a656-8a45d0d10596');
 
  
  
-<div id="93d7c847-9a52-430f-808f-4198adfeab95"></div>
+<div id="e06e8885-f168-4327-977a-7a8c5e4daabd"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#93d7c847-9a52-430f-808f-4198adfeab95');
+var element = $('#e06e8885-f168-4327-977a-7a8c5e4daabd');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -1466,10 +1467,10 @@ var element = $('#93d7c847-9a52-430f-808f-4198adfeab95');
 
  
  
-<div id="42969dab-cc5f-41fa-8921-170f335b29db"></div>
+<div id="7cc09759-49cf-4d0e-b5b6-e9fa85491d6e"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#42969dab-cc5f-41fa-8921-170f335b29db');
+var element = $('#7cc09759-49cf-4d0e-b5b6-e9fa85491d6e');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -1486,10 +1487,10 @@ var element = $('#42969dab-cc5f-41fa-8921-170f335b29db');
 
  
  
-<div id="d14a538a-eff6-45ed-a051-e5d020b66d12"></div>
+<div id="f2e7e3b4-7d25-4c45-943f-491a9afd3d83"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#d14a538a-eff6-45ed-a051-e5d020b66d12');
+var element = $('#f2e7e3b4-7d25-4c45-943f-491a9afd3d83');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -1506,10 +1507,10 @@ var element = $('#d14a538a-eff6-45ed-a051-e5d020b66d12');
 
  
  
-<div id="31e161de-df17-4cad-a9e6-f0166180a331"></div>
+<div id="973ae902-e963-424e-a61c-e7923c4ef453"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#31e161de-df17-4cad-a9e6-f0166180a331');
+var element = $('#973ae902-e963-424e-a61c-e7923c4ef453');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -1526,10 +1527,10 @@ var element = $('#31e161de-df17-4cad-a9e6-f0166180a331');
 
  
  
-<div id="85505b03-9fb4-4ed1-a35c-1e3fc20f8fab"></div>
+<div id="569535c3-decb-4391-bf9f-9b600e822ad8"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#85505b03-9fb4-4ed1-a35c-1e3fc20f8fab');
+var element = $('#569535c3-decb-4391-bf9f-9b600e822ad8');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -1546,10 +1547,10 @@ var element = $('#85505b03-9fb4-4ed1-a35c-1e3fc20f8fab');
 
  
  
-<div id="b66505e8-5179-415b-be38-74eaff673f82"></div>
+<div id="05ec88e4-d9a7-4801-866c-86228cf0b38e"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#b66505e8-5179-415b-be38-74eaff673f82');
+var element = $('#05ec88e4-d9a7-4801-866c-86228cf0b38e');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -1566,10 +1567,10 @@ var element = $('#b66505e8-5179-415b-be38-74eaff673f82');
 
  
  
-<div id="6332a2de-80cd-4426-82be-02111efa2120"></div>
+<div id="76f03690-3acc-4ee4-b085-5d001b21f16b"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#6332a2de-80cd-4426-82be-02111efa2120');
+var element = $('#76f03690-3acc-4ee4-b085-5d001b21f16b');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -1586,10 +1587,10 @@ var element = $('#6332a2de-80cd-4426-82be-02111efa2120');
 
  
  
-<div id="9f27a0da-7d83-4049-bf07-3cdd27fc0536"></div>
+<div id="57c8044d-c5db-49d2-b41f-f4b6fe90fa84"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#9f27a0da-7d83-4049-bf07-3cdd27fc0536');
+var element = $('#57c8044d-c5db-49d2-b41f-f4b6fe90fa84');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -1606,10 +1607,10 @@ var element = $('#9f27a0da-7d83-4049-bf07-3cdd27fc0536');
 
  
  
-<div id="7230b035-5cd4-427b-95c0-085a16a281e3"></div>
+<div id="94cc20be-8a12-4b99-9991-2508a1ff92f9"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#7230b035-5cd4-427b-95c0-085a16a281e3');
+var element = $('#94cc20be-8a12-4b99-9991-2508a1ff92f9');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "", "version_major": 2, "version_minor": 0}
@@ -1673,7 +1674,7 @@ var element = $('#7230b035-5cd4-427b-95c0-085a16a281e3');
     <span class="k">return</span> <span class="p">(</span><span class="n">mtx</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">mtx</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">mtx</span><span class="p">)</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">mtx</span><span class="p">))</span>
 </pre></div>
 
-    </div>
+</div>
 </div>
 </div>
 
@@ -1717,7 +1718,7 @@ var element = $('#7230b035-5cd4-427b-95c0-085a16a281e3');
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Nearest neighbor</span><span class="se">\n</span><span class="s2">(model: Euclidean distance(i,j))&quot;</span><span class="p">)</span>
 </pre></div>
 
-    </div>
+</div>
 </div>
 </div>
 
@@ -1793,7 +1794,7 @@ var element = $('#7230b035-5cd4-427b-95c0-085a16a281e3');
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Anna Karenina</span><span class="se">\n</span><span class="s2">(model: Euclidean distance(i,j))&quot;</span><span class="p">)</span>
 </pre></div>
 
-    </div>
+</div>
 </div>
 </div>
 
@@ -1889,7 +1890,7 @@ var element = $('#7230b035-5cd4-427b-95c0-085a16a281e3');
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 </pre></div>
 
-    </div>
+</div>
 </div>
 </div>
 
@@ -1962,7 +1963,7 @@ var element = $('#7230b035-5cd4-427b-95c0-085a16a281e3');
 <span class="n">behav_data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
-    </div>
+</div>
 </div>
 </div>
 
@@ -2070,7 +2071,7 @@ var element = $('#7230b035-5cd4-427b-95c0-085a16a281e3');
 <span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">behav</span><span class="p">)</span>
 </pre></div>
 
-    </div>
+</div>
 </div>
 </div>
 
@@ -2129,7 +2130,7 @@ var element = $('#7230b035-5cd4-427b-95c0-085a16a281e3');
 <span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">behav_rank</span><span class="p">)</span>
 </pre></div>
 
-    </div>
+</div>
 </div>
 </div>
 
@@ -2181,7 +2182,8 @@ var element = $('#7230b035-5cd4-427b-95c0-085a16a281e3');
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>In working with fMRI data, we have a choice as to whether we'd like to work in the original resolution of the data -- voxels -- or if we'd like to summarize across space in some way (<a href="https://osf.io/4exrn/?show=view">Jolly &amp; Chang, Under Review</a>). We could calculate similarity across the whole brain at once, but there are probably some regions where the representational similarity with behavior is stronger than in other regions, and we'd like to be able to visualize and say something about which regions are contributing most to our effect. We could calculate similarity at each individual voxel separately. This has the advantage of maximizing spatial specificity, but it's also expensive in terms of time and computation, and we know the BOLD response tends to be smoother than single voxels. Another option would be to take a searchlight approach, where we calculate similarity within a "searchlight", or a relatively small sphere or cube of voxels centered around a voxel. This preserves some degree of spatial specificity while boosting signal relative to single voxels (which can be noisy) and recognizing the inherent smoothness of the local BOLD response, but it still requires us to loop through every voxel, which takes a lot of time and memory. Furthermore, both single-voxel and searchlight approaches also lead to larger penalties when it comes time to correct for multiple comparisons, since we've effectively done as many tests as there are voxels, and we need to stringently control for false positives.</p>
 <p>A happy medium is to summarize voxelwise data into nodes, or parcels. In this approach, we used predefined ROIs to group voxels into contiguous regions. At each TR, we average signal in all the voxels in a node to get one representative timecourse for that node. This way, we cut down on computational complexity by several orders of magnitude (compare ~70,000 brain voxels in a typical 3mm<sup>3</sup> whole-brain acquisition with ~100-300 nodes found in most parcellations).</p>
-<p>For purposes of this tutorial, we'll take the nodewise approach. We'll use a functional parcellation called the Shen atlas (<a href="https://www.sciencedirect.com/science/article/abs/pii/S1053811913005818">Shen et al., 2013</a>), which has 268 nodes. I personally like this parcellation because it covers the whole brain including the subcortex and cerebellum, whereas many other parcellations only cover cortex. Also, in general, parcellations in the 200-300 node range provide a good balance of spatial specificity without having nodes so small that they amplify registration errors and partial voluming effects from slight misalignments across subjects. In general, though, I don't believe there is necessarily one "true" parcellation -- I see it more as a data-reduction step, and it's never a bad idea to make sure your results are robust to the choice of parcellation.</p>
+<p>For purposes of this tutorial, we'll take the nodewise approach. We'll use a functional parcellation called the Shen atlas (<a href="https://www.sciencedirect.com/science/article/abs/pii/S1053811913005818">Shen et al., 2013</a>), which has 268 nodes. I personally like this parcellation because it covers the whole brain including the subcortex and cerebellum, whereas many other parcellations only cover cortex. Also, in general, parcellations in the 200-300 node range provide a good balance of spatial specificity without having nodes so small that they amplify registration errors and partial voluming effects from slight misalignments across subjects. In general, though, we don't believe there is necessarily one "true" parcellation -- we see it more as a data-reduction step, and it's never a bad idea to make sure your results are robust to the choice of parcellation.</p>
+<p>Another thing to note is that while using parcellations is convenient for computational purposes, this approach may obscure finer-grained individual differences that emerge when considering smaller spatial scales. <a href="https://www.sciencedirect.com/science/article/pii/S1053811918307274?via%3Dihub">Feilong et al. (2018)</a> used an IS-RSA approach to quantify the reliability of individual differences in cortical functional architecture across alignment methods, spatial scales, and functional indices, and found that individuals reliably differ in fine-scale cortical functional architecture when data were first hyperaligned. (Check out our tutorial on <a href="http://naturalistic-data.org/features/notebooks/Functional_Alignment.html">Functional Alignment</a> to learn more about hyperalignment and other approaches to functionally align data across subjects.) Furthermore, these individual differences in fine-grained cortical architecture provide strong predictions of general intelligence (see preprint <a href="https://www.biorxiv.org/content/10.1101/2020.06.06.138099v1">here</a>). We believe that combining functional alignment with IS-RSA approaches is a promising avenue for future work to strengthen our understanding of brain-behavior relationships.</p>
 
 </div>
 </div>
@@ -2222,7 +2224,7 @@ var element = $('#7230b035-5cd4-427b-95c0-085a16a281e3');
 <span class="n">masker</span> <span class="o">=</span> <span class="n">NiftiLabelsMasker</span><span class="p">(</span><span class="n">labels_img</span><span class="o">=</span><span class="n">mask</span><span class="o">.</span><span class="n">to_nifti</span><span class="p">(),</span> <span class="n">standardize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 
-    </div>
+</div>
 </div>
 </div>
 
@@ -2266,7 +2268,7 @@ var element = $('#7230b035-5cd4-427b-95c0-085a16a281e3');
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">sub</span> <span class="o">=</span> <span class="s1">&#39;sub-tb2994&#39;</span>
-<span class="n">fmri_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="s1">&#39;fmriprep&#39;</span><span class="p">,</span> <span class="n">sub</span><span class="p">,</span> <span class="s1">&#39;func&#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">sub</span><span class="si">}</span><span class="s1">_denoise_smooth6mm_task-story_run-1_space-MNI152NLin2009cAsym_desc-preproc_bold.nii.gz&#39;</span><span class="p">)</span>
+<span class="n">fmri_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="s1">&#39;fmriprep&#39;</span><span class="p">,</span> <span class="n">sub</span><span class="p">,</span> <span class="s1">&#39;func&#39;</span><span class="p">,</span> <span class="n">f</span><span class="s1">&#39;</span><span class="si">{sub}</span><span class="s1">_denoise_smooth6mm_task-story_run-1_space-MNI152NLin2009cAsym_desc-preproc_bold.nii.gz&#39;</span><span class="p">)</span>
 
 <span class="n">time_series</span> <span class="o">=</span> <span class="n">masker</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">fmri_file</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">time_series</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
@@ -2274,7 +2276,7 @@ var element = $('#7230b035-5cd4-427b-95c0-085a16a281e3');
 <span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">time_series</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;RdBu_r&#39;</span><span class="p">)</span>
 </pre></div>
 
-    </div>
+</div>
 </div>
 </div>
 
@@ -2339,13 +2341,13 @@ var element = $('#7230b035-5cd4-427b-95c0-085a16a281e3');
 
 <span class="k">for</span> <span class="n">subj</span> <span class="ow">in</span> <span class="n">subj_list</span><span class="p">:</span>    
     <span class="k">for</span> <span class="n">run</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]:</span>
-        <span class="n">time_series_fname</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="s1">&#39;fmriprep&#39;</span><span class="p">,</span> <span class="n">subj</span><span class="p">,</span> <span class="s1">&#39;func&#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">subj</span><span class="si">}</span><span class="s1">_run-</span><span class="si">{</span><span class="n">run</span><span class="si">}</span><span class="s1">_nodeTimeSeries.csv&#39;</span><span class="p">)</span>
+        <span class="n">time_series_fname</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="s1">&#39;fmriprep&#39;</span><span class="p">,</span> <span class="n">subj</span><span class="p">,</span> <span class="s1">&#39;func&#39;</span><span class="p">,</span> <span class="n">f</span><span class="s1">&#39;{subj}_run-{run}_nodeTimeSeries.csv&#39;</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">time_series_fname</span><span class="p">):</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Node time series file for </span><span class="si">{</span><span class="n">subj</span><span class="si">}</span><span class="s2">, run </span><span class="si">{</span><span class="n">run</span><span class="si">}</span><span class="s2"> already exists!&quot;</span><span class="p">)</span>
+            <span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Node time series file for {subj}, run {run} already exists!&quot;</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Creating node time series for </span><span class="si">{</span><span class="n">subj</span><span class="si">}</span><span class="s2">, run </span><span class="si">{</span><span class="n">run</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-            <span class="n">time_series</span> <span class="o">=</span> <span class="n">masker</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="s1">&#39;fmriprep&#39;</span><span class="p">,</span> <span class="n">subj</span><span class="p">,</span> <span class="s1">&#39;func&#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">subj</span><span class="si">}</span><span class="s1">_denoise_smooth6mm_task-story_run-</span><span class="si">{</span><span class="n">run</span><span class="si">}</span><span class="s1">_space-MNI152NLin2009cAsym_desc-preproc_bold.nii.gz&#39;</span><span class="p">))</span>
-            <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">time_series</span><span class="p">)</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">time_series_fname</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+            <span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Creating node time series for {subj}, run {run}&quot;</span><span class="p">)</span>
+            <span class="n">time_series</span> <span class="o">=</span> <span class="n">masker</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="s1">&#39;fmriprep&#39;</span><span class="p">,</span> <span class="n">subj</span><span class="p">,</span> <span class="s1">&#39;func&#39;</span><span class="p">,</span> <span class="n">f</span><span class="s1">&#39;{subj}_denoise_smooth6mm_task-story_run-{run}_space-MNI152NLin2009cAsym_desc-preproc_bold.nii.gz&#39;</span><span class="p">))</span>
+            <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">time_series</span><span class="p">)</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">time_series_fname</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -2377,13 +2379,13 @@ var element = $('#7230b035-5cd4-427b-95c0-085a16a281e3');
 <span class="k">for</span> <span class="n">subj</span> <span class="ow">in</span> <span class="n">subj_list</span><span class="p">:</span>
     <span class="n">sub_data</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">run</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">):</span>
-        <span class="n">sub_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="s1">&#39;fmriprep&#39;</span><span class="p">,</span> <span class="n">subj</span><span class="p">,</span> <span class="s1">&#39;func&#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">subj</span><span class="si">}</span><span class="s1">_run-</span><span class="si">{</span><span class="n">run</span><span class="si">}</span><span class="s1">_nodeTimeSeries.csv&#39;</span><span class="p">)))</span>
+        <span class="n">sub_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="s1">&#39;fmriprep&#39;</span><span class="p">,</span> <span class="n">subj</span><span class="p">,</span> <span class="s1">&#39;func&#39;</span><span class="p">,</span> <span class="n">f</span><span class="s1">&#39;</span><span class="si">{subj}</span><span class="s1">_run-</span><span class="si">{run}</span><span class="s1">_nodeTimeSeries.csv&#39;</span><span class="p">)))</span>
     <span class="n">sub_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">sub_data</span><span class="p">)</span>
     <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sub_data</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </pre></div>
 
-    </div>
+</div>
 </div>
 </div>
 
@@ -2411,7 +2413,7 @@ var element = $('#7230b035-5cd4-427b-95c0-085a16a281e3');
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 
-    </div>
+</div>
 </div>
 </div>
 
@@ -2457,7 +2459,7 @@ var element = $('#7230b035-5cd4-427b-95c0-085a16a281e3');
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">n_subs</span><span class="p">,</span> <span class="n">n_ts</span><span class="p">,</span> <span class="n">n_nodes</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 
-    </div>
+</div>
 </div>
 </div>
 
@@ -2500,7 +2502,7 @@ var element = $('#7230b035-5cd4-427b-95c0-085a16a281e3');
 <span class="n">similarity_matrices</span> <span class="o">=</span> <span class="n">Adjacency</span><span class="p">(</span><span class="n">similarity_matrices</span><span class="p">)</span>
 </pre></div>
 
-    </div>
+</div>
 </div>
 </div>
 
@@ -2528,7 +2530,7 @@ var element = $('#7230b035-5cd4-427b-95c0-085a16a281e3');
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">similarity_matrices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">vmin</span><span class="o">=-.</span><span class="mi">25</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=.</span><span class="mi">25</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;RdBu_r&#39;</span><span class="p">)</span>
 </pre></div>
 
-    </div>
+</div>
 </div>
 </div>
 
@@ -2575,7 +2577,7 @@ var element = $('#7230b035-5cd4-427b-95c0-085a16a281e3');
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">isc</span> <span class="o">=</span> <span class="p">{</span><span class="n">node</span><span class="p">:</span><span class="n">similarity_matrices</span><span class="p">[</span><span class="n">node</span><span class="p">]</span><span class="o">.</span><span class="n">isc</span><span class="p">(</span><span class="n">metric</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="n">n_bootstraps</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="s1">&#39;isc&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_nodes</span><span class="p">)}</span>
 </pre></div>
 
-    </div>
+</div>
 </div>
 </div>
 
@@ -2605,7 +2607,7 @@ var element = $('#7230b035-5cd4-427b-95c0-085a16a281e3');
 <span class="n">plot_glass_brain</span><span class="p">(</span><span class="n">isc_brain</span><span class="o">.</span><span class="n">to_nifti</span><span class="p">())</span>
 </pre></div>
 
-    </div>
+</div>
 </div>
 </div>
 
@@ -2686,7 +2688,7 @@ var element = $('#7230b035-5cd4-427b-95c0-085a16a281e3');
 <span class="n">behav_rank</span> <span class="o">=</span> <span class="n">rankdata</span><span class="p">(</span><span class="n">behav</span><span class="p">)</span> <span class="c1"># explicity convert the raw scores to ranks</span>
 </pre></div>
 
-    </div>
+</div>
 </div>
 </div>
 
@@ -2723,7 +2725,7 @@ var element = $('#7230b035-5cd4-427b-95c0-085a16a281e3');
 <span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Behavioral similarity matrix after sorting&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
 </pre></div>
 
-    </div>
+</div>
 </div>
 </div>
 
@@ -2799,7 +2801,7 @@ var element = $('#7230b035-5cd4-427b-95c0-085a16a281e3');
 <span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Behavioral similarity matrix after sorting&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
 </pre></div>
 
-    </div>
+</div>
 </div>
 </div>
 
@@ -2876,7 +2878,7 @@ var element = $('#7230b035-5cd4-427b-95c0-085a16a281e3');
 <span class="n">isrsa_annak_brain</span> <span class="o">=</span> <span class="n">roi_to_brain</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">isrsa_annak</span><span class="p">),</span> <span class="n">expand_mask</span><span class="p">(</span><span class="n">mask</span><span class="p">))</span>
 </pre></div>
 
-    </div>
+</div>
 </div>
 </div>
 
@@ -2909,7 +2911,7 @@ var element = $('#7230b035-5cd4-427b-95c0-085a16a281e3');
 <span class="n">plot_stat_map</span><span class="p">(</span><span class="n">isrsa_annak_brain</span><span class="o">.</span><span class="n">to_nifti</span><span class="p">(),</span> <span class="n">display_mode</span><span class="o">=</span><span class="s1">&#39;z&#39;</span><span class="p">,</span> <span class="n">cut_coords</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">vmax</span><span class="p">,</span> <span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;AnnaK&quot;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;RdBu_r&#39;</span><span class="p">)</span>
 </pre></div>
 
-    </div>
+</div>
 </div>
 </div>
 
@@ -2983,7 +2985,7 @@ var element = $('#7230b035-5cd4-427b-95c0-085a16a281e3');
 <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Correlation&#39;</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">16</span><span class="p">)</span>
 <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Nearest Neighbor Node IS-RSA&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
 <span class="n">t</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">ttest_1samp</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">isrsa_nn</span><span class="o">.</span><span class="n">values</span><span class="p">()),</span> <span class="mi">0</span><span class="p">)</span>
-<span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;t=</span><span class="si">{</span><span class="n">t</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">, p = </span><span class="si">{</span><span class="n">p</span><span class="si">:</span><span class="s1">.03f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">xy</span> <span class="o">=</span> <span class="p">(</span><span class="o">.</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;t=</span><span class="si">{t:.2f}</span><span class="s1">, p = </span><span class="si">{p:.03f}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">xy</span> <span class="o">=</span> <span class="p">(</span><span class="o">.</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
 
 <span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">isrsa_annak</span><span class="o">.</span><span class="n">values</span><span class="p">()),</span> <span class="n">ax</span><span class="o">=</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">);</span>
@@ -2991,10 +2993,10 @@ var element = $('#7230b035-5cd4-427b-95c0-085a16a281e3');
 <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Correlation&#39;</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">16</span><span class="p">)</span>
 <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Anna Karenina Node IS-RSA&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
 <span class="n">t</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">ttest_1samp</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">isrsa_annak</span><span class="o">.</span><span class="n">values</span><span class="p">()),</span> <span class="mi">0</span><span class="p">)</span>
-<span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;t=</span><span class="si">{</span><span class="n">t</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">, p = </span><span class="si">{</span><span class="n">p</span><span class="si">:</span><span class="s1">.03f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">xy</span> <span class="o">=</span> <span class="p">(</span><span class="o">.</span><span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;t=</span><span class="si">{t:.2f}</span><span class="s1">, p = </span><span class="si">{p:.03f}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">xy</span> <span class="o">=</span> <span class="p">(</span><span class="o">.</span><span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
 </pre></div>
 
-    </div>
+</div>
 </div>
 </div>
 
@@ -3056,10 +3058,10 @@ var element = $('#7230b035-5cd4-427b-95c0-085a16a281e3');
 <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">);</span>
 
 <span class="n">t</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">ttest_rel</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">isrsa_nn</span><span class="o">.</span><span class="n">values</span><span class="p">()),</span> <span class="nb">list</span><span class="p">(</span><span class="n">isrsa_annak</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;t=</span><span class="si">{</span><span class="n">t</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">, p = </span><span class="si">{</span><span class="n">p</span><span class="si">:</span><span class="s1">.03f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;t=</span><span class="si">{t:.2f}</span><span class="s1">, p = </span><span class="si">{p:.03f}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 
-    </div>
+</div>
 </div>
 </div>
 
@@ -3140,7 +3142,7 @@ var element = $('#7230b035-5cd4-427b-95c0-085a16a281e3');
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;AnnaK r value&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
 </pre></div>
 
-    </div>
+</div>
 </div>
 </div>
 
@@ -3219,7 +3221,7 @@ var element = $('#7230b035-5cd4-427b-95c0-085a16a281e3');
 <span class="n">isrsa_annak_p_brain</span> <span class="o">=</span> <span class="n">roi_to_brain</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">isrsa_annak_p</span><span class="p">),</span> <span class="n">expand_mask</span><span class="p">(</span><span class="n">mask</span><span class="p">))</span>
 </pre></div>
 
-    </div>
+</div>
 </div>
 </div>
 
@@ -3262,7 +3264,7 @@ var element = $('#7230b035-5cd4-427b-95c0-085a16a281e3');
 <span class="n">view_img</span><span class="p">(</span><span class="n">isrsa_nn_r_brain</span><span class="o">.</span><span class="n">to_nifti</span><span class="p">())</span>
 </pre></div>
 
-    </div>
+</div>
 </div>
 </div>
 
@@ -3344,7 +3346,7 @@ var element = $('#7230b035-5cd4-427b-95c0-085a16a281e3');
 <span class="n">view_img</span><span class="p">(</span><span class="n">isrsa_annak_r_brain</span><span class="o">.</span><span class="n">to_nifti</span><span class="p">())</span>
 </pre></div>
 
-    </div>
+</div>
 </div>
 </div>
 
@@ -3435,12 +3437,12 @@ var element = $('#7230b035-5cd4-427b-95c0-085a16a281e3');
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">fdr_thr</span> <span class="o">=</span> <span class="n">fdr</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">isrsa_nn_r</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;FDR Threshold: </span><span class="si">{</span><span class="n">fdr_thr</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;FDR Threshold: </span><span class="si">{fdr_thr}</span><span class="s1">&#39;</span><span class="p">)</span>
 
 <span class="n">view_img</span><span class="p">(</span><span class="n">threshold</span><span class="p">(</span><span class="n">isrsa_nn_r_brain</span><span class="p">,</span> <span class="n">isrsa_nn_p_brain</span><span class="p">,</span> <span class="n">thr</span><span class="o">=</span><span class="n">fdr_thr</span><span class="p">)</span><span class="o">.</span><span class="n">to_nifti</span><span class="p">())</span>
 </pre></div>
 
-    </div>
+</div>
 </div>
 </div>
 
@@ -3531,12 +3533,12 @@ var element = $('#7230b035-5cd4-427b-95c0-085a16a281e3');
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">fdr_thr</span> <span class="o">=</span> <span class="n">fdr</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">isrsa_annak_r</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;FDR Threshold: </span><span class="si">{</span><span class="n">fdr_thr</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;FDR Threshold: </span><span class="si">{fdr_thr}</span><span class="s1">&#39;</span><span class="p">)</span>
 
 <span class="n">view_img</span><span class="p">(</span><span class="n">threshold</span><span class="p">(</span><span class="n">isrsa_annak_r_brain</span><span class="p">,</span> <span class="n">isrsa_annak_p_brain</span><span class="p">,</span> <span class="n">thr</span><span class="o">=</span><span class="n">fdr_thr</span><span class="p">)</span><span class="o">.</span><span class="n">to_nifti</span><span class="p">())</span>
 </pre></div>
 
-    </div>
+</div>
 </div>
 </div>
 
