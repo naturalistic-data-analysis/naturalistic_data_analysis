@@ -44,6 +44,9 @@ A defining feature of naturalistic data is its complexity.  Whereas â€œclassicâ€
 
 An approach proposed by [Heusser et al. (2018)](http://jmlr.org/papers/v18/17-434.html) defines a set of heuristics for gaining detailed insights into high-dimensional data, including naturalistic stimuli and the neural responses to those stimuli.  The approach, called [HyperTools](https://hypertools.readthedocs.io/en/latest/), entails embedding the data in a series of low-dimensional spaces, each highlighting different aspects of the high-dimensional data.  Each embedding space is constructed such that different data modalities (e.g., stimuli and neural responses from different people) may be geometrically compared.  In our [Visualizing High-Dimensional Data](http://naturalistic-data.org/features/notebooks/hypertools.html) tutorial, we apply HyperTools to neural responses and text annotations from a movie watching dataset.
 
+# Questions
+Please post any questions that arise from the material in this course on our [Discourse Page](https://www.askpbs.org/c/naturalistic-data).
+
 # License for this book
 All content is licensed under the [Creative Commons Attribution-ShareAlike 4.0 International](https://creativecommons.org/licenses/by-sa/4.0/)
 (CC BY-SA 4.0) license.
