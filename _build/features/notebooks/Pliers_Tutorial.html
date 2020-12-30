@@ -21,8 +21,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
     <main class="jupyter-page">
     <div id="page-info"><div id="page-title">Automated Annotations</div>
 </div>
-    
-<div class="jb_cell">
+    <div class="jb_cell">
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -61,12 +60,12 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="k">import</span> <span class="n">YouTubeVideo</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">YouTubeVideo</span>
 
 <span class="n">YouTubeVideo</span><span class="p">(</span><span class="s1">&#39;4mQjtyQPu_c&#39;</span><span class="p">)</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -79,14 +78,14 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 
-        <iframe
-            width="400"
-            height="300"
-            src="https://www.youtube.com/embed/4mQjtyQPu_c"
-            frameborder="0"
-            allowfullscreen
-        ></iframe>
-        
+<iframe
+    width="400"
+    height="300"
+    src="https://www.youtube.com/embed/4mQjtyQPu_c"
+    frameborder="0"
+    allowfullscreen
+></iframe>
+
 </div>
 
 </div>
@@ -212,7 +211,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <span class="n">result</span> <span class="o">=</span> <span class="n">ds_sherlock</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">sherlock_video</span><span class="p">)</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -239,7 +238,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pliers.extractors</span> <span class="k">import</span> <span class="n">RMSExtractor</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pliers.extractors</span> <span class="kn">import</span> <span class="n">RMSExtractor</span>
 
 <span class="c1"># Create an instance of this extractor</span>
 <span class="n">ext</span> <span class="o">=</span> <span class="n">RMSExtractor</span><span class="p">()</span>
@@ -248,7 +247,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <span class="n">rms_result</span> <span class="o">=</span> <span class="n">ext</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">paranoia_audio</span><span class="p">)</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -278,7 +277,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <span class="n">rms_df</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -440,7 +439,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <span class="n">rms_df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s1">&#39;onset&#39;</span><span class="p">,</span> <span class="s1">&#39;rms&#39;</span><span class="p">)</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -497,7 +496,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">ext</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">sherlock_video</span><span class="p">)</span><span class="o">.</span><span class="n">to_df</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s1">&#39;onset&#39;</span><span class="p">,</span> <span class="s1">&#39;rms&#39;</span><span class="p">)</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -580,15 +579,15 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pliers.stimuli</span> <span class="k">import</span> <span class="n">AudioStim</span>
-<span class="kn">from</span> <span class="nn">pliers.extractors</span> <span class="k">import</span> <span class="n">RMSExtractor</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pliers.stimuli</span> <span class="kn">import</span> <span class="n">AudioStim</span>
+<span class="kn">from</span> <span class="nn">pliers.extractors</span> <span class="kn">import</span> <span class="n">RMSExtractor</span>
 
 <span class="n">stim</span> <span class="o">=</span> <span class="n">AudioStim</span><span class="p">(</span><span class="n">paranoia_audio</span><span class="p">)</span>
 <span class="n">ext</span> <span class="o">=</span> <span class="n">RMSExtractor</span><span class="p">()</span>
 <span class="n">rms_features</span> <span class="o">=</span> <span class="n">ext</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">stim</span><span class="p">)</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -685,8 +684,8 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pliers.converters</span> <span class="k">import</span> <span class="n">VideoToAudioConverter</span>
-<span class="kn">from</span> <span class="nn">pliers.extractors</span> <span class="k">import</span> <span class="n">RMSExtractor</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pliers.converters</span> <span class="kn">import</span> <span class="n">VideoToAudioConverter</span>
+<span class="kn">from</span> <span class="nn">pliers.extractors</span> <span class="kn">import</span> <span class="n">RMSExtractor</span>
 
 <span class="c1"># Set up Extractor and Converter</span>
 <span class="n">conv</span> <span class="o">=</span> <span class="n">VideoToAudioConverter</span><span class="p">()</span>
@@ -700,7 +699,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <span class="n">audio_result</span><span class="o">.</span><span class="n">to_df</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s1">&#39;onset&#39;</span><span class="p">,</span> <span class="s1">&#39;rms&#39;</span><span class="p">)</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -777,7 +776,7 @@ This extractor provides an interface to the <code>face_recognition</code> python
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pliers.extractors</span> <span class="k">import</span> <span class="n">FaceRecognitionFaceLocationsExtractor</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pliers.extractors</span> <span class="kn">import</span> <span class="n">FaceRecognitionFaceLocationsExtractor</span>
 
 <span class="c1"># Using the more accurate &#39;cnn&#39; model, change this to &#39;hog&#39; for faster perfomance</span>
 <span class="n">face_ext</span> <span class="o">=</span> <span class="n">FaceRecognitionFaceLocationsExtractor</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s1">&#39;cnn&#39;</span><span class="p">)</span>
@@ -786,7 +785,7 @@ This extractor provides an interface to the <code>face_recognition</code> python
 <span class="n">face_ext</span><span class="o">.</span><span class="n">_input_type</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -842,8 +841,8 @@ This is too fine grained, as we want to save ourselves the computation, and only
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pliers.stimuli</span> <span class="k">import</span> <span class="n">VideoStim</span>
-<span class="kn">from</span> <span class="nn">pliers.filters</span> <span class="k">import</span> <span class="n">FrameSamplingFilter</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pliers.stimuli</span> <span class="kn">import</span> <span class="n">VideoStim</span>
+<span class="kn">from</span> <span class="nn">pliers.filters</span> <span class="kn">import</span> <span class="n">FrameSamplingFilter</span>
 
 <span class="n">video</span> <span class="o">=</span> <span class="n">VideoStim</span><span class="p">(</span><span class="n">sherlock_video</span><span class="p">)</span>
 
@@ -855,7 +854,7 @@ This is too fine grained, as we want to save ourselves the computation, and only
 <span class="n">selected_frames</span><span class="o">.</span><span class="n">n_frames</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -912,8 +911,8 @@ This is too fine grained, as we want to save ourselves the computation, and only
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pliers.extractors</span> <span class="k">import</span> <span class="n">merge_results</span>
-<span class="kn">from</span> <span class="nn">pliers</span> <span class="k">import</span> <span class="n">config</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pliers.extractors</span> <span class="kn">import</span> <span class="n">merge_results</span>
+<span class="kn">from</span> <span class="nn">pliers</span> <span class="kn">import</span> <span class="n">config</span>
 <span class="c1"># Disable progress bar for Jupyter Book</span>
 <span class="n">config</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;progress_bar&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
 
@@ -925,7 +924,7 @@ This is too fine grained, as we want to save ourselves the computation, and only
 <span class="n">merged_faces</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -1082,7 +1081,7 @@ This is too fine grained, as we want to save ourselves the computation, and only
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">merged_faces</span><span class="o">.</span><span class="n">onset</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -1142,7 +1141,7 @@ This is too fine grained, as we want to save ourselves the computation, and only
 <span class="n">face_frames</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span><span class="o">.</span><span class="n">data</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">selected_frames</span> <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">onset</span> <span class="ow">in</span> <span class="n">merged_faces</span><span class="o">.</span><span class="n">onset</span><span class="o">.</span><span class="n">tolist</span><span class="p">()]</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -1157,7 +1156,7 @@ This is too fine grained, as we want to save ourselves the computation, and only
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">mpl_toolkits.axes_grid1</span> <span class="k">import</span> <span class="n">ImageGrid</span>
+<span class="kn">from</span> <span class="nn">mpl_toolkits.axes_grid1</span> <span class="kn">import</span> <span class="n">ImageGrid</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="k">def</span> <span class="nf">plot_img_grid</span><span class="p">(</span><span class="n">img_list</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">30.</span><span class="p">,</span> <span class="mf">30.</span><span class="p">)):</span>
@@ -1170,7 +1169,7 @@ This is too fine grained, as we want to save ourselves the computation, and only
     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -1187,7 +1186,7 @@ This is too fine grained, as we want to save ourselves the computation, and only
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">plot_img_grid</span><span class="p">(</span><span class="n">face_frames</span><span class="p">,</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -1233,7 +1232,7 @@ This is too fine grained, as we want to save ourselves the computation, and only
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">nonface_frames</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span><span class="o">.</span><span class="n">data</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">selected_frames</span> <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">onset</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">merged_faces</span><span class="o">.</span><span class="n">onset</span><span class="o">.</span><span class="n">tolist</span><span class="p">()]</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -1250,7 +1249,7 @@ This is too fine grained, as we want to save ourselves the computation, and only
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">plot_img_grid</span><span class="p">(</span><span class="n">nonface_frames</span><span class="p">,</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -1308,7 +1307,7 @@ This is too fine grained, as we want to save ourselves the computation, and only
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">face_ext</span><span class="o">.</span><span class="n">_input_type</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -1353,7 +1352,7 @@ This is too fine grained, as we want to save ourselves the computation, and only
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">str</span><span class="p">(</span><span class="n">face_features</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">history</span><span class="p">)</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -1458,7 +1457,7 @@ You can learn more about Transformation history in the <a href="http://tyarkoni.
 <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;REVAI_ACCESS_TOKEN&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;PRIVATE_KEY&#39;</span> <span class="c1"># replace PRIVATE_KEY with your own key!</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -1497,7 +1496,7 @@ You can learn more about Transformation history in the <a href="http://tyarkoni.
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pliers.converters</span> <span class="k">import</span> <span class="n">RevAISpeechAPIConverter</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pliers.converters</span> <span class="kn">import</span> <span class="n">RevAISpeechAPIConverter</span>
 <span class="n">ext</span> <span class="o">=</span> <span class="n">RevAISpeechAPIConverter</span><span class="p">()</span>
 
 <span class="c1"># Uncomment the next two lines if you have set up the Rev.AI keys</span>
@@ -1505,7 +1504,7 @@ You can learn more about Transformation history in the <a href="http://tyarkoni.
 <span class="c1"># transcript.save(data_dir_paranoia + &#39;stimuli/paranoia_story1_transcript.txt&#39;)</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -1535,13 +1534,13 @@ You can learn more about Transformation history in the <a href="http://tyarkoni.
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># For the sake of the demonstration, let&#39;s load an pre-existing transcript</span>
-<span class="kn">from</span> <span class="nn">pliers.stimuli</span> <span class="k">import</span> <span class="n">ComplexTextStim</span>
+<span class="kn">from</span> <span class="nn">pliers.stimuli</span> <span class="kn">import</span> <span class="n">ComplexTextStim</span>
 <span class="n">transcript_file</span> <span class="o">=</span> <span class="n">data_dir_paranoia</span> <span class="o">+</span> <span class="s1">&#39;stimuli/paranoia_story1_transcript.txt&#39;</span>
 <span class="n">transcript</span> <span class="o">=</span> <span class="n">ComplexTextStim</span><span class="p">(</span><span class="n">transcript_file</span><span class="p">)</span>
 <span class="n">transcript</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -1587,7 +1586,7 @@ You can learn more about Transformation history in the <a href="http://tyarkoni.
 <span class="n">transcript</span><span class="o">.</span><span class="n">elements</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -1626,7 +1625,7 @@ You can learn more about Transformation history in the <a href="http://tyarkoni.
 <span class="n">transcript</span><span class="o">.</span><span class="n">elements</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">text</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -1661,7 +1660,7 @@ You can learn more about Transformation history in the <a href="http://tyarkoni.
 <span class="n">transcript</span><span class="o">.</span><span class="n">elements</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">onset</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -1720,7 +1719,7 @@ You can learn more about Transformation history in the <a href="http://tyarkoni.
 <span class="n">pd</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="n">transcript_file</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -1903,7 +1902,7 @@ You can learn more about Transformation history in the <a href="http://tyarkoni.
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pliers.extractors</span> <span class="k">import</span> <span class="n">PredefinedDictionaryExtractor</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pliers.extractors</span> <span class="kn">import</span> <span class="n">PredefinedDictionaryExtractor</span>
 
 <span class="n">dictext</span> <span class="o">=</span> <span class="n">PredefinedDictionaryExtractor</span><span class="p">(</span>
     <span class="n">variables</span><span class="o">=</span> <span class="p">{</span>
@@ -1914,7 +1913,7 @@ You can learn more about Transformation history in the <a href="http://tyarkoni.
 <span class="n">norms_results</span> <span class="o">=</span> <span class="n">dictext</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">transcript</span><span class="p">)</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -1928,10 +1927,10 @@ You can learn more about Transformation history in the <a href="http://tyarkoni.
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pliers.extractors</span> <span class="k">import</span> <span class="n">merge_results</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pliers.extractors</span> <span class="kn">import</span> <span class="n">merge_results</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -1950,7 +1949,7 @@ You can learn more about Transformation history in the <a href="http://tyarkoni.
           <span class="s1">&#39;PredefinedDictionaryExtractor#aoa_AoA_Kup&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 

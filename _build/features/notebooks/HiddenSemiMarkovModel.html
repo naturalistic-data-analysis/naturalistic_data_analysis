@@ -21,8 +21,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
     <main class="jupyter-page">
     <div id="page-info"><div id="page-title">Hidden Semi-Markov Models</div>
 </div>
-    
-<div class="jb_cell">
+    <div class="jb_cell">
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -59,18 +58,18 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span>install.packages<span class="p">(</span><span class="s">&quot;MASS&quot;</span><span class="p">)</span>
-install.packages<span class="p">(</span><span class="s">&quot;distr&quot;</span><span class="p">)</span>
-install.packages<span class="p">(</span><span class="s">&quot;mvtnorm&quot;</span><span class="p">)</span>
-install.packages<span class="p">(</span><span class="s">&quot;mhsmm&quot;</span><span class="p">)</span>
-install.packages<span class="p">(</span><span class="s">&quot;gplots&quot;</span><span class="p">)</span>
-install.packages<span class="p">(</span><span class="s">&quot;rasterVis&quot;</span><span class="p">)</span>
-install.packages<span class="p">(</span><span class="s">&quot;lattice&quot;</span><span class="p">)</span>
-install.packages<span class="p">(</span><span class="s">&quot;shapes&quot;</span><span class="p">)</span>
-install.packages<span class="p">(</span><span class="s">&quot;remotes&quot;</span><span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;MASS&quot;</span><span class="p">)</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;distr&quot;</span><span class="p">)</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;mvtnorm&quot;</span><span class="p">)</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;mhsmm&quot;</span><span class="p">)</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;gplots&quot;</span><span class="p">)</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;rasterVis&quot;</span><span class="p">)</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;lattice&quot;</span><span class="p">)</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;shapes&quot;</span><span class="p">)</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;remotes&quot;</span><span class="p">)</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -95,11 +94,11 @@ install.packages<span class="p">(</span><span class="s">&quot;remotes&quot;</spa
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span><span class="kn">library</span><span class="p">(</span>remotes<span class="p">)</span>
-install_version<span class="p">(</span><span class="s">&quot;mvnmle&quot;</span><span class="p">,</span> <span class="s">&quot;0.1-11.1&quot;</span><span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">remotes</span><span class="p">)</span>
+<span class="nf">install_version</span><span class="p">(</span><span class="s">&quot;mvnmle&quot;</span><span class="p">,</span> <span class="s">&quot;0.1-11.1&quot;</span><span class="p">)</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -140,18 +139,18 @@ install_version<span class="p">(</span><span class="s">&quot;mvnmle&quot;</span>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span><span class="kn">library</span><span class="p">(</span>MASS<span class="p">)</span>
-<span class="kn">library</span><span class="p">(</span>distr<span class="p">)</span>
-<span class="kn">library</span><span class="p">(</span>mvnmle<span class="p">)</span>
-<span class="kn">library</span><span class="p">(</span>mvtnorm<span class="p">)</span>
-<span class="kn">library</span><span class="p">(</span>mhsmm<span class="p">)</span>
-<span class="kn">library</span><span class="p">(</span>gplots<span class="p">)</span>
-<span class="kn">library</span><span class="p">(</span>rasterVis<span class="p">)</span>
-<span class="kn">library</span><span class="p">(</span>lattice<span class="p">)</span> 
-<span class="kn">library</span><span class="p">(</span>shapes<span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">MASS</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">distr</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">mvnmle</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">mvtnorm</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">mhsmm</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">gplots</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">rasterVis</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">lattice</span><span class="p">)</span> 
+<span class="nf">library</span><span class="p">(</span><span class="n">shapes</span><span class="p">)</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -260,16 +259,16 @@ Loading required package: latticeExtra
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-r"><pre><span></span><span class="c1">#Set the working directory.</span>
-<span class="kp">setwd</span><span class="p">(</span><span class="s">&quot;/Volumes/Engram/Data/Sherlock&quot;</span><span class="p">)</span>
+<span class="nf">setwd</span><span class="p">(</span><span class="s">&quot;/Volumes/Engram/Data/Sherlock&quot;</span><span class="p">)</span>
 
 <span class="c1">#Get names of subject files in the folder.</span>
-filenames <span class="o">&lt;-</span> <span class="kp">Sys.glob</span><span class="p">(</span><span class="kp">file.path</span><span class="p">(</span><span class="kp">getwd</span><span class="p">(),</span> <span class="s">&#39;fmriprep&#39;</span><span class="p">,</span><span class="s">&#39;*&#39;</span><span class="p">,</span><span class="s">&#39;func&#39;</span><span class="p">,</span><span class="s">&#39;sub*Average_ROI_n50.csv&#39;</span><span class="p">))</span>
+<span class="n">filenames</span> <span class="o">&lt;-</span> <span class="nf">Sys.glob</span><span class="p">(</span><span class="nf">file.path</span><span class="p">(</span><span class="nf">getwd</span><span class="p">(),</span> <span class="s">&#39;fmriprep&#39;</span><span class="p">,</span><span class="s">&#39;*&#39;</span><span class="p">,</span><span class="s">&#39;func&#39;</span><span class="p">,</span><span class="s">&#39;sub*Average_ROI_n50.csv&#39;</span><span class="p">))</span>
 
 <span class="c1">#View the subject file names to ensure they have read in correctly.</span>
-filenames
+<span class="n">filenames</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -316,17 +315,17 @@ filenames
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span>DataReadIn <span class="o">&lt;-</span> <span class="kp">lapply</span><span class="p">(</span>filenames<span class="p">,</span><span class="kr">function</span><span class="p">(</span>i<span class="p">){</span>
-  <span class="kp">table</span><span class="o">&lt;-</span>read.csv<span class="p">(</span>i<span class="p">,</span> header <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span> row.names<span class="o">=</span><span class="kc">NULL</span><span class="p">)</span>
-  <span class="kp">table</span><span class="o">&lt;-</span><span class="kp">scale</span><span class="p">(</span><span class="kp">table</span><span class="p">)</span>
-  <span class="kr">return</span><span class="p">(</span><span class="kp">table</span><span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span><span class="n">DataReadIn</span> <span class="o">&lt;-</span> <span class="nf">lapply</span><span class="p">(</span><span class="n">filenames</span><span class="p">,</span><span class="nf">function</span><span class="p">(</span><span class="n">i</span><span class="p">){</span>
+  <span class="n">table</span><span class="o">&lt;-</span><span class="nf">read.csv</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">header</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span> <span class="n">row.names</span><span class="o">=</span><span class="kc">NULL</span><span class="p">)</span>
+  <span class="n">table</span><span class="o">&lt;-</span><span class="nf">scale</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
+  <span class="nf">return</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
 <span class="p">})</span>
 
-DataFinal<span class="o">&lt;-</span><span class="kp">do.call</span><span class="p">(</span><span class="kp">rbind</span><span class="p">,</span> DataReadIn<span class="p">)</span>
-DataFinal<span class="o">&lt;-</span><span class="kp">as.data.frame</span><span class="p">(</span>DataFinal<span class="p">)</span>
+<span class="n">DataFinal</span><span class="o">&lt;-</span><span class="nf">do.call</span><span class="p">(</span><span class="n">rbind</span><span class="p">,</span> <span class="n">DataReadIn</span><span class="p">)</span>
+<span class="n">DataFinal</span><span class="o">&lt;-</span><span class="nf">as.data.frame</span><span class="p">(</span><span class="n">DataFinal</span><span class="p">)</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -351,16 +350,16 @@ DataFinal<span class="o">&lt;-</span><span class="kp">as.data.frame</span><span 
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span>TimeSerLen <span class="o">&lt;-</span> <span class="kp">lapply</span><span class="p">(</span>filenames<span class="p">,</span><span class="kr">function</span><span class="p">(</span>i<span class="p">){</span>
-  <span class="kp">table</span><span class="o">&lt;-</span>read.csv<span class="p">(</span>i<span class="p">,</span> header <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span> row.names<span class="o">=</span><span class="kc">NULL</span><span class="p">)</span>
-  Nrows<span class="o">&lt;-</span><span class="kp">nrow</span><span class="p">(</span><span class="kp">table</span><span class="p">)</span>
-  <span class="kr">return</span><span class="p">(</span>Nrows<span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span><span class="n">TimeSerLen</span> <span class="o">&lt;-</span> <span class="nf">lapply</span><span class="p">(</span><span class="n">filenames</span><span class="p">,</span><span class="nf">function</span><span class="p">(</span><span class="n">i</span><span class="p">){</span>
+  <span class="n">table</span><span class="o">&lt;-</span><span class="nf">read.csv</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">header</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span> <span class="n">row.names</span><span class="o">=</span><span class="kc">NULL</span><span class="p">)</span>
+  <span class="n">Nrows</span><span class="o">&lt;-</span><span class="nf">nrow</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
+  <span class="nf">return</span><span class="p">(</span><span class="n">Nrows</span><span class="p">)</span>
 <span class="p">})</span>
 
-Lengths<span class="o">&lt;-</span><span class="kp">do.call</span><span class="p">(</span><span class="kp">rbind</span><span class="p">,</span> TimeSerLen<span class="p">)</span>
+<span class="n">Lengths</span><span class="o">&lt;-</span><span class="nf">do.call</span><span class="p">(</span><span class="n">rbind</span><span class="p">,</span> <span class="n">TimeSerLen</span><span class="p">)</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -403,14 +402,14 @@ Lengths<span class="o">&lt;-</span><span class="kp">do.call</span><span class="p
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-r"><pre><span></span><span class="c1">#Let&#39;s specify the number of states we wish to fit</span>
-number_states <span class="o">=</span> <span class="m">4</span>
+<span class="n">number_states</span> <span class="o">=</span> <span class="m">4</span>
 
 <span class="c1">#Let&#39;s also create a variable for the number of scans (i.e. two for each subject) and the number of ROIs</span>
-number_runs <span class="o">&lt;-</span> <span class="kp">nrow</span><span class="p">(</span>Lengths<span class="p">)</span>
-number_regions <span class="o">&lt;-</span> <span class="kp">ncol</span><span class="p">(</span>DataFinal<span class="p">)</span>
+<span class="n">number_runs</span> <span class="o">&lt;-</span> <span class="nf">nrow</span><span class="p">(</span><span class="n">Lengths</span><span class="p">)</span>
+<span class="n">number_regions</span> <span class="o">&lt;-</span> <span class="nf">ncol</span><span class="p">(</span><span class="n">DataFinal</span><span class="p">)</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -439,32 +438,32 @@ routine to have a place to begin, so there are many options for how you choose t
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-r"><pre><span></span><span class="c1">#First, let&#39;s divide the data into sections. </span>
-output_array <span class="o">=</span> <span class="kt">list</span><span class="p">()</span>
-seglength <span class="o">&lt;-</span> <span class="kp">ceiling</span><span class="p">(</span><span class="kp">min</span><span class="p">(</span>Lengths<span class="p">[,</span><span class="m">1</span><span class="p">])</span><span class="o">/</span>number_states<span class="p">)</span>
+<span class="n">output_array</span> <span class="o">=</span> <span class="nf">list</span><span class="p">()</span>
+<span class="n">seglength</span> <span class="o">&lt;-</span> <span class="nf">ceiling</span><span class="p">(</span><span class="nf">min</span><span class="p">(</span><span class="n">Lengths</span><span class="p">[,</span><span class="m">1</span><span class="p">])</span><span class="o">/</span><span class="n">number_states</span><span class="p">)</span>
 
-<span class="kr">for</span><span class="p">(</span>i <span class="kr">in</span> <span class="m">1</span><span class="o">:</span>number_states<span class="p">)</span>
+<span class="nf">for</span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="n">number_states</span><span class="p">)</span>
 <span class="p">{</span>
-  output_array<span class="p">[[</span>i<span class="p">]]</span> <span class="o">&lt;-</span> <span class="kt">matrix</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span>nrow<span class="o">=</span><span class="m">1</span><span class="p">,</span> ncol<span class="o">=</span>number_regions<span class="p">)</span>
-  <span class="kp">colnames</span><span class="p">(</span>output_array<span class="p">[[</span>i<span class="p">]])</span> <span class="o">&lt;-</span> <span class="kp">colnames</span><span class="p">(</span>DataFinal<span class="p">)</span>
-  <span class="kr">for</span><span class="p">(</span>j <span class="kr">in</span> <span class="m">1</span><span class="o">:</span>number_runs<span class="p">){</span>
-    output_array<span class="p">[[</span>i<span class="p">]]</span> <span class="o">&lt;-</span> <span class="kp">rbind</span><span class="p">(</span>output_array<span class="p">[[</span>i<span class="p">]],</span>DataFinal<span class="p">[(</span><span class="m">1</span><span class="o">+</span><span class="kp">sum</span><span class="p">(</span>Lengths<span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="p">(</span>j<span class="m">-1</span><span class="p">),</span><span class="m">1</span><span class="p">])</span> <span class="o">+</span> seglength<span class="o">*</span><span class="p">(</span>i<span class="m">-1</span><span class="p">))</span><span class="o">:</span><span class="p">(</span><span class="kp">sum</span><span class="p">(</span>Lengths<span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="p">(</span>j<span class="m">-1</span><span class="p">),</span> <span class="m">1</span><span class="p">])</span> <span class="o">+</span> seglength<span class="o">*</span>i<span class="p">),])</span>
+  <span class="n">output_array</span><span class="p">[[</span><span class="n">i</span><span class="p">]]</span> <span class="o">&lt;-</span> <span class="nf">matrix</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span><span class="n">nrow</span><span class="o">=</span><span class="m">1</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="n">number_regions</span><span class="p">)</span>
+  <span class="nf">colnames</span><span class="p">(</span><span class="n">output_array</span><span class="p">[[</span><span class="n">i</span><span class="p">]])</span> <span class="o">&lt;-</span> <span class="nf">colnames</span><span class="p">(</span><span class="n">DataFinal</span><span class="p">)</span>
+  <span class="nf">for</span><span class="p">(</span><span class="n">j</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="n">number_runs</span><span class="p">){</span>
+    <span class="n">output_array</span><span class="p">[[</span><span class="n">i</span><span class="p">]]</span> <span class="o">&lt;-</span> <span class="nf">rbind</span><span class="p">(</span><span class="n">output_array</span><span class="p">[[</span><span class="n">i</span><span class="p">]],</span><span class="n">DataFinal</span><span class="p">[(</span><span class="m">1</span><span class="o">+</span><span class="nf">sum</span><span class="p">(</span><span class="n">Lengths</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="p">(</span><span class="n">j</span><span class="m">-1</span><span class="p">),</span><span class="m">1</span><span class="p">])</span> <span class="o">+</span> <span class="n">seglength</span><span class="o">*</span><span class="p">(</span><span class="n">i</span><span class="m">-1</span><span class="p">))</span><span class="o">:</span><span class="p">(</span><span class="nf">sum</span><span class="p">(</span><span class="n">Lengths</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="p">(</span><span class="n">j</span><span class="m">-1</span><span class="p">),</span> <span class="m">1</span><span class="p">])</span> <span class="o">+</span> <span class="n">seglength</span><span class="o">*</span><span class="n">i</span><span class="p">),])</span>
   <span class="p">}</span>
-  output_array<span class="p">[[</span>i<span class="p">]]</span> <span class="o">&lt;-</span> output_array<span class="p">[[</span>i<span class="p">]][</span><span class="m">-1</span><span class="p">,]</span>
+  <span class="n">output_array</span><span class="p">[[</span><span class="n">i</span><span class="p">]]</span> <span class="o">&lt;-</span> <span class="n">output_array</span><span class="p">[[</span><span class="n">i</span><span class="p">]][</span><span class="m">-1</span><span class="p">,]</span>
 <span class="p">}</span>
 
 <span class="c1">#Now find mean and covariance for each section.</span>
-MeanEst <span class="o">&lt;-</span> <span class="kp">lapply</span><span class="p">(</span>output_array<span class="p">,</span><span class="kr">function</span><span class="p">(</span>i<span class="p">){</span>
-  means <span class="o">&lt;-</span> mlest<span class="p">(</span>i<span class="p">)</span><span class="o">$</span>muhat
-  <span class="kr">return</span><span class="p">(</span>means<span class="p">)</span>
+<span class="n">MeanEst</span> <span class="o">&lt;-</span> <span class="nf">lapply</span><span class="p">(</span><span class="n">output_array</span><span class="p">,</span><span class="nf">function</span><span class="p">(</span><span class="n">i</span><span class="p">){</span>
+  <span class="n">means</span> <span class="o">&lt;-</span> <span class="nf">mlest</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">$</span><span class="n">muhat</span>
+  <span class="nf">return</span><span class="p">(</span><span class="n">means</span><span class="p">)</span>
 <span class="p">})</span>
 
-CovEst <span class="o">&lt;-</span> <span class="kp">lapply</span><span class="p">(</span>output_array<span class="p">,</span><span class="kr">function</span><span class="p">(</span>i<span class="p">){</span>
-  covs <span class="o">&lt;-</span> mlest<span class="p">(</span>i<span class="p">)</span><span class="o">$</span>sigmahat
-  <span class="kr">return</span><span class="p">(</span>covs<span class="p">)</span>
+<span class="n">CovEst</span> <span class="o">&lt;-</span> <span class="nf">lapply</span><span class="p">(</span><span class="n">output_array</span><span class="p">,</span><span class="nf">function</span><span class="p">(</span><span class="n">i</span><span class="p">){</span>
+  <span class="n">covs</span> <span class="o">&lt;-</span> <span class="nf">mlest</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">$</span><span class="n">sigmahat</span>
+  <span class="nf">return</span><span class="p">(</span><span class="n">covs</span><span class="p">)</span>
 <span class="p">})</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -519,22 +518,22 @@ Warning message in mysort(data):
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span>initial <span class="o">&lt;-</span> <span class="kp">rep</span><span class="p">(</span><span class="m">1</span><span class="o">/</span>number_states<span class="p">,</span> number_states<span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span><span class="n">initial</span> <span class="o">&lt;-</span> <span class="nf">rep</span><span class="p">(</span><span class="m">1</span><span class="o">/</span><span class="n">number_states</span><span class="p">,</span> <span class="n">number_states</span><span class="p">)</span>
 
 <span class="c1">#This initializes a state transition probability matrix. Again, we will make these uniform.</span>
-TransMatrix <span class="o">&lt;-</span> <span class="kt">matrix</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span> nrow<span class="o">=</span>number_states<span class="p">,</span> ncol<span class="o">=</span>number_states<span class="p">)</span>
-<span class="kp">diag</span><span class="p">(</span>TransMatrix<span class="p">)</span> <span class="o">&lt;-</span> <span class="m">0</span>
-TransMatrix<span class="p">[</span><span class="kp">is.na</span><span class="p">(</span>TransMatrix<span class="p">)]</span> <span class="o">&lt;-</span> <span class="p">(</span><span class="m">1</span><span class="o">/</span><span class="p">(</span>number_states<span class="m">-1</span><span class="p">))</span>
+<span class="n">TransMatrix</span> <span class="o">&lt;-</span> <span class="nf">matrix</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span> <span class="n">nrow</span><span class="o">=</span><span class="n">number_states</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="n">number_states</span><span class="p">)</span>
+<span class="nf">diag</span><span class="p">(</span><span class="n">TransMatrix</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="m">0</span>
+<span class="n">TransMatrix</span><span class="p">[</span><span class="nf">is.na</span><span class="p">(</span><span class="n">TransMatrix</span><span class="p">)]</span> <span class="o">&lt;-</span> <span class="p">(</span><span class="m">1</span><span class="o">/</span><span class="p">(</span><span class="n">number_states</span><span class="m">-1</span><span class="p">))</span>
 
 <span class="c1">##This saves the initial mean and covariances to a list, which is what will be needed to fit the model.</span>
-b <span class="o">&lt;-</span> <span class="kt">list</span><span class="p">(</span>mu <span class="o">=</span> MeanEst<span class="p">,</span> sigma <span class="o">=</span> CovEst<span class="p">)</span>
+<span class="n">b</span> <span class="o">&lt;-</span> <span class="nf">list</span><span class="p">(</span><span class="n">mu</span> <span class="o">=</span> <span class="n">MeanEst</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="n">CovEst</span><span class="p">)</span>
 
 <span class="c1">##This puts the data into a list to fit the model.</span>
-Datanew <span class="o">&lt;-</span> <span class="kt">list</span><span class="p">(</span>x <span class="o">=</span> DataFinal<span class="p">,</span> N <span class="o">=</span> Lengths<span class="p">[,</span><span class="m">1</span><span class="p">])</span>
-<span class="kp">class</span><span class="p">(</span>Datanew<span class="p">)</span> <span class="o">&lt;-</span> <span class="s">&quot;hmm.data&quot;</span>
+<span class="n">Datanew</span> <span class="o">&lt;-</span> <span class="nf">list</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">DataFinal</span><span class="p">,</span> <span class="n">N</span> <span class="o">=</span> <span class="n">Lengths</span><span class="p">[,</span><span class="m">1</span><span class="p">])</span>
+<span class="nf">class</span><span class="p">(</span><span class="n">Datanew</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="s">&quot;hmm.data&quot;</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -559,10 +558,10 @@ Datanew <span class="o">&lt;-</span> <span class="kt">list</span><span class="p"
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span>d <span class="o">&lt;-</span> <span class="kt">list</span><span class="p">(</span>shape <span class="o">=</span> <span class="kp">sample</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="p">,</span> size<span class="o">=</span>number_states<span class="p">),</span> scale <span class="o">=</span> <span class="kp">sample</span><span class="p">(</span><span class="m">10</span><span class="o">:</span><span class="m">50</span><span class="p">,</span> size<span class="o">=</span>number_states<span class="p">),</span> type <span class="o">=</span> <span class="s">&quot;gamma&quot;</span><span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span><span class="n">d</span> <span class="o">&lt;-</span> <span class="nf">list</span><span class="p">(</span><span class="n">shape</span> <span class="o">=</span> <span class="nf">sample</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">number_states</span><span class="p">),</span> <span class="n">scale</span> <span class="o">=</span> <span class="nf">sample</span><span class="p">(</span><span class="m">10</span><span class="o">:</span><span class="m">50</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">number_states</span><span class="p">),</span> <span class="n">type</span> <span class="o">=</span> <span class="s">&quot;gamma&quot;</span><span class="p">)</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -587,12 +586,12 @@ Datanew <span class="o">&lt;-</span> <span class="kt">list</span><span class="p"
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span>model1 <span class="o">&lt;-</span> hsmmspec<span class="p">(</span>init <span class="o">=</span> initial<span class="p">,</span> trans <span class="o">=</span> TransMatrix<span class="p">,</span> parms.emis <span class="o">=</span> b<span class="p">,</span> dens.emis <span class="o">=</span> dmvnorm.hsmm<span class="p">,</span> sojourn <span class="o">=</span> d<span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span><span class="n">model1</span> <span class="o">&lt;-</span> <span class="nf">hsmmspec</span><span class="p">(</span><span class="n">init</span> <span class="o">=</span> <span class="n">initial</span><span class="p">,</span> <span class="n">trans</span> <span class="o">=</span> <span class="n">TransMatrix</span><span class="p">,</span> <span class="n">parms.emis</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">dens.emis</span> <span class="o">=</span> <span class="n">dmvnorm.hsmm</span><span class="p">,</span> <span class="n">sojourn</span> <span class="o">=</span> <span class="n">d</span><span class="p">)</span>
 
-testrun <span class="o">&lt;-</span> hsmmfit<span class="p">(</span>Datanew<span class="p">,</span> model1<span class="p">,</span> mstep<span class="o">=</span>mstep.mvnorm<span class="p">,</span> lock.transition<span class="o">=</span><span class="kc">FALSE</span><span class="p">,</span> maxit<span class="o">=</span><span class="m">1000</span><span class="p">,</span> lock.d<span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span>
+<span class="n">testrun</span> <span class="o">&lt;-</span> <span class="nf">hsmmfit</span><span class="p">(</span><span class="n">Datanew</span><span class="p">,</span> <span class="n">model1</span><span class="p">,</span> <span class="n">mstep</span><span class="o">=</span><span class="n">mstep.mvnorm</span><span class="p">,</span> <span class="n">lock.transition</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">,</span> <span class="n">maxit</span><span class="o">=</span><span class="m">1000</span><span class="p">,</span> <span class="n">lock.d</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -628,30 +627,30 @@ testrun <span class="o">&lt;-</span> hsmmfit<span class="p">(</span>Datanew<span
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-r"><pre><span></span><span class="c1">#Let&#39;s visualize the states correlation matrices.</span>
-cov1<span class="o">&lt;-</span><span class="kp">as.matrix</span><span class="p">(</span>testrun<span class="o">$</span>model<span class="o">$</span>parms.emission<span class="o">$</span>sigma<span class="p">[[</span><span class="m">1</span><span class="p">]])</span>
-cov2<span class="o">&lt;-</span><span class="kp">as.matrix</span><span class="p">(</span>testrun<span class="o">$</span>model<span class="o">$</span>parms.emission<span class="o">$</span>sigma<span class="p">[[</span><span class="m">2</span><span class="p">]])</span>
-cov3<span class="o">&lt;-</span><span class="kp">as.matrix</span><span class="p">(</span>testrun<span class="o">$</span>model<span class="o">$</span>parms.emission<span class="o">$</span>sigma<span class="p">[[</span><span class="m">3</span><span class="p">]])</span>
-cov4<span class="o">&lt;-</span><span class="kp">as.matrix</span><span class="p">(</span>testrun<span class="o">$</span>model<span class="o">$</span>parms.emission<span class="o">$</span>sigma<span class="p">[[</span><span class="m">4</span><span class="p">]])</span>
+<span class="n">cov1</span><span class="o">&lt;-</span><span class="nf">as.matrix</span><span class="p">(</span><span class="n">testrun</span><span class="o">$</span><span class="n">model</span><span class="o">$</span><span class="n">parms.emission</span><span class="o">$</span><span class="n">sigma</span><span class="p">[[</span><span class="m">1</span><span class="p">]])</span>
+<span class="n">cov2</span><span class="o">&lt;-</span><span class="nf">as.matrix</span><span class="p">(</span><span class="n">testrun</span><span class="o">$</span><span class="n">model</span><span class="o">$</span><span class="n">parms.emission</span><span class="o">$</span><span class="n">sigma</span><span class="p">[[</span><span class="m">2</span><span class="p">]])</span>
+<span class="n">cov3</span><span class="o">&lt;-</span><span class="nf">as.matrix</span><span class="p">(</span><span class="n">testrun</span><span class="o">$</span><span class="n">model</span><span class="o">$</span><span class="n">parms.emission</span><span class="o">$</span><span class="n">sigma</span><span class="p">[[</span><span class="m">3</span><span class="p">]])</span>
+<span class="n">cov4</span><span class="o">&lt;-</span><span class="nf">as.matrix</span><span class="p">(</span><span class="n">testrun</span><span class="o">$</span><span class="n">model</span><span class="o">$</span><span class="n">parms.emission</span><span class="o">$</span><span class="n">sigma</span><span class="p">[[</span><span class="m">4</span><span class="p">]])</span>
 
 <span class="c1">#Convert the covariance matrices to correlation matrices.</span>
-Cor1<span class="o">&lt;-</span>cov2cor<span class="p">(</span>cov1<span class="p">)</span>
-Cor2<span class="o">&lt;-</span>cov2cor<span class="p">(</span>cov2<span class="p">)</span>
-Cor3<span class="o">&lt;-</span>cov2cor<span class="p">(</span>cov3<span class="p">)</span>
-Cor4<span class="o">&lt;-</span>cov2cor<span class="p">(</span>cov4<span class="p">)</span>
+<span class="n">Cor1</span><span class="o">&lt;-</span><span class="nf">cov2cor</span><span class="p">(</span><span class="n">cov1</span><span class="p">)</span>
+<span class="n">Cor2</span><span class="o">&lt;-</span><span class="nf">cov2cor</span><span class="p">(</span><span class="n">cov2</span><span class="p">)</span>
+<span class="n">Cor3</span><span class="o">&lt;-</span><span class="nf">cov2cor</span><span class="p">(</span><span class="n">cov3</span><span class="p">)</span>
+<span class="n">Cor4</span><span class="o">&lt;-</span><span class="nf">cov2cor</span><span class="p">(</span><span class="n">cov4</span><span class="p">)</span>
 
 <span class="c1">#Set the color theme for the state plots we are about to make.</span>
-my.theme <span class="o">&lt;-</span> BuRdTheme<span class="p">()</span>
-my.at <span class="o">&lt;-</span> <span class="kp">seq</span><span class="p">(</span><span class="m">-1</span><span class="p">,</span><span class="m">1</span><span class="p">,</span>length.out<span class="o">=</span><span class="kp">length</span><span class="p">(</span>my.theme<span class="o">$</span>regions<span class="o">$</span><span class="kp">col</span><span class="p">)</span><span class="m">-1</span><span class="p">)</span>
-my.ckey <span class="o">&lt;-</span> <span class="kt">list</span><span class="p">(</span>at<span class="o">=</span>my.at<span class="p">,</span> col<span class="o">=</span>my.theme<span class="o">$</span>regions<span class="o">$</span><span class="kp">col</span><span class="p">)</span>
+<span class="n">my.theme</span> <span class="o">&lt;-</span> <span class="nf">BuRdTheme</span><span class="p">()</span>
+<span class="n">my.at</span> <span class="o">&lt;-</span> <span class="nf">seq</span><span class="p">(</span><span class="m">-1</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="n">length.out</span><span class="o">=</span><span class="nf">length</span><span class="p">(</span><span class="n">my.theme</span><span class="o">$</span><span class="n">regions</span><span class="o">$</span><span class="n">col</span><span class="p">)</span><span class="m">-1</span><span class="p">)</span>
+<span class="n">my.ckey</span> <span class="o">&lt;-</span> <span class="nf">list</span><span class="p">(</span><span class="n">at</span><span class="o">=</span><span class="n">my.at</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="n">my.theme</span><span class="o">$</span><span class="n">regions</span><span class="o">$</span><span class="n">col</span><span class="p">)</span>
 
 <span class="c1">#After running this code, the states should display as images in R.</span>
-levelplot<span class="p">(</span><span class="kp">as.matrix</span><span class="p">(</span>Cor1<span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="kp">ncol</span><span class="p">(</span>Cor1<span class="p">),</span><span class="kp">ncol</span><span class="p">(</span>Cor1<span class="p">)</span><span class="o">:</span><span class="m">1</span><span class="p">]),</span> par.settings<span class="o">=</span>my.theme<span class="p">,</span> at<span class="o">=</span>my.at<span class="p">,</span> colorkey<span class="o">=</span>my.ckey<span class="p">,</span> scales<span class="o">=</span><span class="kt">list</span><span class="p">(</span>x<span class="o">=</span><span class="kt">list</span><span class="p">(</span>rot<span class="o">=</span><span class="m">90</span><span class="p">)),</span> main<span class="o">=</span><span class="s">&quot;State 1&quot;</span><span class="p">,</span> xlab<span class="o">=</span><span class="s">&quot;ROI&quot;</span><span class="p">,</span> ylab<span class="o">=</span><span class="s">&quot;ROI&quot;</span><span class="p">)</span>
-levelplot<span class="p">(</span><span class="kp">as.matrix</span><span class="p">(</span>Cor2<span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="kp">ncol</span><span class="p">(</span>Cor2<span class="p">),</span><span class="kp">ncol</span><span class="p">(</span>Cor2<span class="p">)</span><span class="o">:</span><span class="m">1</span><span class="p">]),</span> par.settings<span class="o">=</span>my.theme<span class="p">,</span> at<span class="o">=</span>my.at<span class="p">,</span> colorkey<span class="o">=</span>my.ckey<span class="p">,</span> scales<span class="o">=</span><span class="kt">list</span><span class="p">(</span>x<span class="o">=</span><span class="kt">list</span><span class="p">(</span>rot<span class="o">=</span><span class="m">90</span><span class="p">)),</span> main<span class="o">=</span><span class="s">&quot;State 2&quot;</span><span class="p">,</span> xlab<span class="o">=</span><span class="s">&quot;ROI&quot;</span><span class="p">,</span> ylab<span class="o">=</span><span class="s">&quot;ROI&quot;</span><span class="p">)</span>
-levelplot<span class="p">(</span><span class="kp">as.matrix</span><span class="p">(</span>Cor3<span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="kp">ncol</span><span class="p">(</span>Cor3<span class="p">),</span><span class="kp">ncol</span><span class="p">(</span>Cor3<span class="p">)</span><span class="o">:</span><span class="m">1</span><span class="p">]),</span> par.settings<span class="o">=</span>my.theme<span class="p">,</span> at<span class="o">=</span>my.at<span class="p">,</span> colorkey<span class="o">=</span>my.ckey<span class="p">,</span> scales<span class="o">=</span><span class="kt">list</span><span class="p">(</span>x<span class="o">=</span><span class="kt">list</span><span class="p">(</span>rot<span class="o">=</span><span class="m">90</span><span class="p">)),</span> main<span class="o">=</span><span class="s">&quot;State 3&quot;</span><span class="p">,</span> xlab<span class="o">=</span><span class="s">&quot;ROI&quot;</span><span class="p">,</span> ylab<span class="o">=</span><span class="s">&quot;ROI&quot;</span><span class="p">)</span>
-levelplot<span class="p">(</span><span class="kp">as.matrix</span><span class="p">(</span>Cor4<span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="kp">ncol</span><span class="p">(</span>Cor4<span class="p">),</span><span class="kp">ncol</span><span class="p">(</span>Cor4<span class="p">)</span><span class="o">:</span><span class="m">1</span><span class="p">]),</span> par.settings<span class="o">=</span>my.theme<span class="p">,</span> at<span class="o">=</span>my.at<span class="p">,</span> colorkey<span class="o">=</span>my.ckey<span class="p">,</span> scales<span class="o">=</span><span class="kt">list</span><span class="p">(</span>x<span class="o">=</span><span class="kt">list</span><span class="p">(</span>rot<span class="o">=</span><span class="m">90</span><span class="p">)),</span> main<span class="o">=</span><span class="s">&quot;State 4&quot;</span><span class="p">,</span> xlab<span class="o">=</span><span class="s">&quot;ROI&quot;</span><span class="p">,</span> ylab<span class="o">=</span><span class="s">&quot;ROI&quot;</span><span class="p">)</span>
+<span class="nf">levelplot</span><span class="p">(</span><span class="nf">as.matrix</span><span class="p">(</span><span class="n">Cor1</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="nf">ncol</span><span class="p">(</span><span class="n">Cor1</span><span class="p">),</span><span class="nf">ncol</span><span class="p">(</span><span class="n">Cor1</span><span class="p">)</span><span class="o">:</span><span class="m">1</span><span class="p">]),</span> <span class="n">par.settings</span><span class="o">=</span><span class="n">my.theme</span><span class="p">,</span> <span class="n">at</span><span class="o">=</span><span class="n">my.at</span><span class="p">,</span> <span class="n">colorkey</span><span class="o">=</span><span class="n">my.ckey</span><span class="p">,</span> <span class="n">scales</span><span class="o">=</span><span class="nf">list</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="nf">list</span><span class="p">(</span><span class="n">rot</span><span class="o">=</span><span class="m">90</span><span class="p">)),</span> <span class="n">main</span><span class="o">=</span><span class="s">&quot;State 1&quot;</span><span class="p">,</span> <span class="n">xlab</span><span class="o">=</span><span class="s">&quot;ROI&quot;</span><span class="p">,</span> <span class="n">ylab</span><span class="o">=</span><span class="s">&quot;ROI&quot;</span><span class="p">)</span>
+<span class="nf">levelplot</span><span class="p">(</span><span class="nf">as.matrix</span><span class="p">(</span><span class="n">Cor2</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="nf">ncol</span><span class="p">(</span><span class="n">Cor2</span><span class="p">),</span><span class="nf">ncol</span><span class="p">(</span><span class="n">Cor2</span><span class="p">)</span><span class="o">:</span><span class="m">1</span><span class="p">]),</span> <span class="n">par.settings</span><span class="o">=</span><span class="n">my.theme</span><span class="p">,</span> <span class="n">at</span><span class="o">=</span><span class="n">my.at</span><span class="p">,</span> <span class="n">colorkey</span><span class="o">=</span><span class="n">my.ckey</span><span class="p">,</span> <span class="n">scales</span><span class="o">=</span><span class="nf">list</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="nf">list</span><span class="p">(</span><span class="n">rot</span><span class="o">=</span><span class="m">90</span><span class="p">)),</span> <span class="n">main</span><span class="o">=</span><span class="s">&quot;State 2&quot;</span><span class="p">,</span> <span class="n">xlab</span><span class="o">=</span><span class="s">&quot;ROI&quot;</span><span class="p">,</span> <span class="n">ylab</span><span class="o">=</span><span class="s">&quot;ROI&quot;</span><span class="p">)</span>
+<span class="nf">levelplot</span><span class="p">(</span><span class="nf">as.matrix</span><span class="p">(</span><span class="n">Cor3</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="nf">ncol</span><span class="p">(</span><span class="n">Cor3</span><span class="p">),</span><span class="nf">ncol</span><span class="p">(</span><span class="n">Cor3</span><span class="p">)</span><span class="o">:</span><span class="m">1</span><span class="p">]),</span> <span class="n">par.settings</span><span class="o">=</span><span class="n">my.theme</span><span class="p">,</span> <span class="n">at</span><span class="o">=</span><span class="n">my.at</span><span class="p">,</span> <span class="n">colorkey</span><span class="o">=</span><span class="n">my.ckey</span><span class="p">,</span> <span class="n">scales</span><span class="o">=</span><span class="nf">list</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="nf">list</span><span class="p">(</span><span class="n">rot</span><span class="o">=</span><span class="m">90</span><span class="p">)),</span> <span class="n">main</span><span class="o">=</span><span class="s">&quot;State 3&quot;</span><span class="p">,</span> <span class="n">xlab</span><span class="o">=</span><span class="s">&quot;ROI&quot;</span><span class="p">,</span> <span class="n">ylab</span><span class="o">=</span><span class="s">&quot;ROI&quot;</span><span class="p">)</span>
+<span class="nf">levelplot</span><span class="p">(</span><span class="nf">as.matrix</span><span class="p">(</span><span class="n">Cor4</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="nf">ncol</span><span class="p">(</span><span class="n">Cor4</span><span class="p">),</span><span class="nf">ncol</span><span class="p">(</span><span class="n">Cor4</span><span class="p">)</span><span class="o">:</span><span class="m">1</span><span class="p">]),</span> <span class="n">par.settings</span><span class="o">=</span><span class="n">my.theme</span><span class="p">,</span> <span class="n">at</span><span class="o">=</span><span class="n">my.at</span><span class="p">,</span> <span class="n">colorkey</span><span class="o">=</span><span class="n">my.ckey</span><span class="p">,</span> <span class="n">scales</span><span class="o">=</span><span class="nf">list</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="nf">list</span><span class="p">(</span><span class="n">rot</span><span class="o">=</span><span class="m">90</span><span class="p">)),</span> <span class="n">main</span><span class="o">=</span><span class="s">&quot;State 4&quot;</span><span class="p">,</span> <span class="n">xlab</span><span class="o">=</span><span class="s">&quot;ROI&quot;</span><span class="p">,</span> <span class="n">ylab</span><span class="o">=</span><span class="s">&quot;ROI&quot;</span><span class="p">)</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -738,22 +737,22 @@ height=420
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span>mean1<span class="o">&lt;-</span><span class="kp">as.matrix</span><span class="p">(</span>testrun<span class="o">$</span>model<span class="o">$</span>parms.emission<span class="o">$</span>mu<span class="p">[[</span><span class="m">1</span><span class="p">]])</span>
-mean2<span class="o">&lt;-</span><span class="kp">as.matrix</span><span class="p">(</span>testrun<span class="o">$</span>model<span class="o">$</span>parms.emission<span class="o">$</span>mu<span class="p">[[</span><span class="m">2</span><span class="p">]])</span>
-mean3<span class="o">&lt;-</span><span class="kp">as.matrix</span><span class="p">(</span>testrun<span class="o">$</span>model<span class="o">$</span>parms.emission<span class="o">$</span>mu<span class="p">[[</span><span class="m">3</span><span class="p">]])</span>
-mean4<span class="o">&lt;-</span><span class="kp">as.matrix</span><span class="p">(</span>testrun<span class="o">$</span>model<span class="o">$</span>parms.emission<span class="o">$</span>mu<span class="p">[[</span><span class="m">4</span><span class="p">]])</span>
+<div class=" highlight hl-r"><pre><span></span><span class="n">mean1</span><span class="o">&lt;-</span><span class="nf">as.matrix</span><span class="p">(</span><span class="n">testrun</span><span class="o">$</span><span class="n">model</span><span class="o">$</span><span class="n">parms.emission</span><span class="o">$</span><span class="n">mu</span><span class="p">[[</span><span class="m">1</span><span class="p">]])</span>
+<span class="n">mean2</span><span class="o">&lt;-</span><span class="nf">as.matrix</span><span class="p">(</span><span class="n">testrun</span><span class="o">$</span><span class="n">model</span><span class="o">$</span><span class="n">parms.emission</span><span class="o">$</span><span class="n">mu</span><span class="p">[[</span><span class="m">2</span><span class="p">]])</span>
+<span class="n">mean3</span><span class="o">&lt;-</span><span class="nf">as.matrix</span><span class="p">(</span><span class="n">testrun</span><span class="o">$</span><span class="n">model</span><span class="o">$</span><span class="n">parms.emission</span><span class="o">$</span><span class="n">mu</span><span class="p">[[</span><span class="m">3</span><span class="p">]])</span>
+<span class="n">mean4</span><span class="o">&lt;-</span><span class="nf">as.matrix</span><span class="p">(</span><span class="n">testrun</span><span class="o">$</span><span class="n">model</span><span class="o">$</span><span class="n">parms.emission</span><span class="o">$</span><span class="n">mu</span><span class="p">[[</span><span class="m">4</span><span class="p">]])</span>
 
-my.theme <span class="o">&lt;-</span> BuRdTheme<span class="p">()</span>
-my.at <span class="o">&lt;-</span> <span class="kp">seq</span><span class="p">(</span><span class="kp">min</span><span class="p">(</span><span class="kp">as.matrix</span><span class="p">(</span><span class="kp">t</span><span class="p">(</span><span class="kp">cbind</span><span class="p">(</span>mean1<span class="p">,</span>mean2<span class="p">,</span>mean3<span class="p">,</span>mean4<span class="p">)))),</span><span class="kp">max</span><span class="p">(</span><span class="kp">as.matrix</span><span class="p">(</span><span class="kp">t</span><span class="p">(</span><span class="kp">cbind</span><span class="p">(</span>mean1<span class="p">,</span>mean2<span class="p">,</span>mean3<span class="p">,</span>mean4<span class="p">)))),</span>length.out<span class="o">=</span><span class="kp">length</span><span class="p">(</span>my.theme<span class="o">$</span>regions<span class="o">$</span><span class="kp">col</span><span class="p">)</span><span class="m">-1</span><span class="p">)</span>
-my.ckey <span class="o">&lt;-</span> <span class="kt">list</span><span class="p">(</span>at<span class="o">=</span>my.at<span class="p">,</span> col<span class="o">=</span>my.theme<span class="o">$</span>regions<span class="o">$</span><span class="kp">col</span><span class="p">)</span>
+<span class="n">my.theme</span> <span class="o">&lt;-</span> <span class="nf">BuRdTheme</span><span class="p">()</span>
+<span class="n">my.at</span> <span class="o">&lt;-</span> <span class="nf">seq</span><span class="p">(</span><span class="nf">min</span><span class="p">(</span><span class="nf">as.matrix</span><span class="p">(</span><span class="nf">t</span><span class="p">(</span><span class="nf">cbind</span><span class="p">(</span><span class="n">mean1</span><span class="p">,</span><span class="n">mean2</span><span class="p">,</span><span class="n">mean3</span><span class="p">,</span><span class="n">mean4</span><span class="p">)))),</span><span class="nf">max</span><span class="p">(</span><span class="nf">as.matrix</span><span class="p">(</span><span class="nf">t</span><span class="p">(</span><span class="nf">cbind</span><span class="p">(</span><span class="n">mean1</span><span class="p">,</span><span class="n">mean2</span><span class="p">,</span><span class="n">mean3</span><span class="p">,</span><span class="n">mean4</span><span class="p">)))),</span><span class="n">length.out</span><span class="o">=</span><span class="nf">length</span><span class="p">(</span><span class="n">my.theme</span><span class="o">$</span><span class="n">regions</span><span class="o">$</span><span class="n">col</span><span class="p">)</span><span class="m">-1</span><span class="p">)</span>
+<span class="n">my.ckey</span> <span class="o">&lt;-</span> <span class="nf">list</span><span class="p">(</span><span class="n">at</span><span class="o">=</span><span class="n">my.at</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="n">my.theme</span><span class="o">$</span><span class="n">regions</span><span class="o">$</span><span class="n">col</span><span class="p">)</span>
 
 <span class="c1">#After running this code, we should see a plot showing the mean z-scored BOLD signals for each ROI (for each state).</span>
-levelplot<span class="p">(</span><span class="kp">as.matrix</span><span class="p">(</span><span class="kp">t</span><span class="p">(</span><span class="kp">cbind</span><span class="p">(</span>mean1<span class="p">,</span>mean2<span class="p">,</span>mean3<span class="p">,</span>mean4<span class="p">))),</span> par.settings<span class="o">=</span>my.theme<span class="p">,</span> at<span class="o">=</span>my.at<span class="p">,</span> colorkey<span class="o">=</span>my.ckey<span class="p">,</span>
-          scales<span class="o">=</span><span class="kt">list</span><span class="p">(</span>y<span class="o">=</span><span class="kt">list</span><span class="p">(</span>at<span class="o">=</span><span class="m">1</span><span class="o">:</span>number_regions<span class="p">,</span> 
-                             labels<span class="o">=</span><span class="kp">row.names</span><span class="p">((</span>mean1<span class="p">)))),</span> ylab<span class="o">=</span><span class="s">&quot;ROI&quot;</span><span class="p">,</span> las<span class="o">=</span><span class="m">0</span><span class="p">,</span> xlab<span class="o">=</span><span class="s">&quot;State&quot;</span><span class="p">,</span> main<span class="o">=</span><span class="s">&quot;Z-scored State Means&quot;</span><span class="p">)</span>
+<span class="nf">levelplot</span><span class="p">(</span><span class="nf">as.matrix</span><span class="p">(</span><span class="nf">t</span><span class="p">(</span><span class="nf">cbind</span><span class="p">(</span><span class="n">mean1</span><span class="p">,</span><span class="n">mean2</span><span class="p">,</span><span class="n">mean3</span><span class="p">,</span><span class="n">mean4</span><span class="p">))),</span> <span class="n">par.settings</span><span class="o">=</span><span class="n">my.theme</span><span class="p">,</span> <span class="n">at</span><span class="o">=</span><span class="n">my.at</span><span class="p">,</span> <span class="n">colorkey</span><span class="o">=</span><span class="n">my.ckey</span><span class="p">,</span>
+          <span class="n">scales</span><span class="o">=</span><span class="nf">list</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="nf">list</span><span class="p">(</span><span class="n">at</span><span class="o">=</span><span class="m">1</span><span class="o">:</span><span class="n">number_regions</span><span class="p">,</span> 
+                             <span class="n">labels</span><span class="o">=</span><span class="nf">row.names</span><span class="p">((</span><span class="n">mean1</span><span class="p">)))),</span> <span class="n">ylab</span><span class="o">=</span><span class="s">&quot;ROI&quot;</span><span class="p">,</span> <span class="n">las</span><span class="o">=</span><span class="m">0</span><span class="p">,</span> <span class="n">xlab</span><span class="o">=</span><span class="s">&quot;State&quot;</span><span class="p">,</span> <span class="n">main</span><span class="o">=</span><span class="s">&quot;Z-scored State Means&quot;</span><span class="p">)</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -799,19 +798,19 @@ height=420
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-r"><pre><span></span><span class="c1">#Let&#39;s first look at the actual probabilities.</span>
-testrun<span class="o">$</span>model<span class="o">$</span>transition
+<span class="n">testrun</span><span class="o">$</span><span class="n">model</span><span class="o">$</span><span class="n">transition</span>
 
 <span class="c1">#Now let&#39;s create a plot.</span>
-new.palette<span class="o">=</span>colorRampPalette<span class="p">(</span><span class="kt">c</span><span class="p">(</span><span class="s">&quot;yellow&quot;</span><span class="p">,</span><span class="s">&quot;orange&quot;</span><span class="p">,</span><span class="s">&quot;red&quot;</span><span class="p">),</span>space<span class="o">=</span><span class="s">&quot;rgb&quot;</span><span class="p">)</span> 
+<span class="n">new.palette</span><span class="o">=</span><span class="nf">colorRampPalette</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;yellow&quot;</span><span class="p">,</span><span class="s">&quot;orange&quot;</span><span class="p">,</span><span class="s">&quot;red&quot;</span><span class="p">),</span><span class="n">space</span><span class="o">=</span><span class="s">&quot;rgb&quot;</span><span class="p">)</span> 
 
-<span class="kp">rownames</span><span class="p">(</span>testrun<span class="o">$</span>model<span class="o">$</span>transition<span class="p">)</span><span class="o">&lt;-</span><span class="m">1</span><span class="o">:</span>number_states
-<span class="kp">colnames</span><span class="p">(</span>testrun<span class="o">$</span>model<span class="o">$</span>transition<span class="p">)</span><span class="o">&lt;-</span><span class="m">1</span><span class="o">:</span>number_states
+<span class="nf">rownames</span><span class="p">(</span><span class="n">testrun</span><span class="o">$</span><span class="n">model</span><span class="o">$</span><span class="n">transition</span><span class="p">)</span><span class="o">&lt;-</span><span class="m">1</span><span class="o">:</span><span class="n">number_states</span>
+<span class="nf">colnames</span><span class="p">(</span><span class="n">testrun</span><span class="o">$</span><span class="n">model</span><span class="o">$</span><span class="n">transition</span><span class="p">)</span><span class="o">&lt;-</span><span class="m">1</span><span class="o">:</span><span class="n">number_states</span>
 
-levelplot<span class="p">(</span><span class="kp">t</span><span class="p">(</span><span class="kp">as.matrix</span><span class="p">(</span>testrun<span class="o">$</span>model<span class="o">$</span>transition<span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="kp">ncol</span><span class="p">(</span>testrun<span class="o">$</span>model<span class="o">$</span>transition<span class="p">),</span><span class="m">1</span><span class="o">:</span><span class="kp">ncol</span><span class="p">(</span>testrun<span class="o">$</span>model<span class="o">$</span>transition<span class="p">)])),</span> col.regions<span class="o">=</span>new.palette<span class="p">(</span><span class="m">20</span><span class="p">),</span>
-         xlab<span class="o">=</span><span class="s">&quot;To&quot;</span><span class="p">,</span> ylab<span class="o">=</span><span class="s">&quot;From&quot;</span><span class="p">,</span> main<span class="o">=</span><span class="s">&quot;State Transition Probability Matrix&quot;</span><span class="p">)</span>
+<span class="nf">levelplot</span><span class="p">(</span><span class="nf">t</span><span class="p">(</span><span class="nf">as.matrix</span><span class="p">(</span><span class="n">testrun</span><span class="o">$</span><span class="n">model</span><span class="o">$</span><span class="n">transition</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="nf">ncol</span><span class="p">(</span><span class="n">testrun</span><span class="o">$</span><span class="n">model</span><span class="o">$</span><span class="n">transition</span><span class="p">),</span><span class="m">1</span><span class="o">:</span><span class="nf">ncol</span><span class="p">(</span><span class="n">testrun</span><span class="o">$</span><span class="n">model</span><span class="o">$</span><span class="n">transition</span><span class="p">)])),</span> <span class="n">col.regions</span><span class="o">=</span><span class="nf">new.palette</span><span class="p">(</span><span class="m">20</span><span class="p">),</span>
+         <span class="n">xlab</span><span class="o">=</span><span class="s">&quot;To&quot;</span><span class="p">,</span> <span class="n">ylab</span><span class="o">=</span><span class="s">&quot;From&quot;</span><span class="p">,</span> <span class="n">main</span><span class="o">=</span><span class="s">&quot;State Transition Probability Matrix&quot;</span><span class="p">)</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -878,16 +877,16 @@ height=420
 <div class=" highlight hl-r"><pre><span></span><span class="c1">#Now let&#39;s plot the sojourn distribution for each state. The x-axis (i.e. &#39;u&#39;) is the sojourn time. The y-axis is the</span>
 <span class="c1">#density.</span>
 
-plot<span class="p">(</span>testrun<span class="p">,</span> xlim<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">100</span><span class="p">),</span> main<span class="o">=</span><span class="s">&quot;State Sojourn Distributions&quot;</span><span class="p">)</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">testrun</span><span class="p">,</span> <span class="n">xlim</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">100</span><span class="p">),</span> <span class="n">main</span><span class="o">=</span><span class="s">&quot;State Sojourn Distributions&quot;</span><span class="p">)</span>
 
 <span class="c1">#To get actual sojourn distribution parameter estimations, you can run the following line of code. It will give a vector</span>
 <span class="c1">#estimated shape parameters and a vector of estimated scale parameters. The first number in each corresponds to the state 1</span>
 <span class="c1">#estimate, the second the state 2 estimate, and so on...</span>
 
-testrun<span class="o">$</span>model<span class="o">$</span>sojourn
+<span class="n">testrun</span><span class="o">$</span><span class="n">model</span><span class="o">$</span><span class="n">sojourn</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -962,28 +961,28 @@ height=420
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span>dist<span class="o">&lt;-</span><span class="kt">matrix</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span> nrow<span class="o">=</span>number_states<span class="p">,</span> ncol<span class="o">=</span>number_states<span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span><span class="n">dist</span><span class="o">&lt;-</span><span class="nf">matrix</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span> <span class="n">nrow</span><span class="o">=</span><span class="n">number_states</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="n">number_states</span><span class="p">)</span>
 
-<span class="kr">for</span><span class="p">(</span>i <span class="kr">in</span> <span class="m">1</span><span class="o">:</span>number_states<span class="p">)</span>
+<span class="nf">for</span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="n">number_states</span><span class="p">)</span>
 <span class="p">{</span>
-  name1<span class="o">&lt;-</span><span class="kp">paste</span><span class="p">(</span><span class="s">&quot;cov&quot;</span><span class="p">,</span> i<span class="p">,</span> sep <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="p">)</span>
-  <span class="kr">for</span><span class="p">(</span>j <span class="kr">in</span> <span class="m">1</span><span class="o">:</span>number_states<span class="p">)</span>
+  <span class="n">name1</span><span class="o">&lt;-</span><span class="nf">paste</span><span class="p">(</span><span class="s">&quot;cov&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="p">)</span>
+  <span class="nf">for</span><span class="p">(</span><span class="n">j</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="n">number_states</span><span class="p">)</span>
   <span class="p">{</span>
-    name2<span class="o">&lt;-</span><span class="kp">paste</span><span class="p">(</span><span class="s">&quot;cov&quot;</span><span class="p">,</span> j<span class="p">,</span> sep <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="p">)</span>
-    dist<span class="p">[</span>i<span class="p">,</span>j<span class="p">]</span><span class="o">&lt;-</span>distcov<span class="p">(</span><span class="kp">as.matrix</span><span class="p">(</span><span class="kp">get</span><span class="p">(</span>name1<span class="p">)),</span> <span class="kp">as.matrix</span><span class="p">(</span><span class="kp">get</span><span class="p">(</span>name2<span class="p">)),</span> method<span class="o">=</span><span class="s">&quot;Euclidean&quot;</span><span class="p">)</span> 
+    <span class="n">name2</span><span class="o">&lt;-</span><span class="nf">paste</span><span class="p">(</span><span class="s">&quot;cov&quot;</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="p">)</span>
+    <span class="n">dist</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span><span class="o">&lt;-</span><span class="nf">distcov</span><span class="p">(</span><span class="nf">as.matrix</span><span class="p">(</span><span class="nf">get</span><span class="p">(</span><span class="n">name1</span><span class="p">)),</span> <span class="nf">as.matrix</span><span class="p">(</span><span class="nf">get</span><span class="p">(</span><span class="n">name2</span><span class="p">)),</span> <span class="n">method</span><span class="o">=</span><span class="s">&quot;Euclidean&quot;</span><span class="p">)</span> 
   <span class="p">}</span>
 <span class="p">}</span>
 
-dist<span class="o">&lt;-</span><span class="kp">as.data.frame</span><span class="p">(</span>dist<span class="p">)</span>
-<span class="kp">rownames</span><span class="p">(</span>dist<span class="p">)</span><span class="o">&lt;-</span><span class="kp">as.character</span><span class="p">(</span><span class="kp">seq</span><span class="p">(</span><span class="m">1</span><span class="o">:</span>number_states<span class="p">))</span>
-<span class="kp">colnames</span><span class="p">(</span>dist<span class="p">)</span><span class="o">&lt;-</span><span class="kp">as.character</span><span class="p">(</span><span class="kp">seq</span><span class="p">(</span><span class="m">1</span><span class="o">:</span>number_states<span class="p">))</span>
+<span class="n">dist</span><span class="o">&lt;-</span><span class="nf">as.data.frame</span><span class="p">(</span><span class="n">dist</span><span class="p">)</span>
+<span class="nf">rownames</span><span class="p">(</span><span class="n">dist</span><span class="p">)</span><span class="o">&lt;-</span><span class="nf">as.character</span><span class="p">(</span><span class="nf">seq</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="n">number_states</span><span class="p">))</span>
+<span class="nf">colnames</span><span class="p">(</span><span class="n">dist</span><span class="p">)</span><span class="o">&lt;-</span><span class="nf">as.character</span><span class="p">(</span><span class="nf">seq</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="n">number_states</span><span class="p">))</span>
 
-mds <span class="o">&lt;-</span> cmdscale<span class="p">(</span>dist<span class="p">)</span>
-plot<span class="p">(</span>mds<span class="p">,</span> type<span class="o">=</span><span class="s">&#39;n&#39;</span><span class="p">,</span> main<span class="o">=</span><span class="s">&quot;Multi-dimensional Scaling&quot;</span><span class="p">,</span> xlab<span class="o">=</span><span class="s">&quot; &quot;</span><span class="p">,</span> ylab<span class="o">=</span><span class="s">&quot; &quot;</span><span class="p">)</span>
-text<span class="p">(</span>mds<span class="p">[,</span> <span class="m">1</span><span class="p">],</span> mds<span class="p">[,</span> <span class="m">2</span><span class="p">],</span> <span class="kp">labels</span><span class="p">(</span>dist<span class="p">)[[</span><span class="m">1</span><span class="p">]])</span>
+<span class="n">mds</span> <span class="o">&lt;-</span> <span class="nf">cmdscale</span><span class="p">(</span><span class="n">dist</span><span class="p">)</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">mds</span><span class="p">,</span> <span class="n">type</span><span class="o">=</span><span class="s">&#39;n&#39;</span><span class="p">,</span> <span class="n">main</span><span class="o">=</span><span class="s">&quot;Multi-dimensional Scaling&quot;</span><span class="p">,</span> <span class="n">xlab</span><span class="o">=</span><span class="s">&quot; &quot;</span><span class="p">,</span> <span class="n">ylab</span><span class="o">=</span><span class="s">&quot; &quot;</span><span class="p">)</span>
+<span class="nf">text</span><span class="p">(</span><span class="n">mds</span><span class="p">[,</span> <span class="m">1</span><span class="p">],</span> <span class="n">mds</span><span class="p">[,</span> <span class="m">2</span><span class="p">],</span> <span class="nf">labels</span><span class="p">(</span><span class="n">dist</span><span class="p">)[[</span><span class="m">1</span><span class="p">]])</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -1029,31 +1028,31 @@ height=420
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span>number_timepoints_part1 <span class="o">&lt;-</span> <span class="m">946</span>
+<div class=" highlight hl-r"><pre><span></span><span class="n">number_timepoints_part1</span> <span class="o">&lt;-</span> <span class="m">946</span>
 
-predfun<span class="o">&lt;-</span><span class="kr">function</span><span class="p">(</span>i<span class="p">)</span>
+<span class="n">predfun</span><span class="o">&lt;-</span><span class="nf">function</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 <span class="p">{</span>
-  subject <span class="o">&lt;-</span> <span class="kp">rep</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span> number_timepoints_part1<span class="p">)</span>
-  time <span class="o">&lt;-</span> <span class="kp">rep</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span> number_timepoints_part1<span class="p">)</span>
-  state <span class="o">&lt;-</span> <span class="kp">rep</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span> number_timepoints_part1<span class="p">)</span>
-  Predict <span class="o">&lt;-</span> <span class="kt">data.frame</span><span class="p">(</span>subject<span class="p">,</span> time<span class="p">,</span> state<span class="p">)</span>
+  <span class="n">subject</span> <span class="o">&lt;-</span> <span class="nf">rep</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span> <span class="n">number_timepoints_part1</span><span class="p">)</span>
+  <span class="n">time</span> <span class="o">&lt;-</span> <span class="nf">rep</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span> <span class="n">number_timepoints_part1</span><span class="p">)</span>
+  <span class="n">state</span> <span class="o">&lt;-</span> <span class="nf">rep</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span> <span class="n">number_timepoints_part1</span><span class="p">)</span>
+  <span class="n">Predict</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">subject</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">state</span><span class="p">)</span>
   
-  <span class="kr">for</span><span class="p">(</span>z <span class="kr">in</span> <span class="m">1</span><span class="o">:</span>number_timepoints_part1<span class="p">)</span>
+  <span class="nf">for</span><span class="p">(</span><span class="n">z</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="n">number_timepoints_part1</span><span class="p">)</span>
   <span class="p">{</span>
-    Predict<span class="o">$</span>subject<span class="p">[</span>z<span class="p">]</span><span class="o">=</span><span class="kp">floor</span><span class="p">(</span>i<span class="o">/</span><span class="m">2</span><span class="p">)</span> <span class="o">+</span> <span class="m">1</span>
-    Predict<span class="o">$</span>time<span class="p">[</span>z<span class="p">]</span><span class="o">=</span>z
-    Predict<span class="o">$</span>state<span class="p">[</span>z<span class="p">]</span><span class="o">=</span>testrun<span class="o">$</span>yhat<span class="p">[</span>z <span class="o">+</span> <span class="kp">sum</span><span class="p">(</span>Lengths<span class="p">[(</span><span class="m">1</span><span class="o">:</span><span class="p">(</span>i<span class="m">-1</span><span class="p">)),])]</span>
+    <span class="n">Predict</span><span class="o">$</span><span class="n">subject</span><span class="p">[</span><span class="n">z</span><span class="p">]</span><span class="o">=</span><span class="nf">floor</span><span class="p">(</span><span class="n">i</span><span class="o">/</span><span class="m">2</span><span class="p">)</span> <span class="o">+</span> <span class="m">1</span>
+    <span class="n">Predict</span><span class="o">$</span><span class="n">time</span><span class="p">[</span><span class="n">z</span><span class="p">]</span><span class="o">=</span><span class="n">z</span>
+    <span class="n">Predict</span><span class="o">$</span><span class="n">state</span><span class="p">[</span><span class="n">z</span><span class="p">]</span><span class="o">=</span><span class="n">testrun</span><span class="o">$</span><span class="n">yhat</span><span class="p">[</span><span class="n">z</span> <span class="o">+</span> <span class="nf">sum</span><span class="p">(</span><span class="n">Lengths</span><span class="p">[(</span><span class="m">1</span><span class="o">:</span><span class="p">(</span><span class="n">i</span><span class="m">-1</span><span class="p">)),])]</span>
   <span class="p">}</span>
   
-  <span class="kr">return</span><span class="p">(</span>Predict<span class="p">)</span>
+  <span class="nf">return</span><span class="p">(</span><span class="n">Predict</span><span class="p">)</span>
 <span class="p">}</span>
 
-Together <span class="o">&lt;-</span> <span class="kp">lapply</span><span class="p">(</span><span class="kp">seq</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="kp">nrow</span><span class="p">(</span>Lengths<span class="p">),</span>by<span class="o">=</span><span class="m">2</span><span class="p">),</span> predfun<span class="p">)</span>
-Predict_part1 <span class="o">&lt;-</span> <span class="kp">do.call</span><span class="p">(</span><span class="kp">rbind</span><span class="p">,</span> Together<span class="p">)</span>
-Predict_part1
+<span class="n">Together</span> <span class="o">&lt;-</span> <span class="nf">lapply</span><span class="p">(</span><span class="nf">seq</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="nf">nrow</span><span class="p">(</span><span class="n">Lengths</span><span class="p">),</span><span class="n">by</span><span class="o">=</span><span class="m">2</span><span class="p">),</span> <span class="n">predfun</span><span class="p">)</span>
+<span class="n">Predict_part1</span> <span class="o">&lt;-</span> <span class="nf">do.call</span><span class="p">(</span><span class="n">rbind</span><span class="p">,</span> <span class="n">Together</span><span class="p">)</span>
+<span class="n">Predict_part1</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -1165,31 +1164,31 @@ Predict_part1
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-r"><pre><span></span><span class="c1">#Let&#39;s create a data frame for the state sequence for all subjects for part 2.</span>
-number_timepoints_part2 <span class="o">&lt;-</span> <span class="m">1030</span>
+<span class="n">number_timepoints_part2</span> <span class="o">&lt;-</span> <span class="m">1030</span>
 
-predfun2<span class="o">&lt;-</span><span class="kr">function</span><span class="p">(</span>i<span class="p">)</span>
+<span class="n">predfun2</span><span class="o">&lt;-</span><span class="nf">function</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 <span class="p">{</span>
-  subject <span class="o">&lt;-</span> <span class="kp">rep</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span> number_timepoints_part2<span class="p">)</span>
-  time <span class="o">&lt;-</span> <span class="kp">rep</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span> number_timepoints_part2<span class="p">)</span>
-  state <span class="o">&lt;-</span> <span class="kp">rep</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span> number_timepoints_part2<span class="p">)</span>
-  Predict<span class="o">&lt;-</span><span class="kt">data.frame</span><span class="p">(</span>subject<span class="p">,</span> time<span class="p">,</span> state<span class="p">)</span>
+  <span class="n">subject</span> <span class="o">&lt;-</span> <span class="nf">rep</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span> <span class="n">number_timepoints_part2</span><span class="p">)</span>
+  <span class="n">time</span> <span class="o">&lt;-</span> <span class="nf">rep</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span> <span class="n">number_timepoints_part2</span><span class="p">)</span>
+  <span class="n">state</span> <span class="o">&lt;-</span> <span class="nf">rep</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span> <span class="n">number_timepoints_part2</span><span class="p">)</span>
+  <span class="n">Predict</span><span class="o">&lt;-</span><span class="nf">data.frame</span><span class="p">(</span><span class="n">subject</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">state</span><span class="p">)</span>
   
-  <span class="kr">for</span><span class="p">(</span>z <span class="kr">in</span> <span class="m">1</span><span class="o">:</span>number_timepoints_part2<span class="p">)</span>
+  <span class="nf">for</span><span class="p">(</span><span class="n">z</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="n">number_timepoints_part2</span><span class="p">)</span>
   <span class="p">{</span>
-    Predict<span class="o">$</span>subject<span class="p">[</span>z<span class="p">]</span><span class="o">=</span>i<span class="o">/</span><span class="m">2</span>
-    Predict<span class="o">$</span>time<span class="p">[</span>z<span class="p">]</span><span class="o">=</span>z
-    Predict<span class="o">$</span>state<span class="p">[</span>z<span class="p">]</span><span class="o">=</span>testrun<span class="o">$</span>yhat<span class="p">[</span>z <span class="o">+</span> <span class="kp">sum</span><span class="p">(</span>Lengths<span class="p">[(</span><span class="m">1</span><span class="o">:</span><span class="p">(</span>i<span class="m">-1</span><span class="p">)),])]</span>
+    <span class="n">Predict</span><span class="o">$</span><span class="n">subject</span><span class="p">[</span><span class="n">z</span><span class="p">]</span><span class="o">=</span><span class="n">i</span><span class="o">/</span><span class="m">2</span>
+    <span class="n">Predict</span><span class="o">$</span><span class="n">time</span><span class="p">[</span><span class="n">z</span><span class="p">]</span><span class="o">=</span><span class="n">z</span>
+    <span class="n">Predict</span><span class="o">$</span><span class="n">state</span><span class="p">[</span><span class="n">z</span><span class="p">]</span><span class="o">=</span><span class="n">testrun</span><span class="o">$</span><span class="n">yhat</span><span class="p">[</span><span class="n">z</span> <span class="o">+</span> <span class="nf">sum</span><span class="p">(</span><span class="n">Lengths</span><span class="p">[(</span><span class="m">1</span><span class="o">:</span><span class="p">(</span><span class="n">i</span><span class="m">-1</span><span class="p">)),])]</span>
   <span class="p">}</span>
   
-  <span class="kr">return</span><span class="p">(</span>Predict<span class="p">)</span>
+  <span class="nf">return</span><span class="p">(</span><span class="n">Predict</span><span class="p">)</span>
 <span class="p">}</span>
 
-Together2<span class="o">&lt;-</span><span class="kp">lapply</span><span class="p">(</span><span class="kp">seq</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="kp">nrow</span><span class="p">(</span>Lengths<span class="p">),</span>by<span class="o">=</span><span class="m">2</span><span class="p">),</span> predfun2<span class="p">)</span>
-Predict_part2<span class="o">&lt;-</span><span class="kp">do.call</span><span class="p">(</span><span class="kp">rbind</span><span class="p">,</span> Together2<span class="p">)</span>
-Predict_part2
+<span class="n">Together2</span><span class="o">&lt;-</span><span class="nf">lapply</span><span class="p">(</span><span class="nf">seq</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="nf">nrow</span><span class="p">(</span><span class="n">Lengths</span><span class="p">),</span><span class="n">by</span><span class="o">=</span><span class="m">2</span><span class="p">),</span> <span class="n">predfun2</span><span class="p">)</span>
+<span class="n">Predict_part2</span><span class="o">&lt;-</span><span class="nf">do.call</span><span class="p">(</span><span class="n">rbind</span><span class="p">,</span> <span class="n">Together2</span><span class="p">)</span>
+<span class="n">Predict_part2</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -1301,22 +1300,22 @@ Predict_part2
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span>forheat <span class="o">&lt;-</span> <span class="kt">matrix</span><span class="p">(</span>Predict_part1<span class="p">[,</span><span class="m">3</span><span class="p">],</span> nrow<span class="o">=</span>number_timepoints_part1<span class="p">,</span> ncol<span class="o">=</span><span class="m">16</span><span class="p">,</span> byrow<span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span>
-forheat2 <span class="o">&lt;-</span> <span class="kp">t</span><span class="p">(</span>forheat<span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span><span class="n">forheat</span> <span class="o">&lt;-</span> <span class="nf">matrix</span><span class="p">(</span><span class="n">Predict_part1</span><span class="p">[,</span><span class="m">3</span><span class="p">],</span> <span class="n">nrow</span><span class="o">=</span><span class="n">number_timepoints_part1</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="m">16</span><span class="p">,</span> <span class="n">byrow</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span>
+<span class="n">forheat2</span> <span class="o">&lt;-</span> <span class="nf">t</span><span class="p">(</span><span class="n">forheat</span><span class="p">)</span>
 
-heatmap.2<span class="p">(</span>forheat2<span class="p">,</span>  <span class="c1"># same data set for cell labels</span>
-          main<span class="o">=</span><span class="s">&quot;States Over Time - Part 1&quot;</span><span class="p">,</span>
-          Rowv <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">16</span><span class="p">),</span>
-          notecol<span class="o">=</span><span class="s">&quot;black&quot;</span><span class="p">,</span>      <span class="c1"># change font color of cell labels to black</span>
-          density.info<span class="o">=</span><span class="s">&quot;none&quot;</span><span class="p">,</span>  <span class="c1"># turns off density plot inside color legend</span>
-          trace<span class="o">=</span><span class="s">&quot;none&quot;</span><span class="p">,</span>     <span class="c1"># widens margins around plot</span>
-          col<span class="o">=</span><span class="kp">rev</span><span class="p">(</span>rainbow<span class="p">(</span><span class="m">4</span><span class="p">)),</span>    <span class="c1"># enable color transition at specified limits</span>
-          dendrogram<span class="o">=</span><span class="s">&quot;none&quot;</span><span class="p">,</span>     <span class="c1"># only draw a row dendrogram</span>
-          ylab<span class="o">=</span><span class="s">&quot;Subject ID&quot;</span><span class="p">,</span> xlab<span class="o">=</span><span class="s">&quot;Time&quot;</span><span class="p">,</span>
-          Colv<span class="o">=</span><span class="s">&quot;NA&quot;</span><span class="p">,</span> key<span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span> keysize <span class="o">=</span> <span class="m">1.5</span><span class="p">,</span> cexRow<span class="o">=</span><span class="m">1.5</span><span class="p">,</span> cexCol<span class="o">=</span><span class="m">1</span><span class="p">)</span>
+<span class="nf">heatmap.2</span><span class="p">(</span><span class="n">forheat2</span><span class="p">,</span>  <span class="c1"># same data set for cell labels</span>
+          <span class="n">main</span><span class="o">=</span><span class="s">&quot;States Over Time - Part 1&quot;</span><span class="p">,</span>
+          <span class="n">Rowv</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">16</span><span class="p">),</span>
+          <span class="n">notecol</span><span class="o">=</span><span class="s">&quot;black&quot;</span><span class="p">,</span>      <span class="c1"># change font color of cell labels to black</span>
+          <span class="n">density.info</span><span class="o">=</span><span class="s">&quot;none&quot;</span><span class="p">,</span>  <span class="c1"># turns off density plot inside color legend</span>
+          <span class="n">trace</span><span class="o">=</span><span class="s">&quot;none&quot;</span><span class="p">,</span>     <span class="c1"># widens margins around plot</span>
+          <span class="n">col</span><span class="o">=</span><span class="nf">rev</span><span class="p">(</span><span class="nf">rainbow</span><span class="p">(</span><span class="m">4</span><span class="p">)),</span>    <span class="c1"># enable color transition at specified limits</span>
+          <span class="n">dendrogram</span><span class="o">=</span><span class="s">&quot;none&quot;</span><span class="p">,</span>     <span class="c1"># only draw a row dendrogram</span>
+          <span class="n">ylab</span><span class="o">=</span><span class="s">&quot;Subject ID&quot;</span><span class="p">,</span> <span class="n">xlab</span><span class="o">=</span><span class="s">&quot;Time&quot;</span><span class="p">,</span>
+          <span class="n">Colv</span><span class="o">=</span><span class="s">&quot;NA&quot;</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span> <span class="n">keysize</span> <span class="o">=</span> <span class="m">1.5</span><span class="p">,</span> <span class="n">cexRow</span><span class="o">=</span><span class="m">1.5</span><span class="p">,</span> <span class="n">cexCol</span><span class="o">=</span><span class="m">1</span><span class="p">)</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -1361,22 +1360,22 @@ height=420
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span>forheat <span class="o">&lt;-</span> <span class="kt">matrix</span><span class="p">(</span>Predict_part2<span class="p">[,</span><span class="m">3</span><span class="p">],</span> nrow<span class="o">=</span>number_timepoints_part2<span class="p">,</span> ncol<span class="o">=</span><span class="m">16</span><span class="p">,</span> byrow<span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span>
-forheat2 <span class="o">&lt;-</span> <span class="kp">t</span><span class="p">(</span>forheat<span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span><span class="n">forheat</span> <span class="o">&lt;-</span> <span class="nf">matrix</span><span class="p">(</span><span class="n">Predict_part2</span><span class="p">[,</span><span class="m">3</span><span class="p">],</span> <span class="n">nrow</span><span class="o">=</span><span class="n">number_timepoints_part2</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="m">16</span><span class="p">,</span> <span class="n">byrow</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span>
+<span class="n">forheat2</span> <span class="o">&lt;-</span> <span class="nf">t</span><span class="p">(</span><span class="n">forheat</span><span class="p">)</span>
 
-heatmap.2<span class="p">(</span>forheat2<span class="p">,</span>  <span class="c1"># same data set for cell labels</span>
-          main<span class="o">=</span><span class="s">&quot;States Over Time - Part 2&quot;</span><span class="p">,</span>
-          Rowv <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">16</span><span class="p">),</span>
-          notecol<span class="o">=</span><span class="s">&quot;black&quot;</span><span class="p">,</span>      <span class="c1"># change font color of cell labels to black</span>
-          density.info<span class="o">=</span><span class="s">&quot;none&quot;</span><span class="p">,</span>  <span class="c1"># turns off density plot inside color legend</span>
-          trace<span class="o">=</span><span class="s">&quot;none&quot;</span><span class="p">,</span>     <span class="c1"># widens margins around plot</span>
-          col<span class="o">=</span><span class="kp">rev</span><span class="p">(</span>rainbow<span class="p">(</span><span class="m">4</span><span class="p">)),</span>    <span class="c1"># enable color transition at specified limits</span>
-          dendrogram<span class="o">=</span><span class="s">&quot;none&quot;</span><span class="p">,</span>     <span class="c1"># only draw a row dendrogram</span>
-          ylab<span class="o">=</span><span class="s">&quot;Subject ID&quot;</span><span class="p">,</span> xlab<span class="o">=</span><span class="s">&quot;Time&quot;</span><span class="p">,</span>
-          Colv<span class="o">=</span><span class="s">&quot;NA&quot;</span><span class="p">,</span> key<span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span> keysize <span class="o">=</span> <span class="m">1.5</span><span class="p">,</span> cexRow<span class="o">=</span><span class="m">1.5</span><span class="p">,</span> cexCol<span class="o">=</span><span class="m">1</span><span class="p">)</span>
+<span class="nf">heatmap.2</span><span class="p">(</span><span class="n">forheat2</span><span class="p">,</span>  <span class="c1"># same data set for cell labels</span>
+          <span class="n">main</span><span class="o">=</span><span class="s">&quot;States Over Time - Part 2&quot;</span><span class="p">,</span>
+          <span class="n">Rowv</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">16</span><span class="p">),</span>
+          <span class="n">notecol</span><span class="o">=</span><span class="s">&quot;black&quot;</span><span class="p">,</span>      <span class="c1"># change font color of cell labels to black</span>
+          <span class="n">density.info</span><span class="o">=</span><span class="s">&quot;none&quot;</span><span class="p">,</span>  <span class="c1"># turns off density plot inside color legend</span>
+          <span class="n">trace</span><span class="o">=</span><span class="s">&quot;none&quot;</span><span class="p">,</span>     <span class="c1"># widens margins around plot</span>
+          <span class="n">col</span><span class="o">=</span><span class="nf">rev</span><span class="p">(</span><span class="nf">rainbow</span><span class="p">(</span><span class="m">4</span><span class="p">)),</span>    <span class="c1"># enable color transition at specified limits</span>
+          <span class="n">dendrogram</span><span class="o">=</span><span class="s">&quot;none&quot;</span><span class="p">,</span>     <span class="c1"># only draw a row dendrogram</span>
+          <span class="n">ylab</span><span class="o">=</span><span class="s">&quot;Subject ID&quot;</span><span class="p">,</span> <span class="n">xlab</span><span class="o">=</span><span class="s">&quot;Time&quot;</span><span class="p">,</span>
+          <span class="n">Colv</span><span class="o">=</span><span class="s">&quot;NA&quot;</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span> <span class="n">keysize</span> <span class="o">=</span> <span class="m">1.5</span><span class="p">,</span> <span class="n">cexRow</span><span class="o">=</span><span class="m">1.5</span><span class="p">,</span> <span class="n">cexCol</span><span class="o">=</span><span class="m">1</span><span class="p">)</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 

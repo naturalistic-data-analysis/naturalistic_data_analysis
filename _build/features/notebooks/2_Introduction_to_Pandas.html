@@ -21,8 +21,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
     <main class="jupyter-page">
     <div id="page-info"><div id="page-title">Introduction to Pandas</div>
 </div>
-    
-<div class="jb_cell">
+    <div class="jb_cell">
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -72,7 +71,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <span class="n">data</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -123,7 +122,7 @@ dtype: int64</pre>
 <span class="n">data</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -172,7 +171,7 @@ dtype: int64</pre>
 <span class="n">data</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -225,7 +224,7 @@ dtype: int64</pre>
 <span class="n">data</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -326,7 +325,7 @@ dtype: int64</pre>
 <span class="n">data</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -429,7 +428,7 @@ dtype: int64</pre>
 <span class="n">data</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -520,7 +519,7 @@ dtype: int64</pre>
 <span class="n">data</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -606,7 +605,7 @@ Note that read_csv() has many options that can be used to make sure you load the
 <div class=" highlight hl-ipython3"><pre><span></span>pd.read_csv<span class="o">?</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -635,7 +634,7 @@ Note that read_csv() has many options that can be used to make sure you load the
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">pwd</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -681,7 +680,7 @@ Note that read_csv() has many options that can be used to make sure you load the
 <span class="c1"># df = pd.read_csv(&#39;psych60/data/salary/salary.csv&#39;, sep = &#39;,&#39;)</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -709,7 +708,7 @@ Note that read_csv() has many options that can be used to make sure you load the
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -882,7 +881,7 @@ Note that read_csv() has many options that can be used to make sure you load the
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -1005,7 +1004,7 @@ Note that read_csv() has many options that can be used to make sure you load the
 <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -1054,7 +1053,7 @@ Index([&#39;salary&#39;, &#39;gender&#39;, &#39;departm&#39;, &#39;years&#39;, &
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;salary&#39;</span><span class="p">][:</span><span class="mi">10</span><span class="p">]</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -1109,10 +1108,10 @@ Name: salary, dtype: int64</pre>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">rows</span><span class="p">,</span> <span class="n">cols</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;There are </span><span class="si">{rows}</span><span class="s1"> rows and </span><span class="si">{cols}</span><span class="s1"> columns in this data set&#39;</span><span class="p">)</span> 
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;There are </span><span class="si">{</span><span class="n">rows</span><span class="si">}</span><span class="s1"> rows and </span><span class="si">{</span><span class="n">cols</span><span class="si">}</span><span class="s1"> columns in this data set&#39;</span><span class="p">)</span> 
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -1155,7 +1154,7 @@ Name: salary, dtype: int64</pre>
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -1285,7 +1284,7 @@ Name: salary, dtype: int64</pre>
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">departm</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -1335,7 +1334,7 @@ Name: departm, dtype: object</pre>
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;gender&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -1386,7 +1385,7 @@ Name: gender, dtype: int64</pre>
 <span class="n">df</span><span class="p">[</span><span class="s1">&#39;gender&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -1435,7 +1434,7 @@ Name: gender, dtype: int64</pre>
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -1610,7 +1609,7 @@ We can chain the <code>.null()</code> and <code>.sum()</code> methods to see how
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -1661,7 +1660,7 @@ dtype: int64</pre>
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)]</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -1752,7 +1751,7 @@ dtype: int64</pre>
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="o">~</span><span class="n">df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)]</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -1925,7 +1924,7 @@ dtype: int64</pre>
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -1970,12 +1969,12 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">rows</span><span class="p">,</span> <span class="n">cols</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;There are </span><span class="si">{rows}</span><span class="s1"> rows and </span><span class="si">{cols}</span><span class="s1"> columns in this data set&#39;</span><span class="p">)</span> 
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;There are </span><span class="si">{</span><span class="n">rows</span><span class="si">}</span><span class="s1"> rows and </span><span class="si">{</span><span class="n">cols</span><span class="si">}</span><span class="s1"> columns in this data set&#39;</span><span class="p">)</span> 
 
 <span class="n">df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -2036,7 +2035,7 @@ For instance you can set initialize a new column with zeros.</p>
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;pubperyear&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -2084,7 +2083,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;pubperyear&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;publications&#39;</span><span class="p">]</span><span class="o">/</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;years&#39;</span><span class="p">]</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -2144,7 +2143,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">10</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span> <span class="s1">&#39;salary&#39;</span><span class="p">]</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -2199,7 +2198,7 @@ Name: salary, dtype: int64</pre>
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:</span><span class="mi">10</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;salary&#39;</span><span class="p">,</span> <span class="s1">&#39;publications&#39;</span><span class="p">]]</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -2324,7 +2323,7 @@ Name: salary, dtype: int64</pre>
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -2413,7 +2412,7 @@ Name: salary, dtype: int64</pre>
 <span class="n">female_df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">gender</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -2442,7 +2441,7 @@ Name: salary, dtype: int64</pre>
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">salary</span> <span class="o">&gt;</span> <span class="mi">90000</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">salary</span> <span class="o">&lt;</span> <span class="mi">100000</span><span class="p">)]</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -2546,7 +2545,7 @@ Name: salary, dtype: int64</pre>
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">salary</span> <span class="o">&gt;</span> <span class="mi">90000</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">salary</span> <span class="o">&lt;</span> <span class="mi">100000</span><span class="p">),</span> <span class="p">[</span><span class="s1">&#39;salary&#39;</span><span class="p">,</span> <span class="s1">&#39;gender&#39;</span><span class="p">]]</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -2641,7 +2640,7 @@ Name: salary, dtype: int64</pre>
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="p">:,</span> <span class="p">:</span><span class="mi">3</span><span class="p">]</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -2696,7 +2695,7 @@ Name: salary, dtype: int64</pre>
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">({</span><span class="s1">&#39;departm&#39;</span><span class="p">:</span><span class="s1">&#39;department&#39;</span><span class="p">,</span><span class="s1">&#39;pubperyear&#39;</span><span class="p">:</span><span class="s1">&#39;pub_per_year&#39;</span><span class="p">},</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -2745,7 +2744,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -2890,7 +2889,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,[</span><span class="s1">&#39;years&#39;</span><span class="p">,</span> <span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="s1">&#39;publications&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -2940,7 +2939,7 @@ dtype: float64</pre>
 <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,[</span><span class="s1">&#39;years&#39;</span><span class="p">,</span> <span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="s1">&#39;publications&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">)</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -2997,7 +2996,7 @@ dtype: float64</pre>
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -3136,7 +3135,7 @@ dtype: float64</pre>
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">combined_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">female_df</span><span class="p">,</span> <span class="n">male_df</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -3164,7 +3163,7 @@ dtype: float64</pre>
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">male_df</span><span class="p">,</span> <span class="n">female_df</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -3352,7 +3351,7 @@ dtype: float64</pre>
 <span class="n">df3</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -3462,7 +3461,7 @@ dtype: float64</pre>
 <span class="n">df3</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -3576,7 +3575,7 @@ dtype: float64</pre>
 <span class="n">df3</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -3660,7 +3659,7 @@ dtype: float64</pre>
 <span class="n">df3</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -3780,7 +3779,7 @@ dtype: float64</pre>
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;gender_name&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -3896,7 +3895,7 @@ dtype: float64</pre>
 <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -4050,7 +4049,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -4225,7 +4224,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <span class="n">data</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -4332,7 +4331,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <span class="n">df_long</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -4504,7 +4503,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <span class="n">df_wide</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
