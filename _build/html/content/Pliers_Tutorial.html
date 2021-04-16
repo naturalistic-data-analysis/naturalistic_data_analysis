@@ -1,0 +1,1765 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Automated Annotations &#8212; Naturalistic Data Analysis</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e7340bb3dbd8dde6db86f25597f54a1b.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="http://naturalistic-data.org/content/Pliers_Tutorial.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Visualizing High Dimensional Data" href="hypertools.html" />
+    <link rel="prev" title="Hidden Semi-Markov Models" href="HiddenSemiMarkovModel.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+<!-- Opengraph tags -->
+<meta property="og:url"         content="http://naturalistic-data.org/content/Pliers_Tutorial.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="Automated Annotations" />
+<meta property="og:description" content="Automated Annotations  Automated Feature Extraction using Pliers  written by Alejandro de la Vega  This tutorial provides an introduction to the automated extra" />
+
+
+<meta name="twitter:card" content="summary" />
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Naturalistic Data Analysis</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <p class="caption collapsible-parent">
+ <span class="caption-text">
+  Course Overview
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Organizers.html">
+   Course Organizers
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Contributors.html">
+   Contributors
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Getting Started
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Download_Data.html">
+   Download Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Software.html">
+   Software Installation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Preprocessing.html">
+   Preprocessing
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Analysis Tutorials
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Functional_Alignment.html">
+   Functional Alignment
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Intersubject_Correlation.html">
+   Intersubject Correlation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Intersubject_RSA.html">
+   Inter-subject Representational Similarity Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Event_Segmentation.html">
+   Event segmentation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Natural_Language_Processing.html">
+   Natural Language Processing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="timecorr.html">
+   Dynamic Connectivity
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="HiddenSemiMarkovModel.html">
+   Hidden Semi-Markov Models
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Automated Annotations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hypertools.html">
+   Visualizing High Dimensional Data
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Background Resources
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="1_Introduction_to_Programming.html">
+   Introduction to Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2_Introduction_to_Pandas.html">
+   Introduction to Pandas
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="3_Introduction_to_Plotting.html">
+   Introduction to Plotting
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="5_Introduction_to_Neuroimaging_Data.html">
+   Introduction to Neuroimaging Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="http://dartbrains.org/">
+   Dartbrains Neuroimaging Analysis Course
+   <i class="fas fa-external-link-alt">
+   </i>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Glossary.html">
+   Glossary
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Contributing Tutorials
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Contributing.html">
+   Contributing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://github.com/naturalistic-data-analysis/naturalistic_data_analysis">
+   GitHub Repository
+   <i class="fas fa-external-link-alt">
+   </i>
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Post any questions to our <a href="https://www.askpbs.org/c/naturalistic-data/">Discourse Page</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/content/Pliers_Tutorial.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/naturalistic-data-analysis/naturalistic_data_analysis"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/naturalistic-data-analysis/naturalistic_data_analysis/issues/new?title=Issue%20on%20page%20%2Fcontent/Pliers_Tutorial.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/naturalistic-data-analysis/naturalistic_data_analysis/edit/master/content/Pliers_Tutorial.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+            <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                    data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                    title="Fullscreen mode"><i
+                        class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/naturalistic-data-analysis/naturalistic_data_analysis/master?urlpath=tree/content/Pliers_Tutorial.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/naturalistic-data-analysis/naturalistic_data_analysis/blob/master/content/Pliers_Tutorial.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i>
+            Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#automated-feature-extraction-using-pliers">
+   Automated Feature Extraction using Pliers
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#in-this-lab-we-will-cover">
+     In this lab we will cover:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#why-use-pliers-for-automated-feature-extraction">
+   Why use Pliers for automated feature extraction?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#installation">
+   Installation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#naturalistic-stimuli-from-paranoiastory-and-sherlock">
+     Naturalistic Stimuli from
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       ParanoiaStory
+      </span>
+     </code>
+     and
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Sherlock
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#getting-started">
+   Getting Started
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-1-audio-rms">
+     Example 1: Audio RMS
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#but-wait-how-were-we-able-to-apply-rmsextractor-to-a-video-when-this-is-an-audio-extractor">
+       But, wait. How were we able to apply
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         RMSExtractor
+        </span>
+       </code>
+       to a
+       <em>
+        video
+       </em>
+       when this is an
+       <em>
+        audio
+       </em>
+       Extractor?
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#fundamentals-of-pliers">
+   Fundamentals of Pliers
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#stims-and-transformers">
+     Stims and Transformers
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#types-of-transformers">
+       Types of Transformers
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-2-manual-stimulus-conversion-rmsextractor">
+     Example 2: Manual stimulus conversion + RMSExtractor
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-3-face-detection-frame-sampling-and-chaining-transformers">
+     Example 3: Face detection, frame sampling, and chaining Transformers
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#when-to-use-implicit-conversion">
+     When to use implicit conversion?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#speech-to-text-converters">
+   Speech-to-text Converters
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-4-speech-to-text-conversion-with-rev-ai">
+     Example 4: Speech-to-Text Conversion with Rev.ai
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#remote-service-api-credentials">
+       Remote service API Credentials
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-5-text-based-extractors">
+     Example 5: Text-based Extractors
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#graph-api-managing-complex-workflows">
+   Graph API: Managing complex workflows
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#where-to-go-from-here">
+   Where to go from here?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#contributions">
+   Contributions
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="automated-annotations">
+<h1>Automated Annotations<a class="headerlink" href="#automated-annotations" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="automated-feature-extraction-using-pliers">
+<h2>Automated Feature Extraction using Pliers<a class="headerlink" href="#automated-feature-extraction-using-pliers" title="Permalink to this headline">¶</a></h2>
+<p><em>written by Alejandro de la Vega</em></p>
+<p>This tutorial provides an introduction to the automated extraction of features from multi-modal naturalistic stimuli for use as regressors in event-related analyes. We will be using <em>pliers</em>, a Python library which provides a unified, standardized interface to dozens of different feature extraction tools and services, including state-of-the-art deep learning models.</p>
+<div class="section" id="in-this-lab-we-will-cover">
+<h3>In this lab we will cover:<a class="headerlink" href="#in-this-lab-we-will-cover" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Installation and getting started</p></li>
+<li><p>Pliers fundamentals</p></li>
+<li><p>Extracting features</p></li>
+<li><p>Converting stimuli across modalities</p></li>
+<li><p>Chaining converters and feature extractors manually</p></li>
+<li><p>Speech to Text Conversion using APIs</p></li>
+<li><p>Speech / Text based extractors</p></li>
+<li><p>Complex workflow managment using Pliers Graph API</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">YouTubeVideo</span>
+
+<span class="n">YouTubeVideo</span><span class="p">(</span><span class="s1">&#39;4mQjtyQPu_c&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<iframe
+    width="400"
+    height="300"
+    src="https://www.youtube.com/embed/4mQjtyQPu_c"
+    frameborder="0"
+    allowfullscreen
+></iframe>
+</div></div>
+</div>
+</div>
+</div>
+<div class="section" id="why-use-pliers-for-automated-feature-extraction">
+<h2>Why use Pliers for automated feature extraction?<a class="headerlink" href="#why-use-pliers-for-automated-feature-extraction" title="Permalink to this headline">¶</a></h2>
+<p>Naturalistic fMRI paradigms have gained popularity due to their potential to more closely resemble the complex, dynamic nature of real-world perception. Due to their very <em>nature</em>, however, these complex stimuli pose serious practical challenges to analyze. Manual annotation is effortful and time consuming, and does not scale to capture the wide range of perceptual dynamics present in these stimuli.</p>
+<p>Fortunately, recent advancements in machine learning have made it possible to rapidly and automatically annotate multi-modal stimuli with a wide range of algorithms. Extracted features range from low-level perceptual features (such as brightness and loudness), to complex, psychological relevant features such as predictions from state-of-the-art language comprehension models. The timecourses of these extracted features can then be used as regressors in task-based fMRI analysis.</p>
+<p>A consequence of the variety of potential features available, however, is that the interfaces to these various algorithms, and content analysis APIs are highly heterogenous. Simply installing and writing the code necessary to interface and harmonize these algorithms can be a substantial endeavour. <em>Pliers</em> aims to facilitate the process by providing a uniform interface to a wide range of tools under an easy to use and unified Python framework.</p>
+</div>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>Installating the base <em>pliers</em> package is simple, just use pip:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pip install -U pliers
+</pre></div>
+</div>
+<p>As <em>pliers</em> interfaces with dozens of external libraries, there are many <strong>optional dependencies</strong> that are not installed by default to keep the installation light.
+<em>Pliers</em> will prompt you with installation instructions if you try to use an extractor that is not yet installed.</p>
+<div class="section" id="naturalistic-stimuli-from-paranoiastory-and-sherlock">
+<h3>Naturalistic Stimuli from <code class="docutils literal notranslate"><span class="pre">ParanoiaStory</span></code> and <code class="docutils literal notranslate"><span class="pre">Sherlock</span></code><a class="headerlink" href="#naturalistic-stimuli-from-paranoiastory-and-sherlock" title="Permalink to this headline">¶</a></h3>
+<p>We’ll be working with the first run stimuli from the <code class="docutils literal notranslate"><span class="pre">ParanoiaStory</span></code> and the <code class="docutils literal notranslate"><span class="pre">Sherlock</span></code> datasets.</p>
+<p><code class="docutils literal notranslate"><span class="pre">ParanoiaStory</span></code> is an audio narrative, while <code class="docutils literal notranslate"><span class="pre">Sherlock</span></code> is a an audio-visual episode from a TV show.</p>
+<p>Let’s set up the paths of these stimuli and take a quick look at what we’re dealing with. Make sure you change the two <code class="docutils literal notranslate"><span class="pre">data_dir</span></code> paths to where you have install the Paranoia and Sherlock datasets.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">datalad.api</span> <span class="k">as</span> <span class="nn">dl</span>
+
+<span class="n">data_dir_paranoia</span> <span class="o">=</span> <span class="s1">&#39;/Volumes/Engram/Data/Paranoia/&#39;</span>
+<span class="n">data_dir_sherlock</span> <span class="o">=</span> <span class="s1">&#39;/Volumes/Engram/Data/Sherlock/&#39;</span>
+
+<span class="n">paranoia_audio</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_dir_paranoia</span><span class="p">,</span> <span class="s1">&#39;stimuli&#39;</span><span class="p">,</span> <span class="s1">&#39;stimuli_story1_audio.wav&#39;</span><span class="p">)</span>
+<span class="n">sherlock_video</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_dir_sherlock</span><span class="p">,</span> <span class="s1">&#39;stimuli&#39;</span><span class="p">,</span><span class="s1">&#39;stimuli_Sherlock.m4v&#39;</span><span class="p">)</span>
+
+<span class="c1"># If datasets haven&#39;t been installed, clone from GIN repository</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">data_dir_paranoia</span><span class="p">):</span>
+    <span class="n">dl</span><span class="o">.</span><span class="n">clone</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="s1">&#39;https://gin.g-node.org/ljchang/Paranoia&#39;</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="n">data_dir_paranoia</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">data_dir_sherlock</span><span class="p">):</span>
+    <span class="n">dl</span><span class="o">.</span><span class="n">clone</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="s1">&#39;https://gin.g-node.org/ljchang/Sherlock&#39;</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="n">data_dir_sherlock</span><span class="p">)</span>
+
+<span class="c1"># Initialize dataset</span>
+<span class="n">ds_paranoia</span> <span class="o">=</span> <span class="n">dl</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="n">data_dir_paranoia</span><span class="p">)</span>
+<span class="n">ds_sherlock</span> <span class="o">=</span> <span class="n">dl</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="n">data_dir_sherlock</span><span class="p">)</span>
+
+<span class="c1"># Get Paranoia story</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">ds_paranoia</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">paranoia_audio</span><span class="p">)</span>
+
+<span class="c1"># Get Sherlock video</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">ds_sherlock</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">sherlock_video</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="getting-started">
+<h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
+<p>The best way to see what <em>pliers</em> can offer is to jump right into an example.</p>
+<div class="section" id="example-1-audio-rms">
+<h3>Example 1: Audio RMS<a class="headerlink" href="#example-1-audio-rms" title="Permalink to this headline">¶</a></h3>
+<p>A measure that is likely to capture a large amount of variance in auditory cortex activity during naturalistic stimulation is the power of the signal in the auditory track. A simple way to measure this is by extracting the <code class="docutils literal notranslate"><span class="pre">Root-Mean-Square</span> <span class="pre">(RMS)</span></code> of the audio signal across time.</p>
+<p><em>Pliers</em> makes this very easy. All we need to do is to import the <code class="docutils literal notranslate"><span class="pre">RMSExtractor</span></code> object, and apply it to the <code class="docutils literal notranslate"><span class="pre">ParanoiaStory</span></code> audio stimulus.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pliers.extractors</span> <span class="kn">import</span> <span class="n">RMSExtractor</span>
+
+<span class="c1"># Create an instance of this extractor</span>
+<span class="n">ext</span> <span class="o">=</span> <span class="n">RMSExtractor</span><span class="p">()</span>
+
+<span class="c1"># Extract features from the audio stimulus</span>
+<span class="n">rms_result</span> <span class="o">=</span> <span class="n">ext</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">paranoia_audio</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The Extractor returns an <code class="docutils literal notranslate"><span class="pre">ExtractorResult</span></code> object which contains the extracted values.</p>
+<p>We can easily convert this to a <em>Pandas DataFrame</em>, a familar format that could easily be fed into a data-analysis pipeline, and is easy to inspect.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rms_df</span> <span class="o">=</span> <span class="n">rms_result</span><span class="o">.</span><span class="n">to_df</span><span class="p">()</span>
+<span class="n">rms_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>order</th>
+      <th>duration</th>
+      <th>onset</th>
+      <th>object_id</th>
+      <th>rms</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>0.01161</td>
+      <td>0.000000</td>
+      <td>0</td>
+      <td>0.000743</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>0.01161</td>
+      <td>0.011610</td>
+      <td>0</td>
+      <td>0.000776</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>0.01161</td>
+      <td>0.023220</td>
+      <td>0</td>
+      <td>0.000823</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3</td>
+      <td>0.01161</td>
+      <td>0.034830</td>
+      <td>0</td>
+      <td>0.001723</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4</td>
+      <td>0.01161</td>
+      <td>0.046440</td>
+      <td>0</td>
+      <td>0.001852</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>45124</th>
+      <td>45124</td>
+      <td>0.01161</td>
+      <td>523.888617</td>
+      <td>0</td>
+      <td>0.001723</td>
+    </tr>
+    <tr>
+      <th>45125</th>
+      <td>45125</td>
+      <td>0.01161</td>
+      <td>523.900227</td>
+      <td>0</td>
+      <td>0.001555</td>
+    </tr>
+    <tr>
+      <th>45126</th>
+      <td>45126</td>
+      <td>0.01161</td>
+      <td>523.911837</td>
+      <td>0</td>
+      <td>0.001433</td>
+    </tr>
+    <tr>
+      <th>45127</th>
+      <td>45127</td>
+      <td>0.01161</td>
+      <td>523.923447</td>
+      <td>0</td>
+      <td>0.001312</td>
+    </tr>
+    <tr>
+      <th>45128</th>
+      <td>45128</td>
+      <td>0.01161</td>
+      <td>523.935057</td>
+      <td>0</td>
+      <td>0.001174</td>
+    </tr>
+  </tbody>
+</table>
+<p>45129 rows × 5 columns</p>
+</div></div></div>
+</div>
+<p>We can then easily plot the timeline of <code class="docutils literal notranslate"><span class="pre">rms</span></code> across time for the <em>ParanoiaStory</em> study.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="n">rms_df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s1">&#39;onset&#39;</span><span class="p">,</span> <span class="s1">&#39;rms&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x14520c5c0&gt;
+</pre></div>
+</div>
+<img alt="../_images/Pliers_Tutorial_16_1.png" src="../_images/Pliers_Tutorial_16_1.png" />
+</div>
+</div>
+<p>We can now do the same thing for the <em>Sherlock</em> video stimulus, using the same <code class="docutils literal notranslate"><span class="pre">RMSExtractor</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ext</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">sherlock_video</span><span class="p">)</span><span class="o">.</span><span class="n">to_df</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s1">&#39;onset&#39;</span><span class="p">,</span> <span class="s1">&#39;rms&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x148066898&gt;
+</pre></div>
+</div>
+<img alt="../_images/Pliers_Tutorial_18_1.png" src="../_images/Pliers_Tutorial_18_1.png" />
+</div>
+</div>
+<p>That was easy! We can now see that the RMS profile of <code class="docutils literal notranslate"><span class="pre">Sherlock</span></code> is very different from the <code class="docutils literal notranslate"><span class="pre">ParanoiaStory</span></code> narrative.</p>
+<div class="section" id="but-wait-how-were-we-able-to-apply-rmsextractor-to-a-video-when-this-is-an-audio-extractor">
+<h4>But, wait. How were we able to apply <code class="docutils literal notranslate"><span class="pre">RMSExtractor</span></code> to a <em>video</em> when this is an <em>audio</em>  Extractor?<a class="headerlink" href="#but-wait-how-were-we-able-to-apply-rmsextractor-to-a-video-when-this-is-an-audio-extractor" title="Permalink to this headline">¶</a></h4>
+<p>Under the hood, <em>pliers</em> noticed this mismatch, and automatically converted the Sherlock video clip to an audio stimuli by extracting the audio track. As a result, the <code class="docutils literal notranslate"><span class="pre">RMSExtractor</span></code> <em>just worked</em> and returned to you the result you were expecting.</p>
+<p>Before we can understand how <em>pliers</em> does this, and how you can do this with greater manual control, it’s important to first understand some basic concepts.</p>
+</div>
+</div>
+</div>
+<div class="section" id="fundamentals-of-pliers">
+<h2>Fundamentals of Pliers<a class="headerlink" href="#fundamentals-of-pliers" title="Permalink to this headline">¶</a></h2>
+<p>This section is adapted from the <a class="reference external" href="http://tyarkoni.github.io/pliers/basic-concepts.html"><em>pliers</em> documentation</a>. For a more in-depth dive, see the official documentation.</p>
+<div class="section" id="stims-and-transformers">
+<h3>Stims and Transformers<a class="headerlink" href="#stims-and-transformers" title="Permalink to this headline">¶</a></h3>
+<p><em>Pliers</em> is deliberately designed with simplicity in mind, and loosely modeled after usage patterns in <em>scikit-learn</em>.</p>
+<p>At its core, <em>pliers</em> is based around two kinds of objects: the <code class="docutils literal notranslate"><span class="pre">Stim</span></code>, and the <code class="docutils literal notranslate"><span class="pre">Transformer</span></code>.</p>
+<p>A <code class="docutils literal notranslate"><span class="pre">Stim</span></code> is a container for a data object we want to extract features from– for example, the <code class="docutils literal notranslate"><span class="pre">Sherlock</span></code> video clip or the <code class="docutils literal notranslate"><span class="pre">ParanoiaStory</span></code> audio clip.</p>
+<p>If you pass a string path to the <code class="docutils literal notranslate"><span class="pre">transform</span></code> method of an <code class="docutils literal notranslate"><span class="pre">Extractor</span></code>, <em>pliers</em> will attempt to automatically load the stimulus. This automatical detection is not fool proof, however, so explicilty loading the stimuli can be useful.</p>
+<p>A <code class="docutils literal notranslate"><span class="pre">Transformer</span></code> provides functionality to <em>do something with</em> <code class="docutils literal notranslate"><span class="pre">Stims</span></code>–either to change the input Stim in some way (e.g., converting a <code class="docutils literal notranslate"><span class="pre">Stim</span></code> from video to audio), or to extract feature data from it (such as extracting <code class="docutils literal notranslate"><span class="pre">rms</span></code> from an audio stimulus).</p>
+<p>Let’s modify the previous example to explicitly load our stimuli:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pliers.stimuli</span> <span class="kn">import</span> <span class="n">AudioStim</span>
+<span class="kn">from</span> <span class="nn">pliers.extractors</span> <span class="kn">import</span> <span class="n">RMSExtractor</span>
+
+<span class="n">stim</span> <span class="o">=</span> <span class="n">AudioStim</span><span class="p">(</span><span class="n">paranoia_audio</span><span class="p">)</span>
+<span class="n">ext</span> <span class="o">=</span> <span class="n">RMSExtractor</span><span class="p">()</span>
+<span class="n">rms_features</span> <span class="o">=</span> <span class="n">ext</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">stim</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can see the separation between the target of the feature extraction (the <em>ParanoiaStory</em> <code class="docutils literal notranslate"><span class="pre">AudioStim</span></code>), and the <code class="docutils literal notranslate"><span class="pre">RMSExtractor</span></code> object that <em>transforms</em> this stimulus into an <code class="docutils literal notranslate"><span class="pre">ExtractorResult</span></code>.</p>
+<p>This basic pattern persists throughout <em>pliers</em>, no matter how many Transformers we string together, or how many Stim inputs we feed in.</p>
+<div class="section" id="types-of-transformers">
+<h4>Types of Transformers<a class="headerlink" href="#types-of-transformers" title="Permalink to this headline">¶</a></h4>
+<p>There are three types of <code class="docutils literal notranslate"><span class="pre">Transformers</span></code> in <em>pliers</em>, and all take <code class="docutils literal notranslate"><span class="pre">Stim</span></code> objects as inputs.</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">Extractors</span></code> return extracted feature data as <code class="docutils literal notranslate"><span class="pre">ExtractorResult</span></code> objects (which can be converted to a pandas dataframes).</p>
+<p>We have already seen an example of this with <code class="docutils literal notranslate"><span class="pre">RMSExtractor</span></code>, but there are dozens more in <em>pliers</em>.</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Converters</span></code> take a <code class="docutils literal notranslate"><span class="pre">Stim</span></code>, and convert it to a different type of <code class="docutils literal notranslate"><span class="pre">Stim</span></code>.</p>
+<p>For example, the <code class="docutils literal notranslate"><span class="pre">VideoToAudioConverter</span></code> takes a <code class="docutils literal notranslate"><span class="pre">VideoStim</span></code> as input, and returns an <code class="docutils literal notranslate"><span class="pre">AudioStim</span></code> with ony the audio track as output.</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Filters</span></code> take a <code class="docutils literal notranslate"><span class="pre">Stim</span></code>, and return a <em>modified</em> <code class="docutils literal notranslate"><span class="pre">Stim</span></code> of the <em>same type</em>.</p>
+<p>For example, the <code class="docutils literal notranslate"><span class="pre">ImageCroppingFilter</span></code> takes an <code class="docutils literal notranslate"><span class="pre">ImageStim</span></code> as input, and returns another <code class="docutils literal notranslate"><span class="pre">ImageStim</span></code> as output, where the image data stored in the <code class="docutils literal notranslate"><span class="pre">Stim</span></code> has been cropped by a bounding box specified by the user.</p>
+</li>
+</ul>
+<p>A <a class="reference external" href="http://tyarkoni.github.io/pliers/transformers.html">complete listing</a> of all <code class="docutils literal notranslate"><span class="pre">Transformers</span></code> is available in the offical <em>pliers</em> documentation.</p>
+<p>In practice, users will <strong>primarily interact</strong> with <code class="docutils literal notranslate"><span class="pre">Extractors</span></code>, as <em>pliers</em> will automatically convert stimuli prior to extraction, greatly reducing the complexity of the code.</p>
+<p>However, it’s often useful to manually combine these operations to fully control the process.</p>
+</div>
+</div>
+<div class="section" id="example-2-manual-stimulus-conversion-rmsextractor">
+<h3>Example 2: Manual stimulus conversion + RMSExtractor<a class="headerlink" href="#example-2-manual-stimulus-conversion-rmsextractor" title="Permalink to this headline">¶</a></h3>
+<p>In <strong>Example 1</strong>, we applied the <code class="docutils literal notranslate"><span class="pre">RMSExtractor</span></code> to a the <code class="docutils literal notranslate"><span class="pre">Sherlock</span></code> video stimulus, and <em>pliers</em> automatically converted the stimulus from <code class="docutils literal notranslate"><span class="pre">VideoStim</span></code> to an <code class="docutils literal notranslate"><span class="pre">AudioStim</span></code> containing only the audio track.</p>
+<p>Let’s modify this example, to use manual conversion from Video to Audio:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pliers.converters</span> <span class="kn">import</span> <span class="n">VideoToAudioConverter</span>
+<span class="kn">from</span> <span class="nn">pliers.extractors</span> <span class="kn">import</span> <span class="n">RMSExtractor</span>
+
+<span class="c1"># Set up Extractor and Converter</span>
+<span class="n">conv</span> <span class="o">=</span> <span class="n">VideoToAudioConverter</span><span class="p">()</span>
+<span class="n">ext</span> <span class="o">=</span> <span class="n">RMSExtractor</span><span class="p">()</span>
+
+<span class="c1"># Transform Video to Audio</span>
+<span class="n">audio_only</span> <span class="o">=</span> <span class="n">conv</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">sherlock_video</span><span class="p">)</span>
+<span class="c1"># Transform Video to RMS results</span>
+<span class="n">audio_result</span> <span class="o">=</span> <span class="n">ext</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">audio_only</span><span class="p">)</span>
+
+<span class="n">audio_result</span><span class="o">.</span><span class="n">to_df</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s1">&#39;onset&#39;</span><span class="p">,</span> <span class="s1">&#39;rms&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x14920f7b8&gt;
+</pre></div>
+</div>
+<img alt="../_images/Pliers_Tutorial_29_1.png" src="../_images/Pliers_Tutorial_29_1.png" />
+</div>
+</div>
+<p>As you can see, the results are identical to letting pliers handle the conversation.</p>
+</div>
+<div class="section" id="example-3-face-detection-frame-sampling-and-chaining-transformers">
+<h3>Example 3: Face detection, frame sampling, and chaining Transformers<a class="headerlink" href="#example-3-face-detection-frame-sampling-and-chaining-transformers" title="Permalink to this headline">¶</a></h3>
+<p>There are times when we need to specify the conversion parameters, and thus prefer not to rely on Pliers’s automatic conversion. We can accomplish this by manually chaining a <code class="docutils literal notranslate"><span class="pre">Converter</span></code> to an <code class="docutils literal notranslate"><span class="pre">Extractor</span></code></p>
+<p>In this example, we’ll be using the <code class="docutils literal notranslate"><span class="pre">FaceRecognitionFaceLocationsExtractor</span></code> to detect faces in the <code class="docutils literal notranslate"><span class="pre">Sherlock</span></code> video stimulus.
+This extractor provides an interface to the <code class="docutils literal notranslate"><span class="pre">face_recognition</span></code> python package.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pliers.extractors</span> <span class="kn">import</span> <span class="n">FaceRecognitionFaceLocationsExtractor</span>
+
+<span class="c1"># Using the more accurate &#39;cnn&#39; model, change this to &#39;hog&#39; for faster perfomance</span>
+<span class="n">face_ext</span> <span class="o">=</span> <span class="n">FaceRecognitionFaceLocationsExtractor</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s1">&#39;cnn&#39;</span><span class="p">)</span>
+
+<span class="c1"># This extractor expects ImageStim as input</span>
+<span class="n">face_ext</span><span class="o">.</span><span class="n">_input_type</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pliers.stimuli.image.ImageStim
+</pre></div>
+</div>
+</div>
+</div>
+<p>If we use this extractor to transform a <code class="docutils literal notranslate"><span class="pre">VideoStim</span></code>, <em>pliers</em> will implicitly use the <code class="docutils literal notranslate"><span class="pre">FrameSamplingConverter</span></code>.</p>
+<p>However, it will do so with the default parameters, which in this case would extract every frame.
+This is too fine grained, as we want to save ourselves the computation, and only sample infrequently for this example.</p>
+<p>To convert the <code class="docutils literal notranslate"><span class="pre">Sherlock</span></code> stimuli from video, to <code class="docutils literal notranslate"><span class="pre">ImageStim</span></code> frames sampled at 0.1Hz (i.e., one frame every 10 seconds), we need to:</p>
+<p>First, load the <code class="docutils literal notranslate"><span class="pre">VideoStim</span></code>, and use the <code class="docutils literal notranslate"><span class="pre">FrameSamplingFilter</span></code> to subsample this set of <code class="docutils literal notranslate"><span class="pre">ImageStims</span></code> at 0.1hz.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pliers.stimuli</span> <span class="kn">import</span> <span class="n">VideoStim</span>
+<span class="kn">from</span> <span class="nn">pliers.filters</span> <span class="kn">import</span> <span class="n">FrameSamplingFilter</span>
+
+<span class="n">video</span> <span class="o">=</span> <span class="n">VideoStim</span><span class="p">(</span><span class="n">sherlock_video</span><span class="p">)</span>
+
+<span class="c1"># Sample at 0.1 Hz</span>
+<span class="n">filt</span> <span class="o">=</span> <span class="n">FrameSamplingFilter</span><span class="p">(</span><span class="n">hertz</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">selected_frames</span> <span class="o">=</span> <span class="n">filt</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">video</span><span class="p">)</span>
+
+<span class="c1"># Number of sampled frames</span>
+<span class="n">selected_frames</span><span class="o">.</span><span class="n">n_frames</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>143
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note:
+<code class="docutils literal notranslate"><span class="pre">FrameSamplingFilter</span></code> expects a <em>collection</em> of <code class="docutils literal notranslate"><span class="pre">ImageStims</span></code> as input, and returns a subsampled collection of <code class="docutils literal notranslate"><span class="pre">ImageStims</span></code>. However, here it can take <code class="docutils literal notranslate"><span class="pre">VideoStim</span></code> as input, as <em>pliers</em> will <em>impliclty</em> convert <code class="docutils literal notranslate"><span class="pre">VideoStim</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">ImageStim</span></code>. Since there are no important parameters to modify in this step, we can let <em>pliers</em> handle it for us, instead of doing it explicitly.</p>
+<p>Next, we can use the <code class="docutils literal notranslate"><span class="pre">FaceRecognitionFaceLocationsExtractor</span></code> to detect and label face locations in the subset of frames</p>
+<p>Note that since we transformed a collection of frames, the result of this operation is a <em>list</em> of <code class="docutils literal notranslate"><span class="pre">ExtractedResult</span></code> objects.</p>
+<p>To merge these objects into a single pandas DataFrame, we can use the helper function <code class="docutils literal notranslate"><span class="pre">merge_results</span></code>.</p>
+<p>Note that the following cell will take a few minutes to run (~4min, depending on your computer specs).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pliers.extractors</span> <span class="kn">import</span> <span class="n">merge_results</span>
+<span class="kn">from</span> <span class="nn">pliers</span> <span class="kn">import</span> <span class="n">config</span>
+<span class="c1"># Disable progress bar for Jupyter Book</span>
+<span class="n">config</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;progress_bar&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># Detect faces in selected frames</span>
+<span class="n">face_features</span> <span class="o">=</span> <span class="n">face_ext</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">selected_frames</span><span class="p">)</span>
+<span class="n">merged_faces</span> <span class="o">=</span> <span class="n">merge_results</span><span class="p">(</span><span class="n">face_features</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># Show only first few rows</span>
+<span class="n">merged_faces</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>order</th>
+      <th>object_id</th>
+      <th>onset</th>
+      <th>duration</th>
+      <th>FaceRecognitionFaceLocationsExtractor#face_locations</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>NaN</td>
+      <td>0</td>
+      <td>60.0</td>
+      <td>10.0</td>
+      <td>(37, 415, 207, 245)</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>NaN</td>
+      <td>0</td>
+      <td>90.0</td>
+      <td>10.0</td>
+      <td>(57, 516, 97, 477)</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>NaN</td>
+      <td>0</td>
+      <td>100.0</td>
+      <td>10.0</td>
+      <td>(72, 570, 241, 400)</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>NaN</td>
+      <td>0</td>
+      <td>120.0</td>
+      <td>10.0</td>
+      <td>(49, 167, 117, 99)</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>NaN</td>
+      <td>0</td>
+      <td>130.0</td>
+      <td>10.0</td>
+      <td>(144, 466, 191, 419)</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>NaN</td>
+      <td>0</td>
+      <td>140.0</td>
+      <td>10.0</td>
+      <td>(102, 185, 159, 128)</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>NaN</td>
+      <td>0</td>
+      <td>150.0</td>
+      <td>10.0</td>
+      <td>(37, 260, 207, 90)</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>NaN</td>
+      <td>0</td>
+      <td>160.0</td>
+      <td>10.0</td>
+      <td>(8, 565, 252, 320)</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>NaN</td>
+      <td>0</td>
+      <td>210.0</td>
+      <td>10.0</td>
+      <td>(68, 433, 125, 376)</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>NaN</td>
+      <td>0</td>
+      <td>240.0</td>
+      <td>10.0</td>
+      <td>(125, 119, 193, 51)</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>NaN</td>
+      <td>1</td>
+      <td>240.0</td>
+      <td>10.0</td>
+      <td>(137, 341, 194, 284)</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>NaN</td>
+      <td>2</td>
+      <td>240.0</td>
+      <td>10.0</td>
+      <td>(125, 519, 182, 462)</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">merged_faces</span><span class="o">.</span><span class="n">onset</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>89
+</pre></div>
+</div>
+</div>
+</div>
+<p>There are 89 unique onsets, which indicates that faces were found in 89/143 frames.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">FaceRecognitionFaceLocationsExtractor#face_locations</span></code> column also indicates the location of each face in CSS order (i.e., top, right, bottom, left).</p>
+<p><strong>Tip:</strong> In some frames (e.g. 240s), multiple faces were found, and there are multiple rows for a given <code class="docutils literal notranslate"><span class="pre">onset</span></code>. To disambiguate these rows, <em>pliers</em> assigns each occurace a unique <code class="docutils literal notranslate"><span class="pre">object_id</span></code> column value. Read more](http://tyarkoni.github.io/pliers/results.html#understanding-object-ids) about <em>object_id</em>.</p>
+<p>Now, Let’s plot all of these frames where faces were found!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Filter selected frames to only include those with faces</span>
+<span class="c1"># and extract stimulus &quot;data&quot; (numpy representation of image frame) from the ExtractorResult object</span>
+<span class="n">face_frames</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span><span class="o">.</span><span class="n">data</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">selected_frames</span> <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">onset</span> <span class="ow">in</span> <span class="n">merged_faces</span><span class="o">.</span><span class="n">onset</span><span class="o">.</span><span class="n">tolist</span><span class="p">()]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">mpl_toolkits.axes_grid1</span> <span class="kn">import</span> <span class="n">ImageGrid</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="k">def</span> <span class="nf">plot_img_grid</span><span class="p">(</span><span class="n">img_list</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">30.</span><span class="p">,</span> <span class="mf">30.</span><span class="p">)):</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="n">figsize</span><span class="p">)</span>
+    <span class="n">grid</span> <span class="o">=</span> <span class="n">ImageGrid</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="mi">111</span><span class="p">,</span> <span class="n">nrows_ncols</span><span class="o">=</span><span class="n">shape</span><span class="p">,</span> <span class="n">axes_pad</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">ax</span><span class="p">,</span> <span class="n">im</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">img_list</span><span class="p">):</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">im</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_img_grid</span><span class="p">(</span><span class="n">face_frames</span><span class="p">,</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/Pliers_Tutorial_45_0.png" src="../_images/Pliers_Tutorial_45_0.png" />
+</div>
+</div>
+<p>Now, let’s take a look at the frames <em>without</em> a detected face:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nonface_frames</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span><span class="o">.</span><span class="n">data</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">selected_frames</span> <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">onset</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">merged_faces</span><span class="o">.</span><span class="n">onset</span><span class="o">.</span><span class="n">tolist</span><span class="p">()]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_img_grid</span><span class="p">(</span><span class="n">nonface_frames</span><span class="p">,</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/Pliers_Tutorial_48_0.png" src="../_images/Pliers_Tutorial_48_0.png" />
+</div>
+</div>
+<p>Great, for the most part it looks like the algorithm corrently idenitfied frames with visble faces, with occasional misses when faces were small.</p>
+</div>
+<div class="section" id="when-to-use-implicit-conversion">
+<h3>When to use implicit conversion?<a class="headerlink" href="#when-to-use-implicit-conversion" title="Permalink to this headline">¶</a></h3>
+<p>Now that you know how to manually convert stimuli, you may wonder, when should I use manual conversion, and when should I rely on <em>implicit conversion</em>?</p>
+<p>Pliers will always attempt implicit conversion when there is a mismatch between the input, and the expected input to a <code class="docutils literal notranslate"><span class="pre">Transformer</span></code>. If in doubt, inspect the <code class="docutils literal notranslate"><span class="pre">_input_type</span></code> attribute of an <code class="docutils literal notranslate"><span class="pre">Extractor</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">face_ext</span><span class="o">.</span><span class="n">_input_type</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pliers.stimuli.image.ImageStim
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">ExtractedResult</span></code> objects also keep a history of what was done prior to Extraction, which you can always inspect</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">str</span><span class="p">(</span><span class="n">face_features</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">history</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;VideoStim-&gt;FrameSamplingFilter/VideoFrameCollectionStim-&gt;VideoFrameCollectionIterator/VideoFrameStim-&gt;FaceRecognitionFaceLocationsExtractor/ExtractorResult&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Note:</strong>
+You can learn more about Transformation history in the <a class="reference external" href="http://tyarkoni.github.io/pliers/stimuli.html#transformation-history">pliers docs</a>.</p>
+<p>If in doubt, simply chain <code class="docutils literal notranslate"><span class="pre">Converters</span></code> to <code class="docutils literal notranslate"><span class="pre">Extractors</span></code> manually.</p>
+<p>If you want to learn more implict conversion, this topic is discussed in the <a class="reference external" href="http://tyarkoni.github.io/pliers/transformers.html#implicit-stim-conversion">Pliers documentation</a>.</p>
+</div>
+</div>
+<div class="section" id="speech-to-text-converters">
+<h2>Speech-to-text Converters<a class="headerlink" href="#speech-to-text-converters" title="Permalink to this headline">¶</a></h2>
+<p>So far, we have experimented with extracting features from <code class="docutils literal notranslate"><span class="pre">AudioStim</span></code> and <code class="docutils literal notranslate"><span class="pre">VideoStim</span></code>s. However, many naturalistic datasets feature extensive human speech, which likely drives a substantial amount of brain activity.</p>
+<p>However, to analyze the speech language, we need a precisely aligned transcript of speech.</p>
+<p>Recent advancements in deep convolutional networks have spawned dozens of <code class="docutils literal notranslate"><span class="pre">speech-to-text</span></code> language models, that promise accurate, time-locked transcripts of speech. The best available models are currently paid services that can be accessed remotely using APIs. <em>Pliers</em> has implemented support for several <code class="docutils literal notranslate"><span class="pre">speech-to-text</span></code> services (as well as image analysis APIs). For this example, we’ll be using a service called <code class="docutils literal notranslate"><span class="pre">Rev.ai</span></code> to transcript run 1 of Paranoia Story to text.</p>
+<div class="section" id="example-4-speech-to-text-conversion-with-rev-ai">
+<h3>Example 4: Speech-to-Text Conversion with Rev.ai<a class="headerlink" href="#example-4-speech-to-text-conversion-with-rev-ai" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="remote-service-api-credentials">
+<h4>Remote service API Credentials<a class="headerlink" href="#remote-service-api-credentials" title="Permalink to this headline">¶</a></h4>
+<p>To use remote APIs, we need to give <em>pliers</em> our private credentials for these paid services, by setting the appropriate environment variable in our environment to the access key. For more details, <a class="reference external" href="http://tyarkoni.github.io/pliers/installation.html#api-keys">see here</a></p>
+<p>For the sake of this tutorial, you can sign up for a free trial of <a class="reference external" href="https://rev.ai">rev.ai</a> (5 hours free, no CC required). We have also provided a pre-extracted transcript that you can load instead.</p>
+<p>Once signed up visit <a class="reference external" href="https://www.rev.ai/access_token">https://www.rev.ai/access_token</a>_ to receive an access token, and set your token to the environment using the following command:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;REVAI_ACCESS_TOKEN&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;PRIVATE_KEY&#39;</span> <span class="c1"># replace PRIVATE_KEY with your own key!</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Warning!</strong>
+Never share this token or push to GitHub!</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<p>Although we’re using a machine-learning model to transcribe our audio file, <em>pliers</em> considers this a <code class="docutils literal notranslate"><span class="pre">Converter</span></code>, as we transform an <code class="docutils literal notranslate"><span class="pre">AudioStim</span></code> to a <code class="docutils literal notranslate"><span class="pre">ComplexTextStim</span></code>.</p>
+<p>Let’s try it out:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pliers.converters</span> <span class="kn">import</span> <span class="n">RevAISpeechAPIConverter</span>
+<span class="n">ext</span> <span class="o">=</span> <span class="n">RevAISpeechAPIConverter</span><span class="p">()</span>
+
+<span class="c1"># Uncomment the next two lines if you have set up the Rev.AI keys</span>
+<span class="c1"># transcript = ext.transform(paranoia_audio)</span>
+<span class="c1"># transcript.save(data_dir_paranoia + &#39;stimuli/paranoia_story1_transcript.txt&#39;)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Beginning audio transcription with a timeout of 1000.000000s. Even for small audios, full transcription may take awhile.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># For the sake of the demonstration, let&#39;s load an pre-existing transcript</span>
+<span class="kn">from</span> <span class="nn">pliers.stimuli</span> <span class="kn">import</span> <span class="n">ComplexTextStim</span>
+<span class="n">transcript_file</span> <span class="o">=</span> <span class="n">data_dir_paranoia</span> <span class="o">+</span> <span class="s1">&#39;stimuli/paranoia_story1_transcript.txt&#39;</span>
+<span class="n">transcript</span> <span class="o">=</span> <span class="n">ComplexTextStim</span><span class="p">(</span><span class="n">transcript_file</span><span class="p">)</span>
+<span class="n">transcript</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pliers.stimuli.text.ComplexTextStim at 0x1478a1cc0&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>As you can see, the <code class="docutils literal notranslate"><span class="pre">type</span></code> of <code class="docutils literal notranslate"><span class="pre">transcript</span></code> is <code class="docutils literal notranslate"><span class="pre">ComplexTextStim</span></code>. A <code class="docutils literal notranslate"><span class="pre">ComplexTextStim</span></code> is simply a container object that is composed of several <code class="docutils literal notranslate"><span class="pre">TextStim</span></code>s which represent individual words. Each individual <code class="docutils literal notranslate"><span class="pre">TextStim</span></code> element can then be associated with individual onsets and/or durations</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># First first elements of the transcript</span>
+<span class="n">transcript</span><span class="o">.</span><span class="n">elements</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;pliers.stimuli.text.TextStim at 0x1478a1710&gt;,
+ &lt;pliers.stimuli.text.TextStim at 0x1478a1ac8&gt;,
+ &lt;pliers.stimuli.text.TextStim at 0x1478a1588&gt;,
+ &lt;pliers.stimuli.text.TextStim at 0x1478a1c18&gt;,
+ &lt;pliers.stimuli.text.TextStim at 0x1478a1ba8&gt;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># First word of the transcript</span>
+<span class="n">transcript</span><span class="o">.</span><span class="n">elements</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">text</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;The&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Specific onset for this word</span>
+<span class="n">transcript</span><span class="o">.</span><span class="n">elements</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">onset</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.09
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><em>pliers</em> by default caches the result of <code class="docutils literal notranslate"><span class="pre">Extractors</span></code> in the background. If we were to re-run this <code class="docutils literal notranslate"><span class="pre">RevAISpeechAPIConverter</span></code> a second time on the same stimulus, it will simply used the cached results rather than perform a potentially expensive repeated API call. This caching behavior applies to all <code class="docutils literal notranslate"><span class="pre">Transformers</span></code> and can save needly re-extraction.</p>
+</div>
+<p>Let’s take a closer look at the transcript by loading it as pandas DataFrame.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="n">transcript_file</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>onset</th>
+      <th>text</th>
+      <th>duration</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2.09</td>
+      <td>The</td>
+      <td>0.21</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2.30</td>
+      <td>email</td>
+      <td>0.36</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2.66</td>
+      <td>came</td>
+      <td>0.42</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3.11</td>
+      <td>late</td>
+      <td>0.27</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>3.38</td>
+      <td>one</td>
+      <td>0.24</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>3.62</td>
+      <td>afternoon</td>
+      <td>0.69</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>4.55</td>
+      <td>as</td>
+      <td>0.18</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>4.73</td>
+      <td>dr</td>
+      <td>0.39</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>5.12</td>
+      <td>Carmen</td>
+      <td>0.39</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>5.51</td>
+      <td>Reed</td>
+      <td>0.33</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>5.84</td>
+      <td>was</td>
+      <td>0.18</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>6.02</td>
+      <td>sitting</td>
+      <td>0.36</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>6.38</td>
+      <td>in</td>
+      <td>0.15</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>6.53</td>
+      <td>her</td>
+      <td>0.15</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>6.68</td>
+      <td>office</td>
+      <td>0.51</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>In just a few minutes, and a few lines of code, we have a fairly accurate, precisely aligned transcript for <code class="docutils literal notranslate"><span class="pre">ParanoiaStory</span></code>.</p>
+<p>Now, what can we do with it?</p>
+</div>
+</div>
+<div class="section" id="example-5-text-based-extractors">
+<h3>Example 5: Text-based Extractors<a class="headerlink" href="#example-5-text-based-extractors" title="Permalink to this headline">¶</a></h3>
+<p><em>Pliers</em> offers support for dozens of <code class="docutils literal notranslate"><span class="pre">Extractors</span></code> that operate on <code class="docutils literal notranslate"><span class="pre">TextStims</span></code>.</p>
+<p>A light-weight and surprsingly useful approach is simply to annotate words using Dictionaries of established word norms. <em>Pliers</em> makes this is easy using the <code class="docutils literal notranslate"><span class="pre">DictionaryExtractor</span></code>.</p>
+<p>A <code class="docutils literal notranslate"><span class="pre">DictionaryExtractor</span></code> simply maps words to arbitrary features encoded in a user-provided look up table. <em>Pliers</em> comes with built-in support for several word-norm mappings using the <a class="reference external" href="http://tyarkoni.github.io/pliers/generated/pliers.extractors.PredefinedDictionaryExtractor.html#pliers.extractors.PredefinedDictionaryExtractor">PredefinedDictionaryExtractor</a>.</p>
+<p>The predefined dictionaries built-in to <em>pliers</em> can be seen in the <a class="reference external" href="https://github.com/tyarkoni/pliers/blob/master/pliers/datasets/dictionaries.json">repository</a>.</p>
+<p>In this example, we’re going to extract values for age-of-acquisition <a class="reference external" href="https://link.springer.com/article/10.3758/s13428-012-0210-4">(Kuperman et al., 2012)</a> and affective valence <a class="reference external" href="https://link.springer.com/article/10.3758/s13428-012-0314-x">(Warriner et al., 2013)</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pliers.extractors</span> <span class="kn">import</span> <span class="n">PredefinedDictionaryExtractor</span>
+
+<span class="n">dictext</span> <span class="o">=</span> <span class="n">PredefinedDictionaryExtractor</span><span class="p">(</span>
+    <span class="n">variables</span><span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;affect&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;V.Mean.Sum&#39;</span><span class="p">],</span>
+        <span class="s2">&quot;aoa&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;AoA_Kup&quot;</span><span class="p">]</span>
+    <span class="p">})</span>
+
+<span class="n">norms_results</span> <span class="o">=</span> <span class="n">dictext</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">transcript</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pliers.extractors</span> <span class="kn">import</span> <span class="n">merge_results</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">norms_df</span> <span class="o">=</span> <span class="n">merge_results</span><span class="p">(</span><span class="n">norms_results</span><span class="p">)</span>
+<span class="n">norms_df</span><span class="p">[[</span><span class="s1">&#39;stim_name&#39;</span><span class="p">,</span> <span class="s1">&#39;onset&#39;</span><span class="p">,</span> <span class="s1">&#39;PredefinedDictionaryExtractor#affect_V.Mean.Sum&#39;</span><span class="p">,</span> 
+          <span class="s1">&#39;PredefinedDictionaryExtractor#aoa_AoA_Kup&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>stim_name</th>
+      <th>onset</th>
+      <th>PredefinedDictionaryExtractor#affect_V.Mean.Sum</th>
+      <th>PredefinedDictionaryExtractor#aoa_AoA_Kup</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>text[email]</td>
+      <td>2.30</td>
+      <td>6.00</td>
+      <td>11.520000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>text[late]</td>
+      <td>3.11</td>
+      <td>3.32</td>
+      <td>5.280000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>text[one]</td>
+      <td>3.38</td>
+      <td>6.09</td>
+      <td>3.227100</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>text[afternoon]</td>
+      <td>3.62</td>
+      <td>6.68</td>
+      <td>4.650000</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>text[as]</td>
+      <td>4.55</td>
+      <td>NaN</td>
+      <td>6.104490</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>text[in]</td>
+      <td>6.38</td>
+      <td>NaN</td>
+      <td>3.685351</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>text[her]</td>
+      <td>6.53</td>
+      <td>NaN</td>
+      <td>5.092075</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>text[office]</td>
+      <td>6.68</td>
+      <td>4.54</td>
+      <td>6.680000</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>text[filling]</td>
+      <td>7.43</td>
+      <td>NaN</td>
+      <td>6.818509</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>text[out]</td>
+      <td>7.76</td>
+      <td>NaN</td>
+      <td>3.280385</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>text[medical]</td>
+      <td>7.97</td>
+      <td>5.22</td>
+      <td>8.680000</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>text[for]</td>
+      <td>8.81</td>
+      <td>NaN</td>
+      <td>4.388713</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>text[the]</td>
+      <td>8.99</td>
+      <td>NaN</td>
+      <td>3.983747</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>text[she]</td>
+      <td>9.65</td>
+      <td>NaN</td>
+      <td>3.568124</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>text[that]</td>
+      <td>10.34</td>
+      <td>NaN</td>
+      <td>5.529012</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>In a single dataframe, we can see the input words, and the values for each of the two norms we requested.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If a Dictionary does not include the requested word, it will be encoded as <code class="docutils literal notranslate"><span class="pre">NaN</span></code> value. If both dictionaries are missing the word, it will be dropped when merging.</p>
+</div>
+</div>
+</div>
+<div class="section" id="graph-api-managing-complex-workflows">
+<h2>Graph API: Managing complex workflows<a class="headerlink" href="#graph-api-managing-complex-workflows" title="Permalink to this headline">¶</a></h2>
+<p><strong>Congratulations</strong> At this point, you should now enough to take advantage of the majority <em>pliers</em> has to offer.</p>
+<p>But, with great power comes great responsibilty… or rather, complex workflows.</p>
+<p>Say you want to extract various features on the <code class="docutils literal notranslate"><span class="pre">Sherlock</span></code> dataset, which require distinct conversion steps. You could do as we have so far, and string together various <code class="docutils literal notranslate"><span class="pre">Transformers</span></code> and manually connect them, but this can become cumbersome, and verbose.</p>
+<p>For example, suppose we want to extract both visual and speech transcript-based features from the <code class="docutils literal notranslate"><span class="pre">Sherlock</span></code> dataset. Specifically, let’s say we want to encode the visual brightness of each frame and detect faces. We also run a sentiment analysis model on a speech transcription extracted from the audio track of the videos. We also want to extract frequency norms on each transcribed word. This requires us to do all of the following:</p>
+<ul class="simple">
+<li><p>Convert the video to a series of video frames, using FrameSamplingFilter;</p></li>
+<li><p>Run a brightness extractor on each image frame;</p></li>
+<li><p>Detect faces for each frame;</p></li>
+<li><p>Extract the audio track from the video;</p></li>
+<li><p>Transcribe the audio track to text;</p></li>
+<li><p>Run a sentiment analysis model (in this case, using the Vander sentiment extractor) on the transcribed text.</p></li>
+<li><p>Run a predefined dictionary extractor on the transcribed text</p></li>
+</ul>
+<p>Using the normal <em>pliers</em> API, the code to run these steps would look like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pliers.stimuli</span> <span class="kn">import</span> <span class="n">VideoStim</span>
+<span class="kn">from</span> <span class="nn">pliers.filters</span> <span class="kn">import</span> <span class="n">FrameSamplingFilter</span>
+<span class="kn">from</span> <span class="nn">pliers.converters</span> <span class="kn">import</span> <span class="n">RevAISpeechAPIConverter</span>
+<span class="kn">from</span> <span class="nn">pliers.extractors</span> <span class="kn">import</span> <span class="p">(</span><span class="n">VADERSentimentExtractor</span><span class="p">,</span> <span class="n">FaceRecognitionFaceLandmarksExtractor</span><span class="p">)</span>
+
+<span class="n">stimulus</span> <span class="o">=</span> <span class="n">VideoStim</span><span class="p">(</span><span class="n">sherlock_video</span><span class="p">)</span>
+
+<span class="c1"># Sample 2 video frames / second</span>
+<span class="n">frame_filter</span> <span class="o">=</span> <span class="n">FrameSamplingFilter</span><span class="p">(</span><span class="n">hertz</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">frames</span> <span class="o">=</span> <span class="n">frame_filter</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">stimulus</span><span class="p">)</span>
+
+<span class="c1"># Face extraction</span>
+<span class="n">face_ext</span> <span class="o">=</span> <span class="n">FaceRecognitionFaceLandmarksExtractor</span><span class="p">()</span>
+<span class="n">face_results</span> <span class="o">=</span> <span class="n">face_ext</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">frames</span><span class="p">)</span>
+
+<span class="c1"># STFT Extraction</span>
+<span class="n">stft_ext</span> <span class="o">=</span> <span class="n">STFTAudioExtractor</span><span class="p">(</span><span class="n">freq_bins</span><span class="o">=</span><span class="p">[(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">300</span><span class="p">)])</span>
+<span class="n">stft_res</span> <span class="o">=</span> <span class="n">stft_ext</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">stimulus</span><span class="p">)</span>
+
+<span class="c1"># Run the audio through RevAI&#39;s text detection API</span>
+<span class="n">transcriber</span> <span class="o">=</span> <span class="n">RevAISpeechAPIConverter</span><span class="p">()</span>
+<span class="n">transcripts</span> <span class="o">=</span> <span class="n">transcriber</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">stimulus</span><span class="p">)</span>
+
+<span class="c1"># Apply Vader sentiment analysis extractor</span>
+<span class="n">sentiment</span> <span class="o">=</span> <span class="n">VADERSentimentExtractor</span><span class="p">()</span>
+<span class="n">sentiment_results</span> <span class="o">=</span> <span class="n">sentiment</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">transcripts</span><span class="p">)</span>
+
+<span class="c1"># Apply PredefinedDictionaryExtractor</span>
+<span class="n">dict_ext</span> <span class="o">=</span> <span class="n">PredefinedDictionaryExtractor</span><span class="p">([</span><span class="s1">&#39;affect/V.Mean.Sum&#39;</span><span class="p">,</span>
+                                         <span class="s1">&#39;subtlexusfrequency/Lg10WF&#39;</span><span class="p">])</span>
+<span class="n">dict_results</span> <span class="o">=</span> <span class="n">dict_ext</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">transcripts</span><span class="p">)</span>
+
+<span class="c1"># Combine visual and text-based feature data</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">face_results</span> <span class="o">+</span> <span class="p">[</span><span class="n">stft_res</span><span class="p">]</span> <span class="o">+</span> <span class="n">sentiment_results</span> <span class="o">+</span> <span class="n">dict_results</span>
+
+<span class="c1"># # Merge into a single pandas DF</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">merge_results</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The above code really isn’t that bad – it already features a high level of abstraction (each <code class="docutils literal notranslate"><span class="pre">Transformer</span></code> is initialized and applied in just two lines of code!), and has the advantage of being explicit about every step. Nonetheless, if we want to save ourselves a few dozen keystrokes, we can use <em>pliers’</em> <code class="docutils literal notranslate"><span class="pre">Graph</span></code> API to abbreviate the listing down to just this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pliers.graph</span> <span class="kn">import</span> <span class="n">Graph</span>
+
+<span class="c1"># Define nodes</span>
+<span class="n">nodes</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="n">FrameSamplingFilter</span><span class="p">(</span><span class="n">hertz</span><span class="o">=</span><span class="mf">0.1</span><span class="p">),</span>
+         <span class="p">[</span><span class="s1">&#39;FaceRecognitionFaceLandmarksExtractor&#39;</span><span class="p">,</span> <span class="s1">&#39;BrightnessExtractor&#39;</span><span class="p">]),</span>
+    <span class="p">(</span><span class="n">STFTAudioExtractor</span><span class="p">(</span><span class="n">freq_bins</span><span class="o">=</span><span class="p">[(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">300</span><span class="p">)])),</span>
+    <span class="p">(</span><span class="s1">&#39;RevAISpeechAPIConverter&#39;</span><span class="p">,</span>
+         <span class="p">[</span><span class="n">PredefinedDictionaryExtractor</span><span class="p">([</span><span class="s1">&#39;affect/V.Mean.Sum&#39;</span><span class="p">,</span><span class="s1">&#39;subtlexusfrequency/Lg10WF&#39;</span><span class="p">]),</span>
+          <span class="s1">&#39;VADERSentimentExtractor&#39;</span><span class="p">])</span>
+<span class="p">]</span>
+
+<span class="c1"># Initialize and execute Graph</span>
+<span class="n">g</span> <span class="o">=</span> <span class="n">Graph</span><span class="p">(</span><span class="n">nodes</span><span class="p">)</span>
+
+<span class="c1"># Arguments to merge_results can be passed in here</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">sherlock_video</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This short example demostrates a powerful way to express complex extraction workflows in <em>pliers</em>.</p>
+<p>If you’d like to learn more about the <code class="docutils literal notranslate"><span class="pre">Graph</span></code> API, you can head over to the <a class="reference external" href="http://tyarkoni.github.io/pliers/graphs.html">documentation</a>.</p>
+</div>
+<div class="section" id="where-to-go-from-here">
+<h2>Where to go from here?<a class="headerlink" href="#where-to-go-from-here" title="Permalink to this headline">¶</a></h2>
+<p><em>Pliers</em> is a powerful, yet easy to use Python library for multi-modal feature extraction. In this short tutorial, you’ve seen how to use <em>pliers</em> to modify, convert and extract features from stimuli.</p>
+<p>To see the full range of <code class="docutils literal notranslate"><span class="pre">Transformers</span></code> implemented in <em>pliers</em>, <a class="reference external" href="http://tyarkoni.github.io/pliers/transformers.html">refer to this listing</a></p>
+<p>What’s most exciting about <em>pliers</em>, and the quickly evolving landscape of feature algorithms is that they are constantly evolving. New developments promise to allows to extract ever more psychologically relevant features from naturalistic stimuli, automatically.</p>
+<p>To that end, <em>pliers</em> is designed to be easily expanded by open-source contributions. If you have any ideas for future extractors, or simply find a bug to report, head over to our GitHub repository and <a class="reference external" href="https://github.com/tyarkoni/pliers/issues">file and issue</a>.</p>
+<p>If you use pliers in your work, please cite both the <a class="reference external" href="http://github.com/tyarkoni/pliers">pliers GitHub repository</a> and the following paper:</p>
+<ul class="simple">
+<li><p>McNamara, Q., De La Vega, A., &amp; Yarkoni, T. (2017, August). Developing a comprehensive framework for multimodal feature extraction. In Proceedings of the 23rd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining (pp. 1567-1574). ACM. <a class="reference external" href="https://dl.acm.org/doi/abs/10.1145/3097983.3098075?casa_token=iXf9sdY9XdQAAAAA%3Abu4w3Um9wJr3_c4eEtJ8nCdLzWYSGQ7Fmg4KM6N0uCQ3u-Jryvk3lK0JLvQJFcReIEqiUksZWBAl">link</a></p></li>
+</ul>
+</div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Kuperman, V., Stadthagen-Gonzalez, H. &amp; Brysbaert, M. Age-of-acquisition ratings for 30,000 English words. Behav Res 44, 978–990 (2012). https://doi.org/10.3758/s13428-012-0210-4</p></li>
+<li><p>Warriner, A.B., Kuperman, V. &amp; Brysbaert, M. Norms of valence, arousal, and dominance for 13,915 English lemmas. Behav Res 45, 1191–1207 (2013). https://doi.org/10.3758/s13428-012-0314-x</p></li>
+</ul>
+</div>
+<div class="section" id="contributions">
+<h2>Contributions<a class="headerlink" href="#contributions" title="Permalink to this headline">¶</a></h2>
+<p>Alejandro de la Vega wrote the tutorial and code in this notebook. Emily Finn tested and lightly edited the notebook.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./content"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="HiddenSemiMarkovModel.html" title="previous page">Hidden Semi-Markov Models</a>
+    <a class='right-next' id="next-link" href="hypertools.html" title="next page">Visualizing High Dimensional Data</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Luke Chang<br/>
+        
+            &copy; Copyright 2021.<br/>
+          <div class="extra_footer">
+            Created by <a href="http://www.lukejchang.com/">Luke Chang</a> using <a href="https://jupyterbook.org/">Jupyter Book</a> and partially supported by an NSF CAREER Award 1848370.
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+    <!-- Google Analytics -->
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-166852075-1', 'auto');
+      ga('set', 'anonymizeIp', true);
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+    <!-- End Google Analytics -->
+    
+  </body>
+</html>

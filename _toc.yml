@@ -27,7 +27,7 @@
   - file: content/3_Introduction_to_Plotting
   - file: content/5_Introduction_to_Neuroimaging_Data
   - url: http://dartbrains.org/
-  title: Dartbrains Neuroimaging Analysis Course
+    title: Dartbrains Neuroimaging Analysis Course
   - file: content/Glossary
 - part: Contributing Tutorials
   chapters:

@@ -1,0 +1,1051 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Visualizing High Dimensional Data &#8212; Naturalistic Data Analysis</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e7340bb3dbd8dde6db86f25597f54a1b.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="canonical" href="http://naturalistic-data.org/content/hypertools.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Introduction to Python" href="1_Introduction_to_Programming.html" />
+    <link rel="prev" title="Automated Annotations" href="Pliers_Tutorial.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+<!-- Opengraph tags -->
+<meta property="og:url"         content="http://naturalistic-data.org/content/hypertools.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="Visualizing High Dimensional Data" />
+<meta property="og:description" content="Visualizing High Dimensional Data  Written by Jeremy Manning  The HyperTools Python toolbox provides tools for gaining “geometric insights” into high-dimensiona" />
+
+
+<meta name="twitter:card" content="summary" />
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Naturalistic Data Analysis</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <p class="caption collapsible-parent">
+ <span class="caption-text">
+  Course Overview
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Organizers.html">
+   Course Organizers
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Contributors.html">
+   Contributors
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Getting Started
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Download_Data.html">
+   Download Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Software.html">
+   Software Installation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Preprocessing.html">
+   Preprocessing
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Analysis Tutorials
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Functional_Alignment.html">
+   Functional Alignment
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Intersubject_Correlation.html">
+   Intersubject Correlation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Intersubject_RSA.html">
+   Inter-subject Representational Similarity Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Event_Segmentation.html">
+   Event segmentation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Natural_Language_Processing.html">
+   Natural Language Processing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="timecorr.html">
+   Dynamic Connectivity
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="HiddenSemiMarkovModel.html">
+   Hidden Semi-Markov Models
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Pliers_Tutorial.html">
+   Automated Annotations
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Visualizing High Dimensional Data
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Background Resources
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="1_Introduction_to_Programming.html">
+   Introduction to Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2_Introduction_to_Pandas.html">
+   Introduction to Pandas
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="3_Introduction_to_Plotting.html">
+   Introduction to Plotting
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="5_Introduction_to_Neuroimaging_Data.html">
+   Introduction to Neuroimaging Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="http://dartbrains.org/">
+   Dartbrains Neuroimaging Analysis Course
+   <i class="fas fa-external-link-alt">
+   </i>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Glossary.html">
+   Glossary
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Contributing Tutorials
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Contributing.html">
+   Contributing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://github.com/naturalistic-data-analysis/naturalistic_data_analysis">
+   GitHub Repository
+   <i class="fas fa-external-link-alt">
+   </i>
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Post any questions to our <a href="https://www.askpbs.org/c/naturalistic-data/">Discourse Page</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/content/hypertools.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/naturalistic-data-analysis/naturalistic_data_analysis"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/naturalistic-data-analysis/naturalistic_data_analysis/issues/new?title=Issue%20on%20page%20%2Fcontent/hypertools.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/naturalistic-data-analysis/naturalistic_data_analysis/edit/master/content/hypertools.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+            <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                    data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                    title="Fullscreen mode"><i
+                        class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/naturalistic-data-analysis/naturalistic_data_analysis/master?urlpath=tree/content/hypertools.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/naturalistic-data-analysis/naturalistic_data_analysis/blob/master/content/hypertools.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i>
+            Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-hypertools-data-visualization-pipeline">
+   The HyperTools data visualization pipeline
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#getting-started">
+   Getting Started
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#software">
+     Software
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data">
+     Data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#roi-responses-while-viewing-sherlock">
+   ROI responses while viewing Sherlock
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#getting-some-intuitions-for-the-sherlock-data-using-hypertools">
+   Getting some intuitions for the Sherlock data using HyperTools
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#examining-brain-responses-in-visual-auditory-and-motor-cortex-during-movie-watching">
+     Examining brain responses in visual, auditory, and motor cortex during movie watching
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#using-different-embedding-spaces-to-obtain-a-more-complete-sense-of-high-dimensional-space">
+     Using different embedding spaces to obtain a more complete sense of high-dimensional space
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#aligning-using-the-shared-response-model">
+     Aligning using the shared response model
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-is-the-shape-of-the-sherlock-episode">
+     What is the “shape” of the Sherlock episode?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#further-reading">
+   Further reading
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#contributions">
+   Contributions
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="visualizing-high-dimensional-data">
+<h1>Visualizing High Dimensional Data<a class="headerlink" href="#visualizing-high-dimensional-data" title="Permalink to this headline">¶</a></h1>
+<p><em>Written by Jeremy Manning</em></p>
+<p>The <a class="reference external" href="https://hypertools.readthedocs.io/en/latest/">HyperTools</a> Python toolbox provides tools for gaining “geometric insights” into high-dimensional multi-subject datasets.  The overarching idea of the toolbox is to use a series of data processing and visualization approaches to turn a dataset into a 2D or 3D shape or animation that reflects key properties of the original dataset.  This can be a useful way to gain intuitions about a dataset, since our visual systems are adept at identifying complex patterns in visual data.  In this tutorial we will use HyperTools to visualize some neural and behavioral data.</p>
+<div class="section" id="the-hypertools-data-visualization-pipeline">
+<h2>The HyperTools data visualization pipeline<a class="headerlink" href="#the-hypertools-data-visualization-pipeline" title="Permalink to this headline">¶</a></h2>
+<p>At its core, the HyperTools toolbox provides a suite of wrappers for myriad functions in the <a class="reference external" href="https://scikit-learn.org/stable/">scikit-learn</a>, <a class="reference external" href="http://www.pymvpa.org/">pymvpa</a>, <a class="reference external" href="https://brainiak.org/">braniak</a>, and <a class="reference external" href="https://seaborn.pydata.org/">seaborn</a> toolboxes, among others.  A short JMLR paper describing the HyperTools analysis pipeline may be found <a class="reference external" href="http://www.jmlr.org/papers/volume18/17-434/17-434.pdf">here</a>, and a long-form preprint with additional details may be found <a class="reference external" href="https://arxiv.org/pdf/1701.08290.pdf">here</a>.  <a class="reference external" href="https://github.com/ContextLab/hypertools-paper-notebooks">This repository</a> also contains additional example notebooks.  If you are looking for an alternative introduction to the toolbox with some additional demos, you may be interested in this video:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">YouTubeVideo</span>
+
+<span class="n">YouTubeVideo</span><span class="p">(</span><span class="s1">&#39;hb_ER9RGtOM&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<iframe
+    width="400"
+    height="300"
+    src="https://www.youtube.com/embed/hb_ER9RGtOM"
+    frameborder="0"
+    allowfullscreen
+></iframe>
+</div></div>
+</div>
+<p>The <strong>HyperTools data visualization pipeline</strong> defines a set of heuristics for preprocessing a high-dimensional multi-subject dataset and generating a visualization that may be used to gain useful insights into the data.  The idea is to generate visualizable 2D and 3D shapes and animations that reflect key properties of the data.  For example, this visualization displays several participants’ unfolding neural patterns as they listen to a 10-minute story (here each line represents the neural activity patterns of a single person):
+<img alt="250px" src="https://hypertools.readthedocs.io/en/latest/_images/hypertools.gif" /></p>
+<p>The pipeline comprises the following steps:</p>
+<ol class="simple">
+<li><p>Wrangle the dataset into a list of numerical matrices (<em>one matrix per subject</em>).  The matrices’ <em>rows denote timepoints</em> and their <em>columns denote features</em> (a feature may be a voxel, electrode, a word embedding dimension, a label or category, or some other set of observable or quantifiable values).  Note that, for some data types, this wrangling process is non-trivial.  HyperTools incorporates useful functions for <a class="reference external" href="https://hypertools.readthedocs.io/en/latest/hypertools.tools.format_data.html#hypertools.tools.format_data">parsing</a> a variety of datatypes, including text data.  The <a class="reference external" href="https://github.com/tyarkoni/pliers">pliers</a> toolbox may also be used to generate HyperTools-compatable feature vectors for a wider range of datatypes.</p></li>
+<li><p>Normalize (<em>z</em>-score) within each matrix column to ensure that all dimensions have equal representation in the final visualization.  (This step is optional.)  Pad matrices with columns of zeros as needed, to ensure they all have the same number of columns (<span class="math notranslate nohighlight">\(k\)</span>).  Note that all matrices must have the same number of rows (number of rows/timepoints: <span class="math notranslate nohighlight">\(t\)</span>).</p></li>
+<li><p><a class="reference external" href="http://haxbylab.dartmouth.edu/publications/HGC+11.pdf">Hyperalign</a> the matrices into a common space.</p></li>
+<li><p><a class="reference external" href="https://hypertools.readthedocs.io/en/latest/hypertools.reduce.html#hypertools.reduce">Embed</a> the hyperaligned data into a low-dimensional space (typically this space will be either 2D or 3D).</p></li>
+<li><p>Generate a plot or animation of the reduced data.</p></li>
+</ol>
+<p>If a dataset is stored in the list <code class="docutils literal notranslate"><span class="pre">data</span></code>, the HyperTools pipeline may be used to generate a visualization using a single command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">hypertools</span> <span class="k">as</span> <span class="nn">hyp</span>
+<span class="n">hyp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="getting-started">
+<h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
+<p>Before getting started with this tutorial, we need to make sure you have the necessary software installed and data downloaded.</p>
+<div class="section" id="software">
+<h3>Software<a class="headerlink" href="#software" title="Permalink to this headline">¶</a></h3>
+<p>This tutorial requires the following Python packages to be installed. See the <a class="reference external" href="http://naturalistic-data.org/features/notebooks/Software.html">Software Installation</a> tutorial for more information.</p>
+<ul class="simple">
+<li><p>hypertools</p></li>
+<li><p>timecorr</p></li>
+<li><p>seaborn</p></li>
+<li><p>matplotlib</p></li>
+<li><p>numpy</p></li>
+<li><p>pandas</p></li>
+<li><p>scipy</p></li>
+<li><p>nltools</p></li>
+<li><p>nilearn</p></li>
+<li><p>datalad</p></li>
+</ul>
+<p>Let’s now load the modules we will be using for this tutorial.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">glob</span> <span class="kn">import</span> <span class="n">glob</span> <span class="k">as</span> <span class="n">lsdir</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">scipy.interpolate</span> <span class="kn">import</span> <span class="n">pchip</span>
+<span class="kn">from</span> <span class="nn">nltools.mask</span> <span class="kn">import</span> <span class="n">create_sphere</span><span class="p">,</span> <span class="n">expand_mask</span>
+<span class="kn">from</span> <span class="nn">nltools.data</span> <span class="kn">import</span> <span class="n">Brain_Data</span><span class="p">,</span> <span class="n">Adjacency</span>
+<span class="kn">from</span> <span class="nn">nilearn.plotting</span> <span class="kn">import</span> <span class="n">plot_stat_map</span>
+<span class="kn">import</span> <span class="nn">datalad.api</span> <span class="k">as</span> <span class="nn">dl</span>
+
+<span class="kn">import</span> <span class="nn">hypertools</span> <span class="k">as</span> <span class="nn">hyp</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">timecorr</span> <span class="k">as</span> <span class="nn">tc</span>
+
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">simplefilter</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="data">
+<h3>Data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h3>
+<p>This tutorial will be using the <strong>Sherlock</strong> dataset and will require downloading the cropped and denoised <strong>hdf5</strong> files, the annotations file <code class="docutils literal notranslate"><span class="pre">Sherlock_Segments_1000_NN_2017.xlsx</span></code>, and the preprocessed video text file <code class="docutils literal notranslate"><span class="pre">video_text.npy</span></code>.</p>
+<p>You will want to change <code class="docutils literal notranslate"><span class="pre">datadir</span></code> to wherever you have installed the Sherlock datalad repository (e.g. <code class="docutils literal notranslate"><span class="pre">~/data</span></code>). We will initialize a datalad dataset instance and get the files we need for this tutorial. If you’ve already downloaded everything, this cell should execute quickly. See the <a class="reference external" href="http://naturalistic-data.org/features/notebooks/Download_Data.html">Download Data Tutorial</a> for more information about how to install and use datalad.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">datadir</span> <span class="o">=</span> <span class="s1">&#39;/Volumes/Engram/Data/Sherlock&#39;</span>
+
+<span class="c1"># If dataset hasn&#39;t been installed, clone from GIN repository</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">datadir</span><span class="p">):</span>
+    <span class="n">dl</span><span class="o">.</span><span class="n">clone</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="s1">&#39;https://gin.g-node.org/ljchang/Sherlock&#39;</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="n">datadir</span><span class="p">)</span>
+
+<span class="c1"># Initialize dataset</span>
+<span class="n">ds</span> <span class="o">=</span> <span class="n">dl</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="n">datadir</span><span class="p">)</span>
+
+<span class="c1"># Get Cropped &amp; Denoised HDF5 Files</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">lsdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">datadir</span><span class="p">,</span> <span class="s1">&#39;fmriprep&#39;</span><span class="p">,</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="s1">&#39;func&#39;</span><span class="p">,</span> <span class="s1">&#39;*crop*hdf5&#39;</span><span class="p">)))</span>
+
+<span class="c1"># Get Annotation File</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">datadir</span><span class="p">,</span> <span class="s1">&#39;onsets&#39;</span><span class="p">,</span> <span class="s1">&#39;Sherlock_Segments_1000_NN_2017.xlsx&#39;</span><span class="p">))</span>
+
+<span class="c1"># Get Preprocessed Video Text</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">datadir</span><span class="p">,</span> <span class="s1">&#39;stimuli&#39;</span><span class="p">,</span> <span class="s1">&#39;video_text.npy&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="roi-responses-while-viewing-sherlock">
+<h2>ROI responses while viewing Sherlock<a class="headerlink" href="#roi-responses-while-viewing-sherlock" title="Permalink to this headline">¶</a></h2>
+<p>Following the <a class="reference external" href="http://naturalistic-data.org/features/notebooks/Functional_Alignment.html">functional alignment tutorial</a>, we’ll select out voxels in early visual cortex from the <em>Sherlock</em> dataset.  We’ll also examine primary auditory cortex and motor cortex responses.  Then we’ll apply the HyperTools pipeline to the dataset and visualize the responses within each ROI as a 3D image. Note you could also work with the Average ROI csv files as we did with the Dynamic Correlation tutorial. Here, we will load the full dataset and manually extract ROIs.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mask</span> <span class="o">=</span> <span class="n">Brain_Data</span><span class="p">(</span><span class="s1">&#39;https://neurovault.org/media/images/8423/k50_2mm.nii.gz&#39;</span><span class="p">)</span>
+<span class="n">vectorized_mask</span> <span class="o">=</span> <span class="n">expand_mask</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
+<span class="n">mask</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/hypertools_8_0.png" src="../_images/hypertools_8_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rois</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/naturalistic-data-analysis/tutorial_development/master/hypertools/rois.csv&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;ID&#39;</span><span class="p">,</span> <span class="s1">&#39;Region&#39;</span><span class="p">])</span>
+<span class="n">rois</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ID</th>
+      <th>Region</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>Anterior MPFC</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>Fusiform/parahippocampus</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>DMPFC</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3</td>
+      <td>Sensorimotor/postcentral gyrus</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4</td>
+      <td>V1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">roi_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;V1&#39;</span><span class="p">,</span> <span class="s1">&#39;A1&#39;</span><span class="p">,</span> <span class="s1">&#39;Precentral gyrus&#39;</span><span class="p">]</span>
+<span class="n">roi_ids</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">rois</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Region == &quot;</span><span class="si">{</span><span class="n">r</span><span class="si">}</span><span class="s1">&quot;&#39;</span><span class="p">)[</span><span class="s1">&#39;ID&#39;</span><span class="p">])</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">roi_names</span><span class="p">]</span>
+<span class="n">my_rois</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span><span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">roi_names</span><span class="p">,</span> <span class="n">roi_ids</span><span class="p">)}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># load subject&#39;s data and extract roi</span>
+<span class="n">data2</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">run</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;Part1&#39;</span><span class="p">,</span> <span class="s1">&#39;Part2&#39;</span><span class="p">]:</span>
+    <span class="n">file_list</span> <span class="o">=</span> <span class="n">lsdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">datadir</span><span class="p">,</span> <span class="s1">&#39;fmriprep&#39;</span><span class="p">,</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="s1">&#39;func&#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;*crop*</span><span class="si">{</span><span class="n">run</span><span class="si">}</span><span class="s1">*hdf5&#39;</span><span class="p">))</span>
+    <span class="n">all_sub_roi</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">f_name</span> <span class="ow">in</span> <span class="n">file_list</span><span class="p">:</span> 
+        <span class="n">sub_dat</span> <span class="o">=</span> <span class="n">Brain_Data</span><span class="p">(</span><span class="n">f_name</span><span class="p">)</span>
+        <span class="n">sub</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">f_name</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">sub</span><span class="p">,</span> <span class="n">run</span><span class="p">)</span>
+        <span class="n">sub_roi</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">roi</span> <span class="ow">in</span> <span class="n">my_rois</span><span class="p">:</span>
+            <span class="n">sub_roi</span><span class="p">[</span><span class="n">roi</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">sub_dat</span><span class="o">.</span><span class="n">apply_mask</span><span class="p">(</span><span class="n">vectorized_mask</span><span class="p">[</span><span class="n">my_rois</span><span class="p">[</span><span class="n">roi</span><span class="p">]])]</span>
+        <span class="n">all_sub_roi</span><span class="p">[</span><span class="n">sub</span><span class="p">]</span> <span class="o">=</span> <span class="n">sub_roi</span>
+    <span class="n">data2</span><span class="p">[</span><span class="n">run</span><span class="p">]</span> <span class="o">=</span> <span class="n">all_sub_roi</span>
+    
+<span class="c1"># rearrange data into new dictionary</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">run</span> <span class="ow">in</span> <span class="n">data2</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+    <span class="n">sub_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">data2</span><span class="p">[</span><span class="n">run</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+    <span class="n">sub_list</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+    <span class="n">roi_dat</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">roi</span> <span class="ow">in</span> <span class="n">my_rois</span><span class="p">:</span>
+        <span class="n">sub_roi</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">sub</span> <span class="ow">in</span> <span class="n">sub_list</span><span class="p">:</span>
+            <span class="n">sub_roi</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data2</span><span class="p">[</span><span class="n">run</span><span class="p">][</span><span class="n">sub</span><span class="p">][</span><span class="n">roi</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">roi_dat</span><span class="p">[</span><span class="n">roi</span><span class="p">]</span> <span class="o">=</span> <span class="n">sub_roi</span>
+    <span class="n">data</span><span class="p">[</span><span class="n">run</span><span class="p">]</span> <span class="o">=</span> <span class="n">roi_dat</span>
+<span class="k">del</span> <span class="n">data2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sub-01 Part1
+sub-02 Part1
+sub-03 Part1
+sub-04 Part1
+sub-05 Part1
+sub-06 Part1
+sub-07 Part1
+sub-08 Part1
+sub-09 Part1
+sub-10 Part1
+sub-11 Part1
+sub-12 Part1
+sub-13 Part1
+sub-14 Part1
+sub-15 Part1
+sub-16 Part1
+sub-01 Part2
+sub-02 Part2
+sub-03 Part2
+sub-04 Part2
+sub-05 Part2
+sub-06 Part2
+sub-07 Part2
+sub-08 Part2
+sub-09 Part2
+sub-10 Part2
+sub-11 Part2
+sub-12 Part2
+sub-13 Part2
+sub-14 Part2
+sub-15 Part2
+sub-16 Part2
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="getting-some-intuitions-for-the-sherlock-data-using-hypertools">
+<h2>Getting some intuitions for the Sherlock data using HyperTools<a class="headerlink" href="#getting-some-intuitions-for-the-sherlock-data-using-hypertools" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="examining-brain-responses-in-visual-auditory-and-motor-cortex-during-movie-watching">
+<h3>Examining brain responses in visual, auditory, and motor cortex during movie watching<a class="headerlink" href="#examining-brain-responses-in-visual-auditory-and-motor-cortex-during-movie-watching" title="Permalink to this headline">¶</a></h3>
+<p>Participants in the Sherlock experiment all watched the same audiovisual movie.  Therefore, to the extent that participants’ brain responses were driven by the movie, we might expect that their brain responses in primary auditory and visual cortex should follow similar or related patterns.  In contrast, non-sensory regions like primary motor cortex should not show this sort of agreement.</p>
+<p>We can test this intuition qualitatively by projecting the ROI data from visual, auditory, and motor cortex into a shared low-dimensional space.  Each participant’s trajectory will be plotted in a different color.  Regions that show greater agreement across participants will have more similarly shaped (overlapping) trajectories when plotted using the HyperTools pipeline.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_aligned_ROI_trajectories</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">reduce</span><span class="o">=</span><span class="s1">&#39;UMAP&#39;</span><span class="p">,</span> <span class="n">align</span><span class="o">=</span><span class="s1">&#39;hyper&#39;</span><span class="p">,</span> <span class="n">n_iter</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">ndims</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">internal_reduce</span><span class="o">=</span><span class="s1">&#39;IncrementalPCA&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">==</span> <span class="nb">dict</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span> <span class="c1">#roi</span>
+            <span class="n">plot_aligned_ROI_trajectories</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">r</span><span class="p">],</span> <span class="n">reduce</span><span class="o">=</span><span class="n">reduce</span><span class="p">,</span> <span class="n">align</span><span class="o">=</span><span class="n">align</span><span class="p">,</span> <span class="n">ndims</span><span class="o">=</span><span class="n">ndims</span><span class="p">,</span> <span class="n">internal_reduce</span><span class="o">=</span><span class="n">internal_reduce</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">r</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1">#step 1: reduce dataset before aligning (runs much faster)</span>
+        <span class="n">reduced_data</span> <span class="o">=</span> <span class="n">hyp</span><span class="o">.</span><span class="n">reduce</span><span class="p">([</span><span class="n">x</span><span class="o">.</span><span class="n">data</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">data</span><span class="p">],</span> <span class="n">reduce</span><span class="o">=</span><span class="n">internal_reduce</span><span class="p">,</span> <span class="n">ndims</span><span class="o">=</span><span class="n">ndims</span><span class="p">)</span>
+
+        <span class="c1">#step 2: smooth trajectories so they look prettier</span>
+        <span class="n">smoothed_data</span> <span class="o">=</span> <span class="n">tc</span><span class="o">.</span><span class="n">smooth</span><span class="p">(</span><span class="n">reduced_data</span><span class="p">,</span> <span class="n">kernel_fun</span><span class="o">=</span><span class="n">tc</span><span class="o">.</span><span class="n">helpers</span><span class="o">.</span><span class="n">gaussian_weights</span><span class="p">,</span> <span class="n">kernel_params</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;var&#39;</span><span class="p">:</span> <span class="mi">500</span><span class="p">})</span>
+        
+        <span class="c1">#step 3: align trajectories</span>
+        <span class="n">aligned_data</span> <span class="o">=</span> <span class="n">smoothed_data</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_iter</span><span class="p">):</span>
+            <span class="n">aligned_data</span> <span class="o">=</span> <span class="n">hyp</span><span class="o">.</span><span class="n">align</span><span class="p">(</span><span class="n">aligned_data</span><span class="p">,</span> <span class="n">align</span><span class="o">=</span><span class="n">align</span><span class="p">)</span>
+
+        <span class="c1">#now generate a plot</span>
+        <span class="n">hyp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">aligned_data</span><span class="p">,</span> <span class="n">reduce</span><span class="o">=</span><span class="n">reduce</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_aligned_ROI_trajectories</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Part1&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/hypertools_14_0.png" src="../_images/hypertools_14_0.png" />
+<img alt="../_images/hypertools_14_1.png" src="../_images/hypertools_14_1.png" />
+<img alt="../_images/hypertools_14_2.png" src="../_images/hypertools_14_2.png" />
+</div>
+</div>
+<p>We can see strong agreement across people in V1 and A1, whereas precentral gyrus responses are much more variable.  Now let’s see if these patterns also hold for the second half of the dataset:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_aligned_ROI_trajectories</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Part2&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/hypertools_16_0.png" src="../_images/hypertools_16_0.png" />
+<img alt="../_images/hypertools_16_1.png" src="../_images/hypertools_16_1.png" />
+<img alt="../_images/hypertools_16_2.png" src="../_images/hypertools_16_2.png" />
+</div>
+</div>
+<p>It looks like this pattern holds!  To test this idea formally, we could develop a measure of trajectory consistency across people (e.g. mean squared error between the corresponding timepoints, across all pairs of participants’ trajectories).  We could also explore the extent to which different brain regions exhibit consistent patterns across people.</p>
+</div>
+<div class="section" id="using-different-embedding-spaces-to-obtain-a-more-complete-sense-of-high-dimensional-space">
+<h3>Using different embedding spaces to obtain a more complete sense of high-dimensional space<a class="headerlink" href="#using-different-embedding-spaces-to-obtain-a-more-complete-sense-of-high-dimensional-space" title="Permalink to this headline">¶</a></h3>
+<p>When we visualize high-dimensional data as 3D shapes, we necessarily lose information.  One strategy for getting a better sense of the “true shape” of the data is to use different projection algorithms for embedding the data into the 3D space (this may be done using the <code class="docutils literal notranslate"><span class="pre">reduce</span></code> keyword).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">first_roi</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Part1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">())[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">plot_aligned_ROI_trajectories</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Part1&#39;</span><span class="p">][</span><span class="n">first_roi</span><span class="p">],</span> <span class="n">align</span><span class="o">=</span><span class="s1">&#39;hyper&#39;</span><span class="p">,</span> <span class="n">reduce</span><span class="o">=</span><span class="s1">&#39;IncrementalPCA&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">first_roi</span><span class="si">}</span><span class="s1">: Incremental PCA&#39;</span><span class="p">)</span>
+<span class="n">plot_aligned_ROI_trajectories</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Part1&#39;</span><span class="p">][</span><span class="n">first_roi</span><span class="p">],</span> <span class="n">align</span><span class="o">=</span><span class="s1">&#39;hyper&#39;</span><span class="p">,</span> <span class="n">reduce</span><span class="o">=</span><span class="s1">&#39;MiniBatchDictionaryLearning&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">first_roi</span><span class="si">}</span><span class="s1">: Mini batch dictionary learning&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/hypertools_18_0.png" src="../_images/hypertools_18_0.png" />
+<img alt="../_images/hypertools_18_1.png" src="../_images/hypertools_18_1.png" />
+</div>
+</div>
+<p>In both of these examples we can still see the high degree of consistency across people.  Each embedding approach amplifies preserves or emphasizes a different set of properties from the original high-dimensional feature space.</p>
+</div>
+<div class="section" id="aligning-using-the-shared-response-model">
+<h3>Aligning using the shared response model<a class="headerlink" href="#aligning-using-the-shared-response-model" title="Permalink to this headline">¶</a></h3>
+<p>The above examples use hyperalignment to map different participants’ data into a common space.  HyperTools also supports alignment using the <a class="reference external" href="https://papers.nips.cc/paper/5855-a-reduced-dimension-fmri-shared-response-model">Shared Response Model (SRM)</a>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_aligned_ROI_trajectories</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Part1&#39;</span><span class="p">],</span> <span class="n">align</span><span class="o">=</span><span class="s1">&#39;SRM&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/hypertools_20_0.png" src="../_images/hypertools_20_0.png" />
+<img alt="../_images/hypertools_20_1.png" src="../_images/hypertools_20_1.png" />
+<img alt="../_images/hypertools_20_2.png" src="../_images/hypertools_20_2.png" />
+</div>
+</div>
+</div>
+<div class="section" id="what-is-the-shape-of-the-sherlock-episode">
+<h3>What is the “shape” of the Sherlock episode?<a class="headerlink" href="#what-is-the-shape-of-the-sherlock-episode" title="Permalink to this headline">¶</a></h3>
+<p>Following an approach similar to the one used in <a class="reference external" href="https://www.biorxiv.org/content/10.1101/409987v1">Heusser et al., 2018</a>, we can use also HyperTools to examine how the content of the Sherlock episode unfolds.  Whereas the analyses above show how HyperTools may be used to gain insight into dynamics in neural data, we can also use HyperTools to examine how the semantic content of the episode changes over time.  We’ll fit a word embedding model to a set of detailed annotations of each scene in the episode.</p>
+<p>First, let’s download the annotations to get a sense of what they’re like.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">annotations</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">datadir</span><span class="p">,</span> <span class="s1">&#39;onsets&#39;</span><span class="p">,</span> <span class="s1">&#39;Sherlock_Segments_1000_NN_2017.xlsx&#39;</span><span class="p">))</span>
+<span class="n">annotations</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Segment Number</th>
+      <th>Start Time (s)</th>
+      <th>End Time (s)</th>
+      <th>Start Time (TRs, 1.5s)</th>
+      <th>End Time (TRs, 1.5s)</th>
+      <th>Scene_Segment</th>
+      <th>Scene_Name</th>
+      <th>Scene Details - A Level</th>
+      <th>Space-In/Outdoor</th>
+      <th>Name - All</th>
+      <th>...</th>
+      <th>Music Presence</th>
+      <th>Words on Screen</th>
+      <th>Arousal - Rater 1</th>
+      <th>Valence - Rater 1</th>
+      <th>Arousal - Rater 2</th>
+      <th>Valence - Rater 2</th>
+      <th>Arousal - Rater 3</th>
+      <th>Valence - Rater 3</th>
+      <th>Arousal - Rater 4</th>
+      <th>Valence - Rater 4</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>0</td>
+      <td>12</td>
+      <td>1.0</td>
+      <td>8.0</td>
+      <td>1</td>
+      <td>Cartoon</td>
+      <td>People in popcorn, candy, and soft drink costu...</td>
+      <td>Indoor</td>
+      <td>Cartoon People in Costumes</td>
+      <td>...</td>
+      <td>Yes</td>
+      <td>NaN</td>
+      <td>3</td>
+      <td>+</td>
+      <td>1</td>
+      <td>+</td>
+      <td>2</td>
+      <td>+</td>
+      <td>3</td>
+      <td>+</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>12</td>
+      <td>15</td>
+      <td>9.0</td>
+      <td>10.0</td>
+      <td>1</td>
+      <td>Cartoon</td>
+      <td>Popcorn is being popped in a large popcorn mac...</td>
+      <td>Indoor</td>
+      <td>Female Singer</td>
+      <td>...</td>
+      <td>Yes</td>
+      <td>NaN</td>
+      <td>3</td>
+      <td>+</td>
+      <td>1</td>
+      <td>+</td>
+      <td>2</td>
+      <td>+</td>
+      <td>2</td>
+      <td>+</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>15</td>
+      <td>17</td>
+      <td>11.0</td>
+      <td>11.0</td>
+      <td>1</td>
+      <td>Cartoon</td>
+      <td>Men sing in reply: "the popcorn can't be beat!"</td>
+      <td>Indoor</td>
+      <td>Male Singers</td>
+      <td>...</td>
+      <td>Yes</td>
+      <td>NaN</td>
+      <td>3</td>
+      <td>+</td>
+      <td>1</td>
+      <td>+</td>
+      <td>2</td>
+      <td>+</td>
+      <td>2</td>
+      <td>+</td>
+    </tr>
+  </tbody>
+</table>
+<p>3 rows × 24 columns</p>
+</div></div></div>
+</div>
+<p>Next, we’ll preprocess the anotations in sliding windows of (up to) 50 segments.  In each sliding window, we’ll concatenate all of the text into a single “blob” that merges all of the columns of the annotation spreadsheet, from all of the segments in that window.  Note that the preprocessing was carried out using the code in <a class="reference external" href="https://github.com/ContextLab/sherlock-topic-model-paper/blob/revision-1/code/notebooks/main/topic_model_analysis.ipynb">this notebook</a>; here we’ll be downloading the resulting preprocessed text rather than reproducing it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">text</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">datadir</span><span class="p">,</span> <span class="s1">&#39;stimuli&#39;</span><span class="p">,</span> <span class="s1">&#39;video_text.npy&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s examine the text in a window somewhere near the middle:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">text</span><span class="p">[</span><span class="mi">500</span><span class="p">][:</span><span class="mi">250</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;...&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;sherlock takes a deep breath through his nose outdoor sherlock donovan sherlock lauriston gardens  street  over the shoulder medium no sherlock i even know you didnt make it home last night outdoor sherlock donovan sherlock sherlock lauriston gardens...&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next, we’ll use HyperTools to train a topic model (<a class="reference external" href="http://www.jmlr.org/papers/volume3/blei03a/blei03a.pdf">Blei et al., 2003</a>) on the annotations, treating the text in each sliding window as a document.  We’ll plot the result as a 3D shape.  (For an example of an alternative word embedding model, see the <a class="reference external" href="http://naturalistic-data.org/features/notebooks/Natural_Language_Processing.html">Natural Language Processing tutorial</a>.)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">text_geometry</span> <span class="o">=</span> <span class="n">hyp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">reduce</span><span class="o">=</span><span class="s1">&#39;UMAP&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Video content&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/hypertools_28_0.png" src="../_images/hypertools_28_0.png" />
+</div>
+</div>
+<p>We can also visualize the timecourse of word embeddings for the movie as a heatmap.  Since we’ve already fit our topic model to the annotation text, HyperTools automatically uses the cached result (so the command runs quickly).  Here each row is a timepoint and each column is a topic dimension (i.e., a word embedding dimension):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">topics</span> <span class="o">=</span> <span class="n">text_geometry</span><span class="o">.</span><span class="n">get_formatted_data</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">topics</span><span class="p">)</span>
+<span class="n">h</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Topics&#39;</span><span class="p">)</span>
+<span class="n">h</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/hypertools_30_0.png" src="../_images/hypertools_30_0.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="further-reading">
+<h2>Further reading<a class="headerlink" href="#further-reading" title="Permalink to this headline">¶</a></h2>
+<p>For more in-depth explorations of the Sherlock data using HyperTools, check out <a class="reference external" href="https://www.biorxiv.org/content/10.1101/409987v1">this paper</a> along with the associated <a class="reference external" href="https://github.com/ContextLab/sherlock-topic-model-paper">code and data</a>.  For more in-depth HyperTools tutorials, take a look <a class="reference external" href="https://hypertools.readthedocs.io/en/latest/tutorials.html">here</a>.  <a class="reference external" href="https://github.com/ContextLab/hypertools-paper-notebooks">This repository</a> contains additional example applications of HyperTools to a variety of different data types.</p>
+</div>
+<div class="section" id="contributions">
+<h2>Contributions<a class="headerlink" href="#contributions" title="Permalink to this headline">¶</a></h2>
+<p>Jeremy Manning developed the initial notebook. Luke Chang tested and edited code.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./content"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="Pliers_Tutorial.html" title="previous page">Automated Annotations</a>
+    <a class='right-next' id="next-link" href="1_Introduction_to_Programming.html" title="next page">Introduction to Python</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Luke Chang<br/>
+        
+            &copy; Copyright 2021.<br/>
+          <div class="extra_footer">
+            Created by <a href="http://www.lukejchang.com/">Luke Chang</a> using <a href="https://jupyterbook.org/">Jupyter Book</a> and partially supported by an NSF CAREER Award 1848370.
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+    <!-- Google Analytics -->
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-166852075-1', 'auto');
+      ga('set', 'anonymizeIp', true);
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+    <!-- End Google Analytics -->
+    
+  </body>
+</html>
