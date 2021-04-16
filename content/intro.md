@@ -53,4 +53,4 @@ All content is licensed under the [Creative Commons Attribution-ShareAlike 4.0 I
 
 This book was originally prepared for the Educational Workshop “Analysis Methods for Naturalistic Data” that took place as part of the [2020 virtual annual meeting](https://www.humanbrainmapping.org/i4a/pages/index.cfm?pageid=3958&pageid=4003) of the [Organization for Human Brain Mapping](https://www.humanbrainmapping.org). We plan for it to serve as a living resource that will be maintained, updated, and added to as this exciting field continues to progress.
 
-![ohbm](../../images/logo/Montreal_Conf_Banner.jpg)
+![ohbm](../images/logo/Montreal_Conf_Banner.jpg)
