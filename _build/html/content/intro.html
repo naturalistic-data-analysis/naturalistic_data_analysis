@@ -1,0 +1,542 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Neuroimaging Analysis Methods For Naturalistic Data &#8212; Naturalistic Data Analysis</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e7340bb3dbd8dde6db86f25597f54a1b.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/tabs.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="canonical" href="http://naturalistic-data.org/content/intro.html" />
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Course Organizers" href="Organizers.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+<!-- Opengraph tags -->
+<meta property="og:url"         content="http://naturalistic-data.org/content/intro.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="Neuroimaging Analysis Methods For Naturalistic Data" />
+<meta property="og:description" content="Neuroimaging Analysis Methods For Naturalistic Data  Written by Luke Chang, Emily Finn, Jeremy Manning  Naturalistic stimuli, such as films or stories, are grow" />
+<meta property="og:image"       content="http://naturalistic-data.org/_static/Naturalistic_Data_Logo_v7.png" />
+
+<meta name="twitter:card" content="summary" />
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/Naturalistic_Data_Logo_v7.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Naturalistic Data Analysis</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <p class="caption collapsible-parent">
+ <span class="caption-text">
+  Course Overview
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Organizers.html">
+   Course Organizers
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Contributors.html">
+   Contributors
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Getting Started
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Download_Data.html">
+   Download Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Software.html">
+   Software Installation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Preprocessing.html">
+   Preprocessing
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Analysis Tutorials
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Functional_Alignment.html">
+   Functional Alignment
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Intersubject_Correlation.html">
+   Intersubject Correlation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Intersubject_RSA.html">
+   Inter-subject Representational Similarity Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Event_Segmentation.html">
+   Event segmentation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Natural_Language_Processing.html">
+   Natural Language Processing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="timecorr.html">
+   Dynamic Connectivity
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="HiddenSemiMarkovModel.html">
+   Hidden Semi-Markov Models
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Pliers_Tutorial.html">
+   Automated Annotations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hypertools.html">
+   Visualizing High Dimensional Data
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Background Resources
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="1_Introduction_to_Programming.html">
+   Introduction to Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2_Introduction_to_Pandas.html">
+   Introduction to Pandas
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="3_Introduction_to_Plotting.html">
+   Introduction to Plotting
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="5_Introduction_to_Neuroimaging_Data.html">
+   Introduction to Neuroimaging Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="http://dartbrains.org/">
+   Dartbrains Neuroimaging Analysis Course
+   <i class="fas fa-external-link-alt">
+   </i>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Glossary.html">
+   Glossary
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Contributing Tutorials
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Contributing.html">
+   Contributing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://github.com/naturalistic-data-analysis/naturalistic_data_analysis">
+   GitHub Repository
+   <i class="fas fa-external-link-alt">
+   </i>
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Post any questions to our <a href="https://www.askpbs.org/c/naturalistic-data/">Discourse Page</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/content/intro.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/naturalistic-data-analysis/naturalistic_data_analysis"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/naturalistic-data-analysis/naturalistic_data_analysis/issues/new?title=Issue%20on%20page%20%2Fcontent/intro.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/naturalistic-data-analysis/naturalistic_data_analysis/edit/master/content/intro.md"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+            <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                    data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                    title="Fullscreen mode"><i
+                        class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i>
+            Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#overview">
+   Overview
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#getting-started">
+     Getting Started
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#background-resources">
+     Background Resources
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#analysis-tutorials">
+     Analysis Tutorials
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#how-do-we-build-models-using-naturalistic-designs">
+       How do we build models using naturalistic designs?
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#how-does-the-brain-segment-events">
+       How does the brain segment events?
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#how-can-we-study-the-dynamics-of-brain-activity">
+       How can we study the dynamics of brain activity?
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#how-can-we-visualize-high-dimensional-data">
+       How can we visualize high dimensional data?
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#questions">
+   Questions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#license-for-this-book">
+   License for this book
+  </a>
+  <ul class="nav section-nav flex-column">
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <p><a class="reference external" href="https://zenodo.org/badge/latestdoi/258305449"><img alt="DOI" src="https://zenodo.org/badge/258305449.svg#left" /></a></p>
+<div class="section" id="neuroimaging-analysis-methods-for-naturalistic-data">
+<h1>Neuroimaging Analysis Methods For Naturalistic Data<a class="headerlink" href="#neuroimaging-analysis-methods-for-naturalistic-data" title="Permalink to this headline">¶</a></h1>
+<p><em>Written by Luke Chang, Emily Finn, Jeremy Manning</em></p>
+<p>Naturalistic stimuli, such as films or stories, are growing in popularity for human neuroimaging experiments. More controlled than resting-state data, and more engaging and ecologically valid than traditional tasks, these rich, dynamic paradigms yield data that can be analyzed in many different ways to answer a variety of scientific questions. However, unlike resting-state and task-based designs, there are currently no standard methods to analyze data from naturalistic experiments. While traditional methods (e.g., univariate GLM and functional connectivity) can be used, naturalistic designs open up the possibility for new opportunities for methodological innovation that can take advantage of the unique features of these data. Unfortunately, most of the most widely used neuroimaging analysis toolboxes do not currently include any of the modern analysis techniques that are being used for naturalistic data.</p>
+<p>To meet this need, we have created <a class="reference external" href="http://naturalistic-data.org/">naturalistic-data.org</a> an online book that includes a collection of the state-of-the-art techniques used in analyzing naturalistic data. Most of the techniques were developed in individual labs (including some of the contributors to this project). We have prepared a collection of interactive tutorials that provide background information and walkthroughs of how to perform the analytic technique on two different open datasets (<strong>Sherlock</strong> from <a class="reference external" href="https://www.nature.com/articles/nn.4450">Chen et al., 2017</a> and <strong>Paranoia</strong> from <a class="reference external" href="https://www.nature.com/articles/s41467-018-04387-2">Finn et al., 2018</a>) using open science tools developed within the Python and R programming languages. Most of the tutorials also include videos explaining the theory or applications of the technique that complement the more technical hands-on tutorials. All of the videos can also be viewed separately on our Naturalistic Data Analysis <a class="reference external" href="https://www.youtube.com/playlist?list=PLbaGqHoEYoN8Le4l2-hx5zYA94UZ6A7kF">youtube channel</a>. This resource was developed as a new format for a full day Educational Course for OHBM 2020 by <a class="reference external" href="http://cosanlab.com/">Luke Chang</a>, <a class="reference external" href="https://esfinn.github.io/">Emily Finn</a>, <a class="reference external" href="http://www.context-lab.com/">Jeremy Manning</a>, and <a class="reference external" href="https://sites.dartmouth.edu/canlab/">Tor Wager</a> who are all professors at Dartmouth College in the <a class="reference external" href="https://pbs.dartmouth.edu/">Department of Psychological and Brain Sciences</a>. We have an additional 10 contributors from all over the world that are emerging as leaders in this nascent field. We hope to continue adding content as new analysis methods are developed in the field and welcome <a class="reference external" href="http://naturalistic-data.org/features/markdown/Contributing.html">contributions</a> from all.</p>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>The course is divided into three different sections: Getting Started, Background Information, and Analysis Tutorials.</p>
+<div class="section" id="getting-started">
+<h3>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h3>
+<p>In the <strong>Getting Started</strong> section, we provide tutorials for how to download the data we will be using for the tutorials with <a class="reference external" href="https://www.datalad.org/">datalad</a>. Currently, the <a class="reference external" href="https://gin.g-node.org/ljchang">server</a> we are hosting the data on can be slow, so we encourage you to start this as soon as possible if you would like to download all of the data (+200 gb). However, different tutorials rely on different data, so you can also wait to download only the data you need for the methods you are interested in working with. We also provide instructions for how to download and install the software that will be required for various tutorials. For the most part, almost all of the tools should be platform independent (i.e., they should work on Mac, PC, or Linux). Finally, we explain how we preprocessed the data and provide our current recommendations for preprocessing naturalistic data that might be slightly different than analyzing task-based or resting-state data.</p>
+</div>
+<div class="section" id="background-resources">
+<h3>Background Resources<a class="headerlink" href="#background-resources" title="Permalink to this headline">¶</a></h3>
+<p>As all of our tutorials introduce fairly advanced techniques using primarily Python, we have provided additional tutorials that we hope can quickly get most people up to speed to be able to follow along. These include basic introductions to Python, working with behavioral and neuroimaging data, and plotting. In addition, if you would like an even more in-depth background to the basics of neuroimaging using Python, we encourage you to check out the <a class="reference external" href="https://dartbrains.org">DartBrains.org</a> online course, which has a similar format to this one. If you already feel comfortable programming in Python, we encourage you to just dive right into the tutorials.</p>
+</div>
+<div class="section" id="analysis-tutorials">
+<h3>Analysis Tutorials<a class="headerlink" href="#analysis-tutorials" title="Permalink to this headline">¶</a></h3>
+<p>The analysis tutorials have been designed to provide a general overview of the main issues and introduce cutting edge techniques for analyzing naturalistic data. Though these tutorials are written for using naturalistic data, we note that several of the methods could also be used with task-based or resting-state data.</p>
+<div class="section" id="how-do-we-build-models-using-naturalistic-designs">
+<h4>How do we build models using naturalistic designs?<a class="headerlink" href="#how-do-we-build-models-using-naturalistic-designs" title="Permalink to this headline">¶</a></h4>
+<p>One of the core issues in analyzing naturalistic data is building a model to predict brain responses. Unlike traditional task-based experimental designs, it is not always known when participants on average are engaged in a specific cognitive process. We have included a tutorial on how to use the <a class="reference external" href="https://github.com/tyarkoni/pliers">Pliers</a> toolbox (<a class="reference external" href="https://dl.acm.org/doi/10.1145/3097983.3098075">McNamara et al., 2017</a>) from Tal Yarkoni’s <a class="reference external" href="http://pilab.psy.utexas.edu/">Psychoinformatics lab</a> to obtain <strong>automated annotations</strong> using many types of models trained to recognize objects, speech, music, and people. These annotations can be used to help interpret results, or can be directly used in encoding and decoding models. This toolbox is part of the <a class="reference external" href="https://neuroscout.org/">Neuroscout</a> platform for analyzing naturalistic fMRI studies. We have also included a tutorial on decoding based on Natural Language Processing that uses word embeddings to train a model to predict the words a participant is hearing at any given time during a naturalistic narrative stimulus, based on the activity patterns of other participants.</p>
+<p>While using explicit annotations is advantageous from the standpoint of interpretability and generalizability to other stimuli, analyses based on these models make two critical assumptions: one, that the experimenter knows which features of the stimulus are important for driving brain activity, and two, that they have modeled these features accurately. Non-optimal assumptions at either step will impair sensitivity.</p>
+<p>Beyond annotations, some analytic techniques have been developed specifically to leverage the large neural variations elicited by these naturalistic designs not by modeling the stimulus itself <em>per se</em>, but rather using the neural responses of other participants as a model. For example, an early and popular technique to get around the issue of knowing what types of cognitive processes were being engaged at specific points in time was to predict one person’s brain activity from another person’s activity. <strong>Intersubject Correlation</strong> (ISC) methods were developed by <a class="reference external" href="https://www.hassonlab.com/">Uri Hasson’s lab</a> to identify neural activity that was shared across individuals (<a class="reference external" href="https://science.sciencemag.org/content/303/5664/1634">Hasson et al., 2004</a>, <a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S2352250X1830023X?via%3Dihub">Nummenmaa et al., 2018</a>, <a class="reference external" href="https://academic.oup.com/scan/article/14/6/667/5489905">Nastase et al., 2019</a> ). The general idea was that reliable signals should be common across individuals while unreliable signals such as noise and idiosyncratic processes should be filtered out akin to an <a class="reference external" href="https://en.wikipedia.org/wiki/Intraclass_correlation#:~:text=In%20statistics%2C%20the%20intraclass%20correlation,same%20group%20resemble%20each%20other.">intraclass correlation coefficient</a>, which is a measure of reliability from psychometrics. This is currently one of the most popular analytic techniques, which has lead to many extensions including: <strong>Intersubject Phase Synchrony</strong> (ISPS; <a class="reference external" href="https://www.liebertpub.com/doi/full/10.1089/brain.2011.0068?url_ver=Z39.88-2003&amp;rfr_id=ori:rid:crossref.org&amp;rfr_dat=cr_pub%20%200pubmed">Glerean et al., 2012</a>) for looking at the dynamics of ISC,  <strong>Intersubject Functional Connectivity</strong> (ISFC; <a class="reference external" href="https://www.nature.com/articles/ncomms12141">Simony et al., 2016</a>) for looking at dynamics of functional connectivity, and <strong>Intersubject Representational Analysis</strong> (ISRSA; <a class="reference external" href="http://cosanlab.com/static/papers/Chen_2020_Neuroimage.pdf">Chen et al., 2020</a>, <a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S1053811920303153">Finn et al., 2020</a>, <a class="reference external" href="https://www.nature.com/articles/s41467-019-09161-6">van Baar et al., 2019</a>) for looking at individual variation.</p>
+<p>Most of these methods, with the exception of ISRSA, assume that individuals have common neural responses. However, in practice we know that there is enormous heterogeneity across individuals. Functional Alignment techniques such as <strong>hyperalignment</strong>(<a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S0896627311007811?via%3Dihub">Haxby et al., 2011</a>, <a class="reference external" href="https://elifesciences.org/articles/56601">Haxby et al., 2020</a>) or the <strong>shared response model</strong> (<a class="reference external" href="https://papers.nips.cc/paper/5855-a-reduced-dimension-fmri-shared-response-model">Chen et al., 2015</a>) aim to minimize individual variations by realigning brains into a common model based on shared neural responses.</p>
+<p>We note that there are many high profile papers that use models, such as univariate encoding models ([Huth et al., 2016](<a class="reference external" href="https://www.nature.com/articles/nature17637?version=meter+at+3&amp;module=meter-Links&amp;pgtype=article&amp;contentId=&amp;mediaId=&amp;referrer=&amp;priority=true&amp;action=click&amp;contentCollection=m">https://www.nature.com/articles/nature17637?version=meter+at+3&amp;module=meter-Links&amp;pgtype=article&amp;contentId=&amp;mediaId=&amp;referrer=&amp;priority=true&amp;action=click&amp;contentCollection=m</a>
+eter-links-click), <a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S0960982211009377">Nishimoto et al., 2011</a>, <a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S1053811910010657">Naselaris, et al., 2011</a> ) to analyze naturalistic data. These models have proven to be useful in characterizing neural responses to naturalistic data in regions involved in perception and also semantics. However, we are not optimistic that they will be immediately useful for studying processes that involve abstract or endogenous processing such as affect and social cognition. Nonetheless, we unfortunately do not currently have any tutorials using these techniques at this time, but point the interested reader towards Alex Huth’s <a class="reference external" href="https://www.youtube.com/watch?v=aJyKv1TQ4e8&amp;index=30&amp;t=0s&amp;list=PLEE6ggCEJ0H0KOlMKx_PUVB_16VoCfGj9">tutorials</a> on modeling language with <a class="reference external" href="https://github.com/huthlab/speechmodeltutorial">code</a> available on Github. We hope to add additional tutorials in the future and welcome contributions from others.</p>
+</div>
+<div class="section" id="how-does-the-brain-segment-events">
+<h4>How does the brain segment events?<a class="headerlink" href="#how-does-the-brain-segment-events" title="Permalink to this headline">¶</a></h4>
+<p>One question that has been of interest to many subfields of cognitive neuroscience is how the brain learns to segment information from our experiences to form discrete events that can be organized, stored, and retrieved. This question is of interest to researchers studying perception, learning and memory, navigation, attention, affect, and even social cognition. Though this topic has been of interest for many years (<a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2852534/">Zacks et al., 2007</a>, [Zacks &amp; Tversky, 2001]), Ezzyat &amp; Davachi, 2011](<a class="reference external" href="https://journals.sagepub.com/doi/pdf/10.1177/0956797610393742">https://journals.sagepub.com/doi/pdf/10.1177/0956797610393742</a>), <a class="reference external" href="https://www.nature.com/articles/nn.3331">Schapiro et al., 2013</a>), there have been several recent exciting papers that have sought to study this question in the context of naturalistic designs (<a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S0896627317305937?via%3Dihub">Baldassano et al., 2017</a>, <a class="reference external" href="https://doi.org/10.1523/JNEUROSCI.0251-18.2018">Baldassano et al., 2018</a>, <a class="reference external" href="https://www.biorxiv.org/content/10.1101/409987v2">Heusser et al., 2018</a>, <a class="reference external" href="https://www.biorxiv.org/content/10.1101/2020.03.26.008714v1">Antony et al., 2020</a>, <a class="reference external" href="https://www.biorxiv.org/content/10.1101/2020.04.30.069989v1.full">Geerligs et al., 2020</a>, <a class="reference external" href="https://www.biorxiv.org/content/10.1101/487892v1">Chang et al., 2018</a>). The general idea is to identify how patterns of brain activity change in response to experiences to segment these experiences into discrete events. These event segmentations likely depend on the level of processing. For example, segmenting sensory information likely occurs at a shorter time scale than segmenting more abstract contexts such as scenes (<a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S0896627317305937?via%3Dihub#bib55">Baldassano et al., 2017</a>). In the event segmentation tutorials, we introduce two different techniques for studying event segmentation based on discrete shifts in spatial patterns of brain activity. One approach uses <strong>Hidden Markov Models</strong> (HMMs; <a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S0896627317305937?via%3Dihub#bib55">Baldassano et al., 2017</a>), and the uses <strong>Greedy State Boundary Search</strong> (GSBS; <a class="reference external" href="https://www.biorxiv.org/content/10.1101/2020.04.30.069989v1.full">Geerligs et al., 2020</a>).</p>
+</div>
+<div class="section" id="how-can-we-study-the-dynamics-of-brain-activity">
+<h4>How can we study the dynamics of brain activity?<a class="headerlink" href="#how-can-we-study-the-dynamics-of-brain-activity" title="Permalink to this headline">¶</a></h4>
+<p>Our real-world thoughts arise from coordinated interactions between networks of brain regions (e.g., <a class="reference external" href="https://www.pnas.org/content/103/51/19518.short">Bassett et al. (2006)</a>, <a class="reference external" href="https://science.sciencemag.org/content/342/6158/580.abstract?casa_token=ZfzQEZs5_FgAAAAA:-gHsWwY1PirvvAvI7rktIRAw7pE6OAhI8b8oaySMxi5Mv-Sq0tPGx6Gq9BI9BtikQDacj8B8uPR7-g">Turk-Browne (2013)</a>).  These networks are dynamically reconfigured as our thoughts and experiences change.  For example, recent work by <a class="reference external" href="https://www.nature.com/articles/ncomms12141">Simony et al. (2016)</a> shows that connectivity patterns within the default mode network are dynamically reconfigured during story listening, and <a class="reference external" href="https://www.sciencedirect.com/science/article/abs/pii/S1053811918300715">Manning et al. (2018)</a> demonstrated a similar phenomenon during movie watching. Changes in discrete states based on dynamic patterns of functional connectivity have often been modeled using HMMs. However,  these models are biased to identify states that last for shorter numbers of time points. <strong>Hidden Semi-Markov Models (HSMMs)</strong> explicitly include parameters modeling the distribution of the number of time points within a state ([Shappell et al., 2019)(<a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S1053811919300990">https://www.sciencedirect.com/science/article/pii/S1053811919300990</a>)). We include a tutorial fitting HSMMs using <a class="reference external" href="https://www.r-project.org/">R</a>.</p>
+<p>The next generation of brain dynamics approaches are intended to characterize <em>higher order</em> interactions between brain structures.  For example, if functional connectivity approaches seek to characterize interactions between pairs of regions (e.g., A and B, or C and D, etc.), high-order patterns reflect interactions <em>between</em> those first-order interactions.  In other words, a second-order pattern might characterize how the dynamic patterns of A-B correlations relate to the dynamic patterns of C-D correlations.  <a class="reference external" href="https://www.biorxiv.org/content/10.1101/799924v1.abstract">Faskowitz et al. (2020)</a> refer to these second-order interactions as “edge networks,” which may be used to discover novel aspects of brain structure and function.  <a class="reference external" href="https://www.biorxiv.org/content/10.1101/763821v1">Owen et al. (2020)</a> describe a hierarchy of such patterns.  Under their high-order dynamics framework, termed <a class="reference external" href="https://timecorr.readthedocs.io/en/latest/">timecorr</a>, order <span class="math notranslate nohighlight">\(n\)</span> interactions between sets of brain structures describe how homologous networks of order <span class="math notranslate nohighlight">\(n-1\)</span> interactions are related.  We provide a tutorial for <a class="reference external" href="http://naturalistic-data.org/features/notebooks/timecorr.html">applying timecorr to a naturalistic dataset</a>, revealing different aspects of brain activity dynamics that may then be related to different aspects of cognition and compared within or across individuals.</p>
+</div>
+<div class="section" id="how-can-we-visualize-high-dimensional-data">
+<h4>How can we visualize high dimensional data?<a class="headerlink" href="#how-can-we-visualize-high-dimensional-data" title="Permalink to this headline">¶</a></h4>
+<p>A defining feature of naturalistic data is its complexity.  Whereas “classic” trial-based experimental designs favor a high degree of control over participants’ experiences (at the cost of realism and generalizability), naturalistic stimuli are intended to exhibit greater real-world relevance (at the cost of experimental control) (<a class="reference external" href="https://www.sciencedirect.com/science/article/abs/pii/S0166223620300497">Willems et al., 2020</a>, <a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S0896627319304349">Wheatley, et al., 2019</a>).  Relating the complex dynamics of naturalistic stimuli to the complex dynamics of cognitive and neural responses to those stimuli requires innovative methods.  Importantly, oversimplifying models of stimuli, cognitive dynamics, and neural dynamics can lead to false insights (e.g., <a class="reference external" href="https://onlinelibrary.wiley.com/doi/full/10.1111/tops.12404">Jolly and Chang (2018)</a>).</p>
+<p>An approach proposed by <a class="reference external" href="http://jmlr.org/papers/v18/17-434.html">Heusser et al. (2018)</a> defines a set of heuristics for gaining detailed insights into high-dimensional data, including naturalistic stimuli and the neural responses to those stimuli.  The approach, called <a class="reference external" href="https://hypertools.readthedocs.io/en/latest/">HyperTools</a>, entails embedding the data in a series of low-dimensional spaces, each highlighting different aspects of the high-dimensional data.  Each embedding space is constructed such that different data modalities (e.g., stimuli and neural responses from different people) may be geometrically compared.  In our <a class="reference external" href="http://naturalistic-data.org/features/notebooks/hypertools.html">Visualizing High-Dimensional Data</a> tutorial, we apply HyperTools to neural responses and text annotations from a movie watching dataset.</p>
+</div>
+</div>
+</div>
+<div class="section" id="questions">
+<h2>Questions<a class="headerlink" href="#questions" title="Permalink to this headline">¶</a></h2>
+<p>Please post any questions that arise from the material in this course on our <a class="reference external" href="https://www.askpbs.org/c/naturalistic-data">Discourse Page</a>.</p>
+</div>
+<div class="section" id="license-for-this-book">
+<h2>License for this book<a class="headerlink" href="#license-for-this-book" title="Permalink to this headline">¶</a></h2>
+<p>All content is licensed under the <a class="reference external" href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International</a>
+(CC BY-SA 4.0) license.</p>
+<p>This book was originally prepared for the Educational Workshop “Analysis Methods for Naturalistic Data” that took place as part of the <a class="reference external" href="https://www.humanbrainmapping.org/i4a/pages/index.cfm?pageid=3958&amp;pageid=4003">2020 virtual annual meeting</a> of the <a class="reference external" href="https://www.humanbrainmapping.org">Organization for Human Brain Mapping</a>. We plan for it to serve as a living resource that will be maintained, updated, and added to as this exciting field continues to progress.</p>
+<p><img alt="ohbm" src="../_images/Montreal_Conf_Banner.jpg" /></p>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./content"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='right-next' id="next-link" href="Organizers.html" title="next page">Course Organizers</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Luke Chang<br/>
+        
+            &copy; Copyright 2021.<br/>
+          <div class="extra_footer">
+            Created by <a href="http://www.lukejchang.com/">Luke Chang</a> using <a href="https://jupyterbook.org/">Jupyter Book</a> and partially supported by an NSF CAREER Award 1848370.
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+    <!-- Google Analytics -->
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-166852075-1', 'auto');
+      ga('set', 'anonymizeIp', true);
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+    <!-- End Google Analytics -->
+    
+  </body>
+</html>

@@ -1,0 +1,36 @@
+- file: content/intro
+
+- part: Course Overview
+  chapters:
+  - file: content/Organizers
+  - file: content/Contributors
+- part: Getting Started
+  chapters:
+  - file: content/Download_Data
+  - file: content/Software
+  - file: content/Preprocessing
+- part: Analysis Tutorials
+  chapters:
+  - file: content/Functional_Alignment
+  - file: content/Intersubject_Correlation
+  - file: content/Intersubject_RSA
+  - file: content/Event_Segmentation
+  - file: content/Natural_Language_Processing
+  - file: content/timecorr
+  - file: content/HiddenSemiMarkovModel
+  - file: content/Pliers_Tutorial
+  - file: content/hypertools
+- part: Background Resources
+  chapters:
+  - file: content/1_Introduction_to_Programming
+  - file: content/2_Introduction_to_Pandas
+  - file: content/3_Introduction_to_Plotting
+  - file: content/5_Introduction_to_Neuroimaging_Data
+  - url: http://dartbrains.org/
+    title: Dartbrains Neuroimaging Analysis Course
+  - file: content/Glossary
+- part: Contributing Tutorials
+  chapters:
+  - file: content/Contributing
+  - url: https://github.com/naturalistic-data-analysis/naturalistic_data_analysis
+    title: GitHub Repository
