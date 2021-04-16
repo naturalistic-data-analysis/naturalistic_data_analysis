@@ -1,139 +1,168 @@
 # Contributors
 
-<div class="row" id="faculty">
-  <div class="card" id="faculty">
-    <div class="card-image" id="faculty">
-      <a href="http://www.dpmlab.org/"><img src="../images/speakers/baldassano.jpg" class="card-image"></a>
-    </div>
-    <div class="card-content">
-      <span class="card-title"><a href="http://www.dpmlab.org/">Chris <span>Baldassano</span></a></span>
-      <p class="card-affiliation">Columbia University</p>
-    </div>
-  </div>
-  <div class="card" id="faculty">
-    <div class="card-image" id="faculty">
-      <a href="http://www.cosanlab.com"><img src="../images/speakers/chang.jpg" class="card-image"></a>
-    </div>
-    <div class="card-content">
-      <span class="card-title"><a href="http://www.cosanlab.com">Luke <span>Chang</span></a></span>
-      <p class="card-affiliation">Dartmouth College</p>
-    </div>
-  </div>
-  <div class="card" id="faculty">
-    <div class="card-image" id="faculty">
-      <a href="https://adelavega.github.io/"><img src="../images/speakers/delavega.jpg" class="card-image"></a>
-    </div>
-    <div class="card-content">
-      <span class="card-title"><a href="https://adelavega.github.io/">Alejandro <span>de la Vega</span></a></span>
-      <p class="card-affiliation">University of Texas Austin</p>
-    </div>
-  </div>
-  <div class="card" >
-    <div class="card-image" >
-      <a href="https://esfinn.github.io/"><img src="../images/speakers/finn.jpg"></a>
-    </div>
-    <div class="card-content">
-      <span class="card-title "><a href="https://esfinn.github.io/">Emily <span>Finn</span></a></span>
-      <p class="card-affiliation">Dartmouth College</p>
-    </div>
-  </div>
-  <div class="card " id="faculty">
-    <div class="card-image" id="faculty">
-      <a href="https://gfleetwood.netlify.app/"><img src="../images/speakers/fleetwood.jpg"></a>
-    </div>
-    <div class="card-content">
-      <span class="card-title "><a href="https://gfleetwood.netlify.app/">Gordon <span>Fleetwood</span></a></span>
-      <p class=" card-affiliation">New Classrooms</p>
-    </div>
-  </div>
-  <div class="card " id="faculty">
-    <div class="card-image" id="faculty">
-      <a href="https://lindageerligs.com/"><img src="../images/speakers/geerligs.png"></a>
-    </div>
-    <div class="card-content">
-      <span class="card-title "><a href="https://lindageerligs.com/">Linda <span>Geerligs</span></a></span>
-      <p class=" card-affiliation">Donders Institute for Brain, Cognition, and Behavior</p>
-    </div>
-  </div>
-  <div class="card " id="faculty">
-    <div class="card-image" id="faculty">
-      <a href="http://haxbylab.dartmouth.edu/"><img src="../images/speakers/haxby.jpg"></a>
-    </div>
-    <div class="card-content">
-      <span class="card-title "><a href="http://haxbylab.dartmouth.edu/">James <span>Haxby</span></a></span>
-      <p class=" card-affiliation">Dartmouth College</p>
-    </div>
-  </div>
-  <div class="card " id="faculty">
-    <div class="card-image" id="faculty">
-      <a href="https://users.aalto.fi/~jlahnako/"><img src="../images/speakers/lahnakoski.jpg"></a>
-    </div>
-    <div class="card-content">
-      <span class="card-title "><a href="https://users.aalto.fi/~jlahnako/">Juha <span>Lahnakoski</span></a></span>
-      <p class=" card-affiliation">Forschungszentrum Jülich</p>
-    </div>
-  </div>
-  <div class="card " id="faculty">
-    <div class="card-image" id="faculty">
-      <a href="http://www.context-lab.com/"><img src="../images/speakers/manning.png"></a>
-    </div>
-    <div class="card-content">
-      <span class="card-title "><a href="http://www.context-lab.com/">Jeremy <span>Manning</span></a></span>
-      <p class=" card-affiliation">Dartmouth College</p>
-    </div>
-  </div>
-  <div class="card " id="faculty">
-    <div class="card-image" id="faculty">
-      <a href="http://csnlab.org/"><img src="../images/speakers/parkinson.jpg"></a>
-    </div>
-    <div class="card-content">
-      <span class="card-title "><a href="http://csnlab.org/">Carolyn <span>Parkinson</span></a></span>
-      <p class=" card-affiliation">University of California Los Angeles</p>
-    </div>
-  </div>
-  <div class="card " id="faculty">
-    <div class="card-image" id="faculty">
-      <a href="https://www.bu.edu/csmet/profile/heather-shappell/"><img src="../images/speakers/shappell.jpg"></a>
-    </div>
-    <div class="card-content">
-      <span class="card-title "><a href="https://www.bu.edu/csmet/profile/heather-shappell/">Heather <span>Shappell</span></a></span>
-      <p class=" card-affiliation">Johns Hopkins University</p>
-    </div>
-  </div>
-  <div class="card " id="faculty">
-    <div class="card-image" id="faculty">
-      <a href="http://wshimlab.com/"><img src="../images/speakers/shim.jpg"></a>
-    </div>
-    <div class="card-content">
-      <span class="card-title "><a href="http://wshimlab.com/">Won Mok <span>Shim</span></a></span>
-      <p class=" card-affiliation">SungKyunKwan University</p>
-    </div>
-  </div>
-  <div class="card " id="faculty">
-    <div class="card-image" id="faculty">
-      <a href="https://sites.dartmouth.edu/canlab/"><img src="../images/speakers/wager.jpg"></a>
-    </div>
-    <div class="card-content">
-      <span class="card-title "><a href="https://sites.dartmouth.edu/canlab/">Tor <span>Wager</span></a></span>
-      <p class=" card-affiliation">Dartmouth College</p>
-    </div>
-  </div>
-  <div class="card " id="faculty">
-    <div class="card-image" id="faculty">
-      <a href="https://talyarkoni.org/"><img src="../images/speakers/yarkoni.jpg"></a>
-    </div>
-    <div class="card-content">
-      <span class="card-title "><a href="https://talyarkoni.org/">Tal <span>Yarkoni</span></a></span>
-      <p class=" card-affiliation">University of Texas at Austin</p>
-    </div>
-  </div>
-  <div class="card " id="faculty">
-    <div class="card-image" id="faculty">
-      <a href="https://people.socsci.tau.ac.il/mu/yaarayeshurun/"><img src="../images/speakers/yeshurun.jpg"></a>
-    </div>
-    <div class="card-content">
-      <span class="card-title "><a href="https://people.socsci.tau.ac.il/mu/yaarayeshurun/">Yaara <span>Yeshurun</span></a></span>
-      <p class=" card-affiliation">Tel-Aviv University</p>
-    </div>
-  </div>
-</div>
+```{figure} ../images/speakers/baldassano.jpg
+---
+width: 200px
+target: http://www.dpmlab.org/
+align: left
+---
+
+```
+## [Chris Baldassano](http://www.dpmlab.org/)
+### Columbia University
+## 
+
+```{figure} ../images/speakers/chang.jpg
+---
+width: 200px
+target: http://www.cosanlab.com
+align: left
+---
+```
+## [Luke Chang](http://www.cosanlab.com)
+### Dartmouth College
+## 
+
+```{figure} ../images/speakers/delavega.jpg
+---
+width: 200px
+target: https://adelavega.github.io/
+align: left
+---
+```
+## [Alejandro de la Vega](https://adelavega.github.io/)
+### University of Texas Austin
+##
+
+```{figure} ../images/speakers/finn.jpg
+---
+width: 200px
+target: https://esfinn.github.io/
+align: left
+---
+```
+## [Emily Finn](https://esfinn.github.io/)
+### Dartmouth College
+##
+
+```{figure} ../images/speakers/fleetwood.jpg
+---
+width: 200px
+target: https://gfleetwood.netlify.app/
+align: left
+---
+```
+## [Gordon Fleetwood](https://gfleetwood.netlify.app/)
+### New Classrooms
+##
+
+```{figure} ../images/speakers/geerligs.png
+---
+width: 200px
+target: https://lindageerligs.com/
+align: left
+---
+```
+## [Linda Geerligs](https://lindageerligs.com/)
+### Donders Institute for Brain, Cognition, and Behavior
+##
+
+```{figure} ../images/speakers/haxby.jpg
+---
+width: 200px
+target: http://haxbylab.dartmouth.edu/
+align: left
+---
+```
+## [James Haxby](http://haxbylab.dartmouth.edu/)
+### Dartmouth College
+##
+
+```{figure} ../images/speakers/lahnakoski.jpg
+---
+width: 200px
+target: https://users.aalto.fi/~jlahnako/
+align: left
+---
+```
+## [Juha Lahnakoski](https://users.aalto.fi/~jlahnako/)
+### Forschungszentrum Jülich
+##
+
+```{figure} ../images/speakers/manning.png
+---
+width: 200px
+target: http://www.context-lab.com/
+align: left
+---
+```
+## [Jeremy Manning](http://www.context-lab.com/)
+### Dartmouth College
+##
+
+```{figure} ../images/speakers/parkinson.jpg
+---
+width: 200px
+target: http://csnlab.org/
+align: left
+---
+```
+## [Carolyn Parkinson](http://csnlab.org/)
+### University of California Los Angeles
+##
+
+```{figure} ../images/speakers/shappell.jpg
+---
+width: 200px
+target: https://www.bu.edu/csmet/profile/heather-shappell/
+align: left
+---
+```
+## [Heather Shappell](https://www.bu.edu/csmet/profile/heather-shappell/)
+### Johns Hopkins University
+##
+
+```{figure} ../images/speakers/shim.jpg
+---
+width: 200px
+target: http://wshimlab.com/
+align: left
+---
+```
+## [Won mok Shim](http://wshimlab.com/)
+### SungKyunKwan University
+##
+
+```{figure} ../images/speakers/wager.jpg
+---
+width: 200px
+target: https://sites.dartmouth.edu/canlab/
+align: left
+---
+```
+## [Tor Wager](https://sites.dartmouth.edu/canlab/)
+### Dartmouth College
+##
+
+```{figure} ../images/speakers/yarkoni.jpg
+---
+width: 200px
+target: https://talyarkoni.org/)
+align: left
+---
+```
+## [Tal Yarkoni](https://talyarkoni.org/)
+### University of Texas at Austin
+##
+
+```{figure} ../images/speakers/yeshurun.jpg
+---
+width: 200px
+target: https://people.socsci.tau.ac.il/mu/yaarayeshurun/
+align: left
+---
+```
+## [Yaara Yeshurun](https://people.socsci.tau.ac.il/mu/yaarayeshurun/)
+### Tel-Aviv University
+##
+

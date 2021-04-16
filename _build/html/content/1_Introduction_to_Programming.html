@@ -31,6 +31,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
@@ -43,6 +44,7 @@
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script src="../_static/tabs.js"></script>
     <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
@@ -54,6 +56,7 @@
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="canonical" href="http://naturalistic-data.org/content/1_Introduction_to_Programming.html" />
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Introduction to Pandas" href="2_Introduction_to_Pandas.html" />
@@ -68,7 +71,7 @@
 <meta property="og:type"        content="article" />
 <meta property="og:title"       content="Introduction to Python" />
 <meta property="og:description" content="Introduction to Python  Written by Luke Chang  In this notebook we will begin to learn how to use Python.  There are many different ways to install Python, but " />
-
+<meta property="og:image"       content="http://naturalistic-data.org/_static/Naturalistic_Data_Logo_v7.png" />
 
 <meta name="twitter:card" content="summary" />
 
@@ -84,6 +87,8 @@
     
         <div class="navbar-brand-box">
 <a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/Naturalistic_Data_Logo_v7.png" class="logo" alt="logo">
   
   
   <h1 class="site-logo" id="site-title">Naturalistic Data Analysis</h1>
@@ -593,7 +598,6 @@ If you want to execute the code in a code cell, hit “shift + enter.” Note th
 <li><p>+, -, *, and /</p></li>
 <li><p>Exponentiation **</p></li>
 <li><p>Modulo %</p></li>
-<li><p>Note that division with integers in Python 2.7 automatically rounds, which may not be intended.  It is recommended to import the division module from python3 <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">__future__</span> <span class="pre">import</span> <span class="pre">division</span></code></p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -660,25 +664,61 @@ HelloHelloHelloHelloHello
 <div class="section" id="logical-operators">
 <h2>Logical Operators<a class="headerlink" href="#logical-operators" title="Permalink to this headline">¶</a></h2>
 <p>Perform logical comparison and return Boolean value</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">==</span> <span class="n">y</span> <span class="c1"># x is equal to y</span>
-<span class="n">x</span> <span class="o">!=</span> <span class="n">y</span> <span class="c1"># x is not equal to y</span>
-<span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span> <span class="c1"># x is greater than y</span>
-<span class="n">x</span> <span class="o">&lt;</span> <span class="n">y</span> <span class="c1"># x is less than y</span>
-<span class="n">x</span> <span class="o">&gt;=</span> <span class="n">y</span> <span class="c1"># x is greater than or equal to y </span>
-<span class="n">x</span> <span class="o">&lt;=</span> <span class="n">y</span> <span class="c1"># x is less than or equal to y```</span>
-
-<span class="o">|</span>  <span class="n">X</span>    <span class="o">|</span> <span class="ow">not</span> <span class="n">X</span>  <span class="o">|</span> 
-<span class="o">|-------|--------|</span>
-<span class="o">|</span> <span class="kc">True</span>  <span class="o">|</span> <span class="kc">False</span>  <span class="o">|</span> 
-<span class="o">|</span> <span class="kc">False</span> <span class="o">|</span> <span class="kc">True</span>   <span class="o">|</span> 
-
-<span class="o">|</span>  <span class="n">X</span>   <span class="o">|</span> <span class="n">Y</span>    <span class="o">|</span> <span class="n">X</span> <span class="n">AND</span> <span class="n">Y</span> <span class="o">|</span> <span class="n">X</span> <span class="n">OR</span> <span class="n">Y</span> <span class="o">|</span> 
-<span class="o">|------|------|---------|--------|</span>
-<span class="o">|</span><span class="kc">True</span>  <span class="o">|</span> <span class="kc">True</span> <span class="o">|</span> <span class="kc">True</span>  <span class="o">|</span> <span class="kc">True</span>   <span class="o">|</span> 
-<span class="o">|</span><span class="kc">True</span>  <span class="o">|</span> <span class="kc">False</span><span class="o">|</span> <span class="kc">False</span> <span class="o">|</span> <span class="kc">True</span>   <span class="o">|</span> 
-<span class="o">|</span><span class="kc">False</span> <span class="o">|</span> <span class="kc">True</span> <span class="o">|</span> <span class="kc">False</span> <span class="o">|</span> <span class="kc">True</span>   <span class="o">|</span> 
-<span class="o">|</span><span class="kc">False</span> <span class="o">|</span> <span class="kc">False</span><span class="o">|</span> <span class="kc">False</span> <span class="o">|</span> <span class="kc">False</span>  <span class="o">|</span> 
-</pre></div>
+<div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--0-input--1" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--1">python</label><div class="tab-content docutils">
+<p>x == y # x is equal to y
+x != y # x is not equal to y
+x &gt; y # x is greater than y
+x &lt; y # x is less than y
+x &gt;= y # x is greater than or equal to y
+x &lt;= y # x is less than or equal to y```</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>X</p></th>
+<th class="head"><p>not X</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>True</p></td>
+<td><p>False</p></td>
+</tr>
+<tr class="row-odd"><td><p>False</p></td>
+<td><p>True</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>X</p></th>
+<th class="head"><p>Y</p></th>
+<th class="head"><p>X AND Y</p></th>
+<th class="head"><p>X OR Y</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>True</p></td>
+<td><p>True</p></td>
+<td><p>True</p></td>
+<td><p>True</p></td>
+</tr>
+<tr class="row-odd"><td><p>True</p></td>
+<td><p>False</p></td>
+<td><p>False</p></td>
+<td><p>True</p></td>
+</tr>
+<tr class="row-even"><td><p>False</p></td>
+<td><p>True</p></td>
+<td><p>False</p></td>
+<td><p>True</p></td>
+</tr>
+<tr class="row-odd"><td><p>False</p></td>
+<td><p>False</p></td>
+<td><p>False</p></td>
+<td><p>False</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -720,15 +760,17 @@ True
 <ul class="simple">
 <li><p>Implicit conversion of the value to bool() happens if <code class="docutils literal notranslate"><span class="pre">condition</span></code> is of a different type than <strong>bool</strong>, thus all of the following should work:</p></li>
 </ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>if condition:
-    do_something
+<div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--1-input--1" name="tab-set--1" type="radio"><label class="tab-label" for="tab-set--1-input--1">python</label><div class="tab-content docutils">
+<p>if condition:
+do_something
 elif condition:
-    do_alternative1
+do_alternative1
 else:
-    do_otherwise # often reserved to report an error
-                 # after a long list of options
-    ```
-</pre></div>
+do_otherwise # often reserved to report an error
+# after a long list of options
+```</p>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -758,16 +800,20 @@ n is not None
 <ul class="simple">
 <li><p><strong>for</strong> loop is probably the most popular loop construct in Python:</p></li>
 </ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">target</span> <span class="ow">in</span> <span class="n">sequence</span><span class="p">:</span>
-    <span class="n">do_statements</span>
-</pre></div>
+<div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--2-input--1" name="tab-set--2" type="radio"><label class="tab-label" for="tab-set--2-input--1">python</label><div class="tab-content docutils">
+<p>for target in sequence:
+do_statements</p>
+</div>
 </div>
 <ul class="simple">
 <li><p>However, it’s also possible to use a <strong>while</strong> loop to repeat statements while <code class="docutils literal notranslate"><span class="pre">condition</span></code> remains True:</p></li>
 </ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="n">condition</span> <span class="n">do</span><span class="p">:</span>
-    <span class="n">do_statements</span>
-</pre></div>
+<div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--3-input--1" name="tab-set--3" type="radio"><label class="tab-label" for="tab-set--3-input--1">python</label><div class="tab-content docutils">
+<p>while condition do:
+do_statements</p>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -866,9 +912,11 @@ Exited with x==10
 <div class="section" id="functions">
 <h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
 <p>A <strong>function</strong> is a named sequence of statements that performs a computation.  You define the function by giving it a name, specify a sequence of statements, and optionally values to return.  Later, you can “call” the function by name.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_upper_case</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
-    <span class="k">return</span> <span class="p">(</span><span class="n">text</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>
-</pre></div>
+<div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--4-input--1" name="tab-set--4" type="radio"><label class="tab-label" for="tab-set--4-input--1">python</label><div class="tab-content docutils">
+<p>def make_upper_case(text):
+return (text.upper())</p>
+</div>
 </div>
 <ul class="simple">
 <li><p>The expression in the parenthesis is the <strong>argument</strong>.</p></li>
@@ -915,8 +963,10 @@ It is a common practice to use 4 spaces for indentation, and to avoid mixing wit
 <li><p>Lists can mix data types</p></li>
 <li><p>Lists are initialized with <code class="docutils literal notranslate"><span class="pre">[]</span></code> or <code class="docutils literal notranslate"><span class="pre">list()</span></code></p></li>
 </ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
-</pre></div>
+<div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--5-input--1" name="tab-set--5" type="radio"><label class="tab-label" for="tab-set--5-input--1">python</label><div class="tab-content docutils">
+<p>l = [1,2,3]</p>
+</div>
 </div>
 <ul class="simple">
 <li></li>
@@ -929,30 +979,38 @@ It is a common practice to use 4 spaces for indentation, and to avoid mixing wit
 <li></li>
 </ul>
 <p>Elements can be nested lists</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">nested</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]]</span>
-</pre></div>
+<div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--6-input--1" name="tab-set--6" type="radio"><label class="tab-label" for="tab-set--6-input--1">python</label><div class="tab-content docutils">
+<p>nested = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]</p>
+</div>
 </div>
 <ul class="simple">
 <li></li>
 </ul>
 <p>Lists can be <em>sliced</em>.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">l</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">stop</span><span class="p">:</span><span class="n">stride</span><span class="p">]</span>
-</pre></div>
+<div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--7-input--1" name="tab-set--7" type="radio"><label class="tab-label" for="tab-set--7-input--1">python</label><div class="tab-content docutils">
+<p>l[start:stop:stride]</p>
+</div>
 </div>
 <ul class="simple">
 <li><p>Like all python containers, lists have many useful methods that can be applied</p></li>
 </ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">index</span><span class="p">,</span><span class="n">new</span> <span class="n">element</span><span class="p">)</span>
-<span class="n">a</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">element</span> <span class="n">to</span> <span class="n">add</span> <span class="n">at</span> <span class="n">end</span><span class="p">)</span>
-<span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-</pre></div>
+<div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--8-input--1" name="tab-set--8" type="radio"><label class="tab-label" for="tab-set--8-input--1">python</label><div class="tab-content docutils">
+<p>a.insert(index,new element)
+a.append(element to add at end)
+len(a)</p>
+</div>
 </div>
 <ul class="simple">
 <li></li>
 </ul>
 <p>List comprehension is a <em>Very</em> powerful technique allowing for efficient construction of new lists.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">a</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">l</span><span class="p">]</span>
-</pre></div>
+<div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--9-input--1" name="tab-set--9" type="radio"><label class="tab-label" for="tab-set--9-input--1">python</label><div class="tab-content docutils">
+<p>[a for a in l]</p>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1083,23 +1141,28 @@ dict_values([&#39;uno&#39;, &#39;dos&#39;, &#39;tres&#39;])
 <p>A <em>Module</em> is a python file that contains a collection of related definitions. Python has <em>hundreds</em> of standard modules.  These are organized into what is known as the <a class="reference external" href="http://docs.python.org/library/">Python Standard Library</a>.  You can also create and use your own modules.  To use functionality from a module, you first have to import the entire module or parts of it into your namespace</p>
 <ul>
 <li><p>To import the entire module, use</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>import module_name```
-
-</pre></div>
+<div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--10-input--1" name="tab-set--10" type="radio"><label class="tab-label" for="tab-set--10-input--1">python</label><div class="tab-content docutils">
+<p>import module_name</p>
+</div>
 </div>
 </li>
 <li><p>You can also import a module using a specific name</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>import module_name as new_module_name```
-
-</pre></div>
+<div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--11-input--1" name="tab-set--11" type="radio"><label class="tab-label" for="tab-set--11-input--1">python</label><div class="tab-content docutils">
+<p>import module_name as new_module_name</p>
+</div>
 </div>
 </li>
-<li><p>To import specific definitions (e.g. functions, variables, etc) from the module into your local namespace, use</p></li>
-</ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">module_name</span> <span class="kn">import</span> <span class="n">name1</span><span class="p">,</span> <span class="n">name2</span>
-</pre></div>
+<li><p>To import specific definitions (e.g. functions, variables, etc) from the module into your local namespace, use</p>
+<div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--12-input--1" name="tab-set--12" type="radio"><label class="tab-label" for="tab-set--12-input--1">python</label><div class="tab-content docutils">
+<p>from module_name import name1, name2</p>
+</div>
 </div>
 <p>which will make those available directly in your <code class="docutils literal notranslate"><span class="pre">namespace</span></code></p>
+</li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>

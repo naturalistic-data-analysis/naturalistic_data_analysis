@@ -88,8 +88,6 @@ print(type(str(a)))
 * Exponentiation **
 * Modulo %
 
-* Note that division with integers in Python 2.7 automatically rounds, which may not be intended.  It is recommended to import the division module from python3 `from __future__ import division`
-
 # Addition
 a = 2 + 7
 print(a)
@@ -125,7 +123,7 @@ print(a*5)
 ## Logical Operators
 Perform logical comparison and return Boolean value
 
-```python
+```{tab} python
 x == y # x is equal to y
 x != y # x is not equal to y
 x > y # x is greater than y
@@ -170,7 +168,7 @@ if condition:
 
 * Implicit conversion of the value to bool() happens if `condition` is of a different type than **bool**, thus all of the following should work:
 
-```python
+```{tab} python
 if condition:
     do_something
 elif condition:
@@ -195,14 +193,14 @@ if n is not None:
 ## Loops
 * **for** loop is probably the most popular loop construct in Python:
 
-```python
+```{tab} python
 for target in sequence:
     do_statements
 ```
 
 * However, it's also possible to use a **while** loop to repeat statements while `condition` remains True:
 
-```python
+```{tab} python
 while condition do:
     do_statements
 ```
@@ -224,7 +222,7 @@ print(f"Exited with x=={x}")
 
 ## Functions
 A **function** is a named sequence of statements that performs a computation.  You define the function by giving it a name, specify a sequence of statements, and optionally values to return.  Later, you can “call” the function by name. 
-```python
+```{tab} python
 def make_upper_case(text):
     return (text.upper())
 ```
@@ -261,7 +259,7 @@ In Python, a list is a mutable sequence of values.  Mutable means that we can ch
 * Lists can mix data types
 
 * Lists are initialized with ```[]``` or ```list()```
-```python
+```{tab} python
 l = [1,2,3]
 ```
 * 
@@ -272,18 +270,18 @@ l[0]
 
 * 
 Elements can be nested lists
-```python
+```{tab} python
 nested = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 ```
 
 * 
 Lists can be *sliced*.
-```python
+```{tab} python
 l[start:stop:stride]
 ```
 
 * Like all python containers, lists have many useful methods that can be applied
-```python
+```{tab} python
 a.insert(index,new element)
 a.append(element to add at end)
 len(a)
@@ -291,7 +289,7 @@ len(a)
 
 * 
 List comprehension is a *Very* powerful technique allowing for efficient construction of new lists.
-```python
+```{tab} python
 [a for a in l]
 ```
 
@@ -379,19 +377,21 @@ A *Module* is a python file that contains a collection of related definitions. P
 
 * To import the entire module, use 
 
-  ```python
-  import module_name```
+  ```{tab} python
+  import module_name
+  ```
 
 * You can also import a module using a specific name 
 
-  ```python
-  import module_name as new_module_name```
+  ```{tab} python
+  import module_name as new_module_name
+  ```
 
 * To import specific definitions (e.g. functions, variables, etc) from the module into your local namespace, use
 
-```python
-from module_name import name1, name2
-```
+   ```{tab} python
+   from module_name import name1, name2
+   ```
    which will make those available directly in your ```namespace```
 
 import os

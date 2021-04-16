@@ -31,6 +31,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
@@ -43,6 +44,7 @@
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script src="../_static/tabs.js"></script>
     <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
@@ -54,6 +56,7 @@
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="canonical" href="http://naturalistic-data.org/content/Pliers_Tutorial.html" />
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Visualizing High Dimensional Data" href="hypertools.html" />
@@ -68,7 +71,7 @@
 <meta property="og:type"        content="article" />
 <meta property="og:title"       content="Automated Annotations" />
 <meta property="og:description" content="Automated Annotations  Automated Feature Extraction using Pliers  written by Alejandro de la Vega  This tutorial provides an introduction to the automated extra" />
-
+<meta property="og:image"       content="http://naturalistic-data.org/_static/Naturalistic_Data_Logo_v7.png" />
 
 <meta name="twitter:card" content="summary" />
 
@@ -84,6 +87,8 @@
     
         <div class="navbar-brand-box">
 <a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/Naturalistic_Data_Logo_v7.png" class="logo" alt="logo">
   
   
   <h1 class="site-logo" id="site-title">Naturalistic Data Analysis</h1>
@@ -1081,7 +1086,7 @@ This is too fine grained, as we want to save ourselves the computation, and only
 </div>
 <p>There are 89 unique onsets, which indicates that faces were found in 89/143 frames.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">FaceRecognitionFaceLocationsExtractor#face_locations</span></code> column also indicates the location of each face in CSS order (i.e., top, right, bottom, left).</p>
-<p><strong>Tip:</strong> In some frames (e.g. 240s), multiple faces were found, and there are multiple rows for a given <code class="docutils literal notranslate"><span class="pre">onset</span></code>. To disambiguate these rows, <em>pliers</em> assigns each occurace a unique <code class="docutils literal notranslate"><span class="pre">object_id</span></code> column value. Read more](http://tyarkoni.github.io/pliers/results.html#understanding-object-ids) about <em>object_id</em>.</p>
+<p><strong>Tip:</strong> In some frames (e.g. 240s), multiple faces were found, and there are multiple rows for a given <code class="docutils literal notranslate"><span class="pre">onset</span></code>. To disambiguate these rows, <em>pliers</em> assigns each occurace a unique <code class="docutils literal notranslate"><span class="pre">object_id</span></code> column value. Read more](<a class="reference external" href="http://tyarkoni.github.io/pliers/results.html#understanding-object-ids">http://tyarkoni.github.io/pliers/results.html#understanding-object-ids</a>) about <em>object_id</em>.</p>
 <p>Now, Let’s plot all of these frames where faces were found!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1181,7 +1186,7 @@ You can learn more about Transformation history in the <a class="reference exter
 <p>However, to analyze the speech language, we need a precisely aligned transcript of speech.</p>
 <p>Recent advancements in deep convolutional networks have spawned dozens of <code class="docutils literal notranslate"><span class="pre">speech-to-text</span></code> language models, that promise accurate, time-locked transcripts of speech. The best available models are currently paid services that can be accessed remotely using APIs. <em>Pliers</em> has implemented support for several <code class="docutils literal notranslate"><span class="pre">speech-to-text</span></code> services (as well as image analysis APIs). For this example, we’ll be using a service called <code class="docutils literal notranslate"><span class="pre">Rev.ai</span></code> to transcript run 1 of Paranoia Story to text.</p>
 <div class="section" id="example-4-speech-to-text-conversion-with-rev-ai">
-<h3>Example 4: Speech-to-Text Conversion with Rev.ai<a class="headerlink" href="#example-4-speech-to-text-conversion-with-rev-ai" title="Permalink to this headline">¶</a></h3>
+<h3>Example 4: Speech-to-Text Conversion with <a class="reference external" href="http://Rev.ai">Rev.ai</a><a class="headerlink" href="#example-4-speech-to-text-conversion-with-rev-ai" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="remote-service-api-credentials">
 <h4>Remote service API Credentials<a class="headerlink" href="#remote-service-api-credentials" title="Permalink to this headline">¶</a></h4>
 <p>To use remote APIs, we need to give <em>pliers</em> our private credentials for these paid services, by setting the appropriate environment variable in our environment to the access key. For more details, <a class="reference external" href="http://tyarkoni.github.io/pliers/installation.html#api-keys">see here</a></p>
@@ -1685,8 +1690,8 @@ Never share this token or push to GitHub!</p>
 <div class="section" id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>Kuperman, V., Stadthagen-Gonzalez, H. &amp; Brysbaert, M. Age-of-acquisition ratings for 30,000 English words. Behav Res 44, 978–990 (2012). https://doi.org/10.3758/s13428-012-0210-4</p></li>
-<li><p>Warriner, A.B., Kuperman, V. &amp; Brysbaert, M. Norms of valence, arousal, and dominance for 13,915 English lemmas. Behav Res 45, 1191–1207 (2013). https://doi.org/10.3758/s13428-012-0314-x</p></li>
+<li><p>Kuperman, V., Stadthagen-Gonzalez, H. &amp; Brysbaert, M. Age-of-acquisition ratings for 30,000 English words. Behav Res 44, 978–990 (2012). <a class="reference external" href="https://doi.org/10.3758/s13428-012-0210-4">https://doi.org/10.3758/s13428-012-0210-4</a></p></li>
+<li><p>Warriner, A.B., Kuperman, V. &amp; Brysbaert, M. Norms of valence, arousal, and dominance for 13,915 English lemmas. Behav Res 45, 1191–1207 (2013). <a class="reference external" href="https://doi.org/10.3758/s13428-012-0314-x">https://doi.org/10.3758/s13428-012-0314-x</a></p></li>
 </ul>
 </div>
 <div class="section" id="contributions">

@@ -4,7 +4,7 @@
 
 This tutorial provides an introduction to the automated extraction of features from multi-modal naturalistic stimuli for use as regressors in event-related analyes. We will be using *pliers*, a Python library which provides a unified, standardized interface to dozens of different feature extraction tools and services, including state-of-the-art deep learning models. 
 
-#### In this lab we will cover:
+### In this lab we will cover:
 
  - Installation and getting started
  - Pliers fundamentals
@@ -36,7 +36,7 @@ Installating the base *pliers* package is simple, just use pip:
 As *pliers* interfaces with dozens of external libraries, there are many __optional dependencies__ that are not installed by default to keep the installation light.
 *Pliers* will prompt you with installation instructions if you try to use an extractor that is not yet installed. 
 
-#### Naturalistic Stimuli from `ParanoiaStory` and `Sherlock`
+### Naturalistic Stimuli from `ParanoiaStory` and `Sherlock`
 
 We'll be working with the first run stimuli from the `ParanoiaStory` and the `Sherlock` datasets.
 
@@ -109,7 +109,7 @@ ext.transform(sherlock_video).to_df().plot('onset', 'rms')
 That was easy! We can now see that the RMS profile of `Sherlock` is very different from the `ParanoiaStory` narrative. 
 
 
-##### But, wait. How were we able to apply `RMSExtractor` to a *video* when this is an *audio*  Extractor?
+#### But, wait. How were we able to apply `RMSExtractor` to a *video* when this is an *audio*  Extractor?
 
 Under the hood, *pliers* noticed this mismatch, and automatically converted the Sherlock video clip to an audio stimuli by extracting the audio track. As a result, the `RMSExtractor` *just worked* and returned to you the result you were expecting. 
 
