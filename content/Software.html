@@ -1,0 +1,583 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Software Installation &#8212; Naturalistic Data Analysis</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e7340bb3dbd8dde6db86f25597f54a1b.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/tabs.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="http://naturalistic-data.org/content/Software.html" />
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Preprocessing" href="Preprocessing.html" />
+    <link rel="prev" title="Download Data" href="Download_Data.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+<!-- Opengraph tags -->
+<meta property="og:url"         content="http://naturalistic-data.org/content/Software.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="Software Installation" />
+<meta property="og:description" content="Software Installation  Written by Luke Chang  For this course, we will be providing hands on tutorials working with real data using open source software written" />
+<meta property="og:image"       content="http://naturalistic-data.org/_static/Naturalistic_Data_Logo_v7.png" />
+
+<meta name="twitter:card" content="summary" />
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/Naturalistic_Data_Logo_v7.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Naturalistic Data Analysis</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <p class="caption collapsible-parent">
+ <span class="caption-text">
+  Course Overview
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Organizers.html">
+   Course Organizers
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Contributors.html">
+   Contributors
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Getting Started
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Download_Data.html">
+   Download Data
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Software Installation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Preprocessing.html">
+   Preprocessing
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Analysis Tutorials
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Functional_Alignment.html">
+   Functional Alignment
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Intersubject_Correlation.html">
+   Intersubject Correlation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Intersubject_RSA.html">
+   Inter-subject Representational Similarity Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Event_Segmentation.html">
+   Event segmentation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Natural_Language_Processing.html">
+   Natural Language Processing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="timecorr.html">
+   Dynamic Connectivity
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="HiddenSemiMarkovModel.html">
+   Hidden Semi-Markov Models
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Pliers_Tutorial.html">
+   Automated Annotations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hypertools.html">
+   Visualizing High Dimensional Data
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Background Resources
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="1_Introduction_to_Programming.html">
+   Introduction to Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2_Introduction_to_Pandas.html">
+   Introduction to Pandas
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="3_Introduction_to_Plotting.html">
+   Introduction to Plotting
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="5_Introduction_to_Neuroimaging_Data.html">
+   Introduction to Neuroimaging Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="http://dartbrains.org/">
+   Dartbrains Neuroimaging Analysis Course
+   <i class="fas fa-external-link-alt">
+   </i>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Glossary.html">
+   Glossary
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Contributing Tutorials
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Contributing.html">
+   Contributing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://github.com/naturalistic-data-analysis/naturalistic_data_analysis">
+   GitHub Repository
+   <i class="fas fa-external-link-alt">
+   </i>
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Post any questions to our <a href="https://www.askpbs.org/c/naturalistic-data/">Discourse Page</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/content/Software.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/naturalistic-data-analysis/naturalistic_data_analysis"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/naturalistic-data-analysis/naturalistic_data_analysis/issues/new?title=Issue%20on%20page%20%2Fcontent/Software.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/naturalistic-data-analysis/naturalistic_data_analysis/edit/master/content/Software.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+            <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                    data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                    title="Fullscreen mode"><i
+                        class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/naturalistic-data-analysis/naturalistic_data_analysis/master?urlpath=tree/content/Software.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/naturalistic-data-analysis/naturalistic_data_analysis/blob/master/content/Software.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i>
+            Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#installing-software">
+   Installing Software
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#conda">
+     Conda
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#github">
+     Github
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pip">
+     Pip
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#jupyter-notebooks">
+   Jupyter Notebooks
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#r">
+   R
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="software-installation">
+<h1>Software Installation<a class="headerlink" href="#software-installation" title="Permalink to this headline">¶</a></h1>
+<p><em>Written by Luke Chang</em></p>
+<p>For this course, we will be providing hands on tutorials working with real data using open source software written in the Python programming language. We have included some introductory tutorials in the <strong>Background Resources</strong> section to help you get up to speed on using <a class="reference external" href="https://dartbrains.org/features/notebooks/1_Introduction_to_Programming.html">Python</a> and in particular how to manipulate data with <a class="reference external" href="https://dartbrains.org/features/notebooks/2_Introduction_to_Pandas.html">pandas</a>, <a class="reference external" href="https://dartbrains.org/features/notebooks/3_Introduction_to_Plotting.html">plot</a> data, and work with <a class="reference external" href="https://dartbrains.org/features/notebooks/5_Introduction_to_Neuroimaging_Data.html">neuroimaging data</a>. All of our tutorials will be provided in the form of a <a class="reference external" href="https://jupyter.org/">Jupyter Notebook</a>. These notebooks are distributed via a <a class="reference external" href="https://jupyterbook.org/intro.html">jupyter-book</a> and can be downloaded to run on your personal computer.</p>
+<p>Throughout this course various tutorials will use the following libraries:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.datalad.org/">datalad</a> - data versioning software (see Download Data tutorial for installation instructions and overview)</p></li>
+<li><p><a class="reference external" href="https://nipy.org/nibabel/">nibabel</a> - a library to read and write common neuroimaging file formats.</p></li>
+<li><p><a class="reference external" href="https://brainiak.org/">nilearn</a> - a neuroimaging toolbox for performing statistical learning</p></li>
+<li><p><a class="reference external" href="https://brainiak.org/">brainiak</a> - a neuroimaging toolbox for performing advanced fMRI analyses</p></li>
+<li><p><a class="reference external" href="https://neurolearn.readthedocs.io/en/latest/">nltools</a> - a neuroimaging toolbox for performing multivariate analyses</p></li>
+<li><p><a class="reference external" href="https://hypertools.readthedocs.io/en/latest/index.html">hypertools</a> - a toolbox for visualizing high dimensional data</p></li>
+<li><p><a class="reference external" href="https://timecorr.readthedocs.io/en/latest/">timecorr</a> - a toolbox for calculating dynamic correlations</p></li>
+<li><p><a class="reference external" href="https://github.com/tyarkoni/pliers">pliers</a> - a toolbox for extracting features from multimodal data</p></li>
+</ul>
+<div class="section" id="installing-software">
+<h2>Installing Software<a class="headerlink" href="#installing-software" title="Permalink to this headline">¶</a></h2>
+<p>First, if you have never worked with Python before, we recommend installing Python via the <a class="reference external" href="https://www.anaconda.com/products/individual">Anaconda distribution</a>. This includes many popular packages used in scientific computing. Be sure to install Python 3.7.</p>
+<p>Package management in Python can be a little tricky. Anaconda has provided their own system called <code class="docutils literal notranslate"><span class="pre">conda</span></code>, which includes precompiled packages that are theoretically tested to reduce conflicts. Conda is usually a good place to start when installing packages. If a package isn’t included in conda, you will next try installing the package using the Python packaging system called <code class="docutils literal notranslate"><span class="pre">pip</span></code>. This tends to be our main workhorse for installing packages. If a package isn’t in PyPI, then you may have to install from a github repository. This can be done using `pip.</p>
+<p>Package installation is probably easiest through the command line in a terminal, but you can also run commands in the shell by using the <code class="docutils literal notranslate"><span class="pre">!</span></code> cell magic.</p>
+<p>If you use Python for many different projects, you may find it helpful to create a <a class="reference external" href="https://docs.conda.io/projects/conda/en/latest/user-guide/concepts/environments.html">conda environment</a>, which provides a way to install a specific collection of packages. This can be useful if you use different versions of the same library for different projects, or if you want to avoid conflicts across packages.</p>
+<div class="section" id="conda">
+<h3>Conda<a class="headerlink" href="#conda" title="Permalink to this headline">¶</a></h3>
+<p>Some packages can be installed with <code class="docutils literal notranslate"><span class="pre">conda</span></code>. The more established scientific packages are already included in the anaconda distribution and usually can be installed via <code class="docutils literal notranslate"><span class="pre">conda</span></code>. The advantages of installing via <code class="docutils literal notranslate"><span class="pre">conda</span></code> is that distributions usually undergo an extra round of testing to make sure they are compatible and are precompiled. Smaller scale projects can often be installed via <code class="docutils literal notranslate"><span class="pre">conda</span></code> using a specific channel such as <em>conda-forge</em>. We have found some of the <a class="reference external" href="https://github.com/brainiak/brainiak">brainiak</a> dependencies to be finicky to install with <code class="docutils literal notranslate"><span class="pre">pip</span></code> and instead recommend installing it with <code class="docutils literal notranslate"><span class="pre">conda</span></code>.</p>
+<p>If you would like to create a conda environment for this course, run the following command in the terminal or with a <code class="docutils literal notranslate"><span class="pre">!</span></code> in front of it within a jupyter notebook.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">create</span> <span class="o">-</span><span class="n">n</span> <span class="n">naturalistic</span> <span class="n">python</span><span class="o">=</span><span class="mf">3.7</span> <span class="n">anaconda</span>
+</pre></div>
+</div>
+<p>To activate your environment:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">activate</span> <span class="n">naturalistic</span>
+</pre></div>
+</div>
+<p>If you would like would like to exit your environment:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">deactivate</span>
+</pre></div>
+</div>
+<p>One neat thing about <code class="docutils literal notranslate"><span class="pre">conda</span></code> environments is that you can select a specific one to serve as your kernel for a jupyter notebook. To get this to work, run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">anaconda</span> <span class="n">ipykernel</span>
+</pre></div>
+</div>
+<p>and then</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">ipykernel</span> <span class="n">install</span> <span class="o">--</span><span class="n">user</span> <span class="o">--</span><span class="n">name</span><span class="o">=</span><span class="n">naturalistic</span>
+</pre></div>
+</div>
+<p>Ok, let’s install the packages we need from conda first.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>conda install numpy scipy scikit-learn pandas matplotlib seaborn
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>conda install -c brainiak -c defaults -c conda-forge brainiak
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="github">
+<h3>Github<a class="headerlink" href="#github" title="Permalink to this headline">¶</a></h3>
+<p>Some packages are not released on <a class="reference external" href="https://www.anaconda.com/products/individual">Anaconda</a> or <a class="reference external" href="https://pypi.org/">PyPI</a> and must be installed directly from their github repository. For example, one of the dependencies in the <a class="reference external" href="https://timecorr.readthedocs.io/en/latest/">timecorr</a> toolbox requires a package called <code class="docutils literal notranslate"><span class="pre">brainconn</span></code>, which must be installed from their github repository.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip install git+https://github.com/FIU-Neuro/brainconn#egg<span class="o">=</span>brainconn
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="pip">
+<h3>Pip<a class="headerlink" href="#pip" title="Permalink to this headline">¶</a></h3>
+<p>Otherwise, <code class="docutils literal notranslate"><span class="pre">pip</span></code> will be the main way you install packages. Let’s now install the rest of the packages you will need for this course.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip install nibabel datalad nilearn nltools hypertools timecorr pliers statesegmentation networkx nltk requests urllib3
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="jupyter-notebooks">
+<h2>Jupyter Notebooks<a class="headerlink" href="#jupyter-notebooks" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://jupyter.org/">Jupyter notebooks</a> are a great way to have your code, comments and results show up inline in a web browser. Work for this course will be done in Jupyter notebooks so you can reference what you have done, see the results and someone else could redo it in the future, similar to a typical lab notebook.</p>
+<p>Rather than writing and re-writing an entire program, you can write lines of code and run them one at a time. Then, if you need to make a change, you can go back and make your edit and rerun the program again, all in the same window.</p>
+<p>Finally, you can view examples and share your work with the world very easily through <a class="reference external" href="https://nbviewer.jupyter.org/">nbviewer</a>. One easy trick if you use a cloud storage service like dropbox is to paste a link to the dropbox file in nbviewer. These links will persist as long as the file remains being shared via dropbox.</p>
+<p>If you would like to get a quick overview of Jupyter Notebooks check out <a class="reference external" href="https://www.youtube.com/watch?v=CSkTJRNBTME&amp;index=3&amp;t=0s&amp;list=PLEE6ggCEJ0H0KOlMKx_PUVB_16VoCfGj9">talk1</a> and <a class="reference external" href="https://youtu.be/OKPSDQIT-ns">talk2</a> from the <a class="reference external" href="http://mindsummerschool.org/">MIND summer school</a>.</p>
+</div>
+<div class="section" id="r">
+<h2>R<a class="headerlink" href="#r" title="Permalink to this headline">¶</a></h2>
+<p>You can also connect notebooks not just to Python kernels, but also to other languages such as <a class="reference external" href="https://www.r-project.org/">R</a>.</p>
+<p>The easiest way to get started is to install <code class="docutils literal notranslate"><span class="pre">R</span></code> and the <code class="docutils literal notranslate"><span class="pre">r-irkernel</span></code> package using <code class="docutils literal notranslate"><span class="pre">conda</span></code>.</p>
+<p>Alternatively, if this doesn’t work you can also install R directly from their <a class="reference external" href="https://cran.r-project.org/mirrors.html">website</a>. To connect this version of R to jupyter, we need to manually install the <code class="docutils literal notranslate"><span class="pre">IRkernel</span></code> from within the version of <code class="docutils literal notranslate"><span class="pre">R</span></code> that you downloaded.</p>
+<p>Start R, then run the following commands:</p>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&#39;IRkernel&#39;</span><span class="p">)</span>
+<span class="n">IRkernel</span><span class="o">::</span><span class="nf">installspec</span><span class="p">()</span>  <span class="c1"># to register the kernel in the current R installation</span>
+</pre></div>
+</div>
+<p>If you end up using R in your work, you will likely also find <a class="reference external" href="https://rstudio.com/">RStudio</a> as well as packages from the <a class="reference external" href="https://www.tidyverse.org/">tidyverse</a> to be helpful.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>conda install -c r r-irkernel
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./content"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="Download_Data.html" title="previous page">Download Data</a>
+    <a class='right-next' id="next-link" href="Preprocessing.html" title="next page">Preprocessing</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Luke Chang<br/>
+        
+            &copy; Copyright 2021.<br/>
+          <div class="extra_footer">
+            Created by <a href="http://www.lukejchang.com/">Luke Chang</a> using <a href="https://jupyterbook.org/">Jupyter Book</a> and partially supported by an NSF CAREER Award 1848370.
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+    <!-- Google Analytics -->
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-166852075-1', 'auto');
+      ga('set', 'anonymizeIp', true);
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+    <!-- End Google Analytics -->
+    
+  </body>
+</html>
