@@ -60,7 +60,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Intersubject Correlation" href="Intersubject_Correlation.html" />
-    <link rel="prev" title="Preprocessing" href="Preprocessing.html" />
+    <link rel="prev" title="Naturalistic Data Preprocessing" href="Preprocessing.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -134,7 +134,12 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Preprocessing.html">
-   Preprocessing
+   Naturalistic Data Preprocessing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Preprocessing.html#recommended-reading">
+   Recommended reading
   </a>
  </li>
 </ul>
@@ -197,23 +202,31 @@
 </p>
 <ul class="nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="1_Introduction_to_Programming.html">
+  <a class="reference external" href="https://dartbrains.org/content/Introduction_to_Programming.html">
    Introduction to Python
+   <i class="fas fa-external-link-alt">
+   </i>
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="2_Introduction_to_Pandas.html">
+  <a class="reference external" href="https://dartbrains.org/content/Introduction_to_Pandas.html">
    Introduction to Pandas
+   <i class="fas fa-external-link-alt">
+   </i>
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="3_Introduction_to_Plotting.html">
+  <a class="reference external" href="https://dartbrains.org/content/Introduction_to_Plotting.html">
    Introduction to Plotting
+   <i class="fas fa-external-link-alt">
+   </i>
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="5_Introduction_to_Neuroimaging_Data.html">
+  <a class="reference external" href="https://dartbrains.org/content/Introduction_to_Neuroimaging_Data.html">
    Introduction to Neuroimaging Data
+   <i class="fas fa-external-link-alt">
+   </i>
   </a>
  </li>
  <li class="toctree-l1">
@@ -445,12 +458,12 @@
 <h1>Functional Alignment<a class="headerlink" href="#functional-alignment" title="Permalink to this headline">¶</a></h1>
 <p><em>Written by Luke Chang</em></p>
 <p>One of the main goals of cognitive neuroscience is to understand how the brain represents and processes information about the external world, integrates it with internal goals and previous experiences, and produces actions. An implicit assumption in almost all neuroimaging studies is that each person’s brain processes information in the same way as other people’s brains. In neuroimaging research we have acknowledged that there is wide variation in individual neuroanatomy, and a key preprocessing step is to normalize each participant into a common stereotactic space. We also know that these algorithms are not perfect and that applying a small amount of local Gaussian smoothing can help mitigate small misalignments and increase voxel signal to noise ratios. While these techniques appear to work reasonably well when performing mass univariate testing, they may have some limitations when using multivariate techniques. For example, multivariate models such as prediction/classification and representational similarity analysis assume that the features of the model (e.g., voxels) are aligned across participants and that patterned variations within these features reflect information processing.</p>
-<p>There has been growing interest in developing new algorithms to project subjects into a common space based on how a voxels respond to stimuli (<a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S0896627311007811">Haxby et al., 2011</a> ; <a class="reference external" href="https://academic.oup.com/cercor/article/26/6/2919/1754308">Guntupalli et al., 2016</a>) or are connected to other voxels (<a class="reference external" href="https://journals.plos.org/ploscompbiol/article?rev=1&amp;id=10.1371/journal.pcbi.1006120">Guntupalli, et al., 2018</a>). These efforts have been largely lead by <a class="reference external" href="http://haxbylab.dartmouth.edu/index.html">Jim Haxby</a> and <a class="reference external" href="https://ee.princeton.edu/people/peter-j-ramadge">Peter Ramadge’s</a> research groups over the past decade and are generally referred to as <em>hyperalignment</em>, or <em>functional alignment</em>.</p>
+<p>There has been growing interest in developing new algorithms to project subjects into a common space based on how a voxels respond to stimuli (<a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S0896627311007811">Haxby et al., 2011</a> ; <a class="reference external" href="https://academic.oup.com/cercor/article/26/6/2919/1754308">Guntupalli et al., 2016</a>) or are connected to other voxels (<a class="reference external" href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1006120">Guntupalli, et al., 2018</a>). These efforts have been largely lead by <a class="reference external" href="http://haxbylab.dartmouth.edu/index.html">Jim Haxby</a> and <a class="reference external" href="https://ee.princeton.edu/people/peter-j-ramadge">Peter Ramadge’s</a> research groups over the past decade and are generally referred to as <em>hyperalignment</em>, or <em>functional alignment</em>.</p>
 <p>The basic idea behind hyperalignment is to treat cortical patterns as vectors corresponding to locations in a high dimensional space, where each axis reflects a measurement of that pattern (e.g., voxel activity) (<a class="reference external" href="https://www.annualreviews.org/doi/abs/10.1146/annurev-neuro-062012-170325">Haxby, 2014</a>). Thus, rather than treating cortical functions in a 1D (average roi activity), 2D (cortical sheet), or 3D physical space, hyperalignment models information as being embedded in an n-dimensional space, where n reflects the number of measurements (e.g., voxels). Vector representations of cortical patterns can then be transformed into a common high dimensional space that is shared across participants. This idea of transforming individual cortical patterns into a common high dimensional model space can be seen in the following figure from (<a class="reference external" href="https://elifesciences.org/articles/56601">Haxby et al., 2020</a>).</p>
 <p><img alt="hyperalignment" src="../_images/elife-56601-fig1-v1.jpg" /></p>
-<p>There are many different models of functional alignment. <em>Response-based hyperalignment</em> uses an iterative procrustes transform to scale, rotate, and reflect voxel time series so that they are in the same functional space across participants (<a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S0896627311007811">Haxby et al., 2011</a> ; <a class="reference external" href="https://academic.oup.com/cercor/article/26/6/2919/1754308">Guntupalli et al., 2016</a>). <em>Connectivity-based hyperalignment</em> instead aligns voxels based on their embedding with other voxels using seed-based functional connectivity (<a class="reference external" href="https://journals.plos.org/ploscompbiol/article?rev=1&amp;id=10.1371/journal.pcbi.1006120">Guntupalli, et al., 2018</a>). There is also another approach called the <em>Shared Response Model</em>, which learns a joint-SVD and can project subjects into a lower dimensional common space (<a class="reference external" href="https://ieeexplore.ieee.org/abstract/document/6958912">Chen et al., 2014</a>, <a class="reference external" href="http://papers.nips.cc/paper/5855-a-reduced-dimension-fmri-shared-response-model.pdf">Chen et al., 2015</a>). Overall, it has been shown that all of these different approaches can dramatically improve between subject classification accuracy particularly in <a class="reference external" href="http://haxbylab.dartmouth.edu/publications/HGC+11.pdf">ventral temporal cortex</a>. In addition, lower dimensional projections removes redundant axes in the high dimensional space and can effectively denoise the signal, which also improves classification accuracy.</p>
+<p>There are many different models of functional alignment. <em>Response-based hyperalignment</em> uses an iterative procrustes transform to scale, rotate, and reflect voxel time series so that they are in the same functional space across participants (<a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S0896627311007811">Haxby et al., 2011</a> ; <a class="reference external" href="https://academic.oup.com/cercor/article/26/6/2919/1754308">Guntupalli et al., 2016</a>). <em>Connectivity-based hyperalignment</em> instead aligns voxels based on their embedding with other voxels using seed-based functional connectivity (<a class="reference external" href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1006120">Guntupalli, et al., 2018</a>). There is also another approach called the <em>Shared Response Model</em>, which learns a joint-SVD and can project subjects into a lower dimensional common space (<a class="reference external" href="https://ieeexplore.ieee.org/abstract/document/6958912">Chen et al., 2014</a>, <a class="reference external" href="http://papers.nips.cc/paper/5855-a-reduced-dimension-fmri-shared-response-model.pdf">Chen et al., 2015</a>). Overall, it has been shown that all of these different approaches can dramatically improve between subject classification accuracy particularly in <a class="reference external" href="http://haxbylab.dartmouth.edu/publications/HGC+11.pdf">ventral temporal cortex</a>. In addition, lower dimensional projections removes redundant axes in the high dimensional space and can effectively denoise the signal, which also improves classification accuracy.</p>
 <p>Hyperalignment was developed at Dartmouth College and is implemented in the <a class="reference external" href="http://www.pymvpa.org">PyMVPA</a> toolbox. There is a <a class="reference external" href="http://www.pymvpa.org/examples/hyperalignment.html">tutorial</a> on the PyMVPA website for how to implement different versions of hyperalignment. The Shared Response Model was developed at Princeton University and is implemented in the <a class="reference external" href="https://brainiak.org/">brainiak</a> toolbox and I also encourage you to see their excellent <a class="reference external" href="https://brainiak.org/tutorials/11-SRM/">tutorial</a>.</p>
-<p>In this tutorial, we will walk through how to perform Response-Based Hyperalignment and the Shared Response model on the Sherlock dataset using the <a class="reference external" href="https://neurolearn.readthedocs.io/en/latest/">nltools</a> toolbox.</p>
+<p>In this tutorial, we will walk through how to perform Response-Based Hyperalignment and the Shared Response model on the Sherlock dataset using the <a class="reference external" href="https://nltools.org">nltools</a> toolbox.</p>
 <p>Before we get started, I encourage you to watch this video by <a class="reference external" href="http://haxbylab.dartmouth.edu/ppl/jim.html">Dr. James Haxby, PhD</a> from the <a class="reference external" href="http://mindsummerschool.org/">2018 MIND Computational Summer School</a> in which he discusses how hyperalignment can be used to model the shared deep structure of information encoded in fine-scale cortical topographies. This video is about an hour long and provides an excellent overview of hyperalignment.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -476,7 +489,7 @@
 <p>Before getting started with this tutorial, we need to make sure you have the necessary software installed and data downloaded.</p>
 <div class="section" id="software">
 <h3>Software<a class="headerlink" href="#software" title="Permalink to this headline">¶</a></h3>
-<p>This tutorial requires the following Python packages to be installed. See the <a class="reference external" href="http://naturalistic-data.org/features/notebooks/Software.html">Software Installation</a> tutorial for more information.</p>
+<p>This tutorial requires the following Python packages to be installed. See the <a class="reference internal" href="Software.html"><span class="doc std std-doc">Software Installation</span></a> tutorial for more information.</p>
 <ul class="simple">
 <li><p>seaborn</p></li>
 <li><p>matplotlib</p></li>
@@ -511,7 +524,7 @@
 <div class="section" id="data">
 <h3>Data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h3>
 <p>This tutorial will be using the <strong>Sherlock</strong> dataset and will require downloading the cropped &amp; denoised <strong>.hdf5</strong> files.</p>
-<p>You will want to change <code class="docutils literal notranslate"><span class="pre">data_dir</span></code> to wherever you have installed the Sherlock datalad repository. We will initialize a datalad dataset instance and get the files we need for this tutorial. If you’ve already downloaded everything, this cell should execute quickly. See the <a class="reference external" href="http://naturalistic-data.org/features/notebooks/Download_Data.html">Download Data Tutorial</a> for more information about how to install and use datalad.</p>
+<p>You will want to change <code class="docutils literal notranslate"><span class="pre">data_dir</span></code> to wherever you have installed the Sherlock datalad repository. We will initialize a datalad dataset instance and get the files we need for this tutorial. If you’ve already downloaded everything, this cell should execute quickly. See the <a class="reference internal" href="Download_Data.html"><span class="doc std std-doc">Download Data Tutorial</span></a> for more information about how to install and use datalad.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data_dir</span> <span class="o">=</span> <span class="s1">&#39;/Volumes/Engram/Data/Sherlock&#39;</span>
@@ -530,7 +543,7 @@
 </div>
 </div>
 <p>Functional alignment is typically performed within an ROI. The original hyperalignment papers align within searchlights over the whole brain. We tend to align within regions of interest from whole-brain functional parcellations. We will use a n=50 <a class="reference external" href="https://neurovault.org/collections/2099/">parcellation</a> based on patterns of coactivation from the Neurosynth database (<a class="reference external" href="http://cosanlab.com/static/papers/delaVega_2016_JNeuro.pdf">de la Vega et al., 2016</a>).</p>
-<p>We can load data from a file or web URL using the <code class="docutils literal notranslate"><span class="pre">Brain_Data</span></code> data class from <a class="reference external" href="https://neurolearn.readthedocs.io/en/latest/auto_examples/01_DataOperations/plot_download.html#sphx-glr-auto-examples-01-dataoperations-plot-download-py">nltools</a>. Each parcel is associated with a unique integer.</p>
+<p>We can load data from a file or web URL using the <code class="docutils literal notranslate"><span class="pre">Brain_Data</span></code> data class from <a class="reference external" href="https://nltools.org/auto_examples/01_DataOperations/plot_download.html#sphx-glr-auto-examples-01-dataoperations-plot-download-py">nltools</a>. Each parcel is associated with a unique integer.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mask</span> <span class="o">=</span> <span class="n">Brain_Data</span><span class="p">(</span><span class="s1">&#39;https://neurovault.org/media/images/8423/k50_2mm.nii.gz&#39;</span><span class="p">)</span>
@@ -973,7 +986,7 @@ sub-16
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="Preprocessing.html" title="previous page">Preprocessing</a>
+    <a class='left-prev' id="prev-link" href="Preprocessing.html" title="previous page">Naturalistic Data Preprocessing</a>
     <a class='right-next' id="next-link" href="Intersubject_Correlation.html" title="next page">Intersubject Correlation</a>
 
         </div>

@@ -134,7 +134,12 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Preprocessing.html">
-   Preprocessing
+   Naturalistic Data Preprocessing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Preprocessing.html#recommended-reading">
+   Recommended reading
   </a>
  </li>
 </ul>
@@ -197,23 +202,31 @@
 </p>
 <ul class="nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="1_Introduction_to_Programming.html">
+  <a class="reference external" href="https://dartbrains.org/content/Introduction_to_Programming.html">
    Introduction to Python
+   <i class="fas fa-external-link-alt">
+   </i>
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="2_Introduction_to_Pandas.html">
+  <a class="reference external" href="https://dartbrains.org/content/Introduction_to_Pandas.html">
    Introduction to Pandas
+   <i class="fas fa-external-link-alt">
+   </i>
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="3_Introduction_to_Plotting.html">
+  <a class="reference external" href="https://dartbrains.org/content/Introduction_to_Plotting.html">
    Introduction to Plotting
+   <i class="fas fa-external-link-alt">
+   </i>
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="5_Introduction_to_Neuroimaging_Data.html">
+  <a class="reference external" href="https://dartbrains.org/content/Introduction_to_Neuroimaging_Data.html">
    Introduction to Neuroimaging Data
+   <i class="fas fa-external-link-alt">
+   </i>
   </a>
  </li>
  <li class="toctree-l1">
@@ -504,7 +517,7 @@
 <p>Before getting started with this tutorial, we need to make sure you have the necessary software installed and data downloaded.</p>
 <div class="section" id="software">
 <h3>Software<a class="headerlink" href="#software" title="Permalink to this headline">¶</a></h3>
-<p>This tutorial requires the following Python packages to be installed. See the <a class="reference external" href="http://naturalistic-data.org/features/notebooks/Software.html">Software Installation</a> tutorial for more information.</p>
+<p>This tutorial requires the following Python packages to be installed. See the <a class="reference internal" href="Software.html"><span class="doc std std-doc">Software Installation</span></a> tutorial for more information.</p>
 <ul class="simple">
 <li><p>matplotlib</p></li>
 <li><p>pandas</p></li>
@@ -548,7 +561,7 @@
 <div class="section" id="data">
 <h3>Data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h3>
 <p>This tutorial will be using the <strong>Sherlock</strong> dataset and will require downloading the cropped &amp; denoised <strong>.nii.gz</strong> files. The tutorial will be mostly working with spatial patterns within the angular gyrus, so if you would like to get started with the tutorial right away without waiting for all of the nifti files to load, you can download the masked data as a <code class="docutils literal notranslate"><span class="pre">.npy</span></code> file from <a class="reference external" href="https://figshare.com/articles/Sherlock_data_for_OHBM/12436955">figshare: Sherlock data for OHBM</a>.</p>
-<p>You will want to change <code class="docutils literal notranslate"><span class="pre">data_dir</span></code> to wherever you have installed the Sherlock datalad repository. We will initialize a datalad dataset instance and get the files we need for this tutorial. If you’ve already downloaded everything, you can skip this cell. See the <a class="reference external" href="http://naturalistic-data.org/features/notebooks/Download_Data.html">Download Data Tutorial</a> for more information about how to install and use datalad.</p>
+<p>You will want to change <code class="docutils literal notranslate"><span class="pre">data_dir</span></code> to wherever you have installed the Sherlock datalad repository. We will initialize a datalad dataset instance and get the files we need for this tutorial. If you’ve already downloaded everything, you can skip this cell. See the <a class="reference internal" href="Download_Data.html"><span class="doc std std-doc">Download Data Tutorial</span></a> for more information about how to install and use datalad.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_dir</span> <span class="o">=</span> <span class="s1">&#39;/Volumes/Emily_MyPassport2TB/Sherlock/&#39;</span>

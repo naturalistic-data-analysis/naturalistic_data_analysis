@@ -134,7 +134,12 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Preprocessing.html">
-   Preprocessing
+   Naturalistic Data Preprocessing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Preprocessing.html#recommended-reading">
+   Recommended reading
   </a>
  </li>
 </ul>
@@ -197,23 +202,31 @@
 </p>
 <ul class="nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="1_Introduction_to_Programming.html">
+  <a class="reference external" href="https://dartbrains.org/content/Introduction_to_Programming.html">
    Introduction to Python
+   <i class="fas fa-external-link-alt">
+   </i>
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="2_Introduction_to_Pandas.html">
+  <a class="reference external" href="https://dartbrains.org/content/Introduction_to_Pandas.html">
    Introduction to Pandas
+   <i class="fas fa-external-link-alt">
+   </i>
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="3_Introduction_to_Plotting.html">
+  <a class="reference external" href="https://dartbrains.org/content/Introduction_to_Plotting.html">
    Introduction to Plotting
+   <i class="fas fa-external-link-alt">
+   </i>
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="5_Introduction_to_Neuroimaging_Data.html">
+  <a class="reference external" href="https://dartbrains.org/content/Introduction_to_Neuroimaging_Data.html">
    Introduction to Neuroimaging Data
+   <i class="fas fa-external-link-alt">
+   </i>
   </a>
  </li>
  <li class="toctree-l1">
@@ -800,7 +813,7 @@
 </div>
 <div class="section" id="fundamentals-of-pliers">
 <h2>Fundamentals of Pliers<a class="headerlink" href="#fundamentals-of-pliers" title="Permalink to this headline">¶</a></h2>
-<p>This section is adapted from the <a class="reference external" href="http://tyarkoni.github.io/pliers/basic-concepts.html"><em>pliers</em> documentation</a>. For a more in-depth dive, see the official documentation.</p>
+<p>This section is adapted from the <a class="reference external" href="http://psychoinformaticslab.github.io/pliers/basic-concepts.html"><em>pliers</em> documentation</a>. For a more in-depth dive, see the official documentation.</p>
 <div class="section" id="stims-and-transformers">
 <h3>Stims and Transformers<a class="headerlink" href="#stims-and-transformers" title="Permalink to this headline">¶</a></h3>
 <p><em>Pliers</em> is deliberately designed with simplicity in mind, and loosely modeled after usage patterns in <em>scikit-learn</em>.</p>
@@ -837,7 +850,7 @@
 <p>For example, the <code class="docutils literal notranslate"><span class="pre">ImageCroppingFilter</span></code> takes an <code class="docutils literal notranslate"><span class="pre">ImageStim</span></code> as input, and returns another <code class="docutils literal notranslate"><span class="pre">ImageStim</span></code> as output, where the image data stored in the <code class="docutils literal notranslate"><span class="pre">Stim</span></code> has been cropped by a bounding box specified by the user.</p>
 </li>
 </ul>
-<p>A <a class="reference external" href="http://tyarkoni.github.io/pliers/transformers.html">complete listing</a> of all <code class="docutils literal notranslate"><span class="pre">Transformers</span></code> is available in the offical <em>pliers</em> documentation.</p>
+<p>A <a class="reference external" href="http://PsychoinformaticsLab.github.io/pliers/transformers.html">complete listing</a> of all <code class="docutils literal notranslate"><span class="pre">Transformers</span></code> is available in the offical <em>pliers</em> documentation.</p>
 <p>In practice, users will <strong>primarily interact</strong> with <code class="docutils literal notranslate"><span class="pre">Extractors</span></code>, as <em>pliers</em> will automatically convert stimuli prior to extraction, greatly reducing the complexity of the code.</p>
 <p>However, it’s often useful to manually combine these operations to fully control the process.</p>
 </div>
@@ -1086,7 +1099,7 @@ This is too fine grained, as we want to save ourselves the computation, and only
 </div>
 <p>There are 89 unique onsets, which indicates that faces were found in 89/143 frames.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">FaceRecognitionFaceLocationsExtractor#face_locations</span></code> column also indicates the location of each face in CSS order (i.e., top, right, bottom, left).</p>
-<p><strong>Tip:</strong> In some frames (e.g. 240s), multiple faces were found, and there are multiple rows for a given <code class="docutils literal notranslate"><span class="pre">onset</span></code>. To disambiguate these rows, <em>pliers</em> assigns each occurace a unique <code class="docutils literal notranslate"><span class="pre">object_id</span></code> column value. Read more](<a class="reference external" href="http://tyarkoni.github.io/pliers/results.html#understanding-object-ids">http://tyarkoni.github.io/pliers/results.html#understanding-object-ids</a>) about <em>object_id</em>.</p>
+<p><strong>Tip:</strong> In some frames (e.g. 240s), multiple faces were found, and there are multiple rows for a given <code class="docutils literal notranslate"><span class="pre">onset</span></code>. To disambiguate these rows, <em>pliers</em> assigns each occurace a unique <code class="docutils literal notranslate"><span class="pre">object_id</span></code> column value. Read more](<a class="reference external" href="http://PsychoinformaticsLab.github.io/pliers/results.html#understanding-object-ids">http://PsychoinformaticsLab.github.io/pliers/results.html#understanding-object-ids</a>) about <em>object_id</em>.</p>
 <p>Now, Let’s plot all of these frames where faces were found!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1175,9 +1188,9 @@ This is too fine grained, as we want to save ourselves the computation, and only
 </div>
 </div>
 <p><strong>Note:</strong>
-You can learn more about Transformation history in the <a class="reference external" href="http://tyarkoni.github.io/pliers/stimuli.html#transformation-history">pliers docs</a>.</p>
+You can learn more about Transformation history in the <a class="reference external" href="http://PsychoinformaticsLab.github.io/pliers/stimuli.html#transformation-history">pliers docs</a>.</p>
 <p>If in doubt, simply chain <code class="docutils literal notranslate"><span class="pre">Converters</span></code> to <code class="docutils literal notranslate"><span class="pre">Extractors</span></code> manually.</p>
-<p>If you want to learn more implict conversion, this topic is discussed in the <a class="reference external" href="http://tyarkoni.github.io/pliers/transformers.html#implicit-stim-conversion">Pliers documentation</a>.</p>
+<p>If you want to learn more implict conversion, this topic is discussed in the <a class="reference external" href="http://PsychoinformaticsLab.github.io/pliers/transformers.html#implicit-stim-conversion">Pliers documentation</a>.</p>
 </div>
 </div>
 <div class="section" id="speech-to-text-converters">
@@ -1189,7 +1202,7 @@ You can learn more about Transformation history in the <a class="reference exter
 <h3>Example 4: Speech-to-Text Conversion with <a class="reference external" href="http://Rev.ai">Rev.ai</a><a class="headerlink" href="#example-4-speech-to-text-conversion-with-rev-ai" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="remote-service-api-credentials">
 <h4>Remote service API Credentials<a class="headerlink" href="#remote-service-api-credentials" title="Permalink to this headline">¶</a></h4>
-<p>To use remote APIs, we need to give <em>pliers</em> our private credentials for these paid services, by setting the appropriate environment variable in our environment to the access key. For more details, <a class="reference external" href="http://tyarkoni.github.io/pliers/installation.html#api-keys">see here</a></p>
+<p>To use remote APIs, we need to give <em>pliers</em> our private credentials for these paid services, by setting the appropriate environment variable in our environment to the access key. For more details, <a class="reference external" href="http://PsychoinformaticsLab.github.io/pliers/installation.html#api-keys">see here</a></p>
 <p>For the sake of this tutorial, you can sign up for a free trial of <a class="reference external" href="https://rev.ai">rev.ai</a> (5 hours free, no CC required). We have also provided a pre-extracted transcript that you can load instead.</p>
 <p>Once signed up visit <a class="reference external" href="https://www.rev.ai/access_token">https://www.rev.ai/access_token</a>_ to receive an access token, and set your token to the environment using the following command:</p>
 <div class="cell docutils container">
@@ -1423,8 +1436,8 @@ Never share this token or push to GitHub!</p>
 <h3>Example 5: Text-based Extractors<a class="headerlink" href="#example-5-text-based-extractors" title="Permalink to this headline">¶</a></h3>
 <p><em>Pliers</em> offers support for dozens of <code class="docutils literal notranslate"><span class="pre">Extractors</span></code> that operate on <code class="docutils literal notranslate"><span class="pre">TextStims</span></code>.</p>
 <p>A light-weight and surprsingly useful approach is simply to annotate words using Dictionaries of established word norms. <em>Pliers</em> makes this is easy using the <code class="docutils literal notranslate"><span class="pre">DictionaryExtractor</span></code>.</p>
-<p>A <code class="docutils literal notranslate"><span class="pre">DictionaryExtractor</span></code> simply maps words to arbitrary features encoded in a user-provided look up table. <em>Pliers</em> comes with built-in support for several word-norm mappings using the <a class="reference external" href="http://tyarkoni.github.io/pliers/generated/pliers.extractors.PredefinedDictionaryExtractor.html#pliers.extractors.PredefinedDictionaryExtractor">PredefinedDictionaryExtractor</a>.</p>
-<p>The predefined dictionaries built-in to <em>pliers</em> can be seen in the <a class="reference external" href="https://github.com/tyarkoni/pliers/blob/master/pliers/datasets/dictionaries.json">repository</a>.</p>
+<p>A <code class="docutils literal notranslate"><span class="pre">DictionaryExtractor</span></code> simply maps words to arbitrary features encoded in a user-provided look up table. <em>Pliers</em> comes with built-in support for several word-norm mappings using the <a class="reference external" href="http://PsychoinformaticsLab.github.io/pliers/generated/pliers.extractors.PredefinedDictionaryExtractor.html#pliers.extractors.PredefinedDictionaryExtractor">PredefinedDictionaryExtractor</a>.</p>
+<p>The predefined dictionaries built-in to <em>pliers</em> can be seen in the <a class="reference external" href="https://github.com/PsychoinformaticsLab/pliers/blob/master/pliers/datasets/dictionaries.json">repository</a>.</p>
 <p>In this example, we’re going to extract values for age-of-acquisition <a class="reference external" href="https://link.springer.com/article/10.3758/s13428-012-0210-4">(Kuperman et al., 2012)</a> and affective valence <a class="reference external" href="https://link.springer.com/article/10.3758/s13428-012-0314-x">(Warriner et al., 2013)</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1674,15 +1687,15 @@ Never share this token or push to GitHub!</p>
 </pre></div>
 </div>
 <p>This short example demostrates a powerful way to express complex extraction workflows in <em>pliers</em>.</p>
-<p>If you’d like to learn more about the <code class="docutils literal notranslate"><span class="pre">Graph</span></code> API, you can head over to the <a class="reference external" href="http://tyarkoni.github.io/pliers/graphs.html">documentation</a>.</p>
+<p>If you’d like to learn more about the <code class="docutils literal notranslate"><span class="pre">Graph</span></code> API, you can head over to the <a class="reference external" href="http://psychoinformaticslab.github.io/pliers/graphs.html">documentation</a>.</p>
 </div>
 <div class="section" id="where-to-go-from-here">
 <h2>Where to go from here?<a class="headerlink" href="#where-to-go-from-here" title="Permalink to this headline">¶</a></h2>
 <p><em>Pliers</em> is a powerful, yet easy to use Python library for multi-modal feature extraction. In this short tutorial, you’ve seen how to use <em>pliers</em> to modify, convert and extract features from stimuli.</p>
-<p>To see the full range of <code class="docutils literal notranslate"><span class="pre">Transformers</span></code> implemented in <em>pliers</em>, <a class="reference external" href="http://tyarkoni.github.io/pliers/transformers.html">refer to this listing</a></p>
+<p>To see the full range of <code class="docutils literal notranslate"><span class="pre">Transformers</span></code> implemented in <em>pliers</em>, <a class="reference external" href="http://psychoinformaticslab.github.io/pliers/transformers.html">refer to this listing</a></p>
 <p>What’s most exciting about <em>pliers</em>, and the quickly evolving landscape of feature algorithms is that they are constantly evolving. New developments promise to allows to extract ever more psychologically relevant features from naturalistic stimuli, automatically.</p>
-<p>To that end, <em>pliers</em> is designed to be easily expanded by open-source contributions. If you have any ideas for future extractors, or simply find a bug to report, head over to our GitHub repository and <a class="reference external" href="https://github.com/tyarkoni/pliers/issues">file and issue</a>.</p>
-<p>If you use pliers in your work, please cite both the <a class="reference external" href="http://github.com/tyarkoni/pliers">pliers GitHub repository</a> and the following paper:</p>
+<p>To that end, <em>pliers</em> is designed to be easily expanded by open-source contributions. If you have any ideas for future extractors, or simply find a bug to report, head over to our GitHub repository and <a class="reference external" href="https://github.com/PsychoinformaticsLab/pliers/issues">file and issue</a>.</p>
+<p>If you use pliers in your work, please cite both the <a class="reference external" href="https://github.com/PsychoinformaticsLab/pliers">pliers GitHub repository</a> and the following paper:</p>
 <ul class="simple">
 <li><p>McNamara, Q., De La Vega, A., &amp; Yarkoni, T. (2017, August). Developing a comprehensive framework for multimodal feature extraction. In Proceedings of the 23rd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining (pp. 1567-1574). ACM. <a class="reference external" href="https://dl.acm.org/doi/abs/10.1145/3097983.3098075?casa_token=iXf9sdY9XdQAAAAA%3Abu4w3Um9wJr3_c4eEtJ8nCdLzWYSGQ7Fmg4KM6N0uCQ3u-Jryvk3lK0JLvQJFcReIEqiUksZWBAl">link</a></p></li>
 </ul>
@@ -1696,7 +1709,7 @@ Never share this token or push to GitHub!</p>
 </div>
 <div class="section" id="contributions">
 <h2>Contributions<a class="headerlink" href="#contributions" title="Permalink to this headline">¶</a></h2>
-<p>Alejandro de la Vega wrote the tutorial and code in this notebook. Emily Finn tested and lightly edited the notebook.</p>
+<p>Alejandro de la Vega wrote the tutorial and code in this notebook. Emily Finn tested and lightly edited the notebook. Luke Chang updated broken links.</p>
 </div>
 </div>
 

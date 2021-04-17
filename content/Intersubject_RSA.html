@@ -136,7 +136,12 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Preprocessing.html">
-   Preprocessing
+   Naturalistic Data Preprocessing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Preprocessing.html#recommended-reading">
+   Recommended reading
   </a>
  </li>
 </ul>
@@ -199,23 +204,31 @@
 </p>
 <ul class="nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="1_Introduction_to_Programming.html">
+  <a class="reference external" href="https://dartbrains.org/content/Introduction_to_Programming.html">
    Introduction to Python
+   <i class="fas fa-external-link-alt">
+   </i>
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="2_Introduction_to_Pandas.html">
+  <a class="reference external" href="https://dartbrains.org/content/Introduction_to_Pandas.html">
    Introduction to Pandas
+   <i class="fas fa-external-link-alt">
+   </i>
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="3_Introduction_to_Plotting.html">
+  <a class="reference external" href="https://dartbrains.org/content/Introduction_to_Plotting.html">
    Introduction to Plotting
+   <i class="fas fa-external-link-alt">
+   </i>
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="5_Introduction_to_Neuroimaging_Data.html">
+  <a class="reference external" href="https://dartbrains.org/content/Introduction_to_Neuroimaging_Data.html">
    Introduction to Neuroimaging Data
+   <i class="fas fa-external-link-alt">
+   </i>
   </a>
  </li>
  <li class="toctree-l1">
@@ -462,7 +475,7 @@
 <h1>Inter-subject Representational Similarity Analysis<a class="headerlink" href="#inter-subject-representational-similarity-analysis" title="Permalink to this headline">¶</a></h1>
 <p><em>Written by Emily Finn &amp; Luke Chang</em></p>
 <p>“Model-free” analyses that exploit the time-locked nature of a stimulus across subjects—e.g., inter-subject correlation (ISC; <a class="reference external" href="https://science.sciencemag.org/content/303/5664/1634?casa_token=T_9g7N-Xu0MAAAAA:m1i9AAa80QHe_pA3xosCV-ucWhdU-0RUKQHoBr07J-5M7iUt8Clqxv5JiCwmA_WkUjboRmeBQFiAcQ">Hasson et al., 2004</a>) and related approaches—are a powerful way to analyze naturalistic neuroimaging data.</p>
-<p>These approaches use one subject’s brain activity as a model for a second subject’s brain activity, reasoning that as long as two subjects receive the same input at the same time, any shared variance must be due to stimulus processing. If you haven’t already, be sure to check out the <a class="reference external" href="http://naturalistic-data.org/features/notebooks/Intersubject_Correlation.html">ISC tutorial</a> that is part of this book.</p>
+<p>These approaches use one subject’s brain activity as a model for a second subject’s brain activity, reasoning that as long as two subjects receive the same input at the same time, any shared variance must be due to stimulus processing. If you haven’t already, be sure to check out the <a class="reference internal" href="Intersubject_Correlation.html"><span class="doc std std-doc">ISC tutorial</span></a> that is part of this book.</p>
 <p>However, while ISC and related approaches were traditionally developed to detect responses shared at the group level, we know that brain activity during naturalistic stimuli also shows interesting individual differences.</p>
 <p><strong>Q: How can we use inter-subject approaches to study what is <em>different</em> across subjects, rather than what is common?</strong></p>
 <p>One problem is that ISC by definition operates at the level of subject pairs, while traits and behaviors operate at the level of single subjects. So, how can we relate ISC (one measure per subject pair) to behavior (one measure per subject)?</p>
@@ -516,7 +529,7 @@
 <p>Before getting started with this tutorial, we need to make sure you have the necessary software installed and data downloaded.</p>
 <div class="section" id="software">
 <h3>Software<a class="headerlink" href="#software" title="Permalink to this headline">¶</a></h3>
-<p>This tutorial requires the following Python packages to be installed. See the <a class="reference external" href="http://naturalistic-data.org/features/notebooks/Software.html">Software Installation</a> tutorial for more information.</p>
+<p>This tutorial requires the following Python packages to be installed. See the <a class="reference internal" href="Software.html"><span class="doc std std-doc">Software Installation</span></a> tutorial for more information.</p>
 <ul class="simple">
 <li><p>seaborn</p></li>
 <li><p>matplotlib</p></li>
@@ -570,7 +583,7 @@
 <div class="section" id="data">
 <h3>Data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h3>
 <p>This tutorial will be using the <strong>Paranoia</strong> dataset and will require downloading the extracted ROI timeseries  <strong>csv</strong> files.</p>
-<p>You will want to change <code class="docutils literal notranslate"><span class="pre">data_dir</span></code> to wherever you have installed the Paranoia datalad repository (e.g. <code class="docutils literal notranslate"><span class="pre">~/data</span></code>). We will initialize a datalad dataset instance and get the files we need for this tutorial. If you’ve already downloaded everything, this cell should execute quickly. See the <a class="reference external" href="http://naturalistic-data.org/features/notebooks/Download_Data.html">Download Data Tutorial</a> for more information about how to install and use datalad.</p>
+<p>You will want to change <code class="docutils literal notranslate"><span class="pre">data_dir</span></code> to wherever you have installed the Paranoia datalad repository (e.g. <code class="docutils literal notranslate"><span class="pre">~/data</span></code>). We will initialize a datalad dataset instance and get the files we need for this tutorial. If you’ve already downloaded everything, this cell should execute quickly. See the <a class="reference internal" href="Download_Data.html"><span class="doc std std-doc">Download Data Tutorial</span></a> for more information about how to install and use datalad.</p>
 <p>Downloading all of the data could take a little while depending on the speed of your internet connection. Patience is a virtue :D</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -888,7 +901,7 @@
 </div>
 <div class="section" id="brain-data">
 <h3>Brain Data<a class="headerlink" href="#brain-data" title="Permalink to this headline">¶</a></h3>
-<p>In working with fMRI data, we have a choice as to whether we’d like to work in the original resolution of the data – voxels – or if we’d like to summarize across space in some way (<a class="reference external" href="https://osf.io/4exrn/?show=view">Jolly &amp; Chang, Under Review</a>). We could calculate similarity across the whole brain at once, but there are probably some regions where the representational similarity with behavior is stronger than in other regions, and we’d like to be able to visualize and say something about which regions are contributing most to our effect. We could calculate similarity at each individual voxel separately. This has the advantage of maximizing spatial specificity, but it’s also expensive in terms of time and computation, and we know the BOLD response tends to be smoother than single voxels. Another option would be to take a searchlight approach, where we calculate similarity within a “searchlight”, or a relatively small sphere or cube of voxels centered around a voxel. This preserves some degree of spatial specificity while boosting signal relative to single voxels (which can be noisy) and recognizing the inherent smoothness of the local BOLD response, but it still requires us to loop through every voxel, which takes a lot of time and memory. Furthermore, both single-voxel and searchlight approaches also lead to larger penalties when it comes time to correct for multiple comparisons, since we’ve effectively done as many tests as there are voxels, and we need to stringently control for false positives.</p>
+<p>In working with fMRI data, we have a choice as to whether we’d like to work in the original resolution of the data – voxels – or if we’d like to summarize across space in some way (<a class="reference external" href="https://academic.oup.com/scan/advance-article/doi/10.1093/scan/nsab010/6121195?login=true">Jolly &amp; Chang, 2021</a>). We could calculate similarity across the whole brain at once, but there are probably some regions where the representational similarity with behavior is stronger than in other regions, and we’d like to be able to visualize and say something about which regions are contributing most to our effect. We could calculate similarity at each individual voxel separately. This has the advantage of maximizing spatial specificity, but it’s also expensive in terms of time and computation, and we know the BOLD response tends to be smoother than single voxels. Another option would be to take a searchlight approach, where we calculate similarity within a “searchlight”, or a relatively small sphere or cube of voxels centered around a voxel. This preserves some degree of spatial specificity while boosting signal relative to single voxels (which can be noisy) and recognizing the inherent smoothness of the local BOLD response, but it still requires us to loop through every voxel, which takes a lot of time and memory. Furthermore, both single-voxel and searchlight approaches also lead to larger penalties when it comes time to correct for multiple comparisons, since we’ve effectively done as many tests as there are voxels, and we need to stringently control for false positives.</p>
 <p>A happy medium is to summarize voxelwise data into nodes, or parcels. In this approach, we used predefined ROIs to group voxels into contiguous regions. At each TR, we average signal in all the voxels in a node to get one representative timecourse for that node. This way, we cut down on computational complexity by several orders of magnitude (compare ~70,000 brain voxels in a typical 3mm<sup>3</sup> whole-brain acquisition with ~100-300 nodes found in most parcellations).</p>
 <p>For purposes of this tutorial, we’ll take the nodewise approach. We’ll use a functional parcellation called the Shen atlas (<a class="reference external" href="https://www.sciencedirect.com/science/article/abs/pii/S1053811913005818">Shen et al., 2013</a>), which has 268 nodes. I personally like this parcellation because it covers the whole brain including the subcortex and cerebellum, whereas many other parcellations only cover cortex. Also, in general, parcellations in the 200-300 node range provide a good balance of spatial specificity without having nodes so small that they amplify registration errors and partial voluming effects from slight misalignments across subjects. In general, though, we don’t believe there is necessarily one “true” parcellation – we see it more as a data-reduction step, and it’s never a bad idea to make sure your results are robust to the choice of parcellation.</p>
 <p>Another thing to note is that while using parcellations is convenient for computational purposes, this approach may obscure finer-grained individual differences that emerge when considering smaller spatial scales. <a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S1053811918307274?via%3Dihub">Feilong et al. (2018)</a> used an IS-RSA approach to quantify the reliability of individual differences in cortical functional architecture across alignment methods, spatial scales, and functional indices, and found that individuals reliably differ in fine-scale cortical functional architecture when data were first hyperaligned. (Check out our tutorial on <a class="reference external" href="http://naturalistic-data.org/features/notebooks/Functional_Alignment.html">Functional Alignment</a> to learn more about hyperalignment and other approaches to functionally align data across subjects.) Furthermore, these individual differences in fine-grained cortical architecture provide strong predictions of general intelligence (see preprint <a class="reference external" href="https://www.biorxiv.org/content/10.1101/2020.06.06.138099v1">here</a>). We believe that combining functional alignment with IS-RSA approaches is a promising avenue for future work to strengthen our understanding of brain-behavior relationships.</p>
@@ -1015,7 +1028,7 @@
 </div>
 </div>
 <p>This looks reasonable: most values are positive, and there is some variance in correlation strength across subject pairs. (We are ignoring the diagonal is since each subject is perfectly correlated with him or herself.)</p>
-<p>Before diving into this variability across subject pairs and how it relates to behavior, we might want to see which nodes show the highest ISC across the whole group. We will compute the <em>mean</em> (or median) of the lower triangle of the matrix using the <code class="docutils literal notranslate"><span class="pre">Adjacency.isc</span></code> method. We could also get the p-values using the subject-wise bootstrapping method (<a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S1053811916301331">Chen et al., 2016</a>), but it takes a little bit longer to compute as each ROI needs to be run about 5,000 times. To make the code more concise, we run this using a dictionary comprehension, which is like an inplace for loop that creates a Python dictionary. See the <a class="reference external" href="http://naturalistic-data.org/features/notebooks/Intersubject_Correlation.html">ISC tutorial</a> for a more in depth overview of the nuances of computing ISC.</p>
+<p>Before diving into this variability across subject pairs and how it relates to behavior, we might want to see which nodes show the highest ISC across the whole group. We will compute the <em>mean</em> (or median) of the lower triangle of the matrix using the <code class="docutils literal notranslate"><span class="pre">Adjacency.isc</span></code> method. We could also get the p-values using the subject-wise bootstrapping method (<a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S1053811916301331">Chen et al., 2016</a>), but it takes a little bit longer to compute as each ROI needs to be run about 5,000 times. To make the code more concise, we run this using a dictionary comprehension, which is like an inplace for loop that creates a Python dictionary. See the <a class="reference internal" href="Intersubject_Correlation.html"><span class="doc std std-doc">ISC tutorial</span></a> for a more in depth overview of the nuances of computing ISC.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">isc</span> <span class="o">=</span> <span class="p">{</span><span class="n">node</span><span class="p">:</span><span class="n">similarity_matrices</span><span class="p">[</span><span class="n">node</span><span class="p">]</span><span class="o">.</span><span class="n">isc</span><span class="p">(</span><span class="n">metric</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="n">n_bootstraps</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="s1">&#39;isc&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_nodes</span><span class="p">)}</span>
@@ -1404,7 +1417,7 @@
 </div>
 <div class="section" id="correcting-for-multiple-comparisons">
 <h4>Correcting for multiple comparisons<a class="headerlink" href="#correcting-for-multiple-comparisons" title="Permalink to this headline">¶</a></h4>
-<p>If we want to make inferences about the significance of representational similarity at individual nodes, we need to correct for multiple comparisons (since for each model we’ve run 268 tests – one for each node). We could use Bonferroni correction, where we divide our alpha threshold (typically 0.05) by the number of tests we’ve run (268) to get a corrected alpha threshold (in this case 0.05/268 = 0.00019), but this is probably too conservative, resulting in many false negatives. An alternative is to use the false discovery rate method (FDR) to give us better power (<a class="reference external" href="https://rss.onlinelibrary.wiley.com/doi/abs/10.1111/j.2517-6161.1995.tb02031.x">Benjamini &amp; Hochberg, 1995</a>). For a more detailed tutorial about FDR, check out <a class="reference external" href="https://dartbrains.org/features/notebooks/11_Thresholding_Group_Analyses.html">DartBrains</a></p>
+<p>If we want to make inferences about the significance of representational similarity at individual nodes, we need to correct for multiple comparisons (since for each model we’ve run 268 tests – one for each node). We could use Bonferroni correction, where we divide our alpha threshold (typically 0.05) by the number of tests we’ve run (268) to get a corrected alpha threshold (in this case 0.05/268 = 0.00019), but this is probably too conservative, resulting in many false negatives. An alternative is to use the false discovery rate method (FDR) to give us better power (<a class="reference external" href="https://rss.onlinelibrary.wiley.com/doi/abs/10.1111/j.2517-6161.1995.tb02031.x">Benjamini &amp; Hochberg, 1995</a>). For a more detailed tutorial about FDR, check out <a class="reference external" href="https://dartbrains.org/content/Thresholding_Group_Analyses.html">DartBrains</a></p>
 <p>First we’ll do it for the results from the NN model:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1549,13 +1562,13 @@
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S1053811920303153">E. S. Finn, E. Glerean, A. Y. Khojandi, D. Nielson, P. J. Molfese, D. A. Handwerker, P. A. Bandettini. Idiosynchrony: From shared responses to individual differences during naturalistic neuroimaging. <em>NeuroImage,</em> 215, 2020</a></p></li>
 </ul>
-<p>If this tutorial was useful to you, please consider citing this paper in addition to the <a class="reference external" href="http://naturalistic-data.org/intro">naturalistic-data-analysis book</a>. Thanks!</p>
+<p>If this tutorial was useful to you, please consider citing this paper in addition to the <a class="reference external" href="http://naturalistic-data.org">naturalistic-data-analysis book</a>. Thanks!</p>
 <p>Here are some other great resources for learning more about how RSA is generally used in brain imaging:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.frontiersin.org/articles/10.3389/neuro.06.004.2008/full?utm_source=FWEB&amp;utm_medium=NBLOG&amp;utm_campaign=ECO_10YA_top-research">N. Kriegeskorte, M. Mur, P. Bandettini. Representational similarity analysis - connecting the branches of systems neuroscience. <em>Front. Syst. Neurosci.,</em> 2 (2008)</a></p></li>
 <li><p><a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S1364661313001277">N. Kriegeskorte, R.A. Kievit. Representational geometry: integrating cognition, computation, and the brain. <em>Trends Cognit. Sci.,</em> 17 (2013), pp. 401-412</a></p></li>
 <li><p><a class="reference external" href="https://www.sciencedirect.com/science/article/pii/B9780128120286000276">H. R. Dimsdale-Zucker, C. Ranganath. Chapter 27 - Representational Similarity Analyses: A Practical Guide for Functional MRI Applications, <em>Handbook of Behavioral Neuroscience,</em> Editor(s): Denise Manahan-Vaughan, Elsevier, Volume 28, 2018</a></p></li>
-<li><p>Luke Chang’s <a class="reference external" href="https://dartbrains.org/features/notebooks/14_RSA.html">RSA tutorial</a> for the <a class="reference external" href="https://dartbrains.org/intro">dartbrains project</a></p></li>
+<li><p>Luke Chang’s <a class="reference external" href="https://dartbrains.org/content/RSA.html">RSA tutorial</a> for the <a class="reference external" href="https://dartbrains.org/">dartbrains project</a></p></li>
 <li><p>Mark Thornton’s <a class="reference external" href="https://www.youtube.com/watch?v=ufGtuT_J75w&amp;index=29&amp;t=0s&amp;list=PLEE6ggCEJ0H0KOlMKx_PUVB_16VoCfGj9">lecture</a> and <a class="reference external" href="https://github.com/Summer-MIND/mind_2018/tree/master/tutorials/representational_similarity">tutorial</a> at the <a class="reference external" href="https://mindsummerschool.org/2018/07/30/narratives-and-naturalistic-contexts.html">Methods in Neuroscience at Dartmouth (MIND) Summer School 2018</a></p></li>
 </ul>
 <p>And here are some cool papers using IS-RSA methods:</p>

@@ -61,7 +61,7 @@
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Introduction to Python" href="1_Introduction_to_Programming.html" />
+    <link rel="next" title="Glossary" href="Glossary.html" />
     <link rel="prev" title="Automated Annotations" href="Pliers_Tutorial.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -136,7 +136,12 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Preprocessing.html">
-   Preprocessing
+   Naturalistic Data Preprocessing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Preprocessing.html#recommended-reading">
+   Recommended reading
   </a>
  </li>
 </ul>
@@ -199,23 +204,31 @@
 </p>
 <ul class="nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="1_Introduction_to_Programming.html">
+  <a class="reference external" href="https://dartbrains.org/content/Introduction_to_Programming.html">
    Introduction to Python
+   <i class="fas fa-external-link-alt">
+   </i>
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="2_Introduction_to_Pandas.html">
+  <a class="reference external" href="https://dartbrains.org/content/Introduction_to_Pandas.html">
    Introduction to Pandas
+   <i class="fas fa-external-link-alt">
+   </i>
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="3_Introduction_to_Plotting.html">
+  <a class="reference external" href="https://dartbrains.org/content/Introduction_to_Plotting.html">
    Introduction to Plotting
+   <i class="fas fa-external-link-alt">
+   </i>
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="5_Introduction_to_Neuroimaging_Data.html">
+  <a class="reference external" href="https://dartbrains.org/content/Introduction_to_Neuroimaging_Data.html">
    Introduction to Neuroimaging Data
+   <i class="fas fa-external-link-alt">
+   </i>
   </a>
  </li>
  <li class="toctree-l1">
@@ -483,7 +496,7 @@
 <p>Before getting started with this tutorial, we need to make sure you have the necessary software installed and data downloaded.</p>
 <div class="section" id="software">
 <h3>Software<a class="headerlink" href="#software" title="Permalink to this headline">¶</a></h3>
-<p>This tutorial requires the following Python packages to be installed. See the <a class="reference external" href="http://naturalistic-data.org/features/notebooks/Software.html">Software Installation</a> tutorial for more information.</p>
+<p>This tutorial requires the following Python packages to be installed. See the <a class="reference internal" href="Software.html"><span class="doc std std-doc">Software Installation</span></a> tutorial for more information.</p>
 <ul class="simple">
 <li><p>hypertools</p></li>
 <li><p>timecorr</p></li>
@@ -525,7 +538,7 @@
 <div class="section" id="data">
 <h3>Data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h3>
 <p>This tutorial will be using the <strong>Sherlock</strong> dataset and will require downloading the cropped and denoised <strong>hdf5</strong> files, the annotations file <code class="docutils literal notranslate"><span class="pre">Sherlock_Segments_1000_NN_2017.xlsx</span></code>, and the preprocessed video text file <code class="docutils literal notranslate"><span class="pre">video_text.npy</span></code>.</p>
-<p>You will want to change <code class="docutils literal notranslate"><span class="pre">datadir</span></code> to wherever you have installed the Sherlock datalad repository (e.g. <code class="docutils literal notranslate"><span class="pre">~/data</span></code>). We will initialize a datalad dataset instance and get the files we need for this tutorial. If you’ve already downloaded everything, this cell should execute quickly. See the <a class="reference external" href="http://naturalistic-data.org/features/notebooks/Download_Data.html">Download Data Tutorial</a> for more information about how to install and use datalad.</p>
+<p>You will want to change <code class="docutils literal notranslate"><span class="pre">datadir</span></code> to wherever you have installed the Sherlock datalad repository (e.g. <code class="docutils literal notranslate"><span class="pre">~/data</span></code>). We will initialize a datalad dataset instance and get the files we need for this tutorial. If you’ve already downloaded everything, this cell should execute quickly. See the <a class="reference internal" href="Download_Data.html"><span class="doc std std-doc">Download Data Tutorial</span></a> for more information about how to install and use datalad.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">datadir</span> <span class="o">=</span> <span class="s1">&#39;/Volumes/Engram/Data/Sherlock&#39;</span>
@@ -553,7 +566,7 @@
 </div>
 <div class="section" id="roi-responses-while-viewing-sherlock">
 <h2>ROI responses while viewing Sherlock<a class="headerlink" href="#roi-responses-while-viewing-sherlock" title="Permalink to this headline">¶</a></h2>
-<p>Following the <a class="reference external" href="http://naturalistic-data.org/features/notebooks/Functional_Alignment.html">functional alignment tutorial</a>, we’ll select out voxels in early visual cortex from the <em>Sherlock</em> dataset.  We’ll also examine primary auditory cortex and motor cortex responses.  Then we’ll apply the HyperTools pipeline to the dataset and visualize the responses within each ROI as a 3D image. Note you could also work with the Average ROI csv files as we did with the Dynamic Correlation tutorial. Here, we will load the full dataset and manually extract ROIs.</p>
+<p>Following the <a class="reference internal" href="Functional_Alignment.html"><span class="doc std std-doc">functional alignment tutorial</span></a>, we’ll select out voxels in early visual cortex from the <em>Sherlock</em> dataset.  We’ll also examine primary auditory cortex and motor cortex responses.  Then we’ll apply the HyperTools pipeline to the dataset and visualize the responses within each ROI as a 3D image. Note you could also work with the Average ROI csv files as we did with the Dynamic Correlation tutorial. Here, we will load the full dataset and manually extract ROIs.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mask</span> <span class="o">=</span> <span class="n">Brain_Data</span><span class="p">(</span><span class="s1">&#39;https://neurovault.org/media/images/8423/k50_2mm.nii.gz&#39;</span><span class="p">)</span>
@@ -1012,7 +1025,7 @@ sub-16 Part2
         <div class='prev-next-bottom'>
             
     <a class='left-prev' id="prev-link" href="Pliers_Tutorial.html" title="previous page">Automated Annotations</a>
-    <a class='right-next' id="next-link" href="1_Introduction_to_Programming.html" title="next page">Introduction to Python</a>
+    <a class='right-next' id="next-link" href="Glossary.html" title="next page">Glossary</a>
 
         </div>
         

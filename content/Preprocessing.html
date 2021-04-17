@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Preprocessing &#8212; Naturalistic Data Analysis</title>
+    <title>Naturalistic Data Preprocessing &#8212; Naturalistic Data Analysis</title>
     
   <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -69,8 +69,8 @@
 <!-- Opengraph tags -->
 <meta property="og:url"         content="http://naturalistic-data.org/content/Preprocessing.html" />
 <meta property="og:type"        content="article" />
-<meta property="og:title"       content="Preprocessing" />
-<meta property="og:description" content="Preprocessing  Written by Luke Chang  There are currently no agreed upon conventions for preprocessing naturalistic neuroimaging data. In this tutorial, we show" />
+<meta property="og:title"       content="Naturalistic Data Preprocessing" />
+<meta property="og:description" content="Naturalistic Data Preprocessing  For the two datasets we are using in this course (Sherlock &amp; Paranoia), we performed very minimal preprocessing. First, we used" />
 <meta property="og:image"       content="http://naturalistic-data.org/_static/Naturalistic_Data_Logo_v7.png" />
 
 <meta name="twitter:card" content="summary" />
@@ -134,7 +134,12 @@
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Preprocessing
+   Naturalistic Data Preprocessing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="#recommended-reading">
+   Recommended reading
   </a>
  </li>
 </ul>
@@ -197,23 +202,31 @@
 </p>
 <ul class="nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="1_Introduction_to_Programming.html">
+  <a class="reference external" href="https://dartbrains.org/content/Introduction_to_Programming.html">
    Introduction to Python
+   <i class="fas fa-external-link-alt">
+   </i>
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="2_Introduction_to_Pandas.html">
+  <a class="reference external" href="https://dartbrains.org/content/Introduction_to_Pandas.html">
    Introduction to Pandas
+   <i class="fas fa-external-link-alt">
+   </i>
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="3_Introduction_to_Plotting.html">
+  <a class="reference external" href="https://dartbrains.org/content/Introduction_to_Plotting.html">
    Introduction to Plotting
+   <i class="fas fa-external-link-alt">
+   </i>
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="5_Introduction_to_Neuroimaging_Data.html">
+  <a class="reference external" href="https://dartbrains.org/content/Introduction_to_Neuroimaging_Data.html">
    Introduction to Neuroimaging Data
+   <i class="fas fa-external-link-alt">
+   </i>
   </a>
  </li>
  <li class="toctree-l1">
@@ -358,12 +371,12 @@
         </div>
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#naturalistic-data-preprocessing">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
    Naturalistic Data Preprocessing
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#recommended-reading">
    Recommended reading
   </a>
@@ -380,13 +393,20 @@
         
               <div>
                 
-  <div class="section" id="preprocessing">
-<h1>Preprocessing<a class="headerlink" href="#preprocessing" title="Permalink to this headline">¶</a></h1>
-<p><em>Written by Luke Chang</em></p>
-<p>There are currently no agreed upon conventions for preprocessing naturalistic neuroimaging data. In this tutorial, we show how we preprocessed the datasets used in all of our tutorials. This tutorial assumes you have some basic knowledge of preprocessing. If you have questions about the specific details, we enourage you to read other tutorials, such as the preprocessing <a class="reference external" href="https://dartbrains.org/features/notebooks/7_Preprocessing.html">overview</a> from the Dartbrains course.</p>
-<p>In our <a class="reference external" href="http://cosanlab.com/">lab</a>, we perform standard realignment and spatial normalization using a custom <a class="reference external" href="https://nipype.readthedocs.io/en/latest/">nipype</a> <a class="reference external" href="https://github.com/cosanlab/cosanlab_preproc">workflow</a> or <a class="reference external" href="https://fmriprep.org/en/stable/">fmriprep</a>. We also perform basic denoising by removing global and multivariate spikes, average CSF activity, linear/quadratic trends, and 24 motion covariates (e.g., 6 centered realignment, their squares, derivative, and squared derivatives). We are very cautious about performing high-pass filtering as many of the effects we are interested in occur in <a class="reference external" href="https://www.biorxiv.org/content/early/2018/12/16/487892">slower frequencies</a>. We find that including average activity from a CSF mask helps a lot in reducing different types of physiological and motion related artifacts. We typically apply spatial smoothing, but depending on the question we don’t always perform this step. For spatial feature selection, we rarely use searchlights and instead tend to use parcellations. This allows us to quickly prototype analysis ideas using smaller numbers of parcels (e.g., n=50) and then increase the number if we want greater spatial specificity. Starting with K=50 parcellation speeds up our computation by several orders of magnitude compared to voxelwise or searchlight approaches. In addition, the bonferroni correction for multiple comparisons is p &lt; 0.001, which is a reasonable threshold to observe statistically significant results with our research questions. We usually use a <a class="reference external" href="https://neurovault.org/collections/2099/">parcellation</a> scheme that we developed with <a class="reference external" href="https://talyarkoni.org/">Tal Yarkoni</a> based on meta-analytic coactivation using the neurosynth database. Selecting the right spatial features for a particular question is a surprisingly under-appreciated topic. See our <a class="reference external" href="https://osf.io/4exrn/?show=view">paper</a> discussing the costs and benefits of different spatial feature selection strategies. Head motion is also an important consideration with naturalistic designs particularly with long scanning sessions or when participants actively speak in the scanner. We have recently evaluated the <a class="reference external" href="https://www.biorxiv.org/content/10.1101/2020.03.27.012310v1">efficacy</a> of using <a class="reference external" href="https://caseforge.co/?gclid=CjwKCAjw8df2BRA3EiwAvfZWaGA5Jz_RABlW6vKdvdjJCULwaeFW3BHMI-FkSLX27DbS4B7LlUHOrhoCYKIQAvD_BwE">caseforge headcases</a> in reducing head motion in naturalistic viewing studies.</p>
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Preprocessing</span>
+<span class="o">*</span><span class="n">Written</span> <span class="n">by</span> <span class="n">Luke</span> <span class="n">Chang</span><span class="o">*</span>
+
+<span class="n">There</span> <span class="n">are</span> <span class="n">currently</span> <span class="n">no</span> <span class="n">agreed</span> <span class="n">upon</span> <span class="n">conventions</span> <span class="k">for</span> <span class="n">preprocessing</span> <span class="n">naturalistic</span> <span class="n">neuroimaging</span> <span class="n">data</span><span class="o">.</span> <span class="n">In</span> <span class="n">this</span> <span class="n">tutorial</span><span class="p">,</span> <span class="n">we</span> <span class="n">show</span> <span class="n">how</span> <span class="n">we</span> <span class="n">preprocessed</span> <span class="n">the</span> <span class="n">datasets</span> <span class="n">used</span> <span class="ow">in</span> <span class="nb">all</span> <span class="n">of</span> <span class="n">our</span> <span class="n">tutorials</span><span class="o">.</span> <span class="n">This</span> <span class="n">tutorial</span> <span class="n">assumes</span> <span class="n">you</span> <span class="n">have</span> <span class="n">some</span> <span class="n">basic</span> <span class="n">knowledge</span> <span class="n">of</span> <span class="n">preprocessing</span><span class="o">.</span> <span class="n">If</span> <span class="n">you</span> <span class="n">have</span> <span class="n">questions</span> <span class="n">about</span> <span class="n">the</span> <span class="n">specific</span> <span class="n">details</span><span class="p">,</span> <span class="n">we</span> <span class="n">enourage</span> <span class="n">you</span> <span class="n">to</span> <span class="n">read</span> <span class="n">other</span> <span class="n">tutorials</span><span class="p">,</span> <span class="n">such</span> <span class="k">as</span> <span class="n">the</span> <span class="n">preprocessing</span> <span class="p">[</span><span class="n">overview</span><span class="p">](</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">dartbrains</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">Preprocessing</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">the</span> <span class="n">Dartbrains</span> <span class="n">course</span><span class="o">.</span>
+
+<span class="n">In</span> <span class="n">our</span> <span class="p">[</span><span class="n">lab</span><span class="p">](</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">cosanlab</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="p">),</span> <span class="n">we</span> <span class="n">perform</span> <span class="n">standard</span> <span class="n">realignment</span> <span class="ow">and</span> <span class="n">spatial</span> <span class="n">normalization</span> <span class="n">using</span> <span class="n">a</span> <span class="n">custom</span> <span class="p">[</span><span class="n">nipype</span><span class="p">](</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">nipype</span><span class="o">.</span><span class="n">readthedocs</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">en</span><span class="o">/</span><span class="n">latest</span><span class="o">/</span><span class="p">)</span> <span class="p">[</span><span class="n">workflow</span><span class="p">](</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">cosanlab</span><span class="o">/</span><span class="n">cosanlab_preproc</span><span class="p">)</span> <span class="ow">or</span> <span class="p">[</span><span class="n">fmriprep</span><span class="p">](</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">fmriprep</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">en</span><span class="o">/</span><span class="n">stable</span><span class="o">/</span><span class="p">)</span><span class="o">.</span> <span class="n">We</span> <span class="n">also</span> <span class="n">perform</span> <span class="n">basic</span> <span class="n">denoising</span> <span class="n">by</span> <span class="n">removing</span> <span class="k">global</span> <span class="ow">and</span> <span class="n">multivariate</span> <span class="n">spikes</span><span class="p">,</span> <span class="n">average</span> <span class="n">CSF</span> <span class="n">activity</span><span class="p">,</span> <span class="n">linear</span><span class="o">/</span><span class="n">quadratic</span> <span class="n">trends</span><span class="p">,</span> <span class="ow">and</span> <span class="mi">24</span> <span class="n">motion</span> <span class="n">covariates</span> <span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">g</span><span class="o">.</span><span class="p">,</span> <span class="mi">6</span> <span class="n">centered</span> <span class="n">realignment</span><span class="p">,</span> <span class="n">their</span> <span class="n">squares</span><span class="p">,</span> <span class="n">derivative</span><span class="p">,</span> <span class="ow">and</span> <span class="n">squared</span> <span class="n">derivatives</span><span class="p">)</span><span class="o">.</span> <span class="n">We</span> <span class="n">are</span> <span class="n">very</span> <span class="n">cautious</span> <span class="n">about</span> <span class="n">performing</span> <span class="n">high</span><span class="o">-</span><span class="k">pass</span> <span class="n">filtering</span> <span class="k">as</span> <span class="n">many</span> <span class="n">of</span> <span class="n">the</span> <span class="n">effects</span> <span class="n">we</span> <span class="n">are</span> <span class="n">interested</span> <span class="ow">in</span> <span class="n">occur</span> <span class="ow">in</span> <span class="p">[</span><span class="n">slower</span> <span class="n">frequencies</span><span class="p">](</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">biorxiv</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">early</span><span class="o">/</span><span class="mi">2018</span><span class="o">/</span><span class="mi">12</span><span class="o">/</span><span class="mi">16</span><span class="o">/</span><span class="mi">487892</span><span class="p">)</span><span class="o">.</span> <span class="n">We</span> <span class="n">find</span> <span class="n">that</span> <span class="n">including</span> <span class="n">average</span> <span class="n">activity</span> <span class="kn">from</span> <span class="nn">a</span> <span class="n">CSF</span> <span class="n">mask</span> <span class="n">helps</span> <span class="n">a</span> <span class="n">lot</span> <span class="ow">in</span> <span class="n">reducing</span> <span class="n">different</span> <span class="n">types</span> <span class="n">of</span> <span class="n">physiological</span> <span class="ow">and</span> <span class="n">motion</span> <span class="n">related</span> <span class="n">artifacts</span><span class="o">.</span> <span class="n">We</span> <span class="n">typically</span> <span class="n">apply</span> <span class="n">spatial</span> <span class="n">smoothing</span><span class="p">,</span> <span class="n">but</span> <span class="n">depending</span> <span class="n">on</span> <span class="n">the</span> <span class="n">question</span> <span class="n">we</span> <span class="n">don</span><span class="s1">&#39;t always perform this step. For spatial feature selection, we rarely use searchlights and instead tend to use parcellations. This allows us to quickly prototype analysis ideas using smaller numbers of parcels (e.g., n=50) and then increase the number if we want greater spatial specificity. Starting with K=50 parcellation speeds up our computation by several orders of magnitude compared to voxelwise or searchlight approaches. In addition, the bonferroni correction for multiple comparisons is p &lt; 0.001, which is a reasonable threshold to observe statistically significant results with our research questions. We usually use a [parcellation](https://neurovault.org/collections/2099/) scheme that we developed with [Tal Yarkoni](https://talyarkoni.org/) based on meta-analytic coactivation using the neurosynth database. Selecting the right spatial features for a particular question is a surprisingly under-appreciated topic. See [Jolly &amp; Chang, 2021](https://academic.oup.com/scan/advance-article/doi/10.1093/scan/nsab010/6121195?login=true) discussing the costs and benefits of different spatial feature selection strategies. Head motion is also an important consideration with naturalistic designs particularly with long scanning sessions or when participants actively speak in the scanner. We have recently evaluated the efficacy of using [caseforge headcases](https://caseforge.co/?gclid=CjwKCAjw8df2BRA3EiwAvfZWaGA5Jz_RABlW6vKdvdjJCULwaeFW3BHMI-FkSLX27DbS4B7LlUHOrhoCYKIQAvD_BwE) in reducing head motion in naturalistic viewing studies ([Jolly et al., 2020](https://www.sciencedirect.com/science/article/pii/S1053811920306935?via%3Dihub)). </span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="section" id="naturalistic-data-preprocessing">
-<h2>Naturalistic Data Preprocessing<a class="headerlink" href="#naturalistic-data-preprocessing" title="Permalink to this headline">¶</a></h2>
+<h1>Naturalistic Data Preprocessing<a class="headerlink" href="#naturalistic-data-preprocessing" title="Permalink to this headline">¶</a></h1>
 <p>For the two datasets we are using in this course (Sherlock &amp; Paranoia), we performed very minimal preprocessing. First, we used <a class="reference external" href="https://fmriprep.readthedocs.io/en/stable/">fmriprep</a> to realign and spatially normalize the data. If you don’t have strong opinions about the details of preprocessing, we highly recommend using fmriprep, which is developed and maintained by a team at the <a class="reference external" href="http://reproducibility.stanford.edu/">Center for Reproducible Research</a> led by Russ Poldrack and Chris Gorgolewski. Fmriprep was designed to provide an easily accessible, state-of-the-art interface that is robust to variations in scan acquisition protocols, requires minimal user input, and provides easily interpretable and comprehensive error and output reporting. We like that they share a docker container with all of the relevant software packages, it is very simple to run, and that there is a large user base that actively report bugs so that it is constantly improving.</p>
 <p>After preprocessing with fmriprep, we smoothed the data (fwhm=6mm) and performed basic voxelwise denoising using a GLM. This entails including the 6 realignment parameters, their squares, their derivatives, and squared derivatives. We also include dummy codes for spikes identified from global signal outliers and outliers identified from frame differencing (i.e., temporal derivative). We chose to not perform high-pass filtering and instead include linear &amp; quadratic trends, and average CSF activity to remove additional physiological and scanner artifacts. Finally, to save space, we downsampled to Float32 precision.</p>
 <div class="cell docutils container">
@@ -472,14 +492,13 @@
 </div>
 </div>
 <div class="section" id="recommended-reading">
-<h2>Recommended reading<a class="headerlink" href="#recommended-reading" title="Permalink to this headline">¶</a></h2>
+<h1>Recommended reading<a class="headerlink" href="#recommended-reading" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
 <li><p>Jolly, E., Sadhukha, S., &amp; Chang, L. J. (2020). Custom-molded headcases have limited efficacy in reducing head motion for fMRI. BioRxiv.</p></li>
 <li><p>Jolly, E., &amp; Chang, L.J. (2020). Multivariate spatial feature selection in fMRI. OSF.</p></li>
 <li><p>Chang, L. J., Jolly, E., Cheong, J. H., Rapuano, K., Greenstein, N., Chen, P. H. A., &amp; Manning, J. R. (2018). Endogenous variation in ventromedial prefrontal cortex state dynamics during naturalistic viewing reflects affective experience. BioRxiv, 487892.</p></li>
 </ul>
 <p>Have thoughts on preprocessing?  Please share them as a github <a class="reference external" href="https://github.com/naturalistic-data-analysis/naturalistic_data_analysis/issues">issue</a> on our jupyter-book repository and we can incorporate them into the notebook.</p>
-</div>
 </div>
 
     <script type="text/x-thebe-config">
