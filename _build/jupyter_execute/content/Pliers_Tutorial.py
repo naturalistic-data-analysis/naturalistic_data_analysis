@@ -116,7 +116,7 @@ Under the hood, *pliers* noticed this mismatch, and automatically converted the 
 Before we can understand how *pliers* does this, and how you can do this with greater manual control, it's important to first understand some basic concepts.
 
 ## Fundamentals of Pliers
-This section is adapted from the [*pliers* documentation](http://tyarkoni.github.io/pliers/basic-concepts.html). For a more in-depth dive, see the official documentation.
+This section is adapted from the [*pliers* documentation](http://psychoinformaticslab.github.io/pliers/basic-concepts.html). For a more in-depth dive, see the official documentation.
 
 ### Stims and Transformers
 
@@ -162,7 +162,7 @@ There are three types of `Transformers` in *pliers*, and all take `Stim` objects
   For example, the `ImageCroppingFilter` takes an `ImageStim` as input, and returns another `ImageStim` as output, where the image data stored in the `Stim` has been cropped by a bounding box specified by the user. 
   
   
-A [complete listing](http://tyarkoni.github.io/pliers/transformers.html#) of all `Transformers` is available in the offical *pliers* documentation.
+A [complete listing](http://PsychoinformaticsLab.github.io/pliers/transformers.html#) of all `Transformers` is available in the offical *pliers* documentation.
 
 In practice, users will __primarily interact__ with `Extractors`, as *pliers* will automatically convert stimuli prior to extraction, greatly reducing the complexity of the code. 
 
@@ -255,7 +255,7 @@ There are 89 unique onsets, which indicates that faces were found in 89/143 fram
 
 The `FaceRecognitionFaceLocationsExtractor#face_locations` column also indicates the location of each face in CSS order (i.e., top, right, bottom, left).
 
-**Tip:** In some frames (e.g. 240s), multiple faces were found, and there are multiple rows for a given `onset`. To disambiguate these rows, *pliers* assigns each occurace a unique `object_id` column value. Read more](http://tyarkoni.github.io/pliers/results.html#understanding-object-ids) about *object_id*.
+**Tip:** In some frames (e.g. 240s), multiple faces were found, and there are multiple rows for a given `onset`. To disambiguate these rows, *pliers* assigns each occurace a unique `object_id` column value. Read more](http://PsychoinformaticsLab.github.io/pliers/results.html#understanding-object-ids) about *object_id*.
 
 Now, Let's plot all of these frames where faces were found!
 
@@ -299,11 +299,11 @@ face_ext._input_type
 str(face_features[0].history)
 
 **Note:**
-You can learn more about Transformation history in the [pliers docs](http://tyarkoni.github.io/pliers/stimuli.html#transformation-history).
+You can learn more about Transformation history in the [pliers docs](http://PsychoinformaticsLab.github.io/pliers/stimuli.html#transformation-history).
 
 If in doubt, simply chain `Converters` to `Extractors` manually.
 
-If you want to learn more implict conversion, this topic is discussed in the [Pliers documentation](http://tyarkoni.github.io/pliers/transformers.html#implicit-stim-conversion).
+If you want to learn more implict conversion, this topic is discussed in the [Pliers documentation](http://PsychoinformaticsLab.github.io/pliers/transformers.html#implicit-stim-conversion).
 
 ## Speech-to-text Converters
 
@@ -317,7 +317,7 @@ Recent advancements in deep convolutional networks have spawned dozens of `speec
 
 #### Remote service API Credentials
 
-To use remote APIs, we need to give *pliers* our private credentials for these paid services, by setting the appropriate environment variable in our environment to the access key. For more details, [see here](http://tyarkoni.github.io/pliers/installation.html#api-keys)
+To use remote APIs, we need to give *pliers* our private credentials for these paid services, by setting the appropriate environment variable in our environment to the access key. For more details, [see here](http://PsychoinformaticsLab.github.io/pliers/installation.html#api-keys)
 
 For the sake of this tutorial, you can sign up for a free trial of [rev.ai](https://rev.ai) (5 hours free, no CC required). We have also provided a pre-extracted transcript that you can load instead.
 
@@ -377,9 +377,9 @@ Now, what can we do with it?
 
 A light-weight and surprsingly useful approach is simply to annotate words using Dictionaries of established word norms. *Pliers* makes this is easy using the `DictionaryExtractor`. 
 
-A `DictionaryExtractor` simply maps words to arbitrary features encoded in a user-provided look up table. *Pliers* comes with built-in support for several word-norm mappings using the [PredefinedDictionaryExtractor](http://tyarkoni.github.io/pliers/generated/pliers.extractors.PredefinedDictionaryExtractor.html#pliers.extractors.PredefinedDictionaryExtractor).
+A `DictionaryExtractor` simply maps words to arbitrary features encoded in a user-provided look up table. *Pliers* comes with built-in support for several word-norm mappings using the [PredefinedDictionaryExtractor](http://PsychoinformaticsLab.github.io/pliers/generated/pliers.extractors.PredefinedDictionaryExtractor.html#pliers.extractors.PredefinedDictionaryExtractor).
 
-The predefined dictionaries built-in to *pliers* can be seen in the [repository](https://github.com/tyarkoni/pliers/blob/master/pliers/datasets/dictionaries.json). 
+The predefined dictionaries built-in to *pliers* can be seen in the [repository](https://github.com/PsychoinformaticsLab/pliers/blob/master/pliers/datasets/dictionaries.json). 
 
 In this example, we're going to extract values for age-of-acquisition [(Kuperman et al., 2012)](https://link.springer.com/article/10.3758/s13428-012-0210-4) and affective valence [(Warriner et al., 2013)](https://link.springer.com/article/10.3758/s13428-012-0314-x).
 
@@ -489,20 +489,20 @@ df = g.transform(sherlock_video)
 
 This short example demostrates a powerful way to express complex extraction workflows in *pliers*.
 
-If you'd like to learn more about the `Graph` API, you can head over to the [documentation](http://tyarkoni.github.io/pliers/graphs.html).
+If you'd like to learn more about the `Graph` API, you can head over to the [documentation](http://psychoinformaticslab.github.io/pliers/graphs.html).
 
 ## Where to go from here?
 
 *Pliers* is a powerful, yet easy to use Python library for multi-modal feature extraction. In this short tutorial, you've seen how to use *pliers* to modify, convert and extract features from stimuli. 
 
 
-To see the full range of `Transformers` implemented in *pliers*, [refer to this listing](http://tyarkoni.github.io/pliers/transformers.html) 
+To see the full range of `Transformers` implemented in *pliers*, [refer to this listing](http://psychoinformaticslab.github.io/pliers/transformers.html) 
 
 What's most exciting about *pliers*, and the quickly evolving landscape of feature algorithms is that they are constantly evolving. New developments promise to allows to extract ever more psychologically relevant features from naturalistic stimuli, automatically. 
 
-To that end, *pliers* is designed to be easily expanded by open-source contributions. If you have any ideas for future extractors, or simply find a bug to report, head over to our GitHub repository and [file and issue](https://github.com/tyarkoni/pliers/issues).
+To that end, *pliers* is designed to be easily expanded by open-source contributions. If you have any ideas for future extractors, or simply find a bug to report, head over to our GitHub repository and [file and issue](https://github.com/PsychoinformaticsLab/pliers/issues).
 
-If you use pliers in your work, please cite both the [pliers GitHub repository](http://github.com/tyarkoni/pliers) and the following paper:
+If you use pliers in your work, please cite both the [pliers GitHub repository](https://github.com/PsychoinformaticsLab/pliers) and the following paper:
 
 - McNamara, Q., De La Vega, A., & Yarkoni, T. (2017, August). Developing a comprehensive framework for multimodal feature extraction. In Proceedings of the 23rd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining (pp. 1567-1574). ACM. [link](https://dl.acm.org/doi/abs/10.1145/3097983.3098075?casa_token=iXf9sdY9XdQAAAAA%3Abu4w3Um9wJr3_c4eEtJ8nCdLzWYSGQ7Fmg4KM6N0uCQ3u-Jryvk3lK0JLvQJFcReIEqiUksZWBAl)
 
@@ -514,4 +514,4 @@ If you use pliers in your work, please cite both the [pliers GitHub repository](
 
 ## Contributions
 
-Alejandro de la Vega wrote the tutorial and code in this notebook. Emily Finn tested and lightly edited the notebook.
+Alejandro de la Vega wrote the tutorial and code in this notebook. Emily Finn tested and lightly edited the notebook. Luke Chang updated broken links.

@@ -1,7 +1,7 @@
 # Software Installation
 *Written by Luke Chang*
 
-For this course, we will be providing hands on tutorials working with real data using open source software written in the Python programming language. We have included some introductory tutorials in the **Background Resources** section to help you get up to speed on using [Python](https://dartbrains.org/features/notebooks/1_Introduction_to_Programming.html) and in particular how to manipulate data with [pandas](https://dartbrains.org/features/notebooks/2_Introduction_to_Pandas.html), [plot](https://dartbrains.org/features/notebooks/3_Introduction_to_Plotting.html) data, and work with [neuroimaging data](https://dartbrains.org/features/notebooks/5_Introduction_to_Neuroimaging_Data.html). All of our tutorials will be provided in the form of a [Jupyter Notebook](https://jupyter.org/). These notebooks are distributed via a [jupyter-book](https://jupyterbook.org/intro.html) and can be downloaded to run on your personal computer.
+For this course, we will be providing hands on tutorials working with real data using open source software written in the Python programming language. We have included some introductory tutorials in the **Background Resources** section to help you get up to speed on using [Python](https://dartbrains.org/content/Introduction_to_Programming.html) and in particular how to manipulate data with [pandas](https://dartbrains.org/content/Introduction_to_Pandas.html), [plot](https://dartbrains.org/content/Introduction_to_Plotting.html) data, and work with [neuroimaging data](https://dartbrains.org/content/Introduction_to_Neuroimaging_Data.html). All of our tutorials will be provided in the form of a [Jupyter Notebook](https://jupyter.org/). These notebooks are distributed via a [jupyter-book](https://jupyterbook.org/) and can be downloaded to run on your personal computer.
 
 Throughout this course various tutorials will use the following libraries:
 
@@ -9,10 +9,10 @@ Throughout this course various tutorials will use the following libraries:
 - [nibabel](https://nipy.org/nibabel/) - a library to read and write common neuroimaging file formats.
 - [nilearn](https://brainiak.org/) - a neuroimaging toolbox for performing statistical learning
 - [brainiak](https://brainiak.org/) - a neuroimaging toolbox for performing advanced fMRI analyses
-- [nltools](https://neurolearn.readthedocs.io/en/latest/) - a neuroimaging toolbox for performing multivariate analyses
+- [nltools](https://nltools.org) - a neuroimaging toolbox for performing multivariate analyses
 - [hypertools](https://hypertools.readthedocs.io/en/latest/index.html) - a toolbox for visualizing high dimensional data
 - [timecorr](https://timecorr.readthedocs.io/en/latest/) - a toolbox for calculating dynamic correlations
-- [pliers](https://github.com/tyarkoni/pliers) - a toolbox for extracting features from multimodal data
+- [pliers](https://github.com/PsychoinformaticsLab/pliers) - a toolbox for extracting features from multimodal data
 
 ## Installing Software
 First, if you have never worked with Python before, we recommend installing Python via the [Anaconda distribution](https://www.anaconda.com/products/individual). This includes many popular packages used in scientific computing. Be sure to install Python 3.7. 
